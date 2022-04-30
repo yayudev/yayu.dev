@@ -1,3 +1,14 @@
+:root {
+  /* Text */
+  --text-color: #212529;
+  --text-color-secondary: #6c757d;
+  --link-color: #fff9e5;
+
+  /* Background */
+  --background: #a69075;
+  --background-alt: #fff9e5;
+}
+
 html,
 body {
   padding: 0;
