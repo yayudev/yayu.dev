@@ -34,12 +34,8 @@ export default function Settings() {
         <SettingsTooltipBar
           text="This is a tooltip."
           showArrows
-          onBack={() => {
-            console.log("back");
-          }}
-          onConfirm={() => {
-            console.log("confirm");
-          }}
+          showBack
+          showConfirm
         />
       </SettingsBGWrapper>
     </Container>

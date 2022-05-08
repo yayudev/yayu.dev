@@ -3,8 +3,8 @@ import styled, { keyframes } from "styled-components";
 interface SettingsTooltipBarProps {
   text: string;
   showArrows?: boolean;
-  onBack?: () => void;
-  onConfirm?: () => void;
+  showBack?: boolean;
+  showConfirm?: boolean;
 }
 
 const revealExpandFromRight = keyframes`
@@ -105,27 +105,27 @@ const ButtonText = styled.span`
 export function SettingsTooltipBar({
   text,
   showArrows = true,
-  onBack,
-  onConfirm,
+  showBack = false,
+  showConfirm = true,
 }: SettingsTooltipBarProps) {
-  const backControl = Boolean(onBack) && (
+  const backControl = Boolean(showBack) && (
     <ButtonIconContainer>
-      <ButtonIconText onClick={onBack}> Esc </ButtonIconText>
+      <ButtonIconText> Esc </ButtonIconText>
       <ButtonText>Back</ButtonText>
     </ButtonIconContainer>
   );
-  const confirmControl = Boolean(onConfirm) && (
+  const confirmControl = Boolean(showConfirm) && (
     <ButtonIconContainer>
-      <ButtonIconText onClick={onBack}> Enter </ButtonIconText>
+      <ButtonIconText> Enter </ButtonIconText>
       <ButtonText>Confirm</ButtonText>
     </ButtonIconContainer>
   );
   const arrowControl = Boolean(showArrows) && (
     <ButtonIconContainer>
-      <ButtonIconText onClick={onBack}> W </ButtonIconText>
-      <ButtonIconText onClick={onBack}> A </ButtonIconText>
-      <ButtonIconText onClick={onBack}> S </ButtonIconText>
-      <ButtonIconText onClick={onBack}> D </ButtonIconText>
+      <ButtonIconText> W </ButtonIconText>
+      <ButtonIconText> A </ButtonIconText>
+      <ButtonIconText> S </ButtonIconText>
+      <ButtonIconText> D </ButtonIconText>
       <ButtonText>Select</ButtonText>
     </ButtonIconContainer>
   );
