@@ -3,11 +3,12 @@
   --text-color: #212529;
   --text-color-secondary: #6c757d;
   --link-color: #fff9e5;
+  --alt-text-color: #444035;
 
   /* Background */
   --background: #a69075;
   --settings-background: #c4bfa9;
-  --background-alt: #fff9e5;
+  --background-alt: #dcd9cb;
 }
 
 html,
