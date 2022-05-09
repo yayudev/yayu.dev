@@ -1,5 +1,4 @@
-import styled from "styled-components";
-import { css, keyframes } from "styled-components/";
+import styled, { css, keyframes } from "styled-components";
 
 interface HomeMenuItemUnderlineProps {
   active: boolean;

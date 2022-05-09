@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 interface SettingsTooltipBarProps {
   text: string;
@@ -7,58 +7,33 @@ interface SettingsTooltipBarProps {
   showConfirm?: boolean;
 }
 
-const revealExpandFromRight = keyframes`
-  0% {
-    opacity: 0;
-    transform: scaleX(0);
-  }
-
-  50% {
-    opacity: .25;
-    transform: scaleX(.5);
-  }
-
-  75% {
-    opacity: .5;
-    transform: scaleX(.75);
-  }
-
-
-  100% {
-    opacity: 1;
-    transform: scaleX(1);
-  }
-`;
-
 const Container = styled.div`
   display: flex;
   background: var(--background-alt);
-  width: 95%;
+  width: 100%;
   margin: 0 auto 1rem auto;
-  padding-left: 13px;
   position: relative;
-  animation: ${revealExpandFromRight} .5s ease-in-out;
-  animation-fill-mode: forwards;
-  transform-origin: center;
-  box-shadow: 7px 9px 4px rgba(0,0,0,.25);
-
-
-  &:before {
-    content: "";
-    display: block;
-    width: 10px;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: var(--alt-text-color);
+  box-shadow: 7px 9px 4px rgba(0, 0, 0, 0.25);
 `;
 
 const LeftBlock = styled.div`
   display: flex;
-  width: 2px;
+  width: 10px;
   height: 100%;
   background-color: var(--alt-text-color);
+  position: relative;
+
+  &:before {
+    content: "";
+    display: block;
+    width: 3px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 13px;
+    background-color: var(--alt-text-color);
+  }
 `;
 
 const Text = styled.p`
@@ -66,6 +41,7 @@ const Text = styled.p`
   font-size: 1.5rem;
   margin: 1rem 1rem 1rem 2rem;
   flex: 1;
+  min-height: 2rem;
 `;
 
 const ControlsContainer = styled.div`

@@ -1,5 +1,5 @@
-import Head from "next/head";
 import styled from "styled-components";
+
 import { SettingsBorder } from "./settings-border";
 import { SettingsBGAnimations } from "./settings-bg-animations";
 

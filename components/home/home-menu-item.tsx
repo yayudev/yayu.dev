@@ -2,7 +2,7 @@ import { MutableRefObject } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 
-import { useHover } from "../../hooks/use-hover";
+import { useHover } from "@/hooks/use-hover";
 import { HomeMenuItemUnderline } from "./home-menu-item-underline";
 
 interface HomeMenuItemProps {

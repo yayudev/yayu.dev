@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { HomeMenuItem } from "./home-menu-item";
 
-const Container = styled.nav``;
+import { HomeMenuItem } from "./home-menu-item";
 
 const MenuList = styled.ul`
   display: flex;
@@ -15,7 +14,7 @@ const MenuList = styled.ul`
 
 export function HomeMenu() {
   return (
-    <Container>
+    <nav>
       <MenuList>
         <HomeMenuItem href="/blog">Blog</HomeMenuItem>
         <HomeMenuItem href="/experiments">Experiments</HomeMenuItem>
@@ -23,6 +22,6 @@ export function HomeMenu() {
         <HomeMenuItem href="/settings">Settings</HomeMenuItem>
         <HomeMenuItem href="/about">About</HomeMenuItem>
       </MenuList>
-    </Container>
+    </nav>
   );
 }

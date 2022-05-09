@@ -1,9 +1,9 @@
-import type { NextPage } from "next";
-import Head from "next/head";
+import { NextPage } from "next";
 import styled from "styled-components";
+import Head from "next/head";
 import Image from "next/image";
 
-import { HomeMenu } from "../components/home/home-menu";
+import { HomeMenu } from "@/components/home/home-menu";
 
 const Container = styled.main`
   background-image: url("/images/background.png");
