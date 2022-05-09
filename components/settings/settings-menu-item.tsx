@@ -24,6 +24,10 @@ const ListItem = styled.div<{ isSelected: boolean; isChildOption: boolean }>`
   transition: background-color 0.2s ease-in-out;
   position: relative;
 
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   ${(props) =>
     props?.isSelected &&
     props.isChildOption &&
@@ -31,6 +35,10 @@ const ListItem = styled.div<{ isSelected: boolean; isChildOption: boolean }>`
       &:first-child {
         margin-top: 4px;
         margin-bottom: calc(1.5rem - 4px);
+      }
+
+      &:last-child {
+        top: -4px;
       }
 
       &:before {

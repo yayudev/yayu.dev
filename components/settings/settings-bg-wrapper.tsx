@@ -34,8 +34,8 @@ export function SettingsBGWrapper({ children }: SettingsBGWrapperProps) {
       <SettingsBGAnimations width={1000} height={1000} />
       <SettingsBorder />
       <Content>{children}</Content>
-      <SettingsBorder />
       <SettingsBGAnimations width={1000} height={1000} reversed />
+      <SettingsBorder />
     </Container>
   );
 }
