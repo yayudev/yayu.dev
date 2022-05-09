@@ -10,15 +10,25 @@ import { SettingsTitle } from "@/components/settings/settings-title";
 import { SettingsTooltipBar } from "@/components/settings/settings-tooltip-bar";
 import { SettingsMenuLevel } from "@/components/settings/settings-menu-level";
 import { SettingsMenuItem } from "@/components/settings/settings-menu-item";
+import { SettingsOptionSelect } from "@/components/settings/settings-option-select";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
   width: 100vw;
+  position: relative;
 `;
 
 const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  position: relative;
+`;
+
+const MenuWrapper = styled.div`
   display: flex;
 `;
 
@@ -44,6 +54,23 @@ export default function Settings() {
   const [openOption, setOpenOption] = useState<
     SettingsMenuItemType | undefined
   >();
+
+  /***************
+   *  MAIN MENU  *
+   ***************/
+
+  const menuComponent = (
+    <SettingsMenuLevel>
+      {SETTINGS_MENUS_LIST.map((item, index) => (
+        <SettingsMenuItem
+          key={item.label}
+          label={item.label}
+          isSelected={menu === index}
+          onClick={() => handleTopMenuClick(index)}
+        />
+      ))}
+    </SettingsMenuLevel>
+  );
 
   /**************
    *  SUB MENU  *
@@ -71,16 +98,11 @@ export default function Settings() {
    *******************/
 
   const optionSelectorComponent = openOption && (
-    <SettingsMenuLevel isChildMenu>
-      {openOption.options.map((value, index) => (
-        <SettingsMenuItem
-          key={index}
-          label={value.toString()}
-          isSelected={value === openOption.value}
-          onClick={() => handleChangeOption(openOption.optionKey, value)}
-        />
-      ))}
-    </SettingsMenuLevel>
+    <SettingsOptionSelect
+      options={openOption.options}
+      selectedValue={openOption.value}
+      onSelect={(value) => handleChangeOption(openOption.optionKey, value)}
+    />
   );
 
   /*************
@@ -125,23 +147,14 @@ export default function Settings() {
         <SettingsTitle>SETTINGS</SettingsTitle>
 
         <Content>
-          <SettingsMenuLevel>
-            {SETTINGS_MENUS_LIST.map((item, index) => (
-              <SettingsMenuItem
-                key={item.label}
-                label={item.label}
-                isSelected={menu === index}
-                onClick={() => handleTopMenuClick(index)}
-              />
-            ))}
-          </SettingsMenuLevel>
+          <MenuWrapper>
+            {menuComponent}
+            {subMenuComponent}
+            {optionSelectorComponent}
+          </MenuWrapper>
 
-          {subMenuComponent}
-
-          {optionSelectorComponent}
+          <Spacing />
         </Content>
-
-        <Spacing />
 
         <SettingsTooltipBar
           text={tooltipText}

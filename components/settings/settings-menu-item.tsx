@@ -13,7 +13,7 @@ const ListItem = styled.div<{ isSelected: boolean; isChildOption: boolean }>`
   align-items: center;
   width: ${(props) => (props?.isSelected ? "100%" : "90%")};
   height: 2rem;
-  padding: 1rem 0.5rem;
+  padding: 1.25rem 0.75rem;
   margin-bottom: 1.5rem;
   background-color: ${(props) =>
     props?.isSelected ? "var(--alt-text-color)" : "var(--item-background)"};
@@ -21,12 +21,20 @@ const ListItem = styled.div<{ isSelected: boolean; isChildOption: boolean }>`
     props?.isSelected ? "var(--item-background)" : "var(--alt-text-color)"};
   font-size: 1.1rem;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
+    width 0.2s ease-in-out, padding-right 0.2s ease-in-out;
   position: relative;
 
   &:last-child {
     margin-bottom: 0;
   }
+
+  ${(props) =>
+    !props?.isSelected &&
+    `&:hover {
+      width: 95%;
+      padding-right: calc(5% + .75rem);
+    }`}
 
   ${(props) =>
     props?.isSelected &&
