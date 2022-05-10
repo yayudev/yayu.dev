@@ -8,7 +8,7 @@ type SettingsMenuItemProps = {
   onClick: () => void;
 };
 
-const ListItem = styled.div<{ isSelected: boolean; isChildOption: boolean }>`
+const ListItem = styled.li<{ isSelected: boolean; isChildOption: boolean }>`
   display: flex;
   align-items: center;
   width: ${(props) => (props?.isSelected ? "100%" : "90%")};
@@ -31,7 +31,7 @@ const ListItem = styled.div<{ isSelected: boolean; isChildOption: boolean }>`
 
   ${(props) =>
     !props?.isSelected &&
-    `&:hover {
+    `&:hover, &:focus {
       width: 95%;
       padding-right: calc(5% + .75rem);
     }`}
@@ -107,11 +107,21 @@ export function SettingsMenuItem({
     displayedValue = value ? "On" : "Off";
   }
 
+  function onKeypress(event: React.KeyboardEvent<HTMLLIElement>) {
+    if (event.key === "Enter" || event.key === " ") {
+      onClick();
+    }
+  }
+
   return (
     <ListItem
       isSelected={isSelected}
       isChildOption={isChildOption}
+      tabIndex={0}
+      role="listitem"
+      aria-label={displayedValue ? `${label}: ${displayedValue}` : label}
       onClick={onClick}
+      onKeyDown={onKeypress}
     >
       <ListItemSquare isSelected={isSelected} />
       <ListItemContent>

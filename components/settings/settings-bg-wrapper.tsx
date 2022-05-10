@@ -30,12 +30,12 @@ const Content = styled.main`
 
 export function SettingsBGWrapper({ children }: SettingsBGWrapperProps) {
   return (
-    <Container>
+    <Container tabIndex={-1}>
       <SettingsBGAnimations width={1000} height={1000} />
-      <SettingsBorder />
-      <Content>{children}</Content>
+      <SettingsBorder aria-label="decoration border" />
+      <Content aria-label="Settings">{children}</Content>
       <SettingsBGAnimations width={1000} height={1000} reversed />
-      <SettingsBorder />
+      <SettingsBorder aria-label="decoration border" />
     </Container>
   );
 }

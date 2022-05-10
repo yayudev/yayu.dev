@@ -30,6 +30,9 @@ export function SettingsBGAnimations({
       xmlns="http://www.w3.org/2000/svg"
       transform={`scale(${reversed ? -1 : 1})`}
       style={positionSyles}
+      tabIndex={-1}
+      focusable={false}
+      aria-label="background animation"
     >
       <motion.circle
         animate={{

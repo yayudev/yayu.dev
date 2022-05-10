@@ -20,7 +20,8 @@ const Item = styled.div<{ isSelected: boolean }>`
   transition: all 0.2s ease-in-out;
   position: relative;
 
-  &:hover {
+  &:hover,
+  &:focus {
     transform: translateX(-1rem);
   }
 
@@ -30,7 +31,7 @@ const Item = styled.div<{ isSelected: boolean }>`
       color: var(--item-background);
       transform: translateX(-2rem);
 
-      &:hover {
+      &:hover, &:focus {
         transform: translateX(-2.5rem);
       }`}
 `;
@@ -52,8 +53,20 @@ export function SettingsOptionSelectItem({
   isSelected,
   onClick,
 }: SettingsOptionSelectItemProps) {
+  function onKeypress(event: React.KeyboardEvent<HTMLDivElement>) {
+    if (event.key === "Enter" || event.key === " ") {
+      onClick();
+    }
+  }
+
   return (
-    <Item onClick={onClick} isSelected={isSelected}>
+    <Item
+      isSelected={isSelected}
+      aria-label={label}
+      tabIndex={0}
+      onClick={onClick}
+      onKeyDown={onKeypress}
+    >
       <ListItemSquare isSelected={isSelected} />
       {label}
     </Item>

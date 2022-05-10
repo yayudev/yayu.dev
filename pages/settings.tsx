@@ -17,6 +17,7 @@ import {
   SettingsContextType,
   SettingsState,
 } from "@/contexts/settings";
+import { useKeyboard } from "@/hooks/use-keyboard";
 
 const Container = styled.div`
   display: flex;
@@ -152,7 +153,7 @@ export default function Settings() {
    ******************/
 
   return (
-    <Container>
+    <Container aria-label="Settings">
       {head}
 
       <SettingsBGWrapper>
