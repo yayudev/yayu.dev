@@ -18,6 +18,7 @@
     "paths": {
       "@/components/*": ["components/*"],
       "@/config/*": ["config/*"],
+      "@/contexts/*": ["contexts/*"],
       "@/pages/*": ["pages/*"],
       "@/hooks/*": ["hooks/*"],
       "@/styles/*": ["styles/*"],
@@ -25,6 +26,6 @@
       "@/utils/*": ["utils/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.d.ts"],
   "exclude": ["node_modules"]
 }

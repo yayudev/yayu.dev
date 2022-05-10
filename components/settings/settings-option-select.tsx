@@ -26,7 +26,7 @@ export function SettingsOptionSelect({
         let displayValue = option as string;
 
         if (typeof option === "boolean") {
-          displayValue = option ? "Yes" : "No";
+          displayValue = option ? "On" : "Off";
         }
 
         return (

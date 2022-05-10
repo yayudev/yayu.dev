@@ -6,23 +6,20 @@ export const SETTINGS_MENUS_LIST: SettingsMenuType[] = [
     children: [
       {
         label: "Language",
-        value: "English",
         options: ["English", "Spanish"],
-        optionKey: "language",
+        optionKey: "global.language",
         tooltip: "Select your language (Default: English)",
       },
       {
         label: "Animations",
-        value: false,
         options: [true, false],
-        optionKey: "animations",
+        optionKey: "global.animations",
         tooltip: "Enable or disable animations. (Default: false)",
       },
       {
         label: "Sounds",
-        value: false,
         options: [true, false],
-        optionKey: "sounds",
+        optionKey: "global.sounds",
         tooltip: "Enable or disable sounds. (Default: false)",
       },
     ],
@@ -32,16 +29,14 @@ export const SETTINGS_MENUS_LIST: SettingsMenuType[] = [
     children: [
       {
         label: "Blog comments",
-        value: true,
         options: [true, false],
-        optionKey: "blogComments",
+        optionKey: "blog.comments",
         tooltip: "Enable or disable blog comments. (Default: true)",
       },
       {
         label: "Social share",
-        value: false,
         options: [true, false],
-        optionKey: "socialShare",
+        optionKey: "blog.share",
         tooltip: "Enable or disable social share. (Default: false)",
       },
     ],
@@ -51,9 +46,8 @@ export const SETTINGS_MENUS_LIST: SettingsMenuType[] = [
     children: [
       {
         label: "Allow tracking",
-        value: true,
         options: [true, false],
-        optionKey: "allowTracking",
+        optionKey: "global.allowTracking",
         tooltip: "Allow or disallow tracking. (Default: true)",
       },
     ],

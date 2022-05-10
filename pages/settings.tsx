@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
 import Head from "next/head";
+import { get, set } from "lodash";
 
 import { SettingsMenuItemType } from "@/types/settings-menu";
 import { SETTINGS_MENUS_LIST } from "@/config/settings-menu";
@@ -11,6 +12,11 @@ import { SettingsTooltipBar } from "@/components/settings/settings-tooltip-bar";
 import { SettingsMenuLevel } from "@/components/settings/settings-menu-level";
 import { SettingsMenuItem } from "@/components/settings/settings-menu-item";
 import { SettingsOptionSelect } from "@/components/settings/settings-option-select";
+import {
+  SettingsContext,
+  SettingsContextType,
+  SettingsState,
+} from "@/contexts/settings";
 
 const Container = styled.div`
   display: flex;
@@ -51,6 +57,8 @@ const head = (
 export default function Settings() {
   const [menu, setMenu] = useState<number | undefined>();
   const [subMenu, setSubMenu] = useState<number | undefined>();
+  const { settings, setSettings } =
+    useContext<SettingsContextType>(SettingsContext);
   const [openOption, setOpenOption] = useState<
     SettingsMenuItemType | undefined
   >();
@@ -84,7 +92,7 @@ export default function Settings() {
         <SettingsMenuItem
           key={index}
           label={item.label}
-          value={item.value}
+          value={get(settings, item.optionKey)}
           isSelected={subMenu === index}
           isChildOption
           onClick={() => handleSubMenuClick(index, item)}
@@ -100,7 +108,7 @@ export default function Settings() {
   const optionSelectorComponent = openOption && (
     <SettingsOptionSelect
       options={openOption.options}
-      selectedValue={openOption.value}
+      selectedValue={get(settings, openOption.optionKey)}
       onSelect={(value) => handleChangeOption(openOption.optionKey, value)}
     />
   );
@@ -128,11 +136,15 @@ export default function Settings() {
 
   function handleChangeOption(
     key: SettingsMenuItemType["optionKey"],
-    value: SettingsMenuItemType["value"]
+    value: string | boolean
   ) {
-    console.log(key, value);
     setOpenOption(undefined);
     setSubMenu(undefined);
+
+    const newSettings = { ...settings } as SettingsState;
+    set(newSettings, key, value);
+
+    setSettings(newSettings);
   }
 
   /******************

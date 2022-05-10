@@ -5,7 +5,6 @@ export type SettingsMenuType = {
 
 export type SettingsMenuItemType = {
   label: string;
-  value: string | boolean;
   optionKey: string;
   options: string[] | boolean[];
   tooltip: string;
