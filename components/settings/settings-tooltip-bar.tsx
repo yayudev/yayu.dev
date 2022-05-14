@@ -87,7 +87,7 @@ export function SettingsTooltipBar({
   const backControl = Boolean(showBack) && (
     <ButtonIconContainer>
       <ButtonIconText> Esc </ButtonIconText>
-      <ButtonText>Back</ButtonText>
+      <ButtonText>Close</ButtonText>
     </ButtonIconContainer>
   );
   const confirmControl = Boolean(showConfirm) && (
@@ -98,11 +98,9 @@ export function SettingsTooltipBar({
   );
   const arrowControl = Boolean(showArrows) && (
     <ButtonIconContainer>
-      <ButtonIconText> W </ButtonIconText>
-      <ButtonIconText> A </ButtonIconText>
-      <ButtonIconText> S </ButtonIconText>
-      <ButtonIconText> D </ButtonIconText>
-      <ButtonText>Select</ButtonText>
+      <ButtonIconText> Shift + Tab </ButtonIconText>/
+      <ButtonIconText> Tab </ButtonIconText>
+      <ButtonText>Navigate</ButtonText>
     </ButtonIconContainer>
   );
 

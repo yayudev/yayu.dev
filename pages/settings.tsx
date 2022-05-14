@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import styled from "styled-components";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { get, set } from "lodash";
 
 import { SettingsMenuItemType } from "@/types/settings-menu";
@@ -56,6 +57,7 @@ const head = (
 );
 
 export default function Settings() {
+  const router = useRouter();
   const [menu, setMenu] = useState<number | undefined>();
   const [subMenu, setSubMenu] = useState<number | undefined>();
   const { settings, setSettings } =
@@ -147,6 +149,26 @@ export default function Settings() {
 
     setSettings(newSettings);
   }
+
+  useKeyboard(
+    ["Escape"],
+    () => {
+      console.log({ openOption, subMenu, menu });
+      if (openOption) {
+        setOpenOption(undefined);
+        setSubMenu(undefined);
+        return;
+      }
+
+      if (menu !== undefined) {
+        setMenu(undefined);
+        return;
+      }
+
+      router.back();
+    },
+    [openOption, menu, subMenu]
+  );
 
   /******************
    *  MAIN RENDER   *

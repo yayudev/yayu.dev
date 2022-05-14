@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import { useHover } from "@/hooks/use-hover";
 import { HomeMenuItemUnderline } from "./home-menu-item-underline";
+import { GlitchedText } from "./glitched-text";
 
 interface HomeMenuItemProps {
   href: string;
@@ -26,7 +27,7 @@ export function HomeMenuItem({ href, children }: HomeMenuItemProps) {
     <>
       <Link href={href} passHref>
         <MenuLink ref={hoverRef as MutableRefObject<HTMLAnchorElement | null>}>
-          {children}
+          <GlitchedText animate={isHovered}>{children}</GlitchedText>
         </MenuLink>
       </Link>
 
