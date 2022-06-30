@@ -1,3 +1,4 @@
+import { useTranslation } from "next-i18next";
 import styled from "styled-components";
 
 type SettingsMenuItemProps = {
@@ -120,10 +121,15 @@ export function SettingsMenuItem({
   isChildOption = false,
   onClick,
 }: SettingsMenuItemProps) {
+  const { t } = useTranslation("settings");
   let displayedValue = value;
 
   if (typeof value === "boolean") {
     displayedValue = value ? "On" : "Off";
+  }
+
+  if (typeof value === "string") {
+    displayedValue = t(value);
   }
 
   function onKeypress(event: React.KeyboardEvent<HTMLLIElement>) {

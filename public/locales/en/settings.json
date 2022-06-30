@@ -1,0 +1,40 @@
+{
+  "title": "Settings",
+
+  "content": "Content",
+  "blog": "Blog",
+  "other": "Other",
+  
+  "language": {
+    "title": "Language",
+    "description": "Select your language (Default: English)",
+    "en": "English",
+    "es": "Spanish"
+  },
+
+  "animations": {
+    "title": "Animations",
+    "description": "Enable or disable animations. (Default: On)"
+  },  
+
+  "sounds": {
+    "title": "Sounds",
+    "description": "Enable or disable sounds. (Default: On)"
+  },
+  
+
+  "blog-comments": {
+    "title": "Blog Comments",
+    "description": "Enable or disable blog comments. (Default: On)"
+  },
+
+  "social-share": {
+    "title": "Social Share",
+    "description": "Enable or disable social share. (Default: On)"
+  },
+
+  "allow-tracking": {
+    "title": "Allow Tracking",
+    "description": "Allow tracking. (Default: On)"
+  }
+}

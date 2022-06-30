@@ -1,11 +1,11 @@
 export type SettingsMenuType = {
-  label: string;
+  labelKey: string;
   children: SettingsMenuItemType[];
 };
 
 export type SettingsMenuItemType = {
-  label: string;
+  labelKey: string;
   optionKey: string;
   options: string[] | boolean[];
-  tooltip: string;
+  tooltipKey: string;
 };

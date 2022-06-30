@@ -1,4 +1,6 @@
+import { useTranslation } from "next-i18next";
 import styled from "styled-components";
+
 import { SettingsOptionSelectItem } from "./settings-option-select-item";
 
 type SettingsOptionSelectProps = {
@@ -20,6 +22,8 @@ export function SettingsOptionSelect({
   selectedValue,
   onSelect,
 }: SettingsOptionSelectProps) {
+  const { t } = useTranslation("settings");
+
   return (
     <Container>
       {options.map((option) => {
@@ -27,6 +31,10 @@ export function SettingsOptionSelect({
 
         if (typeof option === "boolean") {
           displayValue = option ? "On" : "Off";
+        }
+
+        if (typeof option === "string") {
+          displayValue = t(option);
         }
 
         return (

@@ -1,7 +1,9 @@
 import "@/styles/globals.css";
 import { AppProps } from "next/app";
 import Head from "next/head";
+import { appWithTranslation } from 'next-i18next';
 import { SettingsProvider } from "@/contexts/settings";
+import nextI18NextConfig from '../next-i18next.config.js';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -18,4 +20,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp, nextI18NextConfig);

@@ -160,7 +160,6 @@ export default function Settings() {
     console.log(key)
 
     if (key === "global.language") {
-      i18n.addResources')
       const [_, language] = (value as string).split('.');
       console.log('changeLang')
       i18n.changeLanguage('en-US');

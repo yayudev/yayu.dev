@@ -2,53 +2,53 @@ import { SettingsMenuType } from "@/types/settings-menu";
 
 export const SETTINGS_MENUS_LIST: SettingsMenuType[] = [
   {
-    label: "Content",
+    labelKey: "content",
     children: [
       {
-        label: "Language",
-        options: ["English", "Spanish"],
+        labelKey: "language.title",
+        tooltipKey: "language.description",
         optionKey: "global.language",
-        tooltip: "Select your language (Default: English)",
+        options: ["language.es", "language.en"],
       },
       {
-        label: "Animations",
-        options: [true, false],
+        labelKey: "animations.title",
+        tooltipKey: "animations.description",
         optionKey: "global.animations",
-        tooltip: "Enable or disable animations. (Default: On)",
+        options: [true, false],
       },
       {
-        label: "Sounds",
-        options: [true, false],
+        labelKey: "sounds.title",
+        tooltipKey: "sounds.description",
         optionKey: "global.sounds",
-        tooltip: "Enable or disable sounds. (Default: On)",
+        options: [true, false],
       },
     ],
   },
   {
-    label: "Blog",
+    labelKey: "blog",
     children: [
       {
-        label: "Blog comments",
-        options: [true, false],
+        labelKey: "blog-comments.title",
+        tooltipKey: "blog-comments.description",
         optionKey: "blog.comments",
-        tooltip: "Enable or disable blog comments. (Default: On)",
+        options: [true, false],
       },
       {
-        label: "Social share",
-        options: [true, false],
+        labelKey: "social-share.title",
+        tooltipKey: "social-share.description",
         optionKey: "blog.share",
-        tooltip: "Enable or disable social share. (Default: On)",
+        options: [true, false],
       },
     ],
   },
   {
-    label: "Other",
+    labelKey: "other",
     children: [
       {
-        label: "Allow tracking",
-        options: [true, false],
+        labelKey: "allow-tracking.title",
+        tooltipKey: "allow-tracking.description",
         optionKey: "global.allowTracking",
-        tooltip: "Allow or disallow tracking. (Default: On)",
+        options: [true, false],
       },
     ],
   },

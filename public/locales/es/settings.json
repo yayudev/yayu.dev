@@ -1,0 +1,40 @@
+{
+  "title": "Configuración",
+
+  "content": "Contenido",
+  "blog": "Blog",
+  "other": "Otros",
+  
+  "language": {
+    "title": "Lenguaje",
+    "description": "Selecciona tu lenguaje (Default: English)",
+    "en": "Inglés",
+    "es": "Español"
+  },
+
+  "animations": {
+    "title": "Animaciones",
+    "description": "Habilita o deshabilita animaciones. (Default: On)"
+  },  
+
+  "sounds": {
+    "title": "Sonidos",
+    "description": "Habilita o deshabilita sonidos. (Default: On)"
+  },
+  
+
+  "blog-comments": {
+    "title": "Comentarios del blog",
+    "description": "Habilita o deshabilita los commentarios en el blog. (Default: On)"
+  },
+
+  "social-share": {
+    "title": "Compartir",
+    "description": "Habilita o deshabilita la compartición en redes sociales. (Default: On)"
+  },
+
+  "allow-tracking": {
+    "title": "Permitir seguimiento",
+    "description": "Permitir seguimiento. (Default: On)"
+  }
+}

@@ -1,4 +1,5 @@
 // Settings context
+import { i18n } from "next-i18next";
 import React, { useState, createContext, ReactNode } from "react";
 import createPersistedState from "use-persisted-state";
 

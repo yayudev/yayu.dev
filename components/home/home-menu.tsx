@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useTranslation } from 'next-i18next';
 
 import { HomeMenuItem } from "./home-menu-item";
 
@@ -13,14 +14,16 @@ const MenuList = styled.ul`
 `;
 
 export function HomeMenu() {
+  const { t } = useTranslation('home');
+
   return (
     <nav>
       <MenuList>
-        <HomeMenuItem href="/blog">Blog</HomeMenuItem>
-        <HomeMenuItem href="/experiments">Experiments</HomeMenuItem>
-        <HomeMenuItem href="/projects">Projects</HomeMenuItem>
-        <HomeMenuItem href="/settings">Settings</HomeMenuItem>
-        <HomeMenuItem href="/about">About</HomeMenuItem>
+        <HomeMenuItem href="/blog">{t('blog')}</HomeMenuItem>
+        <HomeMenuItem href="/experiments">{t('experiments')}</HomeMenuItem>
+        <HomeMenuItem href="/projects">{t('projects')}</HomeMenuItem>
+        <HomeMenuItem href="/settings">{t('settings')}</HomeMenuItem>
+        <HomeMenuItem href="/about">{t('about')}</HomeMenuItem>
       </MenuList>
     </nav>
   );

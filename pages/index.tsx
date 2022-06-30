@@ -2,6 +2,7 @@ import { NextPage } from "next";
 import styled from "styled-components";
 import Head from "next/head";
 import Image from "next/image";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import { HomeMenu } from "@/components/home/home-menu";
 
@@ -25,6 +26,16 @@ const Content = styled.section`
   width: 100%;
   overflow: hidden;
 `;
+
+export async function getStaticProps({ locale }: { locale: string }) {
+  console.log('locale', locale);
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['home'])),
+    },
+  };
+}
+
 
 const Home: NextPage = () => {
   return (
