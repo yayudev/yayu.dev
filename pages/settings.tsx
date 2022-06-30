@@ -1,9 +1,9 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { get, set } from "lodash";
-
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { SettingsMenuItemType } from "@/types/settings-menu";
 import { SETTINGS_MENUS_LIST } from "@/config/settings-menu";
 
@@ -19,12 +19,14 @@ import {
   SettingsState,
 } from "@/contexts/settings";
 import { useKeyboard } from "@/hooks/use-keyboard";
+import { useTranslation } from "next-i18next";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
   width: 100vw;
+  overflow: hidden;
   position: relative;
 `;
 
@@ -56,8 +58,19 @@ const head = (
   </Head>
 );
 
+
+export async function getStaticProps({ locale }: { locale: string }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['settings'])),
+    },
+  };
+}
+
 export default function Settings() {
   const router = useRouter();
+  const  { t, i18n } = useTranslation('settings');
+
   const [menu, setMenu] = useState<number | undefined>();
   const [subMenu, setSubMenu] = useState<number | undefined>();
   const { settings, setSettings } =
@@ -74,8 +87,8 @@ export default function Settings() {
     <SettingsMenuLevel>
       {SETTINGS_MENUS_LIST.map((item, index) => (
         <SettingsMenuItem
-          key={item.label}
-          label={item.label}
+          key={t(item.labelKey)}
+          label={t(item.labelKey)}
           isSelected={menu === index}
           onClick={() => handleTopMenuClick(index)}
         />
@@ -94,7 +107,7 @@ export default function Settings() {
       {subMenuItem?.children.map((item, index) => (
         <SettingsMenuItem
           key={index}
-          label={item.label}
+          label={t(item.labelKey)}
           value={get(settings, item.optionKey)}
           isSelected={subMenu === index}
           isChildOption
@@ -120,7 +133,7 @@ export default function Settings() {
    *  TOOLTIP  *
    *************/
 
-  const tooltipText = openOption?.tooltip ?? "";
+  const tooltipKey = openOption?.tooltipKey ?? "";
 
   /******************
    * EVENT HANDLERS *
@@ -144,6 +157,15 @@ export default function Settings() {
     setOpenOption(undefined);
     setSubMenu(undefined);
 
+    console.log(key)
+
+    if (key === "global.language") {
+      i18n.addResources')
+      const [_, language] = (value as string).split('.');
+      console.log('changeLang')
+      i18n.changeLanguage('en-US');
+    }
+
     const newSettings = { ...settings } as SettingsState;
     set(newSettings, key, value);
 
@@ -153,7 +175,6 @@ export default function Settings() {
   useKeyboard(
     ["Escape"],
     () => {
-      console.log({ openOption, subMenu, menu });
       if (openOption) {
         setOpenOption(undefined);
         setSubMenu(undefined);
@@ -179,7 +200,7 @@ export default function Settings() {
       {head}
 
       <SettingsBGWrapper>
-        <SettingsTitle>SETTINGS</SettingsTitle>
+        <SettingsTitle>{t('title')}</SettingsTitle>
 
         <Content>
           <MenuWrapper>
@@ -192,7 +213,7 @@ export default function Settings() {
         </Content>
 
         <SettingsTooltipBar
-          text={tooltipText}
+          text={t(tooltipKey)}
           showArrows
           showBack
           showConfirm
