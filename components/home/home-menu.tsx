@@ -7,7 +7,7 @@ const Container = styled.main`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   overflow: hidden;
 `;

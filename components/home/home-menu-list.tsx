@@ -1,11 +1,10 @@
-import styled from "styled-components";
-
-import { HomeMenuItem } from "./home-menu-item";
 import { useContext } from "react";
+import styled from "styled-components";
 import {
   ApplicationStateContext,
   ApplicationStateContextType,
 } from "@/contexts/application-state";
+import { HomeMenuItem } from "./home-menu-item";
 
 const MenuList = styled.ul`
   display: flex;

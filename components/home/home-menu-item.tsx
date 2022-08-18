@@ -18,6 +18,7 @@ const MenuLink = styled.a`
   cursor: pointer;
   color: var(--link-color);
   font-size: 2rem;
+  transform-origin: top;
 `;
 
 export function HomeMenuItem({ href, children, onClick }: HomeMenuItemProps) {

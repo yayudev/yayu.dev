@@ -10,6 +10,9 @@
   --settings-background: #c4bfa9;
   --background-alt: #dcd9cb;
   --item-background: #a49f8b;
+
+  /* Misc */
+  --box-shadow-color: #444035;
 }
 
 html,
