@@ -9,7 +9,10 @@ interface SettingsBGWrapperProps {
 
 const StyledSVG = styled.svg`
   position: absolute;
-  transformorigin: center;
+  transform-origin: center;
+  overflow: hidden;
+  max-height: 100vh;
+  max-width: 100vw;
 `;
 
 export function SettingsBGAnimations({
@@ -17,7 +20,7 @@ export function SettingsBGAnimations({
   height,
   reversed = false,
 }: SettingsBGWrapperProps) {
-  const positionSyles = reversed
+  const positionStyles = reversed
     ? { bottom: 0, right: 0 }
     : { top: 0, left: 0 };
 
@@ -29,7 +32,7 @@ export function SettingsBGAnimations({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       transform={`scale(${reversed ? -1 : 1})`}
-      style={positionSyles}
+      style={positionStyles}
       tabIndex={-1}
       focusable={false}
       aria-label="background animation"

@@ -1,10 +1,11 @@
+import { ReactNode } from "react";
 import styled from "styled-components";
 
 import { SettingsBorder } from "./settings-border";
 import { SettingsBGAnimations } from "./settings-bg-animations";
 
 interface SettingsBGWrapperProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const Container = styled.div`
@@ -26,6 +27,8 @@ const Content = styled.main`
   flex-direction: column;
   padding: 0 3rem;
   z-index: 1;
+  transform-origin: left;
+  will-change: opacity, transform;
 `;
 
 export function SettingsBGWrapper({ children }: SettingsBGWrapperProps) {

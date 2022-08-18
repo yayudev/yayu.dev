@@ -1,3 +1,4 @@
+import { KeyboardEvent } from "react";
 import styled from "styled-components";
 
 type SettingsOptionSelectItemProps = {
@@ -53,7 +54,7 @@ export function SettingsOptionSelectItem({
   isSelected,
   onClick,
 }: SettingsOptionSelectItemProps) {
-  function onKeypress(event: React.KeyboardEvent<HTMLDivElement>) {
+  function onKeypress(event: KeyboardEvent<HTMLDivElement>) {
     if (event.key === "Enter" || event.key === " ") {
       onClick();
     }

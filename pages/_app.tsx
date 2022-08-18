@@ -2,8 +2,10 @@ import "@/styles/globals.css";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import { SettingsProvider } from "@/contexts/settings";
+import { Settings } from "@/components/settings/settings";
+import { ApplicationStateProvider } from "@/contexts/application-state";
 
-function MyApp({ Component, pageProps }: AppProps) {
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
@@ -11,11 +13,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
 
-      <SettingsProvider>
-        <Component {...pageProps} />
-      </SettingsProvider>
+      <ApplicationStateProvider>
+        <SettingsProvider>
+          <Component {...pageProps} />
+          <Settings />
+        </SettingsProvider>
+      </ApplicationStateProvider>
     </>
   );
 }
-
-export default MyApp;

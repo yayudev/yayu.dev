@@ -1,15 +1,18 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 
 export function useKeyboard(
   keys: string[],
   onTyping: (event: KeyboardEvent) => void,
   dependencies: any[]
 ): void {
-  function onKeyDown(keydownEvent: KeyboardEvent): void {
-    if (!keys.includes(keydownEvent.key)) return;
+  const onKeyDown = useCallback(
+    (keydownEvent: KeyboardEvent): void => {
+      if (!keys.includes(keydownEvent.key)) return;
 
-    onTyping(keydownEvent);
-  }
+      onTyping(keydownEvent);
+    },
+    [keys, onTyping]
+  );
 
   useEffect(() => {
     document.addEventListener("keydown", onKeyDown);
@@ -17,5 +20,5 @@ export function useKeyboard(
     return () => {
       document.removeEventListener("keydown", onKeyDown);
     };
-  }, dependencies);
+  }, [dependencies, onKeyDown]);
 }

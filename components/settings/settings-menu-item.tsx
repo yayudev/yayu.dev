@@ -1,3 +1,4 @@
+import { KeyboardEvent } from "react";
 import styled from "styled-components";
 
 type SettingsMenuItemProps = {
@@ -126,7 +127,7 @@ export function SettingsMenuItem({
     displayedValue = value ? "On" : "Off";
   }
 
-  function onKeypress(event: React.KeyboardEvent<HTMLLIElement>) {
+  function onKeypress(event: KeyboardEvent<HTMLLIElement>) {
     if (event.key === "Enter" || event.key === " ") {
       onClick();
     }

@@ -1,5 +1,5 @@
 // Settings context
-import React, { useState, createContext, ReactNode } from "react";
+import React, { createContext, ReactNode } from "react";
 import createPersistedState from "use-persisted-state";
 
 export type SettingsState = {
@@ -20,7 +20,7 @@ export type SettingsContextType = {
   setSettings: (settings: SettingsState) => void;
 };
 
-const DEFAULT_SETTINGS = {
+const DEFAULT_SETTINGS: SettingsState = {
   global: {
     language: "English",
     animations: true,
@@ -40,12 +40,10 @@ export const SettingsContext = createContext<SettingsContextType>({
   setSettings() {},
 });
 
-export function SettingsProvider({ children }: { children: ReactNode }) {
-  const [settings, setSettings] = useSettingsState();
+SettingsContext.displayName = "Settings";
 
-  if (!settings) {
-    setSettings(DEFAULT_SETTINGS);
-  }
+export function SettingsProvider({ children }: { children: ReactNode }) {
+  const [settings, setSettings] = useSettingsState(DEFAULT_SETTINGS);
 
   return (
     <SettingsContext.Provider

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 interface SettingsTooltipBarProps {
   text: string;
@@ -44,7 +45,7 @@ const Text = styled.p`
   min-height: 2rem;
 `;
 
-const ControlsContainer = styled.div`
+const ControlsContainer = styled(motion.div)`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -109,7 +110,14 @@ export function SettingsTooltipBar({
       <LeftBlock />
       <Text aria-label={`Option description: ${text}`}>{text}</Text>
 
-      <ControlsContainer>
+      <ControlsContainer
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          ease: "easeOut",
+          duration: 0.5,
+        }}
+      >
         {arrowControl}
         {confirmControl}
         {backControl}

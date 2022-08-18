@@ -260,7 +260,7 @@ const pathKeyframes = keyframes`
 
 const movementKeyframes = keyframes`
   0% {
-    top: 0px;
+    top: 0;
     left: -20px;
   }
 

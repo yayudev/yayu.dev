@@ -1,27 +1,36 @@
 import styled from "styled-components";
+import { HomeMenuList } from "@/components/home/home-menu-list";
+import Image from "next/image";
 
-import { HomeMenuItem } from "./home-menu-item";
+const Container = styled.main`
+  background-image: url("/images/background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+`;
 
-const MenuList = styled.ul`
+const Content = styled.section`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 `;
 
 export function HomeMenu() {
   return (
-    <nav>
-      <MenuList>
-        <HomeMenuItem href="/blog">Blog</HomeMenuItem>
-        <HomeMenuItem href="/experiments">Experiments</HomeMenuItem>
-        <HomeMenuItem href="/projects">Projects</HomeMenuItem>
-        <HomeMenuItem href="/settings">Settings</HomeMenuItem>
-        <HomeMenuItem href="/about">About</HomeMenuItem>
-      </MenuList>
-    </nav>
+    <Container>
+      <Content>
+        <Image src="/images/logo.svg" alt="logo" width={300} height={300} />
+
+        <HomeMenuList />
+      </Content>
+    </Container>
   );
 }
