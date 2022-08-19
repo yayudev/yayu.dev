@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { HomeMenuList } from "@/components/home/home-menu-list";
+import { HomeMenuList } from "@/components/home-menu/home-menu-list";
 import Image from "next/image";
+import Link from "next/link";
 
 const Container = styled.main`
   background-image: url("/images/background.png");
@@ -23,11 +24,20 @@ const Content = styled.section`
   overflow: hidden;
 `;
 
+const LogoImageLink = styled.a`
+  cursor: pointer;
+  text-decoration: none;
+`;
+
 export function HomeMenu() {
   return (
     <Container>
       <Content>
-        <Image src="/images/logo.svg" alt="logo" width={300} height={300} />
+        <Link href="/" passHref>
+          <LogoImageLink>
+            <Image src="/images/logo.svg" alt="logo" width={300} height={300} />
+          </LogoImageLink>
+        </Link>
 
         <HomeMenuList />
       </Content>

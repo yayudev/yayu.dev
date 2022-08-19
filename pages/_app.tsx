@@ -4,7 +4,7 @@ import Head from "next/head";
 import { SettingsProvider } from "@/contexts/settings";
 import { Settings } from "@/components/settings/settings";
 import { ApplicationStateProvider } from "@/contexts/application-state";
-import { HomeMenu } from "@/components/home/home-menu";
+import { HomeMenu } from "@/components/home-menu/home-menu";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 
