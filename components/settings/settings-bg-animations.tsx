@@ -9,6 +9,7 @@ interface SettingsBGWrapperProps {
 
 const StyledSVG = styled.svg`
   position: absolute;
+  user-select: none;
   transform-origin: center;
   overflow: hidden;
   max-height: 100vh;

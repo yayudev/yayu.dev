@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import { useHover } from "@/hooks/use-hover";
 import { HomeMenuItemUnderline } from "./home-menu-item-underline";
-import { GlitchedText } from "./glitched-text";
+import { GlitchedText } from "../shared/glitched-text";
 
 interface HomeMenuItemProps {
   href?: string;

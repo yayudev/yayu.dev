@@ -7,13 +7,14 @@ const Container = styled.div`
   padding: 5%;
   overflow-x: hidden;
   overflow-y: auto;
+  background: var(--background-for-content);
 `;
 
 const Title = styled(motion.h1)`
   color: var(--text-color);
   font-size: 3.5rem;
   font-weight: bold;
-  margin-top: 0.5rem;
+  margin: 0.5rem 0 1rem;
   letter-spacing: 0.5rem;
   transform-origin: left;
   will-change: transfom, opacity; ;

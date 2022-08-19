@@ -9,10 +9,13 @@
   --background: #a69075;
   --settings-background: #c4bfa9;
   --background-alt: #dcd9cb;
+  --background-for-content: #f6f4f4;
   --item-background: #a49f8b;
 
   /* Misc */
   --box-shadow-color: #444035;
+  --clickable-link-color: #45a3ff;
+  --active-selection: #7a4e0b;
 }
 
 html,

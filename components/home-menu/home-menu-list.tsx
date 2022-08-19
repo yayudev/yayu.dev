@@ -30,7 +30,7 @@ export function HomeMenuList() {
     <nav>
       <MenuList>
         <HomeMenuItem href="/blog">Blog</HomeMenuItem>
-        <HomeMenuItem href="/experiments">Experiments</HomeMenuItem>
+        <HomeMenuItem href="/playground">Playground</HomeMenuItem>
         <HomeMenuItem href="/projects">Projects</HomeMenuItem>
         <HomeMenuItem onClick={openSettings}>Settings</HomeMenuItem>
         <HomeMenuItem href="/about">About</HomeMenuItem>
