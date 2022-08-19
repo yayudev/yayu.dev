@@ -2,11 +2,11 @@ import { NextPage } from "next";
 import Head from "next/head";
 import { PageLayout } from "../layouts/page";
 
-const Blog: NextPage = () => {
+const Projects: NextPage = () => {
   return (
-    <PageLayout title="Blog">
+    <PageLayout title="Projects">
       <Head>
-        <title>yayu.dev | blog</title>
+        <title>yayu.dev | projects</title>
         <meta
           name="description"
           content="Hey, I'm Arturo Coronel. This is my personal website :)"
@@ -15,10 +15,10 @@ const Blog: NextPage = () => {
       </Head>
 
       <div>
-        <p>Hello from blog</p>
+        <p>Hello from projects</p>
       </div>
     </PageLayout>
   );
 };
 
-export default Blog;
+export default Projects;
