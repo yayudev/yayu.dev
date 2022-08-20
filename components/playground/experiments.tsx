@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { ExperimentData } from "../../mocks/experiments";
 import { LayoutGroup, motion } from "framer-motion";
+import { useState } from "react";
+import { PlaygroundFrame } from "@/components/playground/playground-frame";
 
 const Container = styled.div`
   display: grid;
@@ -49,8 +51,18 @@ interface ExperimentsProps {
 }
 
 export function Experiments({ experiments }: ExperimentsProps) {
+  const [activeExperiment, setActiveExperiment] = useState<
+    ExperimentData | undefined
+  >();
+
+  function closeFrame() {
+    setActiveExperiment(undefined);
+  }
+
   return (
     <Container>
+      <PlaygroundFrame experiment={activeExperiment} onClose={closeFrame} />
+
       <LayoutGroup>
         {experiments.map((experiment) => (
           //TODO: Refactor this into smaller components
@@ -62,6 +74,7 @@ export function Experiments({ experiments }: ExperimentsProps) {
             layout="position"
             layoutId={experiment.title}
             whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+            onClick={() => setActiveExperiment(experiment)}
           >
             <Label>{experiment.title}</Label>
           </Item>

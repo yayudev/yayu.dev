@@ -18,17 +18,17 @@ export const experiments: ExperimentData[] = [
   {
     img: "music-visualizer",
     title: "Music visualizer",
-    url: "https://datyayu.github.io/music-visualizer/index.html",
+    url: "https://yayudev.github.io/music-visualizer/index.html",
   },
   {
     img: "signup-demo",
     title: "react + redux signup",
-    url: "https://datyayu.github.io/signup-demo/",
+    url: "https://yayudev.github.io/signup-demo/",
   },
   {
     img: "karaoke",
     title: "Karaoke with html5 audio",
-    url: "https://datyayu.github.io/tachiagare-demo/",
+    url: "https://yayudev.github.io/tachiagare-demo/",
   },
   {
     img: "io-img-lazy-loading",
@@ -43,7 +43,7 @@ export const experiments: ExperimentData[] = [
   {
     img: "component-validation",
     title: "Angularjs validation directive",
-    url: "https://datyayu.github.io/angular-test/index.html",
+    url: "https://yayudev.github.io/angular-test/index.html",
   },
   {
     img: "svg-loading-circles",

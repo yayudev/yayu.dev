@@ -29,11 +29,21 @@ export function HomeMenuList() {
   return (
     <nav>
       <MenuList>
-        <HomeMenuItem href="/blog">Blog</HomeMenuItem>
-        <HomeMenuItem href="/playground">Playground</HomeMenuItem>
-        <HomeMenuItem href="/projects">Projects</HomeMenuItem>
-        <HomeMenuItem onClick={openSettings}>Settings</HomeMenuItem>
-        <HomeMenuItem href="/about">About</HomeMenuItem>
+        <HomeMenuItem key="blog" href="/blog">
+          Blog
+        </HomeMenuItem>
+        <HomeMenuItem key="playground" href="/playground">
+          Playground
+        </HomeMenuItem>
+        <HomeMenuItem key="projects" href="/projects">
+          Projects
+        </HomeMenuItem>
+        <HomeMenuItem key="settings" onClick={openSettings}>
+          Settings
+        </HomeMenuItem>
+        <HomeMenuItem key="about" href="/about">
+          About
+        </HomeMenuItem>
       </MenuList>
     </nav>
   );
