@@ -13,7 +13,7 @@ export const experiments: ExperimentData[] = [
   {
     img: "https://s3-us-west-1.amazonaws.com/datyayu-xyz/experiments/feed-demo.jpg",
     title: "SPA twitter reports (react + redux)",
-    url: "http://police-kangaroo-43356.netlify.com/",
+    url: "https://police-kangaroo-43356.netlify.com/",
   },
   {
     img: "https://s3-us-west-1.amazonaws.com/datyayu-xyz/experiments/music-visualizer.jpg",
@@ -62,12 +62,12 @@ export const experiments: ExperimentData[] = [
   },
   {
     img: "https://s3-us-west-1.amazonaws.com/datyayu-xyz/experiments/hifumi-side-nav.jpg",
-    title: "Sidenav with dinamic bluring",
+    title: "Sidenav with dynamic blurring",
     url: "https://codepen.io/datyayu/full/RpPbpV/",
   },
   {
     img: "https://s3-us-west-1.amazonaws.com/datyayu-xyz/experiments/unbluring-circle.jpg",
-    title: "Dinamic bluring",
+    title: "Dynamic blurring",
     url: "https://codepen.io/datyayu/full/mWJbWw/",
   },
   {

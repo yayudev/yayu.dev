@@ -150,6 +150,10 @@ export function Settings() {
     setSettings(newSettings);
   }
 
+  function closeSettings() {
+    setApplicationState({ ...applicationState, showSettings: false });
+  }
+
   useKeyboard(
     ["Escape"],
     () => {
@@ -166,7 +170,7 @@ export function Settings() {
 
       if (!applicationState) return;
 
-      setApplicationState({ ...applicationState, showSettings: false });
+      closeSettings();
     },
     [openOption, menu, subMenu]
   );
@@ -221,6 +225,7 @@ export function Settings() {
               showArrows
               showBack
               showConfirm
+              onBack={closeSettings}
             />
           </SettingsBGWrapper>
         </Container>

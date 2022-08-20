@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
 interface SettingsTooltipBarProps {
@@ -6,6 +6,7 @@ interface SettingsTooltipBarProps {
   showArrows?: boolean;
   showBack?: boolean;
   showConfirm?: boolean;
+  onBack?: () => void;
 }
 
 const Container = styled.div`
@@ -60,6 +61,12 @@ const ButtonIconContainer = styled.div`
   justify-content: center;
   margin: 0 0.5rem;
   font-size: 1.2rem;
+
+  ${(props) =>
+    props.onClick &&
+    css`
+      cursor: pointer;
+    `}
 `;
 
 const ButtonIconText = styled.span`
@@ -84,9 +91,10 @@ export function SettingsTooltipBar({
   showArrows = true,
   showBack = false,
   showConfirm = true,
+  onBack,
 }: SettingsTooltipBarProps) {
   const backControl = Boolean(showBack) && (
-    <ButtonIconContainer>
+    <ButtonIconContainer onClick={onBack}>
       <ButtonIconText> Esc </ButtonIconText>
       <ButtonText>Close</ButtonText>
     </ButtonIconContainer>
