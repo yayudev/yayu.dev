@@ -1,8 +1,11 @@
 import { NextPage } from "next";
 import Head from "next/head";
-import { PageLayout } from "../layouts/page";
+import { PageLayout } from "../../layouts/page";
+import { usePostsList } from "@/hooks/blog-api";
 
-const Blog: NextPage = () => {
+const BlogIndex: NextPage = () => {
+  const { postList, isError, isLoading } = usePostsList();
+
   return (
     <PageLayout title="Blog">
       <Head>
@@ -11,14 +14,16 @@ const Blog: NextPage = () => {
           name="description"
           content="Hey, I'm Arturo Coronel. This is my personal website :)"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/public/favicon.ico" />
       </Head>
 
       <div>
         <p>Hello from blog</p>
+
+        {postList && JSON.stringify(postList)}
       </div>
     </PageLayout>
   );
 };
 
-export default Blog;
+export default BlogIndex;
