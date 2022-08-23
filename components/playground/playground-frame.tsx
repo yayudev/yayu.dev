@@ -13,13 +13,16 @@ const FrameContainer = styled(motion.div)`
   z-index: 99;
   background: rgba(0, 0, 0, 0.5);
   overflow: hidden;
+  cursor: pointer;
 `;
+
 const Frame = styled(motion.iframe)`
   border: 1px solid var(--background-alt);
   width: 80vw;
   height: 80vh;
   background: white;
 `;
+
 const Details = styled(motion.div)`
   position: absolute;
   bottom: 10vh;
@@ -30,6 +33,7 @@ const Details = styled(motion.div)`
   max-width: 40vw;
   padding: 0.25rem 1rem;
 `;
+
 const Title = styled.h2`
   color: var(--link-color);
   margin: 0.5rem 0;
