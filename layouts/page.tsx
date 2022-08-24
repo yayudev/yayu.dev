@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
 import { Loader } from "@/components/shared/Loader";
+import { ErrorMessage } from "@/components/shared/error-message";
 
 const Container = styled.div`
   width: 100%;
@@ -23,7 +24,7 @@ const Title = styled(motion.h1)`
   will-change: transfom, opacity; ;
 `;
 
-export const Content = styled(motion.div)`
+const Content = styled(motion.div)`
   width: 100%;
   flex: 1;
   transform-origin: top;
@@ -33,12 +34,14 @@ export const Content = styled(motion.div)`
 export interface PageLayoutProps {
   title: string;
   isLoading?: boolean;
+  hasError?: boolean;
   children: ReactNode;
 }
 
 export function PageLayout({
   title,
   isLoading = false,
+  hasError = false,
   children,
 }: PageLayoutProps) {
   return (
@@ -58,6 +61,8 @@ export function PageLayout({
         </Title>
 
         {isLoading && <Loader />}
+
+        {!isLoading && hasError && <ErrorMessage />}
 
         {!isLoading && (
           <Content
