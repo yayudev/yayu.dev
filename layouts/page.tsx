@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
+import { Loader } from "@/components/shared/Loader";
 
 const Container = styled.div`
   width: 100%;
@@ -8,6 +9,8 @@ const Container = styled.div`
   overflow-x: hidden;
   overflow-y: auto;
   background: var(--background-for-content);
+  display: flex;
+  flex-direction: column;
 `;
 
 const Title = styled(motion.h1)`
@@ -22,16 +25,22 @@ const Title = styled(motion.h1)`
 
 export const Content = styled(motion.div)`
   width: 100%;
+  flex: 1;
   transform-origin: top;
   will-change: transform, opacity;
 `;
 
 export interface PageLayoutProps {
   title: string;
+  isLoading?: boolean;
   children: ReactNode;
 }
 
-export function PageLayout({ title, children }: PageLayoutProps) {
+export function PageLayout({
+  title,
+  isLoading = false,
+  children,
+}: PageLayoutProps) {
   return (
     <Container>
       <AnimatePresence>
@@ -47,18 +56,23 @@ export function PageLayout({ title, children }: PageLayoutProps) {
         >
           {title}
         </Title>
-        <Content
-          key="content"
-          initial={{ opacity: 0, translateY: 25 }}
-          animate={{ opacity: 1, translateY: 0 }}
-          exit={{ opacity: 0, translateY: -25 }}
-          transition={{
-            duration: 0.5,
-            ease: "easeOut",
-          }}
-        >
-          {children}
-        </Content>
+
+        {isLoading && <Loader />}
+
+        {!isLoading && (
+          <Content
+            key="content"
+            initial={{ opacity: 0, translateY: 25 }}
+            animate={{ opacity: 1, translateY: 0 }}
+            exit={{ opacity: 0, translateY: -25 }}
+            transition={{
+              duration: 0.5,
+              ease: "easeOut",
+            }}
+          >
+            {children}
+          </Content>
+        )}
       </AnimatePresence>
     </Container>
   );
