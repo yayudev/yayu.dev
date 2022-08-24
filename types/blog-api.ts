@@ -4,6 +4,7 @@ export type BlogPost = {
   date: string;
   tags: string[];
   url: string; // Slug
+  image?: string;
   excerpt: string;
   html: string;
 };

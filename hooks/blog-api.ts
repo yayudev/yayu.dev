@@ -13,7 +13,9 @@ export function usePostsList(page = 1) {
   );
 
   return {
-    postList: data,
+    postList: data?.posts,
+    page: data?.page,
+    totalPosts: data?.totalPosts,
     isLoading: !error && !data,
     isError: error,
   };

@@ -4,6 +4,9 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  images: {
+    domains: ["via.placeholder.com"],
+  },
   async rewrites() {
     const devProxy = [
       {
