@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
-import { Loader } from "@/components/shared/Loader";
 import { ErrorMessage } from "@/components/shared/error-message";
+import { Loader } from "@/components/shared/loader";
 
 const Container = styled.div`
   width: 100%;

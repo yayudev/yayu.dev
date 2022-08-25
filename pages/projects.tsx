@@ -1,3 +1,5 @@
+// noinspection JSUnusedGlobalSymbols
+
 import { NextPage } from "next";
 import Head from "next/head";
 import { PageLayout } from "../layouts/page";

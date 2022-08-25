@@ -1,3 +1,5 @@
+// noinspection SpellCheckingInspection
+
 import { KeyboardEvent } from "react";
 import styled from "styled-components";
 

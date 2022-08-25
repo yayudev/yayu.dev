@@ -1,3 +1,5 @@
+// noinspection JSUnusedGlobalSymbols
+
 import { NextPage } from "next";
 import Head from "next/head";
 import { PageLayout } from "../layouts/page";
@@ -8,7 +10,7 @@ import styled, { css } from "styled-components";
 import { GlitchedText } from "@/components/shared/glitched-text";
 
 const Content = styled.div`
-  padding-top: 0rem;
+  padding-top: 0;
 `;
 
 const SortingText = styled.div`
