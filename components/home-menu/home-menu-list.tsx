@@ -35,9 +35,6 @@ export function HomeMenuList() {
         <HomeMenuItem key="playground" href="/playground">
           Playground
         </HomeMenuItem>
-        <HomeMenuItem key="projects" href="/projects">
-          Projects
-        </HomeMenuItem>
         <HomeMenuItem key="settings" onClick={openSettings}>
           Settings
         </HomeMenuItem>

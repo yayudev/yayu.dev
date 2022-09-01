@@ -1,6 +1,6 @@
-import { ExperimentData } from "../../mocks/experiments";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { ExperimentData } from "@/types/experiments";
 
 const Item = styled(motion.div)<{ bg: string }>`
   background-image: url("${(props) => props.bg}");

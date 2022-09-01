@@ -1,6 +1,12 @@
+const DEV_ENV = process.env.NODE_ENV === "development";
+const SERVER_URL = DEV_ENV ? "http://localhost:3000" : "https://yayu.dev.com";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  env: {
+    SERVER_URL,
+  },
   compiler: {
     styledComponents: true,
   },
@@ -15,7 +21,7 @@ const nextConfig = {
       },
     ];
 
-    return process.env.NODE_ENV === "development" ? devProxy : [];
+    return DEV_ENV ? devProxy : [];
   },
 };
 

@@ -3,12 +3,12 @@ import { LayoutGroup } from "framer-motion";
 import { useState } from "react";
 import { PlaygroundFrame } from "@/components/playground/playground-frame";
 import { ExperimentItem } from "@/components/playground/experiment-item";
-import { ExperimentData } from "../../mocks/experiments";
+import { ExperimentData } from "@/types/experiments";
 
 const Container = styled.div`
   display: grid;
   justify-content: center;
-  gap: 40px;
+  gap: 20px;
   grid-template-columns: repeat(auto-fit, 320px);
   grid-auto-rows: minmax(120px, 1fr);
 `;

@@ -1,22 +1,32 @@
 // noinspection JSUnusedGlobalSymbols
 
+import { useMemo, useState } from "react";
 import { NextPage } from "next";
 import Head from "next/head";
-import { PageLayout } from "../layouts/page";
-import { Experiments } from "@/components/playground/experiments";
-import { ExperimentData, experiments } from "../mocks/experiments";
-import { useState } from "react";
 import styled, { css } from "styled-components";
+import { Experiments } from "@/components/playground/experiments";
 import { GlitchedText } from "@/components/shared/glitched-text";
+import { ExperimentData, TechnologyTag } from "@/types/experiments";
+import { PageLayout } from "../layouts/page";
+import { experiments } from "../mocks/experiments";
+import { PlaygroundFilterList } from "@/components/playground/playground-filter-list";
 
 const Content = styled.div`
   padding-top: 0;
 `;
 
-const SortingText = styled.div`
+const OptionsBar = styled.div`
   width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  margin: 1rem 0 1.5rem 0;
+`;
+
+const SortingText = styled.div`
   color: var(--text-color);
-  margin: 1rem 0 2rem;
+  margin: 0 0 1rem 0;
   font-size: 1.2rem;
   text-align: right;
   font-weight: bold;
@@ -44,27 +54,44 @@ enum SortType {
 }
 
 const Playground: NextPage = () => {
-  const [elements, setElements] = useState<ExperimentData[]>(experiments);
+  const [filterTag, setFilterTag] = useState<TechnologyTag>(TechnologyTag.ALL);
   const [currentSort, setCurrentSort] = useState<SortType>(
     SortType.BY_MOST_RECENT
   );
 
-  function changeSort(sortType: SortType) {
-    if (sortType === currentSort) {
-      return;
+  // Only recompute if filter or sorting has changed
+  const sortedList: ExperimentData[] = useMemo(() => {
+    let activeElements: ExperimentData[] = experiments;
+
+    if (filterTag && filterTag !== TechnologyTag.ALL) {
+      activeElements = activeElements.filter((element) =>
+        element.tags.includes(filterTag)
+      );
     }
 
-    setCurrentSort(sortType);
-
-    if (sortType === SortType.BY_NAME) {
-      const sortedElements = [...elements].sort((a, b) =>
+    if (currentSort === SortType.BY_NAME) {
+      return [...activeElements].sort((a: ExperimentData, b: ExperimentData) =>
         a.title.localeCompare(b.title)
       );
-      setElements(sortedElements);
+    }
+
+    return activeElements; // Active elements are date-sorted by default.
+  }, [currentSort, filterTag]);
+
+  function changeSort(sortType: SortType) {
+    if (sortType === currentSort) return;
+
+    setCurrentSort(sortType);
+  }
+
+  function toggleTag(tag: TechnologyTag) {
+    // Reset if clicked on the active tag.
+    if (tag === filterTag) {
+      setFilterTag(TechnologyTag.ALL);
       return;
     }
 
-    setElements(experiments);
+    setFilterTag(tag);
   }
 
   return (
@@ -79,36 +106,45 @@ const Playground: NextPage = () => {
       </Head>
 
       <Content>
-        <SortingText>
-          <span>Sort by </span>
-          <Button
-            active={currentSort === SortType.BY_MOST_RECENT}
-            onClick={() => changeSort(SortType.BY_MOST_RECENT)}
-          >
-            {currentSort === SortType.BY_MOST_RECENT ? (
-              <GlitchedText animate={currentSort === SortType.BY_MOST_RECENT}>
-                Most Recent
-              </GlitchedText>
-            ) : (
-              "Most Recent"
-            )}
-          </Button>
-          <span> | </span>
-          <Button
-            active={currentSort === SortType.BY_NAME}
-            onClick={() => changeSort(SortType.BY_NAME)}
-          >
-            {currentSort === SortType.BY_NAME ? (
-              <GlitchedText animate={currentSort === SortType.BY_NAME}>
-                Name
-              </GlitchedText>
-            ) : (
-              "Name"
-            )}
-          </Button>
-        </SortingText>
+        {/* TODO: Refactor this into a component */}
+        <OptionsBar>
+          <SortingText>
+            <span>Sort by </span>
+            <Button
+              active={currentSort === SortType.BY_MOST_RECENT}
+              onClick={() => changeSort(SortType.BY_MOST_RECENT)}
+            >
+              {currentSort === SortType.BY_MOST_RECENT ? (
+                <GlitchedText animate={currentSort === SortType.BY_MOST_RECENT}>
+                  Most Recent
+                </GlitchedText>
+              ) : (
+                "Most Recent"
+              )}
+            </Button>
+            <span> | </span>
+            <Button
+              active={currentSort === SortType.BY_NAME}
+              onClick={() => changeSort(SortType.BY_NAME)}
+            >
+              {currentSort === SortType.BY_NAME ? (
+                <GlitchedText animate={currentSort === SortType.BY_NAME}>
+                  Name
+                </GlitchedText>
+              ) : (
+                "Name"
+              )}
+            </Button>
+          </SortingText>
 
-        <Experiments experiments={elements} />
+          <PlaygroundFilterList
+            selectedTag={filterTag}
+            onTagChange={toggleTag}
+          />
+        </OptionsBar>
+
+        {/* TODO: Handle empty state */}
+        <Experiments experiments={sortedList} />
       </Content>
     </PageLayout>
   );

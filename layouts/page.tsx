@@ -6,7 +6,7 @@ import { Loader } from "@/components/shared/loader";
 
 const Container = styled.div`
   width: 100%;
-  padding: 5%;
+  padding: 3%;
   overflow-x: hidden;
   overflow-y: auto;
   background: var(--background-for-content);
