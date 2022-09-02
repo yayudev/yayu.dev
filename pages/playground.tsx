@@ -3,13 +3,13 @@
 import { useMemo, useState } from "react";
 import { NextPage } from "next";
 import Head from "next/head";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { Experiments } from "@/components/playground/experiments";
-import { GlitchedText } from "@/components/shared/glitched-text";
-import { ExperimentData, TechnologyTag } from "@/types/experiments";
+import { ExperimentData, SortType, TechnologyTag } from "@/types/experiments";
+import { PlaygroundSortingOptions } from "@/components/playground/playground-sorting-options";
+import { PlaygroundFilterList } from "@/components/playground/playground-filter-list";
 import { PageLayout } from "../layouts/page";
 import { experiments } from "../mocks/experiments";
-import { PlaygroundFilterList } from "@/components/playground/playground-filter-list";
 
 const Content = styled.div`
   padding-top: 0;
@@ -23,35 +23,6 @@ const OptionsBar = styled.div`
   justify-content: space-between;
   margin: 1rem 0 1.5rem 0;
 `;
-
-const SortingText = styled.div`
-  color: var(--text-color);
-  margin: 0 0 1rem 0;
-  font-size: 1.2rem;
-  text-align: right;
-  font-weight: bold;
-`;
-
-const Button = styled.div<{ active: boolean }>`
-  background: none;
-  display: inline-block;
-  color: var(--clickable-link-color);
-  border: none;
-  cursor: pointer;
-
-  ${(props) =>
-    props.active
-      ? css`
-          color: var(--active-selection);
-          cursor: initial;
-        `
-      : ""}
-`;
-
-enum SortType {
-  BY_MOST_RECENT,
-  BY_NAME,
-}
 
 const Playground: NextPage = () => {
   const [filterTag, setFilterTag] = useState<TechnologyTag>(TechnologyTag.ALL);
@@ -106,44 +77,17 @@ const Playground: NextPage = () => {
       </Head>
 
       <Content>
-        {/* TODO: Refactor this into a component */}
         <OptionsBar>
-          <SortingText>
-            <span>Sort by </span>
-            <Button
-              active={currentSort === SortType.BY_MOST_RECENT}
-              onClick={() => changeSort(SortType.BY_MOST_RECENT)}
-            >
-              {currentSort === SortType.BY_MOST_RECENT ? (
-                <GlitchedText animate={currentSort === SortType.BY_MOST_RECENT}>
-                  Most Recent
-                </GlitchedText>
-              ) : (
-                "Most Recent"
-              )}
-            </Button>
-            <span> | </span>
-            <Button
-              active={currentSort === SortType.BY_NAME}
-              onClick={() => changeSort(SortType.BY_NAME)}
-            >
-              {currentSort === SortType.BY_NAME ? (
-                <GlitchedText animate={currentSort === SortType.BY_NAME}>
-                  Name
-                </GlitchedText>
-              ) : (
-                "Name"
-              )}
-            </Button>
-          </SortingText>
-
+          <PlaygroundSortingOptions
+            currentSort={currentSort}
+            onChange={changeSort}
+          />
           <PlaygroundFilterList
             selectedTag={filterTag}
             onTagChange={toggleTag}
           />
         </OptionsBar>
 
-        {/* TODO: Handle empty state */}
         <Experiments experiments={sortedList} />
       </Content>
     </PageLayout>

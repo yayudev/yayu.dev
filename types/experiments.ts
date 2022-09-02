@@ -24,3 +24,8 @@ export interface ExperimentData {
   url: string;
   tags: TechnologyTag[];
 }
+
+export enum SortType {
+  BY_MOST_RECENT,
+  BY_NAME,
+}
