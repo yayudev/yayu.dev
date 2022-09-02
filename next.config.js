@@ -1,5 +1,19 @@
 const DEV_ENV = process.env.NODE_ENV === "development";
-const SERVER_URL = DEV_ENV ? "http://localhost:3000" : "https://yayu.dev.com";
+const PORT = process.env.PORT || 3000;
+const LOCAL_DEV = process.env.ENABLE_NETWORK === "on";
+
+let SERVER_URL = "https://yayu.dev";
+
+if (DEV_ENV) {
+  SERVER_URL = "https://localhost:3000";
+}
+
+if (DEV_ENV && LOCAL_DEV) {
+  const ip = require("ip");
+  address = ip.address();
+  SERVER_URL = `http://${address}:${PORT}`;
+  console.log(`Running on ${SERVER_URL}`);
+}
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
