@@ -5,6 +5,7 @@
   --link-color: #fff9e5;
   --alt-text-color: #444035;
   --error-color: #da2e15;
+  --inline-code-color: #9d0505;
 
   /* Background */
   --background: #a69075;
@@ -12,6 +13,9 @@
   --background-alt: #dcd9cb;
   --background-for-content: #f6f4f4;
   --item-background: #a49f8b;
+  --quote-background: #fbf6b6;
+  --inline-code-background: #dfdfdf;
+  --code-block-background: #1a1b20;
 
   /* Misc */
   --box-shadow-color: #444035;

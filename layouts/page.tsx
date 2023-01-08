@@ -22,13 +22,15 @@ const TitleContainer = styled.div`
   justify-content: flex-start;
 `;
 
-const Title = styled(motion.h1)`
+const Title = styled(motion.h1)<{ $isAestheticTitle: boolean }>`
   color: var(--text-color);
   font-size: 3.5rem;
+  width: 100%;
   font-weight: bold;
   margin: 0.5rem 0 1rem;
-  letter-spacing: 0.5rem;
+  letter-spacing: ${(props) => (props.$isAestheticTitle ? "0.4rem" : "0")};
   transform-origin: left;
+  text-align: ${(props) => (props.$isAestheticTitle ? "start" : "center")};
   will-change: transfom, opacity; ;
 `;
 
@@ -43,6 +45,7 @@ const Subtitle = styled(motion.h4)`
 
 const Content = styled(motion.div)`
   width: 100%;
+  max-width: 100%;
   flex: 1;
   transform-origin: top;
   will-change: transform, opacity;
@@ -50,6 +53,7 @@ const Content = styled(motion.div)`
 
 export interface PageLayoutProps {
   title: string;
+  isAestheticTitle?: boolean;
   subtitle?: string;
   isLoading?: boolean;
   hasError?: boolean;
@@ -59,6 +63,7 @@ export interface PageLayoutProps {
 export function PageLayout({
   title,
   subtitle,
+  isAestheticTitle = true,
   isLoading = false,
   hasError = false,
   children,
@@ -76,6 +81,7 @@ export function PageLayout({
         <TitleContainer>
           <Title
             key="title"
+            $isAestheticTitle={isAestheticTitle}
             initial={{ opacity: 0, scaleX: 0 }}
             animate={{ opacity: 1, scaleX: 1 }}
             exit={{ opacity: 0, scaleX: 0 }}
