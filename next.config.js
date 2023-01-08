@@ -1,14 +1,16 @@
+require("dotenv");
+
 const DEV_ENV = process.env.NODE_ENV === "development";
 const PORT = process.env.PORT || 3000;
-const LOCAL_DEV = process.env.ENABLE_NETWORK === "on";
+const ENABLE_DEV_PROXY = process.env.ENABLE_NETWORK === "on";
 
-let SERVER_URL = "https://yayu.dev";
+let SERVER_URL = process.env.SERVER_URL || "https://yayu.dev";
 
 if (DEV_ENV) {
-  SERVER_URL = "https://localhost:3000";
+  SERVER_URL = "http://localhost:3000";
 }
 
-if (DEV_ENV && LOCAL_DEV) {
+if (ENABLE_DEV_PROXY) {
   const ip = require("ip");
   address = ip.address();
   SERVER_URL = `http://${address}:${PORT}`;

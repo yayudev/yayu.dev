@@ -1,6 +1,6 @@
 // Settings context
 import React, { createContext, ReactNode } from "react";
-import createPersistedState from "use-persisted-state";
+import usePersistedState from "use-persisted-state-hook";
 
 export type SettingsState = {
   global: {
@@ -33,8 +33,6 @@ const DEFAULT_SETTINGS: SettingsState = {
   },
 };
 
-const useSettingsState = createPersistedState<SettingsState>("settings");
-
 export const SettingsContext = createContext<SettingsContextType>({
   settings: DEFAULT_SETTINGS,
   setSettings() {},
@@ -43,7 +41,10 @@ export const SettingsContext = createContext<SettingsContextType>({
 SettingsContext.displayName = "Settings";
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
-  const [settings, setSettings] = useSettingsState(DEFAULT_SETTINGS);
+  const [settings, setSettings] = usePersistedState(
+    "settings",
+    DEFAULT_SETTINGS
+  );
 
   return (
     <SettingsContext.Provider
