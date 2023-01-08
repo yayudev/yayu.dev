@@ -46,8 +46,8 @@ const BlogIndex: NextPage<BlogIndexProps> = ({
     <PageLayout
       title="Blog"
       isLoading={isLoading}
-      subtitle={page !== 1 ? `Page ${page}` : ""}
       hasError={isError}
+      subtitle={page !== 1 ? `Page ${page}` : ""}
     >
       <Head>
         <title>yayu.dev | blog - Page {page}</title>
@@ -58,12 +58,15 @@ const BlogIndex: NextPage<BlogIndexProps> = ({
         <link rel="icon" href="/public/favicon.ico" />
       </Head>
 
-      {postList && <BlogPostsList posts={postList} />}
-
-      <BlogPagination
-        prevUrl={page > 1 ? `/blog?page=${page - 1}` : undefined}
-        nextUrl={hasNextPage ? `/blog?page=${page + 1}` : undefined}
-      />
+      {postList && (
+        <>
+          <BlogPostsList posts={postList} />
+          <BlogPagination
+            prevUrl={page > 1 ? `/blog?page=${page - 1}` : undefined}
+            nextUrl={hasNextPage ? `/blog?page=${page + 1}` : undefined}
+          />
+        </>
+      )}
     </PageLayout>
   );
 };

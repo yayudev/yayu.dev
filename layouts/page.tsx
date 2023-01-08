@@ -115,7 +115,7 @@ export function PageLayout({
           </Content>
         )}
 
-        {!isLoading && (
+        {!isLoading && !hasError && (
           <Content
             key="content-loaded"
             initial={{ opacity: 0, translateY: 25 }}
