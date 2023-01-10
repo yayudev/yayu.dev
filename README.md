@@ -1,3 +1,84 @@
-WIP
+# yayu.dev v3
 
-// TODO: Replace links to xyz and datyayu to yayudev where required.
+Currently on-development v3 for my personal website ([yayu.dev](https://yayu.dev))
+
+Live version available at [preview.yayu.dev](https://preview.yayu.dev/)
+
+> Currently using an unstable, local dev version so things like CORS and blog API may or may not work at any given time on the preview site.
+
+# Setup
+
+## Install
+
+To setup just run:
+
+```sh
+$ yarn install
+```
+
+## Run
+
+Dev mode:
+
+```sh
+$ yarn dev
+```
+
+Build / Prod serve:
+
+```
+$ yarn build
+$ yarn start
+```
+
+# Dev progress
+
+This is are the features that I'm planning on adding to the site pre and post release.
+
+### Pre-release:
+
+Stuff that needs to be done before release:
+
+- [x] Netlify setup
+- [x] Landing
+- [x] Settings page
+- [x] Projects feature
+- [x] Blog feature
+- [x] Projects feature
+- [ ] About page **_<<< Currently here_**
+- [ ] i18n setup
+- [ ] Replace mocks folder data with proper i18n json files
+- [ ] Migrate API from v2 to Next's api routes (or maybe static pre-generated assets?)
+- [ ] Disable Animations via settings
+- [ ] Blog comments
+- [ ] Blog social share / Open graph setup
+- [ ] Mobile design
+- [ ] Google Analytics
+- [ ] Replace links to .xyz to .dev and datyayu to yayudev where required.
+- [ ] Configure CORS and security whitelist
+- [ ] Rehost images in a dedicated s3 bucket
+- [ ] Redirect v2 to v3
+
+### Post-release:
+
+Good to have things that will be added eventually but not 100% required for initial release.
+
+- [ ] Testing
+- [ ] Github actions CI testing/deploy pipeline
+- [ ] lighthouse audit
+- [ ] Test coverage setup
+- [ ] v2 subdomain setup
+- [ ] v2 link to v3
+- [ ] Edge functions
+- [ ] Release log
+- [ ] Contributing guidelines
+
+# Contributing
+
+Currently on pre-release so not looking for help until main features are done but feel free to reach out if you find something wrong or you think something could be improved.
+
+Will be adding proper contributing guidelines after initial release.
+
+# License
+
+MIT stuff. Will appreaciate any mention but
