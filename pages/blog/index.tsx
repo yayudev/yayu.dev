@@ -50,7 +50,7 @@ const BlogIndex: NextPage<BlogIndexProps> = ({
       subtitle={page !== 1 ? `Page ${page}` : ""}
     >
       <Head>
-        <title>yayu.dev | blog - Page {page}</title>
+        <title>yayu.dev | Blog - Page {page}</title>
         <meta
           name="description"
           content="Hey, I'm Arturo Coronel. This is my personal website :)"

@@ -1,5 +1,6 @@
 import { PageLayout } from "layouts/page";
 import { GetServerSideProps } from "next";
+import Head from "next/head";
 import { BlogApiService } from "services/blog-api";
 import styled from "styled-components";
 interface BlodPostProps {
@@ -33,7 +34,7 @@ const PostContainer = styled.div`
     top: 0;
     left: 0;
     background-color: var(--background-for-content);
-    padding: .5rem 0;
+    padding: 0.5rem 0;
   }
 
   blockquote {
@@ -101,18 +102,21 @@ const BlogPostPage = ({ postId }: BlodPostProps) => {
   const { post, isError, isLoading } = BlogApiService.useIndividualPost(postId);
 
   return (
-    <>
-      <PageLayout
-        title={post?.title || "loading..."}
-        isAestheticTitle={false}
-        isLoading={isLoading}
-        hasError={isError}
-      >
-        <PostContainer>
-          {post && <div dangerouslySetInnerHTML={{ __html: post?.html }} />}
-        </PostContainer>
-      </PageLayout>
-    </>
+    <PageLayout
+      title={post?.title || "loading..."}
+      isAestheticTitle={false}
+      isLoading={isLoading}
+      hasError={isError}
+    >
+      <Head>
+        <title>yayu.dev | {post?.title}</title>
+        <meta name="description" content={post?.excerpt} />
+      </Head>
+
+      <PostContainer>
+        {post && <div dangerouslySetInnerHTML={{ __html: post?.html }} />}
+      </PostContainer>
+    </PageLayout>
   );
 };
 

@@ -30,7 +30,7 @@ const Title = styled(motion.h1)<{ $isAestheticTitle: boolean }>`
   letter-spacing: ${(props) => (props.$isAestheticTitle ? "0.4rem" : "0")};
   transform-origin: left;
   text-align: ${(props) => (props.$isAestheticTitle ? "start" : "center")};
-  will-change: transfom, opacity; ;
+  will-change: transfom, opacity;
 `;
 
 const Subtitle = styled(motion.h4)`
@@ -39,7 +39,7 @@ const Subtitle = styled(motion.h4)`
   margin: 1rem 0.5rem 1rem;
   letter-spacing: 0.1rem;
   transform-origin: left;
-  will-change: transfom, opacity; ;
+  will-change: transfom, opacity;
 `;
 
 const Content = styled(motion.div)`
