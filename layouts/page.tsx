@@ -7,7 +7,7 @@ import { Loader } from "@/components/shared/loader";
 
 const Container = styled.div`
   width: 100%;
-  padding: 3%;
+  padding: 1rem 3% 2rem 3%;
   position: relative;
   overflow-x: hidden;
   overflow-y: auto;
@@ -25,7 +25,6 @@ const TitleContainer = styled.div`
 const Title = styled(motion.h1)<{ $isAestheticTitle: boolean }>`
   color: var(--text-color);
   font-size: 3.5rem;
-  width: 100%;
   font-weight: bold;
   margin: 0.5rem 0 1rem;
   letter-spacing: ${(props) => (props.$isAestheticTitle ? "0.4rem" : "0")};
@@ -37,7 +36,7 @@ const Title = styled(motion.h1)<{ $isAestheticTitle: boolean }>`
 const Subtitle = styled(motion.h4)`
   color: var(--text-color);
   font-size: 1.25rem;
-  margin: 1rem 0.5rem;
+  margin: 1rem 0.5rem 1rem;
   letter-spacing: 0.1rem;
   transform-origin: left;
   will-change: transfom, opacity; ;
@@ -47,6 +46,7 @@ const Content = styled(motion.div)`
   width: 100%;
   max-width: 100%;
   flex: 1;
+  overflow-y: auto;
   transform-origin: top;
   will-change: transform, opacity;
 `;

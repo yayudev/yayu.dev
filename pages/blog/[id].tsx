@@ -29,6 +29,11 @@ const PostContainer = styled.div`
   h4,
   h5 {
     margin-top: 4rem;
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: var(--background-for-content);
+    padding: .5rem 0;
   }
 
   blockquote {

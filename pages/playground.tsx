@@ -18,10 +18,15 @@ const Content = styled.div`
 const OptionsBar = styled.div`
   width: 100%;
   display: flex;
+  position: sticky;
+  background-color: var(--background-for-content);
+  z-index: 9;
+  top: 0;
+  left: 0;
   align-items: flex-start;
   flex-direction: row-reverse;
   justify-content: space-between;
-  margin: 1rem 0 1.5rem 0;
+  padding: 1rem 0 1.5rem 0;
 `;
 
 const Playground: NextPage = () => {
