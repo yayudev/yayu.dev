@@ -16,12 +16,6 @@ export const SETTINGS_MENUS_LIST: SettingsMenuType[] = [
         optionKey: "global.animations",
         tooltip: "Enable or disable animations. (Default: On)",
       },
-      {
-        label: "Sounds",
-        options: [true, false],
-        optionKey: "global.sounds",
-        tooltip: "Enable or disable sounds. (Default: On)",
-      },
     ],
   },
   {
