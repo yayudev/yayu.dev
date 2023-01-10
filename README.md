@@ -45,8 +45,8 @@ Stuff that needs to be done before release:
 - [x] Projects feature
 - [x] Blog feature
 - [x] Projects feature
-- [ ] About page **_<<< Currently here_**
-- [ ] i18n setup
+- [x] About page
+- [ ] i18n setup **_<<< Currently here_**
 - [ ] Replace mocks folder data with proper i18n json files
 - [ ] Migrate API from v2 to Next's api routes (or maybe static pre-generated assets?)
 - [ ] Disable Animations via settings
@@ -63,6 +63,9 @@ Stuff that needs to be done before release:
 
 Good to have things that will be added eventually but not 100% required for initial release.
 
+- [ ] Loading skeletons
+- [ ] Resume download
+- [ ] Skill sheet
 - [ ] Testing
 - [ ] Github actions CI testing/deploy pipeline
 - [ ] lighthouse audit
