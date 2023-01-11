@@ -19,16 +19,23 @@ if (ENABLE_DEV_PROXY) {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Compile options
   reactStrictMode: true,
-  env: {
-    SERVER_URL,
-  },
   compiler: {
     styledComponents: true,
   },
+
+  // Images whitelist
   images: {
     domains: ["via.placeholder.com"],
   },
+
+  // env vars
+  env: {
+    SERVER_URL,
+  },
+
+  // Dev API proxy
   async rewrites() {
     const devProxy = [
       {
