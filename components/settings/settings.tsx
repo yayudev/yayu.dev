@@ -1,27 +1,29 @@
 import { useContext, useState } from "react";
 import styled from "styled-components";
 import { get, set } from "lodash";
+import { AnimatePresence, motion } from "framer-motion";
+import { useTranslation } from "next-i18next";
 
 import { SettingsMenuItemType } from "@/types/settings-menu";
 import { SETTINGS_MENUS_LIST } from "@/config/settings-menu";
 
-import { SettingsBGWrapper } from "@/components/settings/settings-bg-wrapper";
-import { SettingsTitle } from "@/components/settings/settings-title";
-import { SettingsTooltipBar } from "@/components/settings/settings-tooltip-bar";
-import { SettingsMenuLevel } from "@/components/settings/settings-menu-level";
-import { SettingsMenuItem } from "@/components/settings/settings-menu-item";
-import { SettingsOptionSelect } from "@/components/settings/settings-option-select";
 import {
   SettingsContext,
   SettingsContextType,
   SettingsState,
 } from "@/contexts/settings";
-import { useKeyboard } from "@/hooks/use-keyboard";
+import { SettingsBGWrapper } from "@/components/settings/settings-bg-wrapper";
+import { SettingsMenuItem } from "@/components/settings/settings-menu-item";
+import { SettingsMenuLevel } from "@/components/settings/settings-menu-level";
+import { SettingsOptionSelect } from "@/components/settings/settings-option-select";
+import { SettingsTitle } from "@/components/settings/settings-title";
+import { SettingsTooltipBar } from "@/components/settings/settings-tooltip-bar";
+
 import {
   ApplicationStateContext,
   ApplicationStateContextType,
 } from "@/contexts/application-state";
-import { AnimatePresence, motion } from "framer-motion";
+import { useKeyboard } from "@/hooks/use-keyboard";
 
 const Container = styled(motion.div)`
   display: flex;
@@ -57,6 +59,8 @@ const Spacing = styled.div`
 `;
 
 export function Settings() {
+  const { t } = useTranslation("settings");
+
   const [menu, setMenu] = useState<number | undefined>();
   const [subMenu, setSubMenu] = useState<number | undefined>();
   const { settings, setSettings } =
@@ -75,8 +79,8 @@ export function Settings() {
     <SettingsMenuLevel>
       {SETTINGS_MENUS_LIST.map((item, index) => (
         <SettingsMenuItem
-          key={item.label}
-          label={item.label}
+          key={item.labelKey}
+          labelKey={item.labelKey}
           isSelected={menu === index}
           onClick={() => handleTopMenuClick(index)}
         />
@@ -95,7 +99,8 @@ export function Settings() {
       {subMenuItem?.children.map((item, index) => (
         <SettingsMenuItem
           key={index}
-          label={item.label}
+          labelKey={item.labelKey}
+          options={item.options}
           value={get(settings, item.optionKey)}
           isSelected={subMenu === index}
           isChildOption
@@ -121,7 +126,7 @@ export function Settings() {
    *  TOOLTIP  *
    *************/
 
-  const tooltipText = openOption?.tooltip ?? "";
+  const tooltipText = openOption?.tooltipKey ?? "";
 
   /******************
    * EVENT HANDLERS *
@@ -200,7 +205,7 @@ export function Settings() {
                 duration: 0.5,
               }}
             >
-              SETTINGS
+              {t("title")}
             </SettingsTitle>
 
             <Content>
@@ -221,7 +226,7 @@ export function Settings() {
             </Content>
 
             <SettingsTooltipBar
-              text={tooltipText}
+              textKey={tooltipText}
               showArrows
               showBack
               showConfirm

@@ -1,0 +1,56 @@
+{
+  "title": "Settings",
+  "settings": {
+    "content": {
+      "label": "Content",
+
+      "language": {
+        "label": "Language",
+        "en": "English",
+        "es": "Spanish",
+        "tooltip": "Select your language (Default: English)"
+      },
+
+      "animations": {
+        "label": "Animations",
+        "on": "On",
+        "off": "Off",
+        "tooltip": "Enable or disable animations. (Default: On)"
+      }
+    },
+
+    "blog": {
+      "label": "Blog",
+
+      "comments": {
+        "label": "Blog comments",
+        "on": "On",
+        "off": "Off",
+        "tooltip": "Enable or disable blog comments. (Default: On)"
+      },
+
+      "social-share": {
+        "label": "Social share",
+        "on": "On",
+        "off": "Off",
+        "tooltip": "Enable or disable social share. (Default: On)"
+      }
+    },
+
+    "other": {
+      "label": "Other",
+
+      "tracking": {
+        "label": "Tracking",
+        "on": "On",
+        "off": "Off",
+        "tooltip": "Enable or disable analytics tracking. (Default: On)"
+      }
+    }
+  },
+  "tooltip": {
+    "navigate": "Navigate",
+    "confirm": "Confirm",
+    "close": "Close"
+  }
+}

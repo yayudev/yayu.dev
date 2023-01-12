@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import styled from "styled-components";
+import { useTranslation } from "next-i18next";
 import {
   ApplicationStateContext,
   ApplicationStateContextType,
@@ -17,6 +18,7 @@ const MenuList = styled.ul`
 `;
 
 export function HomeMenuList() {
+  const { t } = useTranslation("common");
   const { applicationState, setApplicationState } =
     useContext<ApplicationStateContextType>(ApplicationStateContext);
 
@@ -30,16 +32,16 @@ export function HomeMenuList() {
     <nav>
       <MenuList>
         <HomeMenuItem key="blog" href="/blog">
-          Blog
+          {t("blog")}
         </HomeMenuItem>
         <HomeMenuItem key="playground" href="/playground">
-          Playground
+          {t("playground")}
         </HomeMenuItem>
         <HomeMenuItem key="settings" onClick={openSettings}>
-          Settings
+          {t("settings")}
         </HomeMenuItem>
         <HomeMenuItem key="about" href="/about">
-          About
+          {t("about")}
         </HomeMenuItem>
       </MenuList>
     </nav>

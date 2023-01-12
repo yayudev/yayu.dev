@@ -1,0 +1,56 @@
+{
+  "title": "Configuración",
+  "settings": {
+    "content": {
+      "label": "Contenido",
+
+      "language": {
+        "label": "Idioma",
+        "en": "Ingles",
+        "es": "Español",
+        "tooltip": "Selecciona tu idioma. (Default: Ingles)"
+      },
+
+      "animations": {
+        "label": "Animaciones",
+        "on": "On",
+        "off": "Off",
+        "tooltip": "Activa o desactiva animaciones. (Default: On)"
+      }
+    },
+
+    "blog": {
+      "label": "Blog",
+
+      "comments": {
+        "label": "Comentarios",
+        "on": "On",
+        "off": "Off",
+        "tooltip": "Activa o desactiva los comentarios. (Default: On)"
+      },
+
+      "social-share": {
+        "label": "Social share",
+        "on": "On",
+        "off": "Off",
+        "tooltip": "Activa o desactiva compartir en redes. (Default: On)"
+      }
+    },
+
+    "other": {
+      "label": "Otros",
+
+      "tracking": {
+        "label": "Tracking",
+        "on": "On",
+        "off": "Off",
+        "tooltip": "Activa o desactiva el tracking de google analytics. (Default: On)"
+      }
+    }
+  },
+  "tooltip": {
+    "navigate": "Moverse",
+    "confirm": "Confirmar",
+    "close": "Cerrar"
+  }
+}

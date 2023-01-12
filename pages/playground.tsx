@@ -1,14 +1,16 @@
-// noinspection JSUnusedGlobalSymbols
-
 import { useMemo, useState } from "react";
 import { NextPage } from "next";
 import Head from "next/head";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 import styled from "styled-components";
+
 import { Experiments } from "@/components/playground/experiments";
-import { ExperimentData, SortType, TechnologyTag } from "@/types/experiments";
-import { PlaygroundSortingOptions } from "@/components/playground/playground-sorting-options";
 import { PlaygroundFilterList } from "@/components/playground/playground-filter-list";
-import { PageLayout } from "../layouts/page";
+import { PlaygroundSortingOptions } from "@/components/playground/playground-sorting-options";
+import { ExperimentData, SortType, TechnologyTag } from "@/types/experiments";
+import { PageLayout } from "@/layouts/page";
+
 import { experiments } from "../mocks/experiments";
 
 const Content = styled.div`
@@ -29,7 +31,20 @@ const OptionsBar = styled.div`
   padding: 1rem 0 1.5rem 0;
 `;
 
+export async function getStaticProps({ locale }: { locale: string }) {
+  if (!locale) return { props: {} };
+
+  const props = await serverSideTranslations(locale, [
+    "common",
+    "settings",
+    "playground",
+  ]);
+
+  return { props };
+}
+
 const Playground: NextPage = () => {
+  const { t } = useTranslation("playground");
   const [filterTag, setFilterTag] = useState<TechnologyTag>(TechnologyTag.ALL);
   const [currentSort, setCurrentSort] = useState<SortType>(
     SortType.BY_MOST_RECENT
@@ -62,22 +77,16 @@ const Playground: NextPage = () => {
 
   function toggleTag(tag: TechnologyTag) {
     // Reset if clicked on the active tag.
-    if (tag === filterTag) {
-      setFilterTag(TechnologyTag.ALL);
-      return;
-    }
+    const updatedTag = tag === filterTag ? TechnologyTag.ALL : tag;
 
-    setFilterTag(tag);
+    setFilterTag(updatedTag);
   }
 
   return (
-    <PageLayout title="Playground">
+    <PageLayout title={t("title")}>
       <Head>
-        <title>yayu.dev | Playground</title>
-        <meta
-          name="description"
-          content="Quick experiments I do to learn and small PoCs"
-        />
+        <title>{t("page-title")}</title>
+        <meta name="description" content={t("page-description") ?? ""} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

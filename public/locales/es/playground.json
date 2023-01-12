@@ -1,0 +1,16 @@
+{
+  "all": "Todos",
+  "angular": "Angular",
+  "by-most-recent": "Más Reciente",
+  "by-name": "Nombre",
+  "html-css": "Solo HTML/CSS",
+  "page-description": "Pequeños experimentos que hago para aprender y probar tecnologías.",
+  "page-title": "yayu.dev | Experimentos",
+  "react": "React",
+  "separator": " | ",
+  "sort-by": "Ordernar por ",
+  "svelte": "Svelte",
+  "title": "Experimentos",
+  "vanilla-js": "JS Puro",
+  "vue": "Vue"
+}

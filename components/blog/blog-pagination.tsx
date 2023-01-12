@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
+import { useTranslation } from "next-i18next";
 
 const Container = styled.footer`
   display: flex;
@@ -27,11 +28,13 @@ export interface BlogPaginationProps {
 }
 
 export function BlogPagination({ prevUrl, nextUrl }: BlogPaginationProps) {
+  const { t } = useTranslation("blog");
+
   return (
     <Container>
       {prevUrl && (
         <Link href={prevUrl} passHref>
-          <ButtonLabel>Back</ButtonLabel>
+          <ButtonLabel>{t("back")}</ButtonLabel>
         </Link>
       )}
 
@@ -39,7 +42,7 @@ export function BlogPagination({ prevUrl, nextUrl }: BlogPaginationProps) {
 
       {nextUrl && (
         <Link href={nextUrl} passHref>
-          <ButtonLabel>Next</ButtonLabel>
+          <ButtonLabel>{t("next")}</ButtonLabel>
         </Link>
       )}
     </Container>

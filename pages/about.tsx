@@ -1,8 +1,11 @@
 import { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 import styled from "styled-components";
-import { PageLayout } from "../layouts/page";
+
+import { PageLayout } from "@/layouts/page";
 
 const Content = styled.div`
   padding-top: 0;
@@ -48,23 +51,32 @@ const Selfie = styled(Image)`
   border-radius: 20px;
 `;
 
+export async function getStaticProps({ locale }: { locale: string }) {
+  if (!locale) return { props: {} };
+
+  const props = await serverSideTranslations(locale, [
+    "common",
+    "settings",
+    "about",
+  ]);
+
+  return { props };
+}
+
 const About: NextPage = () => {
+  const { t } = useTranslation("about");
+
   return (
-    <PageLayout title="About me">
+    <PageLayout title={t("title")}>
       <Head>
-        <title>yayu.dev | About</title>
-        <meta name="description" content="About me" />
+        <title>{t("page.title")}</title>
+        <meta name="description" content={t("page.description") ?? ""} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Content>
-        <SectionTitle>Me</SectionTitle>
-        <SectionContent>
-          Hi! I'm Arturo Coronel (you can call me Yayu). I'm 27, live in Mexico
-          but I spend a LOT of time in Japan so there always a 50/50 chance
-          you'll find me there. I ❤ web development and I love helping and
-          teaching others about it.
-        </SectionContent>
+        <SectionTitle>{t("me.title")}</SectionTitle>
+        <SectionContent>{t("me.content")}</SectionContent>
 
         <SelfieContainer>
           <Selfie
@@ -83,44 +95,22 @@ const About: NextPage = () => {
           />
         </SelfieContainer>
 
-        <SectionTitle>Hobbies</SectionTitle>
-        <SectionContent>
-          Besides webdev, my hobbies are philosophy (currently studying a
-          degree!), walking in nature, promoting mental health awareness,
-          watching and attending idol lives events at Japan and watching anime.
-        </SectionContent>
+        <SectionTitle>{t("hobbies.title")}</SectionTitle>
+        <SectionContent>{t("hobbies.content")}</SectionContent>
 
-        <SectionTitle>Work Experience</SectionTitle>
-        <SectionContent>
-          I working as a fullstack developer for 10 years, focusing mainly on
-          the front-end. I've been in both small and big teams as a lead and
-          individual contributor. Worked on different sectors such as consumer
-          applications, B2B data analysis applications, healtcare, government
-          and scientific/genomic research applications.
-        </SectionContent>
+        <SectionTitle>{t("work-experience.title")}</SectionTitle>
+        <SectionContent>{t("work-experience.content-1")}</SectionContent>
+        <SectionContent>{t("work-experience.content-2")}</SectionContent>
 
-        <SectionContent>
-          Personally I care a lot about topics such as accessibility, frontend
-          performance, developer experience (tooling, flows, etc), testing and
-          automating stuff (CI/CD); and I'm always trying to promote those ideas
-          in the teams I've worked with.
-        </SectionContent>
+        <SectionTitle>{t("main-stack.title")}</SectionTitle>
+        <SectionContent>{t("main-stack.content")}</SectionContent>
 
-        <SectionTitle>Current main stack</SectionTitle>
-        <SectionContent>
-          React, Next, Jest, Cypress, Nest, postgres, netlify, AWS
-        </SectionContent>
-
-        <SectionTitle>Contact</SectionTitle>
-        <SectionContent>
-          Want to know more about me or contract my services? Do you have any
-          idea or suggestion to improve this site? Want to talk about web
-          development, philosophy or idols? Contact me!
-        </SectionContent>
+        <SectionTitle>{t("contact.title")}</SectionTitle>
+        <SectionContent>{t("contact.content")}</SectionContent>
         <ContactLinks>
           <li>
             <a href="mailto:contact@yayu.dev" target="_blank" rel="noreferrer">
-              Email
+              {t("contact.links.email")}
             </a>
           </li>
           <li>
@@ -129,7 +119,7 @@ const About: NextPage = () => {
               target="_blank"
               rel="noreferrer"
             >
-              Github
+              {t("contact.links.github")}
             </a>
           </li>
           <li>
@@ -138,7 +128,7 @@ const About: NextPage = () => {
               target="_blank"
               rel="noreferrer"
             >
-              Linkedin
+              {t("contact.links.linkedin")}
             </a>
           </li>
           <li>
@@ -147,7 +137,7 @@ const About: NextPage = () => {
               target="_blank"
               rel="noreferrer"
             >
-              Twitter (hobbies only!)
+              {t("contact.links.twitter")}
             </a>
           </li>
         </ContactLinks>

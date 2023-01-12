@@ -2,47 +2,62 @@ import { SettingsMenuType } from "@/types/settings-menu";
 
 export const SETTINGS_MENUS_LIST: SettingsMenuType[] = [
   {
-    label: "Content",
+    labelKey: "settings.content.label",
     children: [
       {
-        label: "Language",
-        options: ["English", "Spanish"],
-        optionKey: "global.language",
-        tooltip: "Select your language (Default: English)",
+        labelKey: "settings.content.language.label",
+        options: [
+          { labelKey: "settings.content.language.en", value: "en" },
+          { labelKey: "settings.content.language.es", value: "es" },
+        ],
+        optionKey: "content.language",
+        tooltipKey: "settings.content.language.tooltip",
       },
       {
-        label: "Animations",
-        options: [true, false],
-        optionKey: "global.animations",
-        tooltip: "Enable or disable animations. (Default: On)",
+        labelKey: "settings.content.animations.label",
+        options: [
+          { labelKey: "settings.content.animations.on", value: true },
+          { labelKey: "settings.content.animations.off", value: false },
+        ],
+        optionKey: "content.animations",
+        tooltipKey: "settings.content.animations.tooltip",
       },
     ],
   },
   {
-    label: "Blog",
+    labelKey: "settings.blog.label",
     children: [
       {
-        label: "Blog comments",
-        options: [true, false],
+        labelKey: "settings.blog.comments.label",
+        options: [
+          { labelKey: "settings.blog.comments.on", value: true },
+          { labelKey: "settings.blog.comments.off", value: false },
+        ],
         optionKey: "blog.comments",
-        tooltip: "Enable or disable blog comments. (Default: On)",
+        tooltipKey: "settings.blog.comments.tooltip",
       },
       {
-        label: "Social share",
-        options: [true, false],
-        optionKey: "blog.share",
-        tooltip: "Enable or disable social share. (Default: On)",
+        labelKey: "settings.blog.social-share.label",
+        options: [
+          { labelKey: "settings.blog.social-share.on", value: true },
+          { labelKey: "settings.blog.social-share.off", value: false },
+        ],
+        optionKey: "blog.social-share",
+        tooltipKey: "settings.blog.social-share.tooltip",
       },
     ],
   },
   {
-    label: "Other",
+    labelKey: "settings.other.label",
     children: [
       {
-        label: "Allow tracking",
-        options: [true, false],
-        optionKey: "global.allowTracking",
-        tooltip: "Allow or disallow tracking. (Default: On)",
+        labelKey: "settings.other.tracking.label",
+        options: [
+          { labelKey: "settings.other.tracking.on", value: true },
+          { labelKey: "settings.other.tracking.off", value: false },
+        ],
+        optionKey: "other.tracking",
+        tooltipKey: "settings.other.tracking.tooltip",
       },
     ],
   },

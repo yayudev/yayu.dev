@@ -1,14 +1,16 @@
-// noinspection JSUnusedGlobalSymbols
-
-import "@/styles/globals.css";
 import { AppProps } from "next/app";
 import Head from "next/head";
-import { SettingsProvider } from "@/contexts/settings";
-import { Settings } from "@/components/settings/settings";
-import { ApplicationStateProvider } from "@/contexts/application-state";
-import { HomeMenu } from "@/components/home-menu/home-menu";
 import { useRouter } from "next/router";
+import { appWithTranslation } from "next-i18next";
 import styled from "styled-components";
+
+import { ApplicationStateProvider } from "@/contexts/application-state";
+import { SettingsProvider } from "@/contexts/settings";
+import { HomeMenu } from "@/components/home-menu/home-menu";
+import { Settings } from "@/components/settings/settings";
+import nextI18NextConfig from "../next-i18next.config";
+
+import "@/styles/globals.css";
 
 const AppContentWrapper = styled.div`
   height: 100vh;
@@ -40,7 +42,7 @@ function AppContent({ Component, pageProps }: AppProps) {
   );
 }
 
-export default function MyApp(props: AppProps) {
+function MyApp(props: AppProps) {
   return (
     <>
       <Head>
@@ -56,3 +58,5 @@ export default function MyApp(props: AppProps) {
     </>
   );
 }
+
+export default appWithTranslation(MyApp, nextI18NextConfig);

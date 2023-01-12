@@ -19,9 +19,11 @@
       "@/components/*": ["components/*"],
       "@/config/*": ["config/*"],
       "@/contexts/*": ["contexts/*"],
-      "@/pages/*": ["pages/*"],
       "@/hooks/*": ["hooks/*"],
+      "@/layouts/*": ["layouts/*"],
+      "@/services/*": ["services/*"],
       "@/styles/*": ["styles/*"],
+      "@/pages/*": ["pages/*"],
       "@/types/*": ["types/*"],
       "@/utils/*": ["utils/*"]
     }

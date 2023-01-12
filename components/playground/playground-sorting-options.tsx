@@ -1,5 +1,7 @@
-import { GlitchedText } from "@/components/shared/glitched-text";
 import styled, { css } from "styled-components";
+import { useTranslation } from "next-i18next";
+
+import { GlitchedText } from "@/components/shared/glitched-text";
 import { SortType } from "@/types/experiments";
 
 const SortingText = styled.div`
@@ -35,9 +37,11 @@ export function PlaygroundSortingOptions({
   currentSort,
   onChange,
 }: PlaygroundSortingOptionsProps) {
+  const { t } = useTranslation("playground");
+
   return (
     <SortingText>
-      <span>Sort by </span>
+      <span>{t("sort-by")}</span>
 
       <Button
         active={currentSort === SortType.BY_MOST_RECENT}
@@ -45,14 +49,14 @@ export function PlaygroundSortingOptions({
       >
         {currentSort === SortType.BY_MOST_RECENT ? (
           <GlitchedText animate={currentSort === SortType.BY_MOST_RECENT}>
-            Most Recent
+            {t("by-most-recent")}
           </GlitchedText>
         ) : (
-          "Most Recent"
+          t("by-most-recent")
         )}
       </Button>
 
-      <span> | </span>
+      <span>{t("separator")}</span>
 
       <Button
         active={currentSort === SortType.BY_NAME}
@@ -60,10 +64,10 @@ export function PlaygroundSortingOptions({
       >
         {currentSort === SortType.BY_NAME ? (
           <GlitchedText animate={currentSort === SortType.BY_NAME}>
-            Name
+            {t("by-name")}
           </GlitchedText>
         ) : (
-          "Name"
+          t("by-name")
         )}
       </Button>
     </SortingText>

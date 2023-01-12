@@ -1,8 +1,12 @@
-import { PageLayout } from "layouts/page";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
-import { BlogApiService } from "services/blog-api";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 import styled from "styled-components";
+
+import { PageLayout } from "@/layouts/page";
+import { BlogApiService } from "@/services/blog-api";
+
 interface BlodPostProps {
   postId: string;
 }
@@ -82,14 +86,36 @@ const PostContainer = styled.div`
   }
 `;
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const postId = context.query.id as string;
+export const getServerSideProps: GetServerSideProps = async ({
+  query,
+  locale,
+}) => {
+  /**************
+   * Page data  *
+   **************/
+
+  const postId = query.id as string;
 
   const pageUrl = BlogApiService.getIndividualPostUrl(postId);
   const data = await BlogApiService.fetchIndividualPost(postId);
 
+  /**************
+   *   Locale   *
+   **************/
+
+  let localeProps = {};
+
+  if (locale) {
+    localeProps = await serverSideTranslations(locale, [
+      "common",
+      "settings",
+      "blog",
+    ]);
+  }
+
   return {
     props: {
+      ...localeProps,
       postId,
       fallback: {
         [pageUrl]: data,
@@ -99,17 +125,18 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 const BlogPostPage = ({ postId }: BlodPostProps) => {
+  const { t } = useTranslation("blog");
   const { post, isError, isLoading } = BlogApiService.useIndividualPost(postId);
 
   return (
     <PageLayout
-      title={post?.title || "loading..."}
+      title={post?.title ?? ""}
       isAestheticTitle={false}
       isLoading={isLoading}
       hasError={isError}
     >
       <Head>
-        <title>yayu.dev | {post?.title}</title>
+        <title>{t("page-individual-title", { title: post?.title })}</title>
         <meta name="description" content={post?.excerpt} />
       </Head>
 

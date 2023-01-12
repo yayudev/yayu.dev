@@ -1,5 +1,7 @@
 require("dotenv");
 
+const { i18n } = require("./next-i18next.config");
+
 const DEV_ENV = process.env.NODE_ENV === "development";
 const PORT = process.env.PORT || 3000;
 const ENABLE_DEV_PROXY = process.env.ENABLE_NETWORK === "on";
@@ -24,6 +26,9 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+
+  // i18n
+  i18n,
 
   // Images whitelist
   images: {

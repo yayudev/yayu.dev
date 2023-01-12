@@ -1,17 +1,20 @@
 // Settings context
 import React, { createContext, ReactNode } from "react";
+import { useTranslation } from "next-i18next";
 import usePersistedState from "use-persisted-state-hook";
+import { useRouter } from "next/router";
 
 export type SettingsState = {
-  global: {
+  content: {
     language: string;
     animations: boolean;
-    sounds: boolean;
-    allowTracking: boolean;
   };
   blog: {
     comments: boolean;
-    share: boolean;
+    "social-share": boolean;
+  };
+  other: {
+    tracking: boolean;
   };
 };
 
@@ -21,15 +24,16 @@ export type SettingsContextType = {
 };
 
 const DEFAULT_SETTINGS: SettingsState = {
-  global: {
-    language: "English",
+  content: {
+    language: "en",
     animations: true,
-    sounds: true,
-    allowTracking: true,
   },
   blog: {
     comments: true,
-    share: true,
+    "social-share": true,
+  },
+  other: {
+    tracking: true,
   },
 };
 
@@ -41,16 +45,30 @@ export const SettingsContext = createContext<SettingsContextType>({
 SettingsContext.displayName = "Settings";
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
+  const router = useRouter();
+  const { i18n } = useTranslation();
   const [settings, setSettings] = usePersistedState(
     "settings",
     DEFAULT_SETTINGS
   );
 
+  function updateSettings(state: SettingsState): void {
+    const currentLang = i18n?.language;
+    const targetLang = state.content.language;
+
+    if (targetLang !== currentLang) {
+      const currentRoute = router.asPath;
+      router.push(currentRoute, currentRoute, { locale: targetLang });
+    }
+
+    setSettings(state);
+  }
+
   return (
     <SettingsContext.Provider
       value={{
         settings,
-        setSettings,
+        setSettings: updateSettings,
       }}
     >
       {children}

@@ -1,10 +1,13 @@
 // noinspection SpellCheckingInspection
 
+import { SettingsMenuItemOption } from "@/types/settings-menu";
 import { KeyboardEvent } from "react";
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
 type SettingsMenuItemProps = {
-  label: string;
+  labelKey: string;
+  options?: SettingsMenuItemOption[];
   value?: string | boolean;
   isSelected?: boolean;
   isChildOption?: boolean;
@@ -117,17 +120,19 @@ const ListItemSquare = styled.div<{ isSelected: boolean }>`
 `;
 
 export function SettingsMenuItem({
-  label,
+  labelKey,
   value,
+  options = [],
   isSelected = false,
   isChildOption = false,
   onClick,
 }: SettingsMenuItemProps) {
-  let displayedValue = value;
-
-  if (typeof value === "boolean") {
-    displayedValue = value ? "On" : "Off";
-  }
+  const { t } = useTranslation("settings");
+  const label = t(labelKey);
+  const selectedOption = options.find((option) => option.value === value);
+  const valueLabel = t(selectedOption?.labelKey ?? "");
+  const ariaLabel =
+    selectedOption?.value !== undefined ? `${label}: ${valueLabel}` : label;
 
   function onKeypress(event: KeyboardEvent<HTMLLIElement>) {
     if (event.key === "Enter" || event.key === " ") {
@@ -141,7 +146,7 @@ export function SettingsMenuItem({
       isChildOption={isChildOption}
       tabIndex={0}
       role="listitem"
-      aria-label={displayedValue ? `${label}: ${displayedValue}` : label}
+      aria-label={ariaLabel}
       onClick={onClick}
       onKeyDown={onKeypress}
     >
@@ -149,7 +154,7 @@ export function SettingsMenuItem({
       <ListItemSquare isSelected={isSelected} />
       <ListItemContent>
         <span> {label} </span>
-        <span> {displayedValue} </span>
+        <span> {valueLabel} </span>
       </ListItemContent>
     </ListItem>
   );

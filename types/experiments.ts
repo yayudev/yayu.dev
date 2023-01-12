@@ -1,11 +1,11 @@
 export enum TechnologyTag {
-  ALL = "All",
-  Angular = "Angular",
-  React = "React",
-  Svelte = "Svelte",
-  Vue = "Vue",
-  Vanilla_JS = "Vanilla JS",
-  No_JS = "HTML/CSS only",
+  ALL = "all",
+  Angular = "angular",
+  React = "react",
+  Svelte = "svelte",
+  Vue = "vue",
+  Vanilla_JS = "vanilla-js",
+  No_JS = "html-css",
 }
 
 export const TechnologyTagsList = [

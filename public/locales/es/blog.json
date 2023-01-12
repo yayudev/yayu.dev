@@ -1,0 +1,9 @@
+{
+  "back": "Anterior",
+  "next": "Siguiente",
+  "page-description": "Este es mi blog acerca de desarrollo web.",
+  "page-individual-title": "yayu.dev | {{title}}",
+  "page-number": "Pagina {{n}}",
+  "page-title": "yayu.dev | Blog",
+  "title": "Blog"
+}

@@ -1,0 +1,34 @@
+{
+  "title": "Acerca de mí",
+  "page": {
+    "title": "yayu.dev | Acerca de mí",
+    "description": "Acerca de mí"
+  },
+  "contact": {
+    "title": "Contacto",
+    "content": "¿Quieres saber más acerca de mí o tienes alguna propuesta laboral? ¿Tienes alguna idea o sugerencia para mejorar este sitio? ¿Quieres platicar acerca de desarrollo web, filosofía o chika idols? ¡Contáctame!",
+    "links": {
+      "email": "Email",
+      "github": "Github",
+      "linkedin": "Linkedin",
+      "twitter": "Twitter (¡solo pasatiempos!)"
+    }
+  },
+  "hobbies": {
+    "title": "Pasatiempos",
+    "content": "Además de webdev, mis pasatiempos son la filosofía (¡actualmente estoy estudiando una carrera en filosofía!), caminatas en la naturaleza, promover conciencia acerca de temas de salud mental, mirar y asistir a conciertos de idols en Japón, y mirar anime."
+  },
+  "main-stack": {
+    "title": "Stack actual",
+    "content": "React, Next, Jest, Cypress, Nest, postgres, netlify, AWS"
+  },
+  "me": {
+    "title": "Yo",
+    "content": "¡Hola! Soy Arturo Coronel (puedes llamarme Yayu). Soy 27, vivo en Mexico pero paso MUCHO tiempo en Japón así que usualmente hay una oportunidad de 50/50 de que me encuentre ahí. ❤ el desarrollo web y me encanta ayudar y enseñar a otros acerca del tema."
+  },
+  "work-experience": {
+    "title": "Experiencia laboral",
+    "content-1": "He trabajado como desarrollador fullstack por 10 años, enfocandomente principalmente en el area de frontend. He estado tanto en equipos grandes como pequeños, como ambos lead y contribuidor individual. He trabajado en diferentes sectores, desde aplicaciones de consumo general, aplicaciones de analísis de datos B2B, sector salud, gubernamental y aplicaciones de investigación científica/genómica",
+    "content-2": "Personalmente me apasionan temas como la accesibilidad, rendimiento del frontend, experiencia de desarrollo (herramientas, flujos de trabajo, etc), testing y automatización (CI/CD); y siempre intento promover tales ideas en los equipos con los que trabajo."
+  }
+}

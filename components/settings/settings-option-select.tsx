@@ -1,8 +1,10 @@
 import styled from "styled-components";
+import { useTranslation } from "next-i18next";
+import { SettingsMenuItemOption } from "@/types/settings-menu";
 import { SettingsOptionSelectItem } from "./settings-option-select-item";
 
 type SettingsOptionSelectProps = {
-  options: string[] | boolean[];
+  options: SettingsMenuItemOption[];
   selectedValue: string | boolean;
   onSelect: (value: string | boolean) => void;
 };
@@ -20,21 +22,17 @@ export function SettingsOptionSelect({
   selectedValue,
   onSelect,
 }: SettingsOptionSelectProps) {
+  const { t } = useTranslation("settings");
+
   return (
     <Container>
       {options.map((option) => {
-        let displayValue = option as string;
-
-        if (typeof option === "boolean") {
-          displayValue = option ? "On" : "Off";
-        }
-
         return (
           <SettingsOptionSelectItem
-            key={displayValue}
-            label={displayValue}
-            isSelected={option === selectedValue}
-            onClick={() => onSelect(option)}
+            key={option.labelKey}
+            label={t(option.labelKey)}
+            isSelected={selectedValue === option.value}
+            onClick={() => onSelect(option.value)}
           />
         );
       })}

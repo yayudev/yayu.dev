@@ -1,3 +1,4 @@
+import { useTranslation } from "next-i18next";
 import styled, { keyframes } from "styled-components";
 
 const Container = styled.div`
@@ -34,9 +35,11 @@ const Text = styled.h3`
 `;
 
 export function Loader() {
+  const { t } = useTranslation();
+
   return (
     <Container>
-      <Text>Loading</Text>
+      <Text>{t("loading")}</Text>
     </Container>
   );
 }

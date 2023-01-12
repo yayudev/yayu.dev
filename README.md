@@ -46,15 +46,17 @@ Stuff that needs to be done before release:
 - [x] Blog feature
 - [x] Projects feature
 - [x] About page
-- [ ] i18n setup **_<<< Currently here_**
-- [ ] Replace mocks folder data with proper i18n json files
+- [x] i18n setup
+- [ ] Replace mocks folder data with proper i18n json files **_<<< Currently here_**
 - [ ] Migrate API from v2 to Next's api routes (or maybe static pre-generated assets?)
 - [ ] Disable Animations via settings
 - [ ] Blog comments
 - [ ] Blog social share / Open graph setup
+- [ ] Fix settings tooltip growing when too much text
 - [ ] Mobile design
 - [ ] Google Analytics
 - [ ] Replace links to .xyz to .dev and datyayu to yayudev where required.
+- [ ] Check i18n for typos
 - [ ] Configure CORS and security whitelist
 - [ ] Rehost images in a dedicated s3 bucket
 - [ ] Redirect v2 to v3
@@ -75,6 +77,7 @@ Good to have things that will be added eventually but not 100% required for init
 - [ ] Edge functions
 - [ ] Release log
 - [ ] Contributing guidelines
+- [ ] Full screen experiment expansion
 
 # Contributing
 

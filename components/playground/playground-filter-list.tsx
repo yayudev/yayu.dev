@@ -1,6 +1,8 @@
-import { TechnologyTag, TechnologyTagsList } from "@/types/experiments";
 import styled from "styled-components";
+import { useTranslation } from "next-i18next";
+
 import { PlaygroundFilterTag } from "@/components/playground/playground-filter-tag";
+import { TechnologyTag, TechnologyTagsList } from "@/types/experiments";
 
 export interface PlaygroundFilterProps {
   selectedTag: TechnologyTag;
@@ -21,12 +23,14 @@ export function PlaygroundFilterList({
   selectedTag,
   onTagChange,
 }: PlaygroundFilterProps) {
+  const { t } = useTranslation("playground");
+
   return (
     <Container>
       {TechnologyTagsList.map((tag: TechnologyTag) => (
         <PlaygroundFilterTag
           key={tag}
-          label={tag}
+          label={t(tag)}
           active={selectedTag === tag}
           onClick={() => onTagChange(tag)}
         />

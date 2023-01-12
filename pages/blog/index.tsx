@@ -1,9 +1,12 @@
 import { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
-import { PageLayout } from "../../layouts/page";
-import { BlogPostsList } from "@/components/blog/blog-posts-list";
-import { BlogApiService } from "../../services/blog-api";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
+
 import { BlogPagination } from "@/components/blog/blog-pagination";
+import { BlogPostsList } from "@/components/blog/blog-posts-list";
+import { PageLayout } from "@/layouts/page";
+import { BlogApiService } from "@/services/blog-api";
 
 const DEFAULT_PAGE_SIZE = 5;
 
@@ -12,7 +15,14 @@ interface BlogIndexProps {
   hasNextPage: boolean;
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  query,
+  locale,
+}) => {
+  /**************
+   * Pagination *
+   **************/
+
   let { page = "1" } = query ?? {};
 
   if (Array.isArray(page)) {
@@ -22,11 +32,25 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const pageNumber = parseInt(page, 10);
   const pageUrl = BlogApiService.getPostListUrl(pageNumber);
   const data = await BlogApiService.fetchPostList(pageNumber);
-
   const hasNextPage = data.totalPosts > DEFAULT_PAGE_SIZE * pageNumber;
+
+  /**************
+   *   Locale   *
+   **************/
+
+  let localeProps = {};
+
+  if (locale) {
+    localeProps = await serverSideTranslations(locale, [
+      "common",
+      "settings",
+      "blog",
+    ]);
+  }
 
   return {
     props: {
+      ...localeProps,
       hasNextPage,
       page: pageNumber,
       fallback: {
@@ -40,21 +64,19 @@ const BlogIndex: NextPage<BlogIndexProps> = ({
   page,
   hasNextPage = false,
 }: BlogIndexProps) => {
+  const { t } = useTranslation("blog");
   const { postList, isError, isLoading } = BlogApiService.usePostList(page);
 
   return (
     <PageLayout
-      title="Blog"
+      title={t("title") ?? ""}
       isLoading={isLoading}
       hasError={isError}
-      subtitle={page !== 1 ? `Page ${page}` : ""}
+      subtitle={page !== 1 ? t("page-number", { n: page }) ?? "" : ""}
     >
       <Head>
-        <title>yayu.dev | Blog - Page {page}</title>
-        <meta
-          name="description"
-          content="Hey, I'm Arturo Coronel. This is my personal website :)"
-        />
+        <title>{t("page-title")}</title>
+        <meta name="description" content={t("page-description") ?? ""} />
         <link rel="icon" href="/public/favicon.ico" />
       </Head>
 

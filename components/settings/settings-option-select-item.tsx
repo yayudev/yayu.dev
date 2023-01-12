@@ -1,4 +1,5 @@
 import { KeyboardEvent } from "react";
+import { useTranslation } from "next-i18next";
 import styled from "styled-components";
 
 type SettingsOptionSelectItemProps = {
@@ -54,6 +55,8 @@ export function SettingsOptionSelectItem({
   isSelected,
   onClick,
 }: SettingsOptionSelectItemProps) {
+  const { t } = useTranslation("settings");
+
   function onKeypress(event: KeyboardEvent<HTMLDivElement>) {
     if (event.key === "Enter" || event.key === " ") {
       onClick();
@@ -63,13 +66,13 @@ export function SettingsOptionSelectItem({
   return (
     <Item
       isSelected={isSelected}
-      aria-label={label}
+      aria-label={t(label) ?? ""}
       tabIndex={0}
       onClick={onClick}
       onKeyDown={onKeypress}
     >
       <ListItemSquare isSelected={isSelected} />
-      {label}
+      {t(label)}
     </Item>
   );
 }

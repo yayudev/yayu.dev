@@ -1,8 +1,9 @@
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
+import { useTranslation } from "next-i18next";
 
 interface SettingsTooltipBarProps {
-  text: string;
+  textKey: string;
   showArrows?: boolean;
   showBack?: boolean;
   showConfirm?: boolean;
@@ -87,29 +88,32 @@ const ButtonText = styled.span`
 `;
 
 export function SettingsTooltipBar({
-  text,
+  textKey,
   showArrows = true,
   showBack = false,
   showConfirm = true,
   onBack,
 }: SettingsTooltipBarProps) {
+  const { t } = useTranslation("settings");
+  const text = t(textKey) ?? "";
+
   const backControl = Boolean(showBack) && (
     <ButtonIconContainer onClick={onBack}>
       <ButtonIconText> Esc </ButtonIconText>
-      <ButtonText>Close</ButtonText>
+      <ButtonText>{t("tooltip.close")}</ButtonText>
     </ButtonIconContainer>
   );
   const confirmControl = Boolean(showConfirm) && (
     <ButtonIconContainer>
       <ButtonIconText> Enter </ButtonIconText>
-      <ButtonText>Confirm</ButtonText>
+      <ButtonText>{t("tooltip.confirm")}</ButtonText>
     </ButtonIconContainer>
   );
   const arrowControl = Boolean(showArrows) && (
     <ButtonIconContainer>
       <ButtonIconText> Shift + Tab </ButtonIconText>/
       <ButtonIconText> Tab </ButtonIconText>
-      <ButtonText>Navigate</ButtonText>
+      <ButtonText>{t("tooltip.navigate")}</ButtonText>
     </ButtonIconContainer>
   );
 

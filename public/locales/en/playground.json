@@ -1,0 +1,16 @@
+{
+  "all": "All",
+  "angular": "Angular",
+  "by-most-recent": "Most Recent",
+  "by-name": "Name",
+  "html-css": "HTML/CSS Only",
+  "page-description": "Quick experiments I do to learn and small PoCs",
+  "page-title": "yayu.dev | Playground",
+  "react": "React",
+  "separator": " | ",
+  "sort-by": "Sort by ",
+  "svelte": "Svelte",
+  "title": "Playground",
+  "vanilla-js": "Vanilla JS",
+  "vue": "Vue"
+}
