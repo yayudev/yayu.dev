@@ -1,5 +1,7 @@
 {
   "back": "Back",
+  "image-alt-template": "Image for blogpost: {{title}}",
+  "image-posted-on": "Posted on {{date}}",
   "next": "Next",
   "page-description": "This is my blog about web dev.",
   "page-individual-title": "yayu.dev | {{title}}",

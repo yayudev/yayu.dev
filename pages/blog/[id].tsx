@@ -45,9 +45,7 @@ const PostContainer = styled.div`
     font-size: 1.1rem;
     font-weight: 400;
     width: calc(100% - 5rem);
-    margin: 0;
     margin: 0 auto;
-    font-weight: 400;
     font-style: italic;
     box-sizing: content-box;
     background: var(--quote-background);

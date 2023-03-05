@@ -1,6 +1,10 @@
 {
   "about": "Acerca de mí",
   "blog": "Blog",
+  "errors": {
+    "error-loading-page": "Hubo un error al cargar la pagina.",
+    "error-try-again": "Por favor, intenta de nuevo."
+  },
   "loading": "Cargando",
   "page-description": "Hola, soy Arturo Coronel. Este es mi sitio personal :)",
   "page-name": "yayu.dev",

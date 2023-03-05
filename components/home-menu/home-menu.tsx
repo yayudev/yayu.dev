@@ -30,7 +30,7 @@ const LogoImageLink = styled(Link)`
 `;
 
 const LogoImage = styled(Image)`
-  max-idth: 100%;
+  max-width: 100%;
   height: auto;
   width: auto;
 `;

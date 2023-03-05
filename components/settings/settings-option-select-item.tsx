@@ -55,7 +55,7 @@ export function SettingsOptionSelectItem({
   isSelected,
   onClick,
 }: SettingsOptionSelectItemProps) {
-  const { t } = useTranslation("settings");
+  const { t } = useTranslation();
 
   function onKeypress(event: KeyboardEvent<HTMLDivElement>) {
     if (event.key === "Enter" || event.key === " ") {

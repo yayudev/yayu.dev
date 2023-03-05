@@ -94,33 +94,40 @@ export function SettingsTooltipBar({
   showConfirm = true,
   onBack,
 }: SettingsTooltipBarProps) {
-  const { t } = useTranslation("settings");
+  const { t } = useTranslation();
   const text = t(textKey) ?? "";
 
   const backControl = Boolean(showBack) && (
     <ButtonIconContainer onClick={onBack}>
-      <ButtonIconText> Esc </ButtonIconText>
-      <ButtonText>{t("tooltip.close")}</ButtonText>
+      <ButtonIconText> {t("settings:keys.ESC")} </ButtonIconText>
+      <ButtonText>{t("settings:tooltip.close")}</ButtonText>
     </ButtonIconContainer>
   );
   const confirmControl = Boolean(showConfirm) && (
     <ButtonIconContainer>
-      <ButtonIconText> Enter </ButtonIconText>
-      <ButtonText>{t("tooltip.confirm")}</ButtonText>
+      <ButtonIconText> {t("settings:keys.ENTER")} </ButtonIconText>
+      <ButtonText>{t("settings:tooltip.confirm")}</ButtonText>
     </ButtonIconContainer>
   );
   const arrowControl = Boolean(showArrows) && (
     <ButtonIconContainer>
-      <ButtonIconText> Shift + Tab </ButtonIconText>/
-      <ButtonIconText> Tab </ButtonIconText>
-      <ButtonText>{t("tooltip.navigate")}</ButtonText>
+      <ButtonIconText> {t("settings:keys.ShiftTab")} </ButtonIconText>
+      {t("settings:keys.separator")}
+      <ButtonIconText> {t("settings:keys.Tab")} </ButtonIconText>
+      <ButtonText>{t("settings:tooltip.navigate")}</ButtonText>
     </ButtonIconContainer>
   );
 
   return (
     <Container>
       <LeftBlock />
-      <Text aria-label={`Option description: ${text}`}>{text}</Text>
+      <Text
+        aria-label={
+          t("settings:tooltip.ariaLabel", { description: text }) ?? ""
+        }
+      >
+        {text}
+      </Text>
 
       <ControlsContainer
         initial={{ opacity: 0 }}

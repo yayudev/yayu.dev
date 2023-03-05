@@ -2,62 +2,65 @@ import { SettingsMenuType } from "@/types/settings-menu";
 
 export const SETTINGS_MENUS_LIST: SettingsMenuType[] = [
   {
-    labelKey: "settings.content.label",
+    labelKey: "settings:settings.content.label",
     children: [
       {
-        labelKey: "settings.content.language.label",
+        labelKey: "settings:settings.content.language.label",
         options: [
-          { labelKey: "settings.content.language.en", value: "en" },
-          { labelKey: "settings.content.language.es", value: "es" },
+          { labelKey: "settings:settings.content.language.en", value: "en" },
+          { labelKey: "settings:settings.content.language.es", value: "es" },
         ],
-        optionKey: "content.language",
-        tooltipKey: "settings.content.language.tooltip",
+        optionKey: "settings:settings.content.language",
+        tooltipKey: "settings:settings.content.language.tooltip",
       },
       {
-        labelKey: "settings.content.animations.label",
+        labelKey: "settings:settings.content.animations.label",
         options: [
-          { labelKey: "settings.content.animations.on", value: true },
-          { labelKey: "settings.content.animations.off", value: false },
+          { labelKey: "settings:settings.content.animations.on", value: true },
+          {
+            labelKey: "settings:settings.content.animations.off",
+            value: false,
+          },
         ],
-        optionKey: "content.animations",
-        tooltipKey: "settings.content.animations.tooltip",
+        optionKey: "settings:settings.content.animations",
+        tooltipKey: "settings:settings.content.animations.tooltip",
       },
     ],
   },
   {
-    labelKey: "settings.blog.label",
+    labelKey: "settings:settings.blog.label",
     children: [
       {
-        labelKey: "settings.blog.comments.label",
+        labelKey: "settings:settings.blog.comments.label",
         options: [
-          { labelKey: "settings.blog.comments.on", value: true },
-          { labelKey: "settings.blog.comments.off", value: false },
+          { labelKey: "settings:settings.blog.comments.on", value: true },
+          { labelKey: "settings:settings.blog.comments.off", value: false },
         ],
-        optionKey: "blog.comments",
-        tooltipKey: "settings.blog.comments.tooltip",
+        optionKey: "settings:settings.blog.comments",
+        tooltipKey: "settings:settings.blog.comments.tooltip",
       },
       {
-        labelKey: "settings.blog.social-share.label",
+        labelKey: "settings:settings.blog.social-share.label",
         options: [
-          { labelKey: "settings.blog.social-share.on", value: true },
-          { labelKey: "settings.blog.social-share.off", value: false },
+          { labelKey: "settings:settings.blog.social-share.on", value: true },
+          { labelKey: "settings:settings.blog.social-share.off", value: false },
         ],
-        optionKey: "blog.social-share",
-        tooltipKey: "settings.blog.social-share.tooltip",
+        optionKey: "settings:blog.social-share",
+        tooltipKey: "settings:settings.blog.social-share.tooltip",
       },
     ],
   },
   {
-    labelKey: "settings.other.label",
+    labelKey: "settings:settings.other.label",
     children: [
       {
-        labelKey: "settings.other.tracking.label",
+        labelKey: "settings:settings.other.tracking.label",
         options: [
-          { labelKey: "settings.other.tracking.on", value: true },
-          { labelKey: "settings.other.tracking.off", value: false },
+          { labelKey: "settings:settings.other.tracking.on", value: true },
+          { labelKey: "settings:settings.other.tracking.off", value: false },
         ],
-        optionKey: "other.tracking",
-        tooltipKey: "settings.other.tracking.tooltip",
+        optionKey: "settings:other.tracking",
+        tooltipKey: "settings:settings.other.tracking.tooltip",
       },
     ],
   },

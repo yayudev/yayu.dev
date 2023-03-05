@@ -1,4 +1,11 @@
 {
+  "keys": {
+    "ENTER": "Enter",
+    "ESC": "Esc",
+    "Shift": "Shift",
+    "Tab": "Tab",
+    "separator": " / "
+  },
   "settings": {
     "blog": {
       "comments": {
@@ -42,6 +49,7 @@
   },
   "title": "Settings",
   "tooltip": {
+    "ariaLabel": "Option description: {{description}}",
     "close": "Close",
     "confirm": "Confirm",
     "navigate": "Navigate"

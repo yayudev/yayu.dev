@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useTranslation } from "next-i18next";
 
 const Container = styled.div`
   display: grid;
@@ -18,11 +19,13 @@ const Text = styled.p`
 `;
 
 export function ErrorMessage() {
+  const { t } = useTranslation();
+
   return (
     <Container>
       <TextContainer>
-        <Text>There was an issue loading the page.</Text>
-        <Text>Please try again later.</Text>
+        <Text>{t("common:errors.error-loading-page")}</Text>
+        <Text>{t("common:errors.error-try-again")}</Text>
       </TextContainer>
     </Container>
   );

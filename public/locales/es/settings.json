@@ -1,4 +1,12 @@
 {
+  "keys": {
+    "ENTER": "Enter",
+    "ESC": "Esc",
+    "Shift": "Shift",
+    "ShiftTab": "Shift + Tab",
+    "Tab": "Tab",
+    "separator": " / "
+  },
   "settings": {
     "blog": {
       "comments": {
@@ -9,7 +17,7 @@
       },
       "label": "Blog",
       "social-share": {
-        "label": "Social share",
+        "label": "Compartir",
         "off": "Off",
         "on": "On",
         "tooltip": "Activa o desactiva compartir en redes. (Default: On)"
@@ -42,6 +50,7 @@
   },
   "title": "Configuración",
   "tooltip": {
+    "ariaLabel": "Descripción: {{description}}",
     "close": "Cerrar",
     "confirm": "Confirmar",
     "navigate": "Moverse"

@@ -1,5 +1,7 @@
 {
   "back": "Anterior",
+  "image-alt-template": "Imagen del post: {{title}}",
+  "image-posted-on": "Posteado el {{date}}",
   "next": "Siguiente",
   "page-description": "Este es mi blog acerca de desarrollo web.",
   "page-individual-title": "yayu.dev | {{title}}",

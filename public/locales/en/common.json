@@ -1,6 +1,10 @@
 {
   "about": "About",
   "blog": "Blog",
+  "errors": {
+    "error-loading-page": "There was an issue loading the page.",
+    "error-try-again": "Please try again."
+  },
   "loading": "Loading",
   "page-description": "Hi, I'm Arturo Coronel. This is my personal site :)",
   "page-name": "yayu.dev",

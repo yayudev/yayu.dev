@@ -2,6 +2,7 @@ import { BlogPost } from "@/types/blog-api";
 import Link from "next/link";
 import Image from "next/image";
 import styled from "styled-components";
+import { useTranslation } from "next-i18next";
 
 const BlogPostArticleContent = styled.div`
   font-family: "Open sans", "Helvetica Neue", "Segoe UI", "arial",
@@ -66,6 +67,7 @@ interface BlogPostItemProps {
 }
 
 export function BlogPostItem({ post }: BlogPostItemProps) {
+  const { t } = useTranslation("blog");
   const postImage = post.image ?? "https://via.placeholder.com/150x200.jpg";
 
   return (
@@ -76,15 +78,16 @@ export function BlogPostItem({ post }: BlogPostItemProps) {
             src={postImage}
             width={150}
             height={200}
-            alt={`Image for blogpost: ${post.title}`}
+            alt={t("image-alt-template", { title: post.title })}
             style={{
               maxWidth: "100%",
-              height: "auto"
-            }} />
+              height: "auto",
+            }}
+          />
 
           <BlogPostInfo>
             <Title>{post.title}</Title>
-            <DateText>Posted on {post.date}</DateText>
+            <DateText>{t("image-posted-on", { date: post.date })}</DateText>
             <Excerpt>{post.excerpt}</Excerpt>
           </BlogPostInfo>
         </BlogPostArticleContent>

@@ -127,7 +127,7 @@ export function SettingsMenuItem({
   isChildOption = false,
   onClick,
 }: SettingsMenuItemProps) {
-  const { t } = useTranslation("settings");
+  const { t } = useTranslation();
   const label = t(labelKey);
   const selectedOption = options.find((option) => option.value === value);
   const valueLabel = t(selectedOption?.labelKey ?? "");
