@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { ExperimentData } from "@/types/experiments";
+import { useEffect, useState } from "react";
 
 const FrameContainer = styled(motion.div)`
   position: absolute;
@@ -59,7 +60,13 @@ interface PlaygroundFrameProps {
 }
 
 export function PlaygroundFrame({ experiment, onClose }: PlaygroundFrameProps) {
-  if (typeof window !== "object") return null;
+  const [clientDocument, setClientDocument] = useState<Element | null>(null);
+
+  useEffect(() => {
+    setClientDocument(document.body);
+  }, []);
+
+  if (!clientDocument) return null;
 
   return createPortal(
     <AnimatePresence>
@@ -95,6 +102,6 @@ export function PlaygroundFrame({ experiment, onClose }: PlaygroundFrameProps) {
         </FrameContainer>
       )}
     </AnimatePresence>,
-    document.body
+    clientDocument
   );
 }

@@ -1,6 +1,6 @@
 # yayu.dev v3
 
-Currently on-development v3 for my personal website ([yayu.dev](https://yayu.dev))
+Current on-development v3 for my personal website ([yayu.dev](https://yayu.dev))
 
 Live version available at [preview.yayu.dev](https://preview.yayu.dev/)
 
@@ -10,10 +10,10 @@ Live version available at [preview.yayu.dev](https://preview.yayu.dev/)
 
 ## Install
 
-To setup just run:
+To set up just run:
 
 ```sh
-$ yarn install
+$ npm install
 ```
 
 ## Run
@@ -21,19 +21,19 @@ $ yarn install
 Dev mode:
 
 ```sh
-$ yarn dev
+$ npm run dev
 ```
 
 Build / Prod serve:
 
 ```
-$ yarn build
-$ yarn start
+$ npm run build
+$ npm run start
 ```
 
 # Dev progress
 
-This is are the features that I'm planning on adding to the site pre and post release.
+This is are the features that I'm planning on adding to the site pre- and post-release.
 
 ### Pre-release:
 
@@ -58,7 +58,7 @@ Stuff that needs to be done before release:
 - [ ] Replace links to .xyz to .dev and datyayu to yayudev where required.
 - [ ] Check i18n for typos
 - [ ] Configure CORS and security whitelist
-- [ ] Rehost images in a dedicated s3 bucket
+- [ ] Re-host images in a dedicated s3 bucket
 - [ ] Redirect v2 to v3
 
 ### Post-release:
@@ -81,10 +81,10 @@ Good to have things that will be added eventually but not 100% required for init
 
 # Contributing
 
-Currently on pre-release so not looking for help until main features are done but feel free to reach out if you find something wrong or you think something could be improved.
+Currently on pre-release so not looking for help until main features are done but feel free to reach out if you find something wrong, or you think something could be improved.
 
 Will be adding proper contributing guidelines after initial release.
 
 # License
 
-MIT stuff. Will appreaciate any mention but
+MIT stuff. Will appreciate any mention but

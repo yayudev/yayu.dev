@@ -24,20 +24,30 @@ const Content = styled.section`
   overflow: hidden;
 `;
 
-const LogoImageLink = styled.a`
+const LogoImageLink = styled(Link)`
   cursor: pointer;
   text-decoration: none;
+`;
+
+const LogoImage = styled(Image)`
+  max-idth: 100%;
+  height: auto;
+  width: auto;
 `;
 
 export function HomeMenu() {
   return (
     <Container>
       <Content>
-        <Link href="/" passHref>
-          <LogoImageLink>
-            <Image src="/images/logo.svg" alt="logo" width={300} height={300} />
-          </LogoImageLink>
-        </Link>
+        <LogoImageLink href="/" passHref>
+          <LogoImage
+            src="/images/logo.svg"
+            alt="logo"
+            width={300}
+            height={300}
+            priority
+          />
+        </LogoImageLink>
 
         <HomeMenuList />
       </Content>

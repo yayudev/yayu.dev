@@ -25,7 +25,7 @@ export function useHover(): [MutableRefObject<HTMLElement | null>, boolean] {
         node.removeEventListener("blur", handleMouseOut);
       };
     },
-    [ref.current] // Recall only if ref changes
+    []
   );
 
   return [ref, value];

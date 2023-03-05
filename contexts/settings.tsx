@@ -52,13 +52,13 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     DEFAULT_SETTINGS
   );
 
-  function updateSettings(state: SettingsState): void {
+  async function updateSettings(state: SettingsState): Promise<void> {
     const currentLang = i18n?.language;
     const targetLang = state.content.language;
 
     if (targetLang !== currentLang) {
       const currentRoute = router.asPath;
-      router.push(currentRoute, currentRoute, { locale: targetLang });
+      await router.push(currentRoute, currentRoute, { locale: targetLang });
     }
 
     setSettings(state);

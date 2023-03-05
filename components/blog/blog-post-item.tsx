@@ -77,7 +77,10 @@ export function BlogPostItem({ post }: BlogPostItemProps) {
             width={150}
             height={200}
             alt={`Image for blogpost: ${post.title}`}
-          />
+            style={{
+              maxWidth: "100%",
+              height: "auto"
+            }} />
 
           <BlogPostInfo>
             <Title>{post.title}</Title>

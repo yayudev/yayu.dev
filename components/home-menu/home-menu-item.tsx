@@ -12,7 +12,16 @@ interface HomeMenuItemProps {
   onClick?: () => void;
 }
 
-const MenuLink = styled.a`
+const MenuLink = styled(Link)`
+  text-decoration: none;
+  margin: 0.5rem 0;
+  cursor: pointer;
+  color: var(--link-color);
+  font-size: 2rem;
+  transform-origin: top;
+`;
+
+const MenuLinkAnchor = styled.a`
   text-decoration: none;
   margin: 0.5rem 0;
   cursor: pointer;
@@ -28,22 +37,20 @@ export function HomeMenuItem({ href, children, onClick }: HomeMenuItemProps) {
 
   if (href) {
     link = (
-      <Link href={href} passHref>
-        <MenuLink ref={hoverRef as MutableRefObject<HTMLAnchorElement | null>}>
+      <MenuLink href={href} ref={hoverRef as MutableRefObject<HTMLAnchorElement | null>}>
           <GlitchedText animate={isHovered}>{children}</GlitchedText>
-        </MenuLink>
-      </Link>
+      </MenuLink>
     );
   }
 
   if (onClick) {
     link = (
-      <MenuLink
+      <MenuLinkAnchor
         ref={hoverRef as MutableRefObject<HTMLAnchorElement | null>}
         onClick={onClick}
       >
         <GlitchedText animate={isHovered}>{children}</GlitchedText>
-      </MenuLink>
+      </MenuLinkAnchor>
     );
   }
 

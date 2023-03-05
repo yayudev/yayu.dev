@@ -7,7 +7,7 @@ import styled from "styled-components";
 import { PageLayout } from "@/layouts/page";
 import { BlogApiService } from "@/services/blog-api";
 
-interface BlodPostProps {
+interface BlogPostProps {
   postId: string;
 }
 
@@ -124,7 +124,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   };
 };
 
-const BlogPostPage = ({ postId }: BlodPostProps) => {
+const BlogPostPage = ({ postId }: BlogPostProps) => {
   const { t } = useTranslation("blog");
   const { post, isError, isLoading } = BlogApiService.useIndividualPost(postId);
 

@@ -1,34 +1,34 @@
 {
-  "title": "About me",
-  "page": {
-    "title": "yayu.dev | About me",
-    "description": "About me page"
-  },
   "contact": {
-    "title": "Contact",
     "content": "Want to know more about me or contract my services? Do you have any idea or suggestion to improve this site? Want to talk about web development, philosophy or idols? Contact me!",
     "links": {
       "email": "Email",
       "github": "Github",
       "linkedin": "Linkedin",
       "twitter": "Twitter (hobbies only!)"
-    }
+    },
+    "title": "Contact"
   },
   "hobbies": {
-    "title": "Hobbies",
-    "content": "Besides webdev, my hobbies are philosophy (currently studying a degree!), walking in nature, promoting mental health awareness, watching and attending idol lives events at Japan and watching anime."
+    "content": "Besides webdev, my hobbies are philosophy (currently studying a degree!), walking in nature, promoting mental health awareness, watching and attending idol lives events at Japan and watching anime.",
+    "title": "Hobbies"
   },
   "main-stack": {
-    "title": "Current main stack",
-    "content": "React, Next, Jest, Cypress, Nest, postgres, netlify, AWS"
+    "content": "React, Next, Jest, Cypress, Nest, postgres, netlify, AWS",
+    "title": "Current main stack"
   },
   "me": {
-    "title": "Me",
-    "content": "Hi! I'm Arturo Coronel (you can call me Yayu). I'm 27, live in Mexico but I spend a LOT of time in Japan so there always a 50/50 chance you'll find me there. I ❤ web development and I love helping and teaching others about it."
+    "content": "Hi! I'm Arturo Coronel (you can call me Yayu). I'm 27, live in Mexico but I spend a LOT of time in Japan so there always a 50/50 chance you'll find me there. I ❤ web development and I love helping and teaching others about it.",
+    "title": "Me"
   },
+  "page": {
+    "description": "About me page",
+    "title": "yayu.dev | About me"
+  },
+  "title": "About me",
   "work-experience": {
-    "title": "Work Experience",
-    "content-1": "I've been working as a fullstack developer for 10 years, focusing mainly on the front-end. I've been in both small and big teams as a lead and individual contributor. Worked on different sectors such as consumer applications, B2B data analysis applications, healtcare, government and scientific/genomic research applications.",
-    "content-2": "Personally I care a lot about topics such as accessibility, frontend performance, developer experience (tooling, flows, etc), testing and automating stuff (CI/CD); and I'm always trying to promote those ideas in the teams I've worked with."
+    "content-1": "I've been working as a fullstack developer for 10 years, focusing mainly on the front-end. I've been in both small and big teams as a lead and individual contributor. Worked on different sectors such as consumer applications, B2B data analysis applications, healthcare, government and scientific/genomic research applications.",
+    "content-2": "Personally I care a lot about topics such as accessibility, frontend performance, developer experience (tooling, flows, etc), testing and automating stuff (CI/CD); and I'm always trying to promote those ideas in the teams I've worked with.",
+    "title": "Work Experience"
   }
 }

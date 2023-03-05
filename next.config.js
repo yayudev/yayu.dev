@@ -15,10 +15,12 @@ if (DEV_ENV) {
 if (ENABLE_DEV_PROXY) {
   const ip = require("ip");
   address = ip.address();
+  // noinspection HttpUrlsUsage
   SERVER_URL = `http://${address}:${PORT}`;
   console.log(`Running on ${SERVER_URL}`);
 }
 
+// noinspection JSUnusedGlobalSymbols
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Compile options

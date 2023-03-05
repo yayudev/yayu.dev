@@ -49,6 +49,9 @@ const SelfieContainer = styled.div`
 
 const Selfie = styled(Image)`
   border-radius: 20px;
+  height: auto;
+  width: auto;
+  aspect-ratio: 1;
 `;
 
 export async function getStaticProps({ locale }: { locale: string }) {
@@ -80,18 +83,16 @@ const About: NextPage = () => {
 
         <SelfieContainer>
           <Selfie
-            src="/images/avatar_2.jpg"
+            src="/images/avatar_1.jpg"
+            alt="Arturo Coronel's selfie 1"
             width="200"
-            height="250"
-            objectFit="cover"
-            objectPosition="top"
+            height="200"
           />
           <Selfie
-            src="/images/avatar_1.jpg"
+            src="/images/avatar_2.jpg"
+            alt="Arturo Coronel's selfie 2"
             width="200"
-            height="250"
-            objectFit="cover"
-            objectPosition="top"
+            height="200"
           />
         </SelfieContainer>
 

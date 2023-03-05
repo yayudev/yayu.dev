@@ -12,7 +12,7 @@ const Container = styled.footer`
   color: var(--text-color);
 `;
 
-const ButtonLabel = styled.a`
+const ButtonLabel = styled.span`
   cursor: pointer;
   margin: 0 2rem;
   color: var(--clickable-link-color);
