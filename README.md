@@ -48,6 +48,7 @@ Stuff that needs to be done before release:
 - [x] About page
 - [x] i18n setup
 - [ ] Replace mocks folder data with proper i18n json files **_<<< Currently here_**
+- [ ] Transition to NextJS 13's app directory
 - [ ] Migrate API from v2 to Next's api routes (or maybe static pre-generated assets?)
 - [ ] Disable Animations via settings
 - [ ] Blog comments
