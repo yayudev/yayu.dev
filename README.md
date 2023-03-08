@@ -47,20 +47,25 @@ Stuff that needs to be done before release:
 - [x] Projects feature
 - [x] About page
 - [x] i18n setup
-- [ ] Replace mocks folder data with proper i18n json files **_<<< Currently here_**
-- [ ] Transition to NextJS 13's app directory
-- [ ] Migrate API from v2 to Next's api routes (or maybe static pre-generated assets?)
-- [ ] Disable Animations via settings
+- [x] Check i18n for typos
+- [ ] Fix settings tooltip growing when too much text
+- [ ] Replace links to .xyz to .dev and datyayu to yayudev where required.
 - [ ] Blog comments
 - [ ] Blog social share / Open graph setup
-- [ ] Fix settings tooltip growing when too much text
 - [ ] Mobile design
-- [ ] Google Analytics
-- [ ] Replace links to .xyz to .dev and datyayu to yayudev where required.
-- [ ] Check i18n for typos
-- [ ] Configure CORS and security whitelist
+  - [ ] Home
+  - [ ] About
+  - [ ] Playground
+  - [ ] Blog
+  - [ ] Blog (post)
+  - [ ] Settings
 - [ ] Re-host images in a dedicated s3 bucket
+- [ ] Google Analytics
+- [ ] Disable Animations via settings
+- [ ] Configure CORS and security whitelist
 - [ ] Redirect v2 to v3
+- [ ] Transition to NextJS 13's app directory (waiting for better i18n support)
+- [ ] Migrate API from v2 to Next's api routes (or maybe static pre-generated assets?)
 
 ### Post-release:
 
