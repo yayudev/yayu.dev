@@ -44,7 +44,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
 }
 
 const Playground: NextPage = () => {
-  const { t } = useTranslation("playground");
+  const { t } = useTranslation("");
   const [filterTag, setFilterTag] = useState<TechnologyTag>(TechnologyTag.ALL);
   const [currentSort, setCurrentSort] = useState<SortType>(
     SortType.BY_MOST_RECENT
@@ -83,10 +83,18 @@ const Playground: NextPage = () => {
   }
 
   return (
-    <PageLayout title={t("title")}>
+    <PageLayout title={t("playground:title")}>
       <Head>
-        <title>{t("page-title")}</title>
-        <meta name="description" content={t("page-description") ?? ""} />
+        <title>{t("playground:page-title")}</title>
+        <meta
+          name="description"
+          content={t("playground:page-description") ?? ""}
+        />
+        <meta property="og:title" content={t("playground:page-title") ?? ""} />
+        <meta
+          property="og:description"
+          content={t("playground:page-description") ?? ""}
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

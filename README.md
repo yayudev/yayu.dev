@@ -51,7 +51,7 @@ Stuff that needs to be done before release:
 - [X] Fix settings tooltip growing when too much text
 - [X] Replace links to .xyz to .dev and datyayu to yayudev where required.
 - [X] Blog comments
-- [ ] Blog social share / Open graph setup
+- [X] Blog social share / Open graph setup
 - [ ] Mobile design
   - [ ] Home
   - [ ] About
@@ -72,6 +72,7 @@ Stuff that needs to be done before release:
 Good to have things that will be added eventually but not 100% required for initial release.
 
 - [ ] Loading skeletons
+- [ ] Use jotai/signals instead of context.
 - [ ] Resume download
 - [ ] Skill sheet
 - [ ] Testing

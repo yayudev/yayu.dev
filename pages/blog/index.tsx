@@ -8,7 +8,7 @@ import { BlogPostsList } from "@/components/blog/blog-posts-list";
 import { PageLayout } from "@/layouts/page";
 import { BlogApiService } from "@/services/blog-api";
 
-const DEFAULT_PAGE_SIZE = 5;
+const DEFAULT_PAGE_SIZE = 5; // TODO: Move this into config file
 
 interface BlogIndexProps {
   page: number;
@@ -64,19 +64,24 @@ const BlogIndex: NextPage<BlogIndexProps> = ({
   page,
   hasNextPage = false,
 }: BlogIndexProps) => {
-  const { t } = useTranslation("blog");
+  const { t } = useTranslation();
   const { postList, isError, isLoading } = BlogApiService.usePostList(page);
 
   return (
     <PageLayout
-      title={t("title") ?? ""}
+      title={t("blog:title") ?? ""}
       isLoading={isLoading}
       hasError={isError}
-      subtitle={page !== 1 ? t("page-number", { n: page }) ?? "" : ""}
+      subtitle={page !== 1 ? t("blog:page-number", { n: page }) ?? "" : ""}
     >
       <Head>
-        <title>{t("page-title")}</title>
-        <meta name="description" content={t("page-description") ?? ""} />
+        <title>{t("blog:page-title")}</title>
+        <meta name="description" content={t("blog:page-description") ?? ""} />
+        <meta property="og:title" content={t("blog:page-title") ?? ""} />
+        <meta
+          property="og:description"
+          content={t("blog:page-description") ?? ""}
+        />
         <link rel="icon" href="/public/favicon.ico" />
       </Head>
 

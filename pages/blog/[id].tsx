@@ -130,7 +130,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 };
 
 const BlogPostPage = ({ postId }: BlogPostProps) => {
-  const { t } = useTranslation("blog");
+  const { t } = useTranslation();
   const { post, isError, isLoading } = BlogApiService.useIndividualPost(postId);
 
   return (
@@ -141,8 +141,11 @@ const BlogPostPage = ({ postId }: BlogPostProps) => {
       hasError={isError}
     >
       <Head>
-        <title>{t("page-individual-title", { title: post?.title })}</title>
+        <title>{t("blog:page-individual-title", { title: post?.title })}</title>
         <meta name="description" content={post?.excerpt} />
+        <meta property="og:title" content={post?.title} />
+        <meta property="og:description" content={post?.excerpt} />
+        <meta property="og:image" content={post?.image} />
       </Head>
 
       <PostContainer>

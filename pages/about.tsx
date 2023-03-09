@@ -67,19 +67,24 @@ export async function getStaticProps({ locale }: { locale: string }) {
 }
 
 const About: NextPage = () => {
-  const { t } = useTranslation("about");
+  const { t } = useTranslation();
 
   return (
-    <PageLayout title={t("title")}>
+    <PageLayout title={t("about:title")}>
       <Head>
-        <title>{t("page.title")}</title>
-        <meta name="description" content={t("page.description") ?? ""} />
+        <title>{t("about:page.title")}</title>
+        <meta name="description" content={t("about:page.description") ?? ""} />
+        <meta property="og:title" content={t("about:page.title") ?? ""} />
+        <meta
+          property="og:description"
+          content={t("about:page.description") ?? ""}
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Content>
-        <SectionTitle>{t("me.title")}</SectionTitle>
-        <SectionContent>{t("me.content")}</SectionContent>
+        <SectionTitle>{t("about:me.title")}</SectionTitle>
+        <SectionContent>{t("about:me.content")}</SectionContent>
 
         <SelfieContainer>
           <Selfie
@@ -96,22 +101,22 @@ const About: NextPage = () => {
           />
         </SelfieContainer>
 
-        <SectionTitle>{t("hobbies.title")}</SectionTitle>
-        <SectionContent>{t("hobbies.content")}</SectionContent>
+        <SectionTitle>{t("about:hobbies.title")}</SectionTitle>
+        <SectionContent>{t("about:hobbies.content")}</SectionContent>
 
-        <SectionTitle>{t("work-experience.title")}</SectionTitle>
-        <SectionContent>{t("work-experience.content-1")}</SectionContent>
-        <SectionContent>{t("work-experience.content-2")}</SectionContent>
+        <SectionTitle>{t("about:work-experience.title")}</SectionTitle>
+        <SectionContent>{t("about:work-experience.content-1")}</SectionContent>
+        <SectionContent>{t("about:work-experience.content-2")}</SectionContent>
 
-        <SectionTitle>{t("main-stack.title")}</SectionTitle>
-        <SectionContent>{t("main-stack.content")}</SectionContent>
+        <SectionTitle>{t("about:main-stack.title")}</SectionTitle>
+        <SectionContent>{t("about:main-stack.content")}</SectionContent>
 
-        <SectionTitle>{t("contact.title")}</SectionTitle>
-        <SectionContent>{t("contact.content")}</SectionContent>
+        <SectionTitle>{t("about:contact.title")}</SectionTitle>
+        <SectionContent>{t("about:contact.content")}</SectionContent>
         <ContactLinks>
           <li>
             <a href="mailto:contact@yayu.dev" target="_blank" rel="noreferrer">
-              {t("contact.links.email")}
+              {t("about:contact.links.email")}
             </a>
           </li>
           <li>
@@ -120,7 +125,7 @@ const About: NextPage = () => {
               target="_blank"
               rel="noreferrer"
             >
-              {t("contact.links.github")}
+              {t("about:contact.links.github")}
             </a>
           </li>
           <li>
@@ -129,7 +134,7 @@ const About: NextPage = () => {
               target="_blank"
               rel="noreferrer"
             >
-              {t("contact.links.linkedin")}
+              {t("about:contact.links.linkedin")}
             </a>
           </li>
           <li>
@@ -138,7 +143,7 @@ const About: NextPage = () => {
               target="_blank"
               rel="noreferrer"
             >
-              {t("contact.links.twitter")}
+              {t("about:contact.links.twitter")}
             </a>
           </li>
         </ContactLinks>
