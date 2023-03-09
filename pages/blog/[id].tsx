@@ -6,6 +6,8 @@ import styled from "styled-components";
 
 import { PageLayout } from "@/layouts/page";
 import { BlogApiService } from "@/services/blog-api";
+import { DiscussionEmbed } from "disqus-react";
+import RenderIfVisible from "react-render-if-visible";
 
 interface BlogPostProps {
   postId: string;
@@ -84,6 +86,11 @@ const PostContainer = styled.div`
   }
 `;
 
+const CommentsContainer = styled.div`
+  min-height: 10rem;
+  padding: 0 2rem;
+`;
+
 export const getServerSideProps: GetServerSideProps = async ({
   query,
   locale,
@@ -141,6 +148,18 @@ const BlogPostPage = ({ postId }: BlogPostProps) => {
       <PostContainer>
         {post && <div dangerouslySetInnerHTML={{ __html: post?.html }} />}
       </PostContainer>
+
+      <CommentsContainer>
+        <RenderIfVisible stayRendered>
+          <DiscussionEmbed
+            shortname="datyayu"
+            config={{
+              identifier: postId,
+              title: post?.title,
+            }}
+          />
+        </RenderIfVisible>
+      </CommentsContainer>
     </PageLayout>
   );
 };
