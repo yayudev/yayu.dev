@@ -48,7 +48,7 @@ Stuff that needs to be done before release:
 - [x] About page
 - [x] i18n setup
 - [x] Check i18n for typos
-- [ ] Fix settings tooltip growing when too much text
+- [X] Fix settings tooltip growing when too much text
 - [ ] Replace links to .xyz to .dev and datyayu to yayudev where required.
 - [ ] Blog comments
 - [ ] Blog social share / Open graph setup
@@ -84,6 +84,7 @@ Good to have things that will be added eventually but not 100% required for init
 - [ ] Release log
 - [ ] Contributing guidelines
 - [ ] Full screen experiment expansion
+- [ ] Refactor MarqueeScroller into a standalone component package for re-usability
 
 # Contributing
 

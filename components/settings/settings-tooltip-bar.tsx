@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 import { useTranslation } from "next-i18next";
+import { MarqueScroller } from "@/components/settings/marque-scroller";
 
 interface SettingsTooltipBarProps {
   textKey: string;
@@ -37,14 +38,6 @@ const LeftBlock = styled.div`
     margin-left: 13px;
     background-color: var(--alt-text-color);
   }
-`;
-
-const Text = styled.p`
-  color: var(--alt-text-color);
-  font-size: 1.5rem;
-  margin: 1rem 1rem 1rem 2rem;
-  flex: 1;
-  min-height: 2rem;
 `;
 
 const ControlsContainer = styled(motion.div)`
@@ -121,13 +114,11 @@ export function SettingsTooltipBar({
   return (
     <Container>
       <LeftBlock />
-      <Text
-        aria-label={
-          t("settings:tooltip.ariaLabel", { description: text }) ?? ""
-        }
-      >
-        {text}
-      </Text>
+
+      <MarqueScroller
+        ariaLabel={t("settings:tooltip.ariaLabel", { description: text }) ?? ""}
+        text={text}
+      />
 
       <ControlsContainer
         initial={{ opacity: 0 }}
