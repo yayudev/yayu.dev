@@ -53,7 +53,8 @@ Stuff that needs to be done before release:
 - [X] Blog comments
 - [X] Blog social share / Open graph setup
 - [ ] Mobile design
-  - [ ] Home
+  - [X] Home
+  - [X] Side menu
   - [ ] About
   - [ ] Playground
   - [ ] Blog

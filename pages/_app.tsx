@@ -1,6 +1,5 @@
 import { AppProps } from "next/app";
 import Head from "next/head";
-import { useRouter } from "next/router";
 import { appWithTranslation } from "next-i18next";
 import styled from "styled-components";
 
@@ -19,23 +18,11 @@ const AppContentWrapper = styled.div`
   display: flex;
 `;
 
-const HomeMenuWrapper = styled.div<{ fullwidth: boolean }>`
-  transition: width 250ms ease-in-out;
-  width: ${(props) => (props.fullwidth ? "100%" : "300px")};
-  min-width: 300px;
-  box-shadow: 0 0 20px 2px var(--box-shadow-color);
-  z-index: 2;
-`;
-
 function AppContent({ Component, pageProps }: AppProps) {
-  const router = useRouter();
-  const isHome = router.route === "/";
-
   return (
     <AppContentWrapper>
-      <HomeMenuWrapper fullwidth={isHome}>
-        <HomeMenu />
-      </HomeMenuWrapper>
+      <HomeMenu />
+
       <Component {...pageProps} />
       <Settings />
     </AppContentWrapper>

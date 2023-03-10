@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
 import { ErrorMessage } from "@/components/shared/error-message";
 import { Loader } from "@/components/shared/loader";
+import { MEDIA_QUERY_TABLET } from "@/config/media-queries";
 
 const Container = styled.div`
   width: 100%;
@@ -14,6 +15,10 @@ const Container = styled.div`
   background: var(--background-for-content);
   display: flex;
   flex-direction: column;
+
+  ${MEDIA_QUERY_TABLET} {
+    padding-top: 3.5rem;
+  }
 `;
 
 const TitleContainer = styled.div`
