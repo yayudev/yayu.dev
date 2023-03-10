@@ -13,13 +13,13 @@ const Container = styled.nav<{ activeOnMobile: boolean; fullWidth: boolean }>`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  transition: width 250ms ease-in-out;
   width: ${(props) => (props.fullWidth ? "100%" : "300px")};
   min-width: 300px;
   height: 100vh;
   overflow: hidden;
   box-shadow: 0 0 20px 2px var(--box-shadow-color);
-  transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: width 250ms ease-in-out, opacity 250ms ease-in-out,
+    transform 250ms ease-in-out;
   z-index: 2;
 
   ${MEDIA_QUERY_TABLET} {
