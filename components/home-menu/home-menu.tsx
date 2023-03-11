@@ -8,7 +8,12 @@ import { useEffect, useState } from "react";
 import { useWindowSize } from "@/hooks/use-window-size";
 import { HomeMenuIcon } from "@/components/home-menu/home-menu-icon";
 
-const Container = styled.nav<{ activeOnMobile: boolean; fullWidth: boolean }>`
+interface MenuButtonProps {
+  activeOnMobile: boolean;
+  fullWidth: boolean;
+}
+
+const Container = styled.nav<MenuButtonProps>`
   background-image: url("/images/background.png");
   background-size: cover;
   background-position: center;
@@ -78,11 +83,13 @@ export function HomeMenu() {
   }
 
   return (
-    <Container activeOnMobile={activeOnMobile} fullWidth={isHome}>
-      <HomeMenuIcon
-        activeOnMobile={activeOnMobile}
-        onClick={toggleMobileMenu}
-      />
+    <Container activeOnMobile={isHome || activeOnMobile} fullWidth={isHome}>
+      {!isHome && (
+        <HomeMenuIcon
+          activeOnMobile={activeOnMobile}
+          onClick={toggleMobileMenu}
+        />
+      )}
 
       <Content>
         <LogoImageLink href="/" passHref>

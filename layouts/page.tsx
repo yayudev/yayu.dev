@@ -18,6 +18,7 @@ const Container = styled.div`
 
   ${MEDIA_QUERY_TABLET} {
     padding-top: 3.5rem;
+    padding: 0;
   }
 `;
 
@@ -25,6 +26,10 @@ const TitleContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+
+  ${MEDIA_QUERY_TABLET} {
+    padding: 0.25rem 3% 0 5.5rem;
+  }
 `;
 
 const Title = styled(motion.h1)<{ $isAestheticTitle: boolean }>`
@@ -36,6 +41,12 @@ const Title = styled(motion.h1)<{ $isAestheticTitle: boolean }>`
   transform-origin: left;
   text-align: ${(props) => (props.$isAestheticTitle ? "start" : "center")};
   will-change: transfom, opacity;
+
+  ${MEDIA_QUERY_TABLET} {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 `;
 
 const Subtitle = styled(motion.h4)`
@@ -54,6 +65,10 @@ const Content = styled(motion.div)`
   overflow-y: auto;
   transform-origin: top;
   will-change: transform, opacity;
+
+  ${MEDIA_QUERY_TABLET} {
+    padding: 0 3%;
+  }
 `;
 
 export interface PageLayoutProps {
