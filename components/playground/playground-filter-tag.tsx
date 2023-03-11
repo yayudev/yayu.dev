@@ -4,7 +4,7 @@ import { TechnologyTag } from "@/types/experiments";
 const Tag = styled.li<{ active: boolean }>`
   list-style: none;
   padding: 0.25rem 0.5rem;
-  margin: 0 0.5rem;
+  margin: 0 0.5rem 1rem 0;
   cursor: pointer;
   color: ${({ active }) => {
     return active ? css`var(--link-color)` : css`var(--text-color)`;

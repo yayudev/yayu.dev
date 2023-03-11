@@ -12,6 +12,7 @@ import { ExperimentData, SortType, TechnologyTag } from "@/types/experiments";
 import { PageLayout } from "@/layouts/page";
 
 import { experiments } from "../mocks/experiments";
+import { MEDIA_QUERY_TABLET } from "@/config/media-queries";
 
 const Content = styled.div`
   padding-top: 0;
@@ -26,9 +27,10 @@ const OptionsBar = styled.div`
   top: 0;
   left: 0;
   align-items: flex-start;
-  flex-direction: row-reverse;
   justify-content: space-between;
   padding: 1rem 0 1.5rem 0;
+  flex-direction: column;
+  place-items: center;
 `;
 
 export async function getStaticProps({ locale }: { locale: string }) {
@@ -100,13 +102,14 @@ const Playground: NextPage = () => {
 
       <Content>
         <OptionsBar>
-          <PlaygroundSortingOptions
-            currentSort={currentSort}
-            onChange={changeSort}
-          />
           <PlaygroundFilterList
             selectedTag={filterTag}
             onTagChange={toggleTag}
+          />
+
+          <PlaygroundSortingOptions
+            currentSort={currentSort}
+            onChange={changeSort}
           />
         </OptionsBar>
 
