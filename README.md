@@ -76,9 +76,10 @@ Good to have things that will be added eventually but not 100% required for init
 
 - [ ] Loading skeletons
 - [ ] Use jotai/signals instead of context.
-- [ ] Resume download
-- [ ] Skill sheet
+- [ ] Resume/CV pdf download
 - [ ] Testing
+- [ ] Skill sheet
+- [ ] Light/dark mode
 - [ ] Github actions CI testing/deploy pipeline
 - [ ] lighthouse audit
 - [ ] Test coverage setup

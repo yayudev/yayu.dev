@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 import { useTranslation } from "next-i18next";
 import { MarqueScroller } from "@/components/settings/marque-scroller";
+import { MEDIA_QUERY_TABLET } from "@/config/media-queries";
 
 interface SettingsTooltipBarProps {
   textKey: string;
@@ -46,6 +47,10 @@ const ControlsContainer = styled(motion.div)`
   align-items: center;
   margin-right: 2rem;
   text-align: center;
+
+  ${MEDIA_QUERY_TABLET} {
+    display: none;
+  }
 `;
 
 const ButtonIconContainer = styled.div`
