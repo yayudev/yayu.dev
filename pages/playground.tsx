@@ -12,7 +12,6 @@ import { ExperimentData, SortType, TechnologyTag } from "@/types/experiments";
 import { PageLayout } from "@/layouts/page";
 
 import { experiments } from "../mocks/experiments";
-import { MEDIA_QUERY_TABLET } from "@/config/media-queries";
 
 const Content = styled.div`
   padding-top: 0;
