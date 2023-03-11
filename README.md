@@ -55,7 +55,7 @@ Stuff that needs to be done before release:
 - [ ] Mobile design
   - [X] Home
   - [X] Side menu
-  - [ ] About
+  - [X] About
   - [ ] Playground
   - [ ] Blog
   - [ ] Blog (post)

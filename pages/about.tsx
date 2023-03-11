@@ -6,6 +6,7 @@ import { useTranslation } from "next-i18next";
 import styled from "styled-components";
 
 import { PageLayout } from "@/layouts/page";
+import { MEDIA_QUERY_PHONE } from "@/config/media-queries";
 
 const Content = styled.div`
   padding-top: 0;
@@ -52,6 +53,14 @@ const Selfie = styled(Image)`
   height: auto;
   width: auto;
   aspect-ratio: 1;
+
+  ${MEDIA_QUERY_PHONE} {
+    aspect-ratio: 4 / 5;
+
+    &:last-child {
+      display: none;
+    }
+  }
 `;
 
 export async function getStaticProps({ locale }: { locale: string }) {

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
 import { ErrorMessage } from "@/components/shared/error-message";
 import { Loader } from "@/components/shared/loader";
-import { MEDIA_QUERY_TABLET } from "@/config/media-queries";
+import { MEDIA_QUERY_PHONE, MEDIA_QUERY_TABLET } from "@/config/media-queries";
 
 const Container = styled.div`
   width: 100%;
@@ -28,7 +28,11 @@ const TitleContainer = styled.div`
   justify-content: flex-start;
 
   ${MEDIA_QUERY_TABLET} {
-    padding: 0.25rem 3% 0 5.5rem;
+    padding: 0.5rem 3% 0 5.5rem;
+  }
+
+  ${MEDIA_QUERY_PHONE} {
+    padding: 0.75rem 3% 0 5.5rem;
   }
 `;
 
@@ -41,11 +45,17 @@ const Title = styled(motion.h1)<{ $isAestheticTitle: boolean }>`
   transform-origin: left;
   text-align: ${(props) => (props.$isAestheticTitle ? "start" : "center")};
   will-change: transfom, opacity;
+  width: 100%;
 
   ${MEDIA_QUERY_TABLET} {
+    font-size: 3rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  ${MEDIA_QUERY_PHONE} {
+    font-size: 2.5rem;
   }
 `;
 
