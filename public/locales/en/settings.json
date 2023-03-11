@@ -3,6 +3,7 @@
     "ENTER": "Enter",
     "ESC": "Esc",
     "Shift": "Shift",
+    "ShiftTab": "Shift + Tab",
     "Tab": "Tab",
     "separator": " / "
   },

@@ -69,6 +69,7 @@ const ButtonIconText = styled.span`
   align-items: center;
   display: flex;
   justify-content: center;
+  white-space: nowrap;
   margin: 2px;
   padding: 1px 4px;
   font-size: 0.8rem;
