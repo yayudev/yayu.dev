@@ -11,13 +11,11 @@ const Container = styled.div`
   padding: 1rem 3% 2rem 3%;
   position: relative;
   overflow-x: hidden;
-  overflow-y: auto;
   background: var(--background-for-content);
   display: flex;
   flex-direction: column;
 
   ${MEDIA_QUERY_TABLET} {
-    padding-top: 3.5rem;
     padding: 0;
   }
 `;

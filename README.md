@@ -57,8 +57,8 @@ Stuff that needs to be done before release:
   - [X] Side menu
   - [X] About
   - [X] Playground
-  - [ ] Blog
-  - [ ] Blog (post)
+  - [X] Blog
+  - [X] Blog (post)
   - [ ] Settings
 - [ ] Fix scroll on mobile
 - [ ] Re-host images in a dedicated s3 bucket

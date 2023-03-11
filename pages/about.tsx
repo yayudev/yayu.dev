@@ -53,6 +53,7 @@ const Selfie = styled(Image)`
   height: auto;
   width: auto;
   aspect-ratio: 1;
+  object-fit: cover;
 
   ${MEDIA_QUERY_PHONE} {
     aspect-ratio: 4 / 5;

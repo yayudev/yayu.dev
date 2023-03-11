@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styled from "styled-components";
 import { useTranslation } from "next-i18next";
+import { MEDIA_QUERY_PHONE, MEDIA_QUERY_TABLET } from "@/config/media-queries";
 
 const BlogPostArticleContent = styled.div`
   font-family: "Open sans", "Helvetica Neue", "Segoe UI", "arial",
@@ -19,6 +20,24 @@ const BlogPostArticleContent = styled.div`
   &:hover {
     background-color: var(--background-alt);
   }
+
+  ${MEDIA_QUERY_PHONE} {
+    flex-direction: column;
+    place-items: center;
+  }
+`;
+
+const StyledLink = styled(Link)`
+  display: block;
+`;
+
+const StyledImage = styled(Image)`
+  ${MEDIA_QUERY_PHONE} {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+  }
 `;
 
 const ArticleContainer = styled.article`
@@ -29,6 +48,14 @@ const ArticleContainer = styled.article`
     background: var(--item-background);
     height: 2px;
     width: 75%;
+
+    ${MEDIA_QUERY_TABLET} {
+      width: 80%;
+    }
+
+    ${MEDIA_QUERY_PHONE} {
+      width: 90%;
+    }
   }
 
   &:first-child {
@@ -50,6 +77,7 @@ const Title = styled.h2`
   font-size: 2rem;
   margin: 0 0 0.5rem 0;
   line-height: 1em;
+  word-wrap: anywhere;
 `;
 
 const DateText = styled.span`
@@ -60,6 +88,7 @@ const DateText = styled.span`
 const Excerpt = styled.p`
   font-size: 1.2rem;
   margin: 0.5rem 0;
+  word-wrap: anywhere;
 `;
 
 interface BlogPostItemProps {
@@ -72,9 +101,9 @@ export function BlogPostItem({ post }: BlogPostItemProps) {
 
   return (
     <ArticleContainer>
-      <Link href={`/blog/${post.url}`} passHref>
+      <StyledLink href={`/blog/${post.url}`}>
         <BlogPostArticleContent>
-          <Image
+          <StyledImage
             src={postImage}
             width={150}
             height={200}
@@ -91,7 +120,7 @@ export function BlogPostItem({ post }: BlogPostItemProps) {
             <Excerpt>{post.excerpt}</Excerpt>
           </BlogPostInfo>
         </BlogPostArticleContent>
-      </Link>
+      </StyledLink>
     </ArticleContainer>
   );
 }
