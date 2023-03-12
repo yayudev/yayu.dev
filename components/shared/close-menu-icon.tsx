@@ -1,7 +1,8 @@
 import styled from "styled-components";
+
 import { MEDIA_QUERY_TABLET } from "@/config/media-queries";
 
-export interface HomeMenuIconProps {
+interface HomeMenuIconProps {
   showCloseIcon?: boolean;
   onClick?: () => void;
 }

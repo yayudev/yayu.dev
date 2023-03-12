@@ -1,11 +1,12 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
+
 import { MEDIA_QUERY_TABLET } from "@/config/media-queries";
 
-type SettingsMenuLevelProps = {
+interface SettingsMenuLevelProps {
   isChildMenu?: boolean;
   children: ReactNode;
-};
+}
 
 const Container = styled.div<SettingsMenuLevelProps>`
   display: flex;

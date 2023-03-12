@@ -1,8 +1,3 @@
-export type SettingsMenuItemOption = {
-  text: string;
-  value: string;
-};
-
 export enum MenuCategory {
   CONTENT = "content",
   BLOG = "blog",
@@ -26,3 +21,8 @@ export enum SettingsLanguageOptions {
   ENGLISH = "en",
   SPANISH = "es",
 }
+
+export type SettingsMenuItemOption = {
+  text: string;
+  value: string;
+};

@@ -5,8 +5,9 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import styled from "styled-components";
 
-import { PageLayout } from "@/layouts/page";
 import { MEDIA_QUERY_PHONE } from "@/config/media-queries";
+
+import { PageLayout } from "@/layouts/page";
 
 const Content = styled.div`
   padding-top: 0;

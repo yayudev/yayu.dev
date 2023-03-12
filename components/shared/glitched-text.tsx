@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
 import styled, { keyframes } from "styled-components";
 
-type GlitchedTextProps = {
+interface GlitchedTextProps {
   children: ReactNode;
   animate: boolean;
-};
+}
 
 const pathKeyframes = keyframes`
   0% {

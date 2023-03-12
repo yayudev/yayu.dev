@@ -1,8 +1,9 @@
-import { BlogPost } from "@/types/blog-api";
 import Link from "next/link";
 import Image from "next/image";
 import styled from "styled-components";
 import { useTranslation } from "next-i18next";
+
+import { BlogPost } from "@/types/blog-api";
 import { MEDIA_QUERY_PHONE, MEDIA_QUERY_TABLET } from "@/config/media-queries";
 
 const BlogPostArticleContent = styled.div`

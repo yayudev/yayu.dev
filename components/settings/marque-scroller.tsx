@@ -1,8 +1,9 @@
 import { useEffect, useRef } from "react";
 import styled from "styled-components";
+
 import { useWindowSize } from "@/hooks/use-window-size";
 
-export interface MarqueeScrollerProps {
+interface MarqueeScrollerProps {
   // Scroll duration in ms
   duration?: number;
   // Time after render before the animation starts

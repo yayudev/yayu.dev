@@ -8,24 +8,14 @@ export enum TechnologyTag {
   No_JS = "html-css",
 }
 
-export const TechnologyTagsList = [
-  TechnologyTag.ALL,
-  TechnologyTag.Angular,
-  TechnologyTag.React,
-  TechnologyTag.Svelte,
-  TechnologyTag.Vue,
-  TechnologyTag.Vanilla_JS,
-  TechnologyTag.No_JS,
-];
-
-export interface ExperimentData {
-  img: string;
-  title: string;
-  url: string;
-  tags: TechnologyTag[];
-}
-
 export enum SortType {
   BY_MOST_RECENT,
   BY_NAME,
 }
+
+export type ExperimentData = {
+  img: string;
+  title: string;
+  url: string;
+  tags: TechnologyTag[];
+};

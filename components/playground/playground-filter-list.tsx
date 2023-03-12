@@ -1,10 +1,12 @@
-import styled from "styled-components";
 import { useTranslation } from "next-i18next";
+import styled from "styled-components";
+
+import { TechnologyTag } from "@/types/experiments";
+import { TechnologyTagsList } from "@/config/experiments";
 
 import { PlaygroundFilterTag } from "@/components/playground/playground-filter-tag";
-import { TechnologyTag, TechnologyTagsList } from "@/types/experiments";
 
-export interface PlaygroundFilterProps {
+interface PlaygroundFilterProps {
   selectedTag: TechnologyTag;
   onTagChange: (tag: TechnologyTag) => void;
 }

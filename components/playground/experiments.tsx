@@ -1,9 +1,11 @@
-import styled from "styled-components";
-import { LayoutGroup } from "framer-motion";
 import { useState } from "react";
+import { LayoutGroup } from "framer-motion";
+import styled from "styled-components";
+
+import { ExperimentData } from "@/types/experiments";
+
 import { PlaygroundFrame } from "@/components/playground/playground-frame";
 import { ExperimentItem } from "@/components/playground/experiment-item";
-import { ExperimentData } from "@/types/experiments";
 
 const Container = styled.div`
   display: grid;

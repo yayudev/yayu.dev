@@ -1,10 +1,11 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
 
-import { SettingsBorder } from "./settings-border";
-import { SettingsBGAnimations } from "./settings-bg-animations";
 import { MEDIA_QUERY_TABLET } from "@/config/media-queries";
 import { useMobileLayout } from "@/hooks/user-mobile-layout";
+
+import { SettingsBGAnimations } from "@/components/settings/settings-bg-animations";
+import { SettingsBorder } from "@/components/settings/settings-border";
 
 interface SettingsBGWrapperProps {
   children: ReactNode;

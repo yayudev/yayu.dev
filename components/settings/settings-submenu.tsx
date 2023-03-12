@@ -7,7 +7,6 @@ import {
   SettingsLanguageOptions,
   SettingsToggleOptions,
 } from "@/types/settings-menu";
-
 import {
   animationsAtom,
   commentsAtom,

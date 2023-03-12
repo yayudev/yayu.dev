@@ -1,13 +1,13 @@
+import { DiscussionEmbed } from "disqus-react";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import RenderIfVisible from "react-render-if-visible";
 import styled from "styled-components";
 
 import { PageLayout } from "@/layouts/page";
 import { BlogApiService } from "@/services/blog-api";
-import { DiscussionEmbed } from "disqus-react";
-import RenderIfVisible from "react-render-if-visible";
 
 interface BlogPostProps {
   postId: string;

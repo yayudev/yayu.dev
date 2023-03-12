@@ -1,8 +1,9 @@
-import styled from "styled-components";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import styled from "styled-components";
+
 import { ExperimentData } from "@/types/experiments";
-import { useEffect, useState } from "react";
 
 const FrameContainer = styled(motion.div)`
   position: absolute;

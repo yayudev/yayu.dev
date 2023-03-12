@@ -1,8 +1,9 @@
-import styled, { css } from "styled-components";
 import { useTranslation } from "next-i18next";
+import styled, { css } from "styled-components";
+
+import { SortType } from "@/types/experiments";
 
 import { GlitchedText } from "@/components/shared/glitched-text";
-import { SortType } from "@/types/experiments";
 
 const SortingText = styled.div`
   color: var(--text-color);
@@ -28,7 +29,7 @@ const Button = styled.div<{ active: boolean }>`
       : ""}
 `;
 
-export interface PlaygroundSortingOptionsProps {
+interface PlaygroundSortingOptionsProps {
   currentSort: SortType;
   onChange: (sort: SortType) => void;
 }

@@ -3,8 +3,9 @@ import Link from "next/link";
 import styled from "styled-components";
 
 import { useHover } from "@/hooks/use-hover";
-import { HomeMenuItemUnderline } from "./home-menu-item-underline";
-import { GlitchedText } from "../shared/glitched-text";
+
+import { GlitchedText } from "@/components/shared/glitched-text";
+import { HomeMenuItemUnderline } from "@/components/home-menu/home-menu-item-underline";
 
 interface HomeMenuItemProps {
   href?: string;
@@ -37,8 +38,11 @@ export function HomeMenuItem({ href, children, onClick }: HomeMenuItemProps) {
 
   if (href) {
     link = (
-      <MenuLink href={href} ref={hoverRef as MutableRefObject<HTMLAnchorElement | null>}>
-          <GlitchedText animate={isHovered}>{children}</GlitchedText>
+      <MenuLink
+        href={href}
+        ref={hoverRef as MutableRefObject<HTMLAnchorElement | null>}
+      >
+        <GlitchedText animate={isHovered}>{children}</GlitchedText>
       </MenuLink>
     );
   }

@@ -1,13 +1,15 @@
 import { KeyboardEvent } from "react";
 import styled from "styled-components";
-import { SettingsMenuItemOption } from "@/types/settings-menu";
-import { SettingsOptionSelect } from "@/components/settings/settings-option-select";
 import { useAtom } from "jotai";
-import { activeOptionAtom } from "@/state/settings-menu";
-import { SettingsSubMenu } from "@/components/settings/settings-submenu";
-import { useMobileLayout } from "@/hooks/user-mobile-layout";
 
-type SettingsMenuItemProps = {
+import { useMobileLayout } from "@/hooks/user-mobile-layout";
+import { activeOptionAtom } from "@/state/settings-menu";
+import { SettingsMenuItemOption } from "@/types/settings-menu";
+
+import { SettingsOptionSelect } from "@/components/settings/settings-option-select";
+import { SettingsSubMenu } from "@/components/settings/settings-submenu";
+
+interface SettingsMenuItemProps {
   label: string;
   options?: SettingsMenuItemOption[];
   value?: string;
@@ -16,7 +18,7 @@ type SettingsMenuItemProps = {
   isChildOption?: boolean;
   onClick: () => void;
   onChange?: (value: string) => void;
-};
+}
 
 const ListItem = styled.li<{ isSelected: boolean; isChildOption: boolean }>`
   display: flex;

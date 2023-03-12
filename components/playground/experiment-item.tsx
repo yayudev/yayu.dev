@@ -1,5 +1,6 @@
-import styled from "styled-components";
 import { motion } from "framer-motion";
+import styled from "styled-components";
+
 import { ExperimentData } from "@/types/experiments";
 
 const Item = styled(motion.div)<{ bg: string }>`

@@ -4,7 +4,7 @@ import { useTranslation } from "next-i18next";
 
 import { showSettingsAtom } from "@/state/settings-menu";
 
-import { HomeMenuItem } from "./home-menu-item";
+import { HomeMenuItem } from "@/components/home-menu/home-menu-item";
 
 const MenuList = styled.ul`
   display: flex;

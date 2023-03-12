@@ -1,13 +1,14 @@
 import { KeyboardEvent } from "react";
 import { useTranslation } from "next-i18next";
 import styled from "styled-components";
+
 import { MEDIA_QUERY_TABLET } from "@/config/media-queries";
 
-type SettingsOptionSelectItemProps = {
+interface SettingsOptionSelectItemProps {
   label: string;
   isSelected: boolean;
   onClick: () => void;
-};
+}
 
 const Item = styled.div<{ isSelected: boolean }>`
   display: flex;

@@ -2,9 +2,8 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useAtom } from "jotai";
 
-import { useKeyboard } from "@/hooks/use-keyboard";
-
 import { MEDIA_QUERY_TABLET } from "@/config/media-queries";
+import { useKeyboard } from "@/hooks/use-keyboard";
 import { useMobileLayout } from "@/hooks/user-mobile-layout";
 import {
   activeMenuAtom,

@@ -1,5 +1,6 @@
-import styled from "styled-components";
 import { motion } from "framer-motion";
+import styled from "styled-components";
+
 import { MEDIA_QUERY_TABLET } from "@/config/media-queries";
 
 export const SettingsTitle = styled(motion.h1)`

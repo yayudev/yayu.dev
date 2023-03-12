@@ -22,7 +22,7 @@ const ButtonLabel = styled.span`
   }
 `;
 
-export interface BlogPaginationProps {
+interface BlogPaginationProps {
   prevUrl?: string;
   nextUrl?: string;
 }

@@ -4,13 +4,13 @@ import { useTranslation } from "next-i18next";
 import { SettingsMenuItemOption } from "@/types/settings-menu";
 import { MEDIA_QUERY_PHONE } from "@/config/media-queries";
 
-import { SettingsOptionSelectItem } from "./settings-option-select-item";
+import { SettingsOptionSelectItem } from "@/components/settings/settings-option-select-item";
 
-type SettingsOptionSelectProps = {
+interface SettingsOptionSelectProps {
   options: SettingsMenuItemOption[];
   selectedValue: string;
   onSelect: (value: string) => void;
-};
+}
 
 const Container = styled.div`
   display: flex;

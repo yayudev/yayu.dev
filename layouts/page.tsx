@@ -1,10 +1,12 @@
 import { ReactNode, useEffect, useRef } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import { AnimatePresence, motion } from "framer-motion";
+
+import { MEDIA_QUERY_PHONE, MEDIA_QUERY_TABLET } from "@/config/media-queries";
+
 import { ErrorMessage } from "@/components/shared/error-message";
 import { Loader } from "@/components/shared/loader";
-import { MEDIA_QUERY_PHONE, MEDIA_QUERY_TABLET } from "@/config/media-queries";
 
 const Container = styled.div`
   width: 100%;
@@ -79,7 +81,7 @@ const Content = styled(motion.div)`
   }
 `;
 
-export interface PageLayoutProps {
+interface PageLayoutProps {
   title: string;
   isAestheticTitle?: boolean;
   subtitle?: string;

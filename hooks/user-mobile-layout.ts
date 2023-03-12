@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import { useWindowSize } from "@/hooks/use-window-size";
 import { MAX_WIDTH_TABLET } from "@/config/media-queries";
 

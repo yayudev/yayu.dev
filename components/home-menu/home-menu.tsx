@@ -6,11 +6,11 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 
 import { MEDIA_QUERY_TABLET } from "@/config/media-queries";
+import { useMobileLayout } from "@/hooks/user-mobile-layout";
 import { showMenuOnMobileAtom } from "@/state/application";
 
 import { HomeMenuList } from "@/components/home-menu/home-menu-list";
 import { CloseMenuIcon } from "@/components/shared/close-menu-icon";
-import { useMobileLayout } from "@/hooks/user-mobile-layout";
 
 interface MenuButtonProps {
   showOnMobile: boolean;

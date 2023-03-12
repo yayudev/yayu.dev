@@ -3,6 +3,7 @@ import { useAtom } from "jotai";
 import { useTranslation } from "next-i18next";
 import styled from "styled-components";
 
+import { showMenuOnMobileAtom } from "@/state/application";
 import { activeOptionAtom, showSettingsAtom } from "@/state/settings-menu";
 
 import { SettingsBGWrapper } from "@/components/settings/settings-bg-wrapper";
@@ -10,7 +11,6 @@ import { SettingsTitle } from "@/components/settings/settings-title";
 import { SettingsTooltipBar } from "@/components/settings/settings-tooltip-bar";
 import { SettingsMenu } from "@/components/settings/settings-menu";
 import { CloseMenuIcon } from "@/components/shared/close-menu-icon";
-import { showMenuOnMobileAtom } from "@/state/application";
 
 const Container = styled(motion.div)`
   display: flex;

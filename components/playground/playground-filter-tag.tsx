@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+
 import { TechnologyTag } from "@/types/experiments";
 
 const Tag = styled.li<{ active: boolean }>`
@@ -17,7 +18,7 @@ const Tag = styled.li<{ active: boolean }>`
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
 `;
 
-export interface PlaygroundFilterTagProps {
+interface PlaygroundFilterTagProps {
   label: TechnologyTag;
   active: boolean;
   onClick: () => void;

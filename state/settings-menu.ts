@@ -1,4 +1,5 @@
 import { atom } from "jotai";
+
 import { MenuSubCategory } from "@/types/settings-menu";
 
 export const showSettingsAtom = atom<boolean>(false);
