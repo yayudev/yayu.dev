@@ -23,12 +23,12 @@ const OptionsBar = styled.div`
   display: flex;
   position: sticky;
   background-color: var(--background-for-content);
-  z-index: 9;
+  z-index: 3;
   top: 0;
   left: 0;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 1rem 0 1.5rem 0;
+  padding: 0.5rem 0;
   flex-direction: column;
   place-items: center;
 

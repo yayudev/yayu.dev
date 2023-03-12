@@ -10,7 +10,7 @@ import { Loader } from "@/components/shared/loader";
 
 const Container = styled.div`
   width: 100%;
-  padding: 1rem 3% 2rem 3%;
+  padding: 1rem 0 2rem 0;
   position: relative;
   overflow-x: hidden;
   background: var(--background-for-content);
@@ -26,6 +26,7 @@ const TitleContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  padding: 0 3% 0 3%;
 
   ${MEDIA_QUERY_TABLET} {
     padding: 0.5rem 3% 0 5.5rem;
@@ -75,10 +76,10 @@ const Content = styled(motion.div)`
   overflow-y: auto;
   transform-origin: top;
   will-change: transform, opacity;
+  padding: 0 3%;
 
   ${MEDIA_QUERY_TABLET} {
     overflow-y: initial;
-    padding: 0 3%;
   }
 `;
 
