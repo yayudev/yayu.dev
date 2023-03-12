@@ -63,7 +63,7 @@ Stuff that needs to be done before release:
   - [X] Settings
 - [X] Fix scroll on mobile
 - [X] Re-host images in a dedicated s3 bucket
-- [ ] Add sharing buttons to blog posts
+- [X] Add sharing buttons to blog posts
 - [ ] Add a "back to top" button on blog posts and projects
 - [ ] Swipe gestures for mobile
 - [ ] Google Analytics tracking

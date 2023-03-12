@@ -1,6 +1,7 @@
 import { DiscussionEmbed } from "disqus-react";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import RenderIfVisible from "react-render-if-visible";
@@ -8,6 +9,8 @@ import styled from "styled-components";
 
 import { PageLayout } from "@/layouts/page";
 import { BlogApiService } from "@/services/blog-api";
+
+import { BlogSocialShareButtons } from "@/components/blog/blog-social-share-buttons";
 
 interface BlogPostProps {
   postId: string;
@@ -86,6 +89,8 @@ const PostContainer = styled.div`
   }
 `;
 
+const TitleContainer = styled.div``;
+
 const CommentsContainer = styled.div`
   min-height: 10rem;
   padding: 0 2rem;
@@ -130,8 +135,10 @@ export const getServerSideProps: GetServerSideProps = async ({
 };
 
 const BlogPostPage = ({ postId }: BlogPostProps) => {
+  const router = useRouter();
   const { t } = useTranslation();
   const { post, isError, isLoading } = BlogApiService.useIndividualPost(postId);
+  const pageFullUrl = `${process.env.SERVER_URL}${router.asPath}`;
 
   return (
     <PageLayout
@@ -148,9 +155,15 @@ const BlogPostPage = ({ postId }: BlogPostProps) => {
         <meta property="og:image" content={post?.image} />
       </Head>
 
+      <TitleContainer>
+        <BlogSocialShareButtons url={pageFullUrl} />
+      </TitleContainer>
+
       <PostContainer>
         {post && <div dangerouslySetInnerHTML={{ __html: post?.html }} />}
       </PostContainer>
+
+      <BlogSocialShareButtons url={pageFullUrl} />
 
       <CommentsContainer>
         <RenderIfVisible stayRendered>
