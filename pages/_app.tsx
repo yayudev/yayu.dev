@@ -12,6 +12,7 @@ import "@/styles/globals.css";
 
 const AppContentWrapper = styled.div`
   height: 100vh;
+  height: 100svh;
   overflow: hidden;
   width: 100vw;
   display: flex;

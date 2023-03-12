@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { useTranslation } from "next-i18next";
+
 import { SettingsMenuItemOption } from "@/types/settings-menu";
+import { MEDIA_QUERY_PHONE } from "@/config/media-queries";
+
 import { SettingsOptionSelectItem } from "./settings-option-select-item";
 
 type SettingsOptionSelectProps = {
@@ -16,6 +19,10 @@ const Container = styled.div`
   bottom: 5rem;
   right: -1rem;
   z-index: 2;
+
+  ${MEDIA_QUERY_PHONE} {
+    bottom: 1rem;
+  }
 `;
 
 export function SettingsOptionSelect({

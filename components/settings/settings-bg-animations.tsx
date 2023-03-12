@@ -13,6 +13,7 @@ const StyledSVG = styled.svg`
   transform-origin: center;
   overflow: hidden;
   max-height: 100vh;
+  max-height: 100svh;
   max-width: 100vw;
 `;
 

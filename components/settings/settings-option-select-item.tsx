@@ -1,6 +1,7 @@
 import { KeyboardEvent } from "react";
 import { useTranslation } from "next-i18next";
 import styled from "styled-components";
+import { MEDIA_QUERY_TABLET } from "@/config/media-queries";
 
 type SettingsOptionSelectItemProps = {
   label: string;
@@ -21,10 +22,15 @@ const Item = styled.div<{ isSelected: boolean }>`
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   position: relative;
+  box-shadow: 0 -0rem 1rem rgba(0, 0, 0, 0.5);
 
   &:hover,
   &:focus {
     transform: translateX(-1rem);
+  }
+
+  ${MEDIA_QUERY_TABLET} {
+    width: 65vw;
   }
 
   ${(props) =>

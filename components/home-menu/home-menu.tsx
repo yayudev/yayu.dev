@@ -25,6 +25,7 @@ const Container = styled.nav<MenuButtonProps>`
   width: ${(props) => (props.fullWidth ? "100%" : "300px")};
   min-width: 300px;
   height: 100vh;
+  height: 100svh;
   overflow: hidden;
   box-shadow: 0 0 20px 2px var(--box-shadow-color);
   transition: width 250ms ease-in-out, opacity 250ms ease-in-out,
