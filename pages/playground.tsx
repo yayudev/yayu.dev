@@ -5,13 +5,14 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import styled from "styled-components";
 
+import { MEDIA_QUERY_TABLET } from "@/config/media-queries";
+import { experiments } from "@/data/experiments";
+import { PageLayout } from "@/layouts/page";
+import { ExperimentData, SortType, TechnologyTag } from "@/types/experiments";
+
 import { Experiments } from "@/components/playground/experiments";
 import { PlaygroundFilterList } from "@/components/playground/playground-filter-list";
 import { PlaygroundSortingOptions } from "@/components/playground/playground-sorting-options";
-import { ExperimentData, SortType, TechnologyTag } from "@/types/experiments";
-import { PageLayout } from "@/layouts/page";
-
-import { experiments } from "../mocks/experiments";
 
 const Content = styled.div`
   padding-top: 0;
@@ -30,6 +31,10 @@ const OptionsBar = styled.div`
   padding: 1rem 0 1.5rem 0;
   flex-direction: column;
   place-items: center;
+
+  ${MEDIA_QUERY_TABLET} {
+    position: initial;
+  }
 `;
 
 export async function getStaticProps({ locale }: { locale: string }) {
