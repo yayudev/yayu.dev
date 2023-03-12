@@ -1,4 +1,5 @@
 {
+  "title": "Settings",
   "keys": {
     "ENTER": "Enter",
     "ESC": "Esc",
@@ -7,48 +8,30 @@
     "Tab": "Tab",
     "separator": " / "
   },
-  "settings": {
-    "blog": {
-      "comments": {
-        "label": "Comentarios",
-        "off": "Off",
-        "on": "On",
-        "tooltip": "Activa o desactiva los comentarios. (Default: On)"
-      },
-      "label": "Blog",
-      "social-share": {
-        "label": "Compartir",
-        "off": "Off",
-        "on": "On",
-        "tooltip": "Activa o desactiva compartir en redes. (Default: On)"
-      }
-    },
-    "content": {
-      "animations": {
-        "label": "Animaciones",
-        "off": "Off",
-        "on": "On",
-        "tooltip": "Activa o desactiva animaciones. (Default: On)"
-      },
-      "label": "Contenido",
-      "language": {
-        "en": "Ingles",
-        "es": "Español",
-        "label": "Idioma",
-        "tooltip": "Selecciona tu idioma. (Default: Ingles)"
-      }
-    },
-    "other": {
-      "label": "Otros",
-      "tracking": {
-        "label": "Tracking",
-        "off": "Off",
-        "on": "On",
-        "tooltip": "Activa o desactiva el tracking de google analytics. (Default: On)"
-      }
-    }
+  "labels": {
+    "animations": "Animaciones",
+    "blog": "Blog",
+    "comments": "Comentarios",
+    "content": "Contenido",
+    "language": "Idioma",
+    "other": "Otros",
+    "social-share": "Compartir",
+    "tracking": "Tracking",
+    "settings": "Configuración"
   },
-  "title": "Configuración",
+  "options": {
+    "on": "On",
+    "off": "Off",
+    "english": "Ingles",
+    "spanish": "Español"
+  },
+  "descriptions": {
+    "animations": "Activa o desactiva animaciones. (Default: On)",
+    "comments": "Activa o desactiva los comentarios. (Default: On)",
+    "language": "Selecciona tu idioma. (Default: Ingles)",
+    "social-share": "Activa o desactiva compartir en redes. (Default: On)",
+    "tracking": "Activa o desactiva el tracking de google analytics. (Default: On)"
+  },
   "tooltip": {
     "ariaLabel": "Descripción: {{description}}",
     "close": "Cerrar",

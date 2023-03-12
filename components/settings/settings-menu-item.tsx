@@ -1,17 +1,19 @@
-// noinspection SpellCheckingInspection
-
-import { SettingsMenuItemOption } from "@/types/settings-menu";
 import { KeyboardEvent } from "react";
-import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import { SettingsMenuItemOption } from "@/types/settings-menu";
+import { SettingsOptionSelect } from "@/components/settings/settings-option-select";
+import { useAtom } from "jotai";
+import { activeOptionAtom } from "@/state/settings-menu";
 
 type SettingsMenuItemProps = {
-  labelKey: string;
+  label: string;
   options?: SettingsMenuItemOption[];
-  value?: string | boolean;
+  value?: string;
+  choiceId?: string;
   isSelected?: boolean;
   isChildOption?: boolean;
   onClick: () => void;
+  onChange?: (value: string) => void;
 };
 
 const ListItem = styled.li<{ isSelected: boolean; isChildOption: boolean }>`
@@ -120,19 +122,19 @@ const ListItemSquare = styled.div<{ isSelected: boolean }>`
 `;
 
 export function SettingsMenuItem({
-  labelKey,
-  value,
+  label,
+  value = "",
+  choiceId,
   options = [],
   isSelected = false,
   isChildOption = false,
   onClick,
+  onChange = () => {},
 }: SettingsMenuItemProps) {
-  const { t } = useTranslation();
-  const label = t(labelKey);
-  const selectedOption = options.find((option) => option.value === value);
-  const valueLabel = t(selectedOption?.labelKey ?? "");
+  const [activeChoiceOption, setActiveChoiceOption] = useAtom(activeOptionAtom);
+  const selectedItemOption = options.find((option) => option.value === value);
   const ariaLabel =
-    selectedOption?.value !== undefined ? `${label}: ${valueLabel}` : label;
+    selectedItemOption?.value !== undefined ? `${label}: ${value}` : label;
 
   function onKeypress(event: KeyboardEvent<HTMLLIElement>) {
     if (event.key === "Enter" || event.key === " ") {
@@ -140,22 +142,37 @@ export function SettingsMenuItem({
     }
   }
 
+  function handleSelectOption(value: string) {
+    setActiveChoiceOption(undefined);
+    onChange(value);
+  }
+
   return (
-    <ListItem
-      isSelected={isSelected}
-      isChildOption={isChildOption}
-      tabIndex={0}
-      role="listitem"
-      aria-label={ariaLabel}
-      onClick={onClick}
-      onKeyDown={onKeypress}
-    >
-      <ListItemBackground />
-      <ListItemSquare isSelected={isSelected} />
-      <ListItemContent>
-        <span> {label} </span>
-        <span> {valueLabel} </span>
-      </ListItemContent>
-    </ListItem>
+    <>
+      <ListItem
+        isSelected={isSelected}
+        isChildOption={isChildOption}
+        tabIndex={0}
+        role="listitem"
+        aria-label={ariaLabel}
+        onClick={onClick}
+        onKeyDown={onKeypress}
+      >
+        <ListItemBackground />
+        <ListItemSquare isSelected={isSelected} />
+        <ListItemContent>
+          <span> {label} </span>
+          <span> {selectedItemOption?.text} </span>
+        </ListItemContent>
+      </ListItem>
+
+      {activeChoiceOption && activeChoiceOption === choiceId && (
+        <SettingsOptionSelect
+          options={options}
+          selectedValue={value}
+          onSelect={handleSelectOption}
+        />
+      )}
+    </>
   );
 }

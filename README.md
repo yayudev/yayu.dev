@@ -52,6 +52,7 @@ Stuff that needs to be done before release:
 - [X] Replace links to .xyz to .dev and datyayu to yayudev where required.
 - [X] Blog comments
 - [X] Blog social share / Open graph setup
+- [X] Use jotai instead of context.
 - [ ] Mobile design
   - [X] Home
   - [X] Side menu
@@ -75,7 +76,6 @@ Stuff that needs to be done before release:
 Good to have things that will be added eventually but not 100% required for initial release.
 
 - [ ] Loading skeletons
-- [ ] Use jotai/signals instead of context.
 - [ ] Resume/CV pdf download
 - [ ] Testing
 - [ ] Skill sheet

@@ -1,29 +1,14 @@
-import { useContext, useState } from "react";
-import styled from "styled-components";
-import { get, set } from "lodash";
 import { AnimatePresence, motion } from "framer-motion";
+import { useAtom } from "jotai";
 import { useTranslation } from "next-i18next";
+import styled from "styled-components";
 
-import { SettingsMenuItemType } from "@/types/settings-menu";
-import { SETTINGS_MENUS_LIST } from "@/config/settings-menu";
+import { activeOptionAtom, showSettingsAtom } from "@/state/settings-menu";
 
-import {
-  SettingsContext,
-  SettingsContextType,
-  SettingsState,
-} from "@/contexts/settings";
 import { SettingsBGWrapper } from "@/components/settings/settings-bg-wrapper";
-import { SettingsMenuItem } from "@/components/settings/settings-menu-item";
-import { SettingsMenuLevel } from "@/components/settings/settings-menu-level";
-import { SettingsOptionSelect } from "@/components/settings/settings-option-select";
 import { SettingsTitle } from "@/components/settings/settings-title";
 import { SettingsTooltipBar } from "@/components/settings/settings-tooltip-bar";
-
-import {
-  ApplicationStateContext,
-  ApplicationStateContextType,
-} from "@/contexts/application-state";
-import { useKeyboard } from "@/hooks/use-keyboard";
+import { SettingsMenu } from "@/components/settings/settings-menu";
 
 const Container = styled(motion.div)`
   display: flex;
@@ -47,12 +32,6 @@ const Content = styled.div`
   position: relative;
 `;
 
-const MenuWrapper = styled(motion.div)`
-  display: flex;
-  transform-origin: left;
-  will-change: opacity, transfom;
-`;
-
 const Spacing = styled.div`
   display: flex;
   flex: 1;
@@ -61,131 +40,31 @@ const Spacing = styled.div`
 export function Settings() {
   const { t } = useTranslation("settings");
 
-  const [menu, setMenu] = useState<number | undefined>();
-  const [subMenu, setSubMenu] = useState<number | undefined>();
-  const { settings, setSettings } =
-    useContext<SettingsContextType>(SettingsContext);
-  const { applicationState, setApplicationState } =
-    useContext<ApplicationStateContextType>(ApplicationStateContext);
-  const [openOption, setOpenOption] = useState<
-    SettingsMenuItemType | undefined
-  >();
-
-  /***************
-   *  MAIN MENU  *
-   ***************/
-
-  const menuComponent = (
-    <SettingsMenuLevel>
-      {SETTINGS_MENUS_LIST.map((item, index) => (
-        <SettingsMenuItem
-          key={item.labelKey}
-          labelKey={item.labelKey}
-          isSelected={menu === index}
-          onClick={() => handleTopMenuClick(index)}
-        />
-      ))}
-    </SettingsMenuLevel>
-  );
-
-  /**************
-   *  SUB MENU  *
-   **************/
-
-  const subMenuItem =
-    menu !== undefined ? SETTINGS_MENUS_LIST[menu] : undefined;
-  const subMenuComponent = subMenuItem?.children && (
-    <SettingsMenuLevel isChildMenu>
-      {subMenuItem?.children.map((item, index) => (
-        <SettingsMenuItem
-          key={index}
-          labelKey={item.labelKey}
-          options={item.options}
-          value={get(settings, item.optionKey)}
-          isSelected={subMenu === index}
-          isChildOption
-          onClick={() => handleSubMenuClick(index, item)}
-        />
-      ))}
-    </SettingsMenuLevel>
-  );
-
-  /*******************
-   * OPTION SELECTOR *
-   *******************/
-
-  const optionSelectorComponent = openOption && (
-    <SettingsOptionSelect
-      options={openOption.options}
-      selectedValue={get(settings, openOption.optionKey)}
-      onSelect={(value) => handleChangeOption(openOption.optionKey, value)}
-    />
-  );
+  const [showSettings, setShowSettings] = useAtom(showSettingsAtom);
+  const [activeOption] = useAtom(activeOptionAtom);
 
   /*************
    *  TOOLTIP  *
    *************/
 
-  const tooltipText = openOption?.tooltipKey ?? "";
+  const tooltipText = activeOption
+    ? t(`settings:descriptions.${activeOption}`)
+    : "";
 
   /******************
    * EVENT HANDLERS *
    ******************/
 
-  function handleTopMenuClick(index: number) {
-    setMenu(index);
-    setSubMenu(undefined);
-    setOpenOption(undefined);
-  }
-
-  function handleSubMenuClick(index: number, option: SettingsMenuItemType) {
-    setSubMenu(index);
-    setOpenOption(option);
-  }
-
-  function handleChangeOption(
-    key: SettingsMenuItemType["optionKey"],
-    value: string | boolean
-  ) {
-    setOpenOption(undefined);
-    setSubMenu(undefined);
-    const newSettings = { ...settings } as SettingsState;
-    set(newSettings, key, value);
-
-    setSettings(newSettings);
-  }
-
   function closeSettings() {
-    setApplicationState({ ...applicationState, showSettings: false });
+    setShowSettings(false);
   }
-
-  useKeyboard(
-    ["Escape"],
-    () => {
-      if (openOption) {
-        setOpenOption(undefined);
-        setSubMenu(undefined);
-        return;
-      }
-
-      if (menu !== undefined) {
-        setMenu(undefined);
-        return;
-      }
-
-      if (!applicationState) return;
-
-      closeSettings();
-    },
-    [openOption, menu, subMenu]
-  );
 
   /******************
    *  MAIN RENDER   *
    ******************/
   return (
     <AnimatePresence>
-      {applicationState?.showSettings && (
+      {showSettings && (
         <Container
           aria-label="Settings"
           initial={{ opacity: 0 }}
@@ -209,18 +88,7 @@ export function Settings() {
             </SettingsTitle>
 
             <Content>
-              <MenuWrapper
-                initial={{ opacity: 0, scaleX: 0 }}
-                animate={{ opacity: 1, scaleX: 1 }}
-                transition={{
-                  ease: "circOut",
-                  duration: 0.25,
-                }}
-              >
-                {menuComponent}
-                {subMenuComponent}
-                {optionSelectorComponent}
-              </MenuWrapper>
+              <SettingsMenu />
 
               <Spacing />
             </Content>

@@ -1,10 +1,9 @@
-import { useContext } from "react";
 import styled from "styled-components";
+import { useAtom } from "jotai";
 import { useTranslation } from "next-i18next";
-import {
-  ApplicationStateContext,
-  ApplicationStateContextType,
-} from "@/contexts/application-state";
+
+import { showSettingsAtom } from "@/state/settings-menu";
+
 import { HomeMenuItem } from "./home-menu-item";
 
 const MenuList = styled.ul`
@@ -19,13 +18,10 @@ const MenuList = styled.ul`
 
 export function HomeMenuList() {
   const { t } = useTranslation("common");
-  const { applicationState, setApplicationState } =
-    useContext<ApplicationStateContextType>(ApplicationStateContext);
+  const [_, setShowSettings] = useAtom(showSettingsAtom);
 
   function openSettings() {
-    if (!applicationState) return;
-
-    setApplicationState({ ...applicationState, showSettings: true });
+    setShowSettings(true);
   }
 
   return (

@@ -3,11 +3,10 @@ import Head from "next/head";
 import { appWithTranslation } from "next-i18next";
 import styled from "styled-components";
 
-import { ApplicationStateProvider } from "@/contexts/application-state";
-import { SettingsProvider } from "@/contexts/settings";
+import nextI18NextConfig from "../next-i18next.config";
+
 import { HomeMenu } from "@/components/home-menu/home-menu";
 import { Settings } from "@/components/settings/settings";
-import nextI18NextConfig from "../next-i18next.config";
 
 import "@/styles/globals.css";
 
@@ -37,11 +36,7 @@ function MyApp(props: AppProps) {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
 
-      <ApplicationStateProvider>
-        <SettingsProvider>
-          <AppContent {...props} />
-        </SettingsProvider>
-      </ApplicationStateProvider>
+      <AppContent {...props} />
     </>
   );
 }

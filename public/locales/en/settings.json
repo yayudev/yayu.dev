@@ -1,4 +1,5 @@
 {
+  "title": "Settings",
   "keys": {
     "ENTER": "Enter",
     "ESC": "Esc",
@@ -7,48 +8,30 @@
     "Tab": "Tab",
     "separator": " / "
   },
-  "settings": {
-    "blog": {
-      "comments": {
-        "label": "Blog comments",
-        "off": "Off",
-        "on": "On",
-        "tooltip": "Enable or disable blog comments. (Default: On)"
-      },
-      "label": "Blog",
-      "social-share": {
-        "label": "Social share",
-        "off": "Off",
-        "on": "On",
-        "tooltip": "Enable or disable social share. (Default: On)"
-      }
-    },
-    "content": {
-      "animations": {
-        "label": "Animations",
-        "off": "Off",
-        "on": "On",
-        "tooltip": "Enable or disable animations. (Default: On)"
-      },
-      "label": "Content",
-      "language": {
-        "en": "English",
-        "es": "Spanish",
-        "label": "Language",
-        "tooltip": "Select your language (Default: English)"
-      }
-    },
-    "other": {
-      "label": "Other",
-      "tracking": {
-        "label": "Tracking",
-        "off": "Off",
-        "on": "On",
-        "tooltip": "Enable or disable analytics tracking. (Default: On)"
-      }
-    }
+  "labels": {
+    "blog": "Blog",
+    "comments": "Blog comments",
+    "social-share": "Social share",
+    "content": "Content",
+    "animations": "Animations",
+    "language": "Language",
+    "other": "Other",
+    "tracking": "Tracking",
+    "settings": "Settings"
   },
-  "title": "Settings",
+  "options": {
+    "on": "On",
+    "off": "Off",
+    "english": "English",
+    "spanish": "Spanish"
+  },
+  "descriptions": {
+    "animations": "Enable or disable animations. (Default: On)",
+    "comments": "Enable or disable blog comments. (Default: On)",
+    "language": "Select your language (Default: English)",
+    "social-share": "Enable or disable social share buttons. (Default: On)",
+    "tracking": "Enable or disable analytics tracking. (Default: On)"
+  },
   "tooltip": {
     "ariaLabel": "Option description: {{description}}",
     "close": "Close",

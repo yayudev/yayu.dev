@@ -5,8 +5,8 @@ import { SettingsOptionSelectItem } from "./settings-option-select-item";
 
 type SettingsOptionSelectProps = {
   options: SettingsMenuItemOption[];
-  selectedValue: string | boolean;
-  onSelect: (value: string | boolean) => void;
+  selectedValue: string;
+  onSelect: (value: string) => void;
 };
 
 const Container = styled.div`
@@ -29,8 +29,8 @@ export function SettingsOptionSelect({
       {options.map((option) => {
         return (
           <SettingsOptionSelectItem
-            key={option.labelKey}
-            label={t(option.labelKey)}
+            key={option.text}
+            label={t(option.text)}
             isSelected={selectedValue === option.value}
             onClick={() => onSelect(option.value)}
           />
