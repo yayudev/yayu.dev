@@ -4,6 +4,8 @@ import { useAtom } from "jotai";
 
 import { useKeyboard } from "@/hooks/use-keyboard";
 
+import { MEDIA_QUERY_TABLET } from "@/config/media-queries";
+import { useMobileLayout } from "@/hooks/user-mobile-layout";
 import {
   activeMenuAtom,
   activeOptionAtom,
@@ -18,9 +20,14 @@ const MenuWrapper = styled(motion.div)`
   display: flex;
   transform-origin: left;
   will-change: opacity, transfom;
+
+  ${MEDIA_QUERY_TABLET} {
+    width: 100%;
+  }
 `;
 
 export function SettingsMenu() {
+  const mobileLayout = useMobileLayout();
   const [_, setShowSettings] = useAtom(showSettingsAtom);
   const [activeMenu, setActiveMenu] = useAtom(activeMenuAtom);
   const [activeSubMenu, setActiveSubMenu] = useAtom(activeSubMenuAtom);
@@ -29,7 +36,6 @@ export function SettingsMenu() {
   /***********************
    * KEYBOARD NAVIGATION *
    ***********************/
-
   useKeyboard(
     ["Escape"],
     () => {
@@ -60,7 +66,7 @@ export function SettingsMenu() {
     >
       <SettingsPrimaryMenu />
 
-      {activeMenu && <SettingsSubMenu />}
+      {activeMenu && !mobileLayout && <SettingsSubMenu />}
     </MenuWrapper>
   );
 }

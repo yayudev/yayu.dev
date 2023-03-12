@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { MEDIA_QUERY_TABLET } from "@/config/media-queries";
 
 export interface HomeMenuIconProps {
-  activeOnMobile?: boolean;
+  showCloseIcon?: boolean;
   onClick?: () => void;
 }
 
@@ -50,15 +50,15 @@ const BottomBar = styled(Bar)<{ active: boolean }>`
       : ""}
 `;
 
-export function HomeMenuIcon({
-  activeOnMobile = false,
+export function CloseMenuIcon({
+  showCloseIcon = false,
   onClick,
 }: HomeMenuIconProps) {
   return (
     <Container onClick={onClick}>
-      <TopBar active={activeOnMobile} />
-      <MiddleBar active={activeOnMobile} />
-      <BottomBar active={activeOnMobile} />
+      <TopBar active={showCloseIcon} />
+      <MiddleBar active={showCloseIcon} />
+      <BottomBar active={showCloseIcon} />
     </Container>
   );
 }

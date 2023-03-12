@@ -6,11 +6,22 @@ import Router from "next/router";
 
 import { atomWithStorageAndSideEffects } from "@/utils/jotai";
 import { DEFAULT_LOCALE } from "@/config/locale";
+import { atomWithStorage } from "jotai/utils";
 
-export const animationsAtom = atom("on");
-export const commentsAtom = atom("on");
-export const socialShareAtom = atom("on");
-export const trackingAtom = atom("on");
+/****************
+ * STATE ATOMS  *
+ ****************/
+
+export const showMenuOnMobileAtom = atom(false);
+
+/************************
+ * CONFIGURATION ATOMS  *
+ ************************/
+
+export const animationsAtom = atomWithStorage("animations", "on");
+export const commentsAtom = atomWithStorage("comments", "on");
+export const socialShareAtom = atomWithStorage("social-sharing", "on");
+export const trackingAtom = atomWithStorage("tracking", "on");
 
 export const languageAtom = atomWithStorageAndSideEffects(
   "language",

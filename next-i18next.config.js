@@ -1,10 +1,9 @@
-import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from "@/config/locale";
-
+// @ts-check
 const config = {
   i18n: {
-    defaultLocale: DEFAULT_LOCALE,
-    locales: SUPPORTED_LOCALES,
+    defaultLocale: "en",
+    locales: ["en", "es"],
   },
 };
 
-export default config;
+module.exports = config;

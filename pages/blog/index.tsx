@@ -3,12 +3,12 @@ import Head from "next/head";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 
-import { BlogPagination } from "@/components/blog/blog-pagination";
-import { BlogPostsList } from "@/components/blog/blog-posts-list";
-import { PageLayout } from "@/layouts/page";
+import { DEFAULT_PAGE_SIZE } from "@/config/blog";
 import { BlogApiService } from "@/services/blog-api";
 
-const DEFAULT_PAGE_SIZE = 5; // TODO: Move this into config file
+import { PageLayout } from "@/layouts/page";
+import { BlogPagination } from "@/components/blog/blog-pagination";
+import { BlogPostsList } from "@/components/blog/blog-posts-list";
 
 interface BlogIndexProps {
   page: number;

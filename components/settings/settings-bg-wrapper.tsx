@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 import { SettingsBorder } from "./settings-border";
 import { SettingsBGAnimations } from "./settings-bg-animations";
+import { MEDIA_QUERY_TABLET } from "@/config/media-queries";
+import { useMobileLayout } from "@/hooks/user-mobile-layout";
 
 interface SettingsBGWrapperProps {
   children: ReactNode;
@@ -29,16 +31,24 @@ const Content = styled.main`
   z-index: 1;
   transform-origin: left;
   will-change: opacity, transform;
+
+  ${MEDIA_QUERY_TABLET} {
+    padding: 1rem 1rem 2rem 1rem;
+  }
 `;
 
 export function SettingsBGWrapper({ children }: SettingsBGWrapperProps) {
+  const isMobileLayout = useMobileLayout();
+
   return (
     <Container tabIndex={-1}>
       <SettingsBGAnimations width={1000} height={1000} />
-      <SettingsBorder aria-label="decoration border" />
+      {!isMobileLayout && <SettingsBorder aria-label="decoration border" />}
+
       <Content aria-label="Settings">{children}</Content>
+
       <SettingsBGAnimations width={1000} height={1000} reversed />
-      <SettingsBorder aria-label="decoration border" />
+      {!isMobileLayout && <SettingsBorder aria-label="decoration border" />}
     </Container>
   );
 }

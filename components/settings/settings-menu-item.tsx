@@ -4,6 +4,8 @@ import { SettingsMenuItemOption } from "@/types/settings-menu";
 import { SettingsOptionSelect } from "@/components/settings/settings-option-select";
 import { useAtom } from "jotai";
 import { activeOptionAtom } from "@/state/settings-menu";
+import { SettingsSubMenu } from "@/components/settings/settings-submenu";
+import { useMobileLayout } from "@/hooks/user-mobile-layout";
 
 type SettingsMenuItemProps = {
   label: string;
@@ -22,6 +24,7 @@ const ListItem = styled.li<{ isSelected: boolean; isChildOption: boolean }>`
   width: ${(props) => (props?.isSelected ? "100%" : "90%")};
   height: 2rem;
   padding: 1.25rem 0.75rem;
+  margin-right: 0;
   margin-bottom: 1.5rem;
   background-color: ${(props) =>
     props?.isSelected ? "var(--alt-text-color)" : "var(--item-background)"};
@@ -131,6 +134,7 @@ export function SettingsMenuItem({
   onClick,
   onChange = () => {},
 }: SettingsMenuItemProps) {
+  const isMobileLayout = useMobileLayout();
   const [activeChoiceOption, setActiveChoiceOption] = useAtom(activeOptionAtom);
   const selectedItemOption = options.find((option) => option.value === value);
   const ariaLabel =
@@ -165,6 +169,8 @@ export function SettingsMenuItem({
           <span> {selectedItemOption?.text} </span>
         </ListItemContent>
       </ListItem>
+
+      {isMobileLayout && isSelected && !isChildOption && <SettingsSubMenu />}
 
       {activeChoiceOption && activeChoiceOption === choiceId && (
         <SettingsOptionSelect

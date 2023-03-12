@@ -53,14 +53,14 @@ Stuff that needs to be done before release:
 - [X] Blog comments
 - [X] Blog social share / Open graph setup
 - [X] Use jotai instead of context.
-- [ ] Mobile design
+- [X] Mobile design
   - [X] Home
   - [X] Side menu
   - [X] About
   - [X] Playground
   - [X] Blog
   - [X] Blog (post)
-  - [ ] Settings
+  - [X] Settings
 - [ ] Fix scroll on mobile
 - [ ] Re-host images in a dedicated s3 bucket
 - [ ] Disable Animations via settings
@@ -90,6 +90,7 @@ Good to have things that will be added eventually but not 100% required for init
 - [ ] Contributing guidelines
 - [ ] Full screen experiment expansion
 - [ ] Refactor MarqueeScroller into a standalone component package for re-usability
+- [ ] Move to astro?
 
 # Contributing
 

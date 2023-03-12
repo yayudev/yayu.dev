@@ -24,7 +24,7 @@ type InternalAnimationDataRefType = {
 
 const Container = styled.div`
   overflow: hidden;
-  margin-left: 2rem;
+  margin: 0 1rem 0 2rem;
   width: 100%;
 `;
 
@@ -157,7 +157,7 @@ export function MarqueScroller({
     /* eslint-disable-next-line react-hooks/exhaustive-deps */
     [
       text, // Restart the animation when the text changes
-      windowSize?.width, // Also restart when window size changes as element size changed.
+      windowSize.width, // Also restart when window size changes as element size changed.
     ]
   );
 

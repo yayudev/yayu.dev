@@ -15,6 +15,7 @@ const Container = styled.div`
   position: absolute;
   bottom: 5rem;
   right: -1rem;
+  z-index: 2;
 `;
 
 export function SettingsOptionSelect({

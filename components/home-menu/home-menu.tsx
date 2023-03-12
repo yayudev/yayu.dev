@@ -1,15 +1,19 @@
-import styled from "styled-components";
-import { HomeMenuList } from "@/components/home-menu/home-menu-list";
+import { useEffect } from "react";
+import { useAtom } from "jotai";
 import Image from "next/image";
 import Link from "next/link";
-import { MAX_WIDTH_TABLET, MEDIA_QUERY_TABLET } from "@/config/media-queries";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { useWindowSize } from "@/hooks/use-window-size";
-import { HomeMenuIcon } from "@/components/home-menu/home-menu-icon";
+import styled from "styled-components";
+
+import { MEDIA_QUERY_TABLET } from "@/config/media-queries";
+import { showMenuOnMobileAtom } from "@/state/application";
+
+import { HomeMenuList } from "@/components/home-menu/home-menu-list";
+import { CloseMenuIcon } from "@/components/shared/close-menu-icon";
+import { useMobileLayout } from "@/hooks/user-mobile-layout";
 
 interface MenuButtonProps {
-  activeOnMobile: boolean;
+  showOnMobile: boolean;
   fullWidth: boolean;
 }
 
@@ -35,7 +39,8 @@ const Container = styled.nav<MenuButtonProps>`
     left: 0;
     box-shadow: none;
     margin-left: -100%;
-    ${(props) => (props.activeOnMobile ? "transform: translateX(100%);" : "")}
+    ${({ showOnMobile }) =>
+      showOnMobile ? "transform: translateX(100%);" : ""}
   }
 `;
 
@@ -62,31 +67,37 @@ const LogoImage = styled(Image)`
 `;
 
 export function HomeMenu() {
-  const [activeOnMobile, setActiveOnMobile] = useState<boolean>(false);
+  const isMobileLayout = useMobileLayout();
+  const [showOnMobile, setShowOnMobile] = useAtom(showMenuOnMobileAtom);
 
   const router = useRouter();
-  const windowSize = useWindowSize();
   const isHome = router.route === "/";
 
   useEffect(() => {
-    if ((windowSize?.width ?? 0) > MAX_WIDTH_TABLET) {
-      setActiveOnMobile(false);
+    if (isMobileLayout) {
+      setShowOnMobile(false);
     }
-  }, [windowSize.width]);
+
+    // No need to include setShowOnMobile in the dependency array
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMobileLayout]);
 
   useEffect(() => {
-    setActiveOnMobile(false);
+    setShowOnMobile(false);
+
+    // No need to include setShowOnMobile in the dependency array
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.route]);
 
   function toggleMobileMenu() {
-    setActiveOnMobile(!activeOnMobile);
+    setShowOnMobile(!showOnMobile);
   }
 
   return (
-    <Container activeOnMobile={isHome || activeOnMobile} fullWidth={isHome}>
+    <Container showOnMobile={isHome || showOnMobile} fullWidth={isHome}>
       {!isHome && (
-        <HomeMenuIcon
-          activeOnMobile={activeOnMobile}
+        <CloseMenuIcon
+          showCloseIcon={showOnMobile}
           onClick={toggleMobileMenu}
         />
       )}

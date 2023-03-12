@@ -9,6 +9,8 @@ import { SettingsBGWrapper } from "@/components/settings/settings-bg-wrapper";
 import { SettingsTitle } from "@/components/settings/settings-title";
 import { SettingsTooltipBar } from "@/components/settings/settings-tooltip-bar";
 import { SettingsMenu } from "@/components/settings/settings-menu";
+import { CloseMenuIcon } from "@/components/shared/close-menu-icon";
+import { showMenuOnMobileAtom } from "@/state/application";
 
 const Container = styled(motion.div)`
   display: flex;
@@ -40,6 +42,7 @@ const Spacing = styled.div`
 export function Settings() {
   const { t } = useTranslation("settings");
 
+  const [_, setShowMenuOnMobile] = useAtom(showMenuOnMobileAtom);
   const [showSettings, setShowSettings] = useAtom(showSettingsAtom);
   const [activeOption] = useAtom(activeOptionAtom);
 
@@ -57,6 +60,7 @@ export function Settings() {
 
   function closeSettings() {
     setShowSettings(false);
+    setShowMenuOnMobile(false);
   }
 
   /******************
@@ -75,6 +79,7 @@ export function Settings() {
             duration: 0.25,
           }}
         >
+          <CloseMenuIcon showCloseIcon onClick={closeSettings} />
           <SettingsBGWrapper>
             <SettingsTitle
               initial={{ opacity: 0 }}

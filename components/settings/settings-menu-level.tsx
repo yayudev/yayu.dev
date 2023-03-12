@@ -1,22 +1,32 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
+import { MEDIA_QUERY_TABLET } from "@/config/media-queries";
 
 type SettingsMenuLevelProps = {
   isChildMenu?: boolean;
   children: ReactNode;
 };
 
-const Container = styled.div`
+const Container = styled.div<SettingsMenuLevelProps>`
   display: flex;
   height: fit-content;
+  margin-bottom: ${({ isChildMenu }) => (isChildMenu ? "1rem" : "0")};
+
+  ${MEDIA_QUERY_TABLET} {
+    width: 100%;
+  }
 `;
 
-const ListContainer = styled.ul<{ isChildMenu?: boolean }>`
+const ListContainer = styled.ul<SettingsMenuLevelProps>`
   display: block;
-  width: ${(props) => (props.isChildMenu ? "500px" : "300px")};
+  width: ${({ isChildMenu }) => (isChildMenu ? "500px" : "300px")};
   list-style: none;
   padding: 0;
   margin: 0;
+
+  ${MEDIA_QUERY_TABLET} {
+    width: 100%;
+  }
 `;
 
 const LeftBlock = styled.div`
@@ -44,7 +54,7 @@ export function SettingsMenuLevel({
   isChildMenu = false,
 }: SettingsMenuLevelProps) {
   return (
-    <Container>
+    <Container isChildMenu={isChildMenu}>
       <LeftBlock />
 
       <ListContainer isChildMenu={isChildMenu}>{children}</ListContainer>

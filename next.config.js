@@ -1,3 +1,4 @@
+// @ts-check
 require("dotenv");
 
 const { i18n } = require("./next-i18next.config");
@@ -14,7 +15,7 @@ if (DEV_ENV) {
 
 if (ENABLE_DEV_PROXY) {
   const ip = require("ip");
-  address = ip.address();
+  const address = ip.address();
   // noinspection HttpUrlsUsage
   SERVER_URL = `http://${address}:${PORT}`;
   console.log(`Running on ${SERVER_URL}`);
