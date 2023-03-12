@@ -77,6 +77,7 @@ const Content = styled(motion.div)`
   will-change: transform, opacity;
 
   ${MEDIA_QUERY_TABLET} {
+    overflow-y: initial;
     padding: 0 3%;
   }
 `;

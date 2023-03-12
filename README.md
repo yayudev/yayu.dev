@@ -61,7 +61,7 @@ Stuff that needs to be done before release:
   - [X] Blog
   - [X] Blog (post)
   - [X] Settings
-- [ ] Fix scroll on mobile
+- [X] Fix scroll on mobile
 - [ ] Re-host images in a dedicated s3 bucket
 - [ ] Migrate API from v2 to Next's api routes (or maybe static pre-generated assets?)
 - [ ] Configure CORS and security whitelist
