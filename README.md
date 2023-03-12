@@ -63,25 +63,24 @@ Stuff that needs to be done before release:
   - [X] Settings
 - [X] Fix scroll on mobile
 - [X] Re-host images in a dedicated s3 bucket
-- [ ] Migrate API from v2 to Next's api routes (or maybe static pre-generated assets?)
-- [ ] Configure CORS and security whitelist
-- [ ] Swipe gestures for mobile
 - [ ] Add sharing buttons to blog posts
-- [ ] Add a "back to top" button on blog posts
-- [ ] Add a "back to top" button on projects
+- [ ] Add a "back to top" button on blog posts and projects
+- [ ] Swipe gestures for mobile
 - [ ] Google Analytics tracking
 - [ ] Disable comments via settings
 - [ ] Disable social share via settings
 - [ ] Disable tracking via settings
 - [ ] Disable Animations via settings
+- [ ] Migrate API from v2 to Next's api routes (or maybe static pre-generated assets?)
+- [ ] Configure CORS and security whitelist
 - [ ] Redirect v2 to v3
-- [ ] Transition to NextJS 13's app directory (waiting for better i18n support)
 
 ### Post-release:
 
 Good to have things that will be added eventually but not 100% required for initial release.
 
-- [ ] Loading skeletons
+- [ ] Transition to NextJS 13's app directory (waiting for better i18n support)
+- [ ] Loading skeletons / Better loading states
 - [ ] Resume/CV pdf download
 - [ ] Testing
 - [ ] Skill sheet
