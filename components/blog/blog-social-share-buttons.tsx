@@ -11,6 +11,10 @@ import {
   TwitterShareButton,
 } from "react-share";
 import styled from "styled-components";
+import { useAtom } from "jotai";
+
+import { socialShareAtom } from "@/state/application";
+import { SettingsToggleOptions } from "@/types/settings-menu";
 
 const BUTTON_SIZE = 32 as const;
 
@@ -26,6 +30,11 @@ const Container = styled.div`
 `;
 
 export function BlogSocialShareButtons({ url }: BlogSocialShareButtonsProps) {
+  const [socialShare] = useAtom(socialShareAtom);
+
+  // Disable social share buttons if user has disabled it
+  if (socialShare !== SettingsToggleOptions.ON) return null;
+
   return (
     <Container>
       <FacebookShareButton url={url}>

@@ -12,6 +12,7 @@ import { Settings } from "@/components/settings/settings";
 
 import "@/styles/globals.css";
 import { useAtom } from "jotai";
+import { SettingsToggleOptions } from "@/types/settings-menu";
 
 const AppContentWrapper = styled.div`
   //noinspection ALL
@@ -49,7 +50,7 @@ function MyApp(props: AppProps) {
       <Analytics
         beforeSend={(event) => {
           // Do no send events if tracking is disabled
-          return tracking === "on" ? event : null;
+          return tracking === SettingsToggleOptions.ON ? event : null;
         }}
       />
     </>

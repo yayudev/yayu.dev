@@ -11,6 +11,10 @@ import { PageLayout } from "@/layouts/page";
 import { BlogApiService } from "@/services/blog-api";
 
 import { BlogSocialShareButtons } from "@/components/blog/blog-social-share-buttons";
+import { commentsAtom } from "@/state/application";
+import { useAtom } from "jotai";
+import { SettingsToggleOptions } from "@/types/settings-menu";
+import { MEDIA_QUERY_TABLET } from "@/config/media-queries";
 
 interface BlogPostProps {
   postId: string;
@@ -44,6 +48,10 @@ const PostContainer = styled.div`
     left: 0;
     background-color: var(--background-for-content);
     padding: 0.5rem 0;
+
+    ${MEDIA_QUERY_TABLET} {
+      position: static;
+    }
   }
 
   blockquote {
@@ -137,6 +145,8 @@ export const getServerSideProps: GetServerSideProps = async ({
 const BlogPostPage = ({ postId }: BlogPostProps) => {
   const router = useRouter();
   const { t } = useTranslation();
+  const [commentsEnabled] = useAtom(commentsAtom);
+
   const { post, isError, isLoading } = BlogApiService.useIndividualPost(postId);
   const pageFullUrl = `${process.env.SERVER_URL}${router.asPath}`;
 
@@ -165,17 +175,19 @@ const BlogPostPage = ({ postId }: BlogPostProps) => {
 
       <BlogSocialShareButtons url={pageFullUrl} />
 
-      <CommentsContainer>
-        <RenderIfVisible stayRendered>
-          <DiscussionEmbed
-            shortname="datyayu"
-            config={{
-              identifier: postId,
-              title: post?.title,
-            }}
-          />
-        </RenderIfVisible>
-      </CommentsContainer>
+      {commentsEnabled === SettingsToggleOptions.ON && (
+        <CommentsContainer>
+          <RenderIfVisible stayRendered>
+            <DiscussionEmbed
+              shortname="datyayu"
+              config={{
+                identifier: postId,
+                title: post?.title,
+              }}
+            />
+          </RenderIfVisible>
+        </CommentsContainer>
+      )}
     </PageLayout>
   );
 };
