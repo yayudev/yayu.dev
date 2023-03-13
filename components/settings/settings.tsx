@@ -3,6 +3,7 @@ import { useAtom } from "jotai";
 import { useTranslation } from "next-i18next";
 import styled from "styled-components";
 
+import { useAnimationsEnabled } from "@/hooks/use-animations-enabled";
 import { showMenuOnMobileAtom } from "@/state/application";
 import { activeOptionAtom, showSettingsAtom } from "@/state/settings-menu";
 
@@ -15,7 +16,9 @@ import { CloseMenuIcon } from "@/components/shared/close-menu-icon";
 const Container = styled(motion.div)`
   display: flex;
   flex-direction: column;
+  //noinspection ALL
   height: 100vh;
+  //noinspection ALL
   height: 100svh;
   width: 100vw;
   top: 0;
@@ -43,6 +46,7 @@ const Spacing = styled.div`
 export function Settings() {
   const { t } = useTranslation("settings");
 
+  const animationsEnabled = useAnimationsEnabled();
   const [_, setShowMenuOnMobile] = useAtom(showMenuOnMobileAtom);
   const [showSettings, setShowSettings] = useAtom(showSettingsAtom);
   const [activeOption] = useAtom(activeOptionAtom);
@@ -72,9 +76,9 @@ export function Settings() {
       {showSettings && (
         <Container
           aria-label="Settings"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          initial={animationsEnabled ? { opacity: 0 } : {}}
+          animate={animationsEnabled ? { opacity: 1 } : {}}
+          exit={animationsEnabled ? { opacity: 0 } : {}}
           transition={{
             ease: "easeInOut",
             duration: 0.25,
@@ -83,8 +87,8 @@ export function Settings() {
           <CloseMenuIcon showCloseIcon onClick={closeSettings} />
           <SettingsBGWrapper>
             <SettingsTitle
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={animationsEnabled ? { opacity: 0 } : {}}
+              animate={animationsEnabled ? { opacity: 1 } : {}}
               transition={{
                 ease: "circOut",
                 duration: 0.5,

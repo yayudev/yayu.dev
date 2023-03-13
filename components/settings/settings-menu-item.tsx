@@ -96,7 +96,7 @@ const ListItemBackground = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  transform: scaleX(0);
+  transform: scaleX(0) !important;
   transform-origin: right;
   transition: transform 300ms ease-in-out;
   will-change: transform;

@@ -38,7 +38,7 @@ const Underline = styled.span`
     height: 7px;
     background-color: var(--link-color);
     border-radius: 50%;
-    transform: translateX(-250%) translateY(-35%);
+    transform: translateX(-250%) translateY(-35%) !important;
   }
 
   &::after {
@@ -51,7 +51,7 @@ const Underline = styled.span`
     height: 7px;
     background-color: var(--link-color);
     border-radius: 50%;
-    transform: translateX(250%) translateY(-35%);
+    transform: translateX(250%) translateY(-35%) !important;
   }
 `;
 

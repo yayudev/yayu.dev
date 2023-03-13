@@ -43,3 +43,67 @@ a {
 * {
   box-sizing: border-box;
 }
+
+
+.no-animations *,
+.no-animations *:before,
+.no-animations *:after {
+  /*CSS transitions*/
+  /* noinspection CssUnknownProperty */
+  -o-transition-property: none !important;
+  /* noinspection CssUnknownProperty */
+  -moz-transition-property: none !important;
+  /* noinspection CssUnknownProperty */
+  -ms-transition-property: none !important;
+  /* noinspection CssUnknownProperty */
+  -webkit-transition-property: none !important;
+  transition-property: none !important;
+
+  /*CSS transforms*/
+  /* noinspection CssUnknownProperty */
+  -o-transform: none !important;
+  /* noinspection CssUnknownProperty */
+  -moz-transform: none !important;
+  /* noinspection CssUnknownProperty */
+  -ms-transform: none !important;
+  /* noinspection CssUnknownProperty */
+  -webkit-transform: none !important;
+  transform: none !important;
+
+  /*CSS animations*/
+  /* noinspection CssUnknownProperty */
+  -webkit-animation: none !important;
+  /* noinspection CssUnknownProperty */
+  -moz-animation: none !important;
+  /* noinspection CssUnknownProperty */
+  -o-animation: none !important;
+  /* noinspection CssUnknownProperty */
+  -ms-animation: none !important;
+  animation: none !important;
+}
+
+.no-animations svg,
+.no-animations svg:before,
+.no-animations svg:after {
+  /*CSS transitions*/
+  /* noinspection CssUnknownProperty */
+  -o-transition-property: none !important;
+  /* noinspection CssUnknownProperty */
+  -moz-transition-property: none !important;
+  /* noinspection CssUnknownProperty */
+  -ms-transition-property: none !important;
+  /* noinspection CssUnknownProperty */
+  -webkit-transition-property: none !important;
+  transition-property: none !important;
+
+  /*CSS animations*/
+  /* noinspection CssUnknownProperty */
+  -webkit-animation: none !important;
+  /* noinspection CssUnknownProperty */
+  -moz-animation: none !important;
+  /* noinspection CssUnknownProperty */
+  -o-animation: none !important;
+  /* noinspection CssUnknownProperty */
+  -ms-animation: none !important;
+  animation: none !important;
+}

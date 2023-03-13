@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useAtom } from "jotai";
 
 import { MEDIA_QUERY_TABLET } from "@/config/media-queries";
+import { useAnimationsEnabled } from "@/hooks/use-animations-enabled";
 import { useKeyboard } from "@/hooks/use-keyboard";
 import { useMobileLayout } from "@/hooks/user-mobile-layout";
 import {
@@ -27,6 +28,7 @@ const MenuWrapper = styled(motion.div)`
 
 export function SettingsMenu() {
   const mobileLayout = useMobileLayout();
+  const animationsEnabled = useAnimationsEnabled();
   const [_, setShowSettings] = useAtom(showSettingsAtom);
   const [activeMenu, setActiveMenu] = useAtom(activeMenuAtom);
   const [activeSubMenu, setActiveSubMenu] = useAtom(activeSubMenuAtom);
@@ -56,8 +58,8 @@ export function SettingsMenu() {
 
   return (
     <MenuWrapper
-      initial={{ opacity: 0, scaleX: 0 }}
-      animate={{ opacity: 1, scaleX: 1 }}
+      initial={animationsEnabled ? { opacity: 0, scaleX: 0 } : {}}
+      animate={animationsEnabled ? { opacity: 1, scaleX: 1 } : {}}
       transition={{
         ease: "circOut",
         duration: 0.25,

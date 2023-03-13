@@ -7,6 +7,7 @@ import { i18n } from "next-i18next";
 
 import { DEFAULT_LOCALE } from "@/config/locale";
 import { atomWithStorageAndSideEffects } from "@/utils/jotai";
+import { SettingsToggleOptions } from "@/types/settings-menu";
 
 /****************
  * STATE ATOMS  *
@@ -18,10 +19,22 @@ export const showMenuOnMobileAtom = atom(false);
  * CONFIGURATION ATOMS  *
  ************************/
 
-export const animationsAtom = atomWithStorage("animations", "on");
-export const commentsAtom = atomWithStorage("comments", "on");
-export const socialShareAtom = atomWithStorage("social-sharing", "on");
-export const trackingAtom = atomWithStorage("tracking", "on");
+export const animationsAtom = atomWithStorage(
+  "animations",
+  SettingsToggleOptions.ON
+);
+export const commentsAtom = atomWithStorage(
+  "comments",
+  SettingsToggleOptions.ON
+);
+export const socialShareAtom = atomWithStorage(
+  "social-sharing",
+  SettingsToggleOptions.ON
+);
+export const trackingAtom = atomWithStorage(
+  "tracking",
+  SettingsToggleOptions.ON
+);
 
 export const languageAtom = atomWithStorageAndSideEffects(
   "language",

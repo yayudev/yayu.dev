@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import styled from "styled-components";
 
+import { useAnimationsEnabled } from "@/hooks/use-animations-enabled";
 import { ExperimentData } from "@/types/experiments";
 
 const FrameContainer = styled(motion.div)`
@@ -62,6 +63,7 @@ interface PlaygroundFrameProps {
 
 export function PlaygroundFrame({ experiment, onClose }: PlaygroundFrameProps) {
   const [clientDocument, setClientDocument] = useState<Element | null>(null);
+  const animationsEnabled = useAnimationsEnabled();
 
   useEffect(() => {
     setClientDocument(document.body);
@@ -73,25 +75,25 @@ export function PlaygroundFrame({ experiment, onClose }: PlaygroundFrameProps) {
     <AnimatePresence>
       {experiment && (
         <FrameContainer
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          initial={animationsEnabled ? { opacity: 0 } : {}}
+          animate={animationsEnabled ? { opacity: 1 } : {}}
+          exit={animationsEnabled ? { opacity: 0 } : {}}
           transition={{ duration: 0.5, ease: "easeOut" }}
           onClick={onClose}
         >
           <Frame
-            initial={{ opacity: 0, translateY: 100 }}
-            animate={{ opacity: 1, translateY: 0 }}
-            exit={{ opacity: 0, translateY: 100 }}
+            initial={animationsEnabled ? { opacity: 0, translateY: 100 } : {}}
+            animate={animationsEnabled ? { opacity: 1, translateY: 0 } : {}}
+            exit={animationsEnabled ? { opacity: 0, translateY: 100 } : {}}
             transition={{ duration: 0.5, ease: "easeOut" }}
             src={experiment.url}
             onClick={(e) => e.stopPropagation()}
           />
 
           <Details
-            initial={{ opacity: 0, translateY: 100 }}
-            animate={{ opacity: 1, translateY: 0 }}
-            exit={{ opacity: 0, translateY: 100 }}
+            initial={animationsEnabled ? { opacity: 0, translateY: 100 } : {}}
+            animate={animationsEnabled ? { opacity: 1, translateY: 0 } : {}}
+            exit={animationsEnabled ? { opacity: 0, translateY: 100 } : {}}
             onClick={(e) => e.stopPropagation()}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >

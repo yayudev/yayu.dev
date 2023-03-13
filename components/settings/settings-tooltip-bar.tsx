@@ -3,6 +3,7 @@ import { useTranslation } from "next-i18next";
 import styled, { css } from "styled-components";
 
 import { MEDIA_QUERY_TABLET } from "@/config/media-queries";
+import { useAnimationsEnabled } from "@/hooks/use-animations-enabled";
 
 import { MarqueScroller } from "@/components/settings/marque-scroller";
 
@@ -96,6 +97,8 @@ export function SettingsTooltipBar({
   onBack,
 }: SettingsTooltipBarProps) {
   const { t } = useTranslation();
+  const animationsEnabled = useAnimationsEnabled();
+
   const text = t(textKey) ?? "";
 
   const backControl = Boolean(showBack) && (
@@ -129,8 +132,8 @@ export function SettingsTooltipBar({
       />
 
       <ControlsContainer
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        initial={animationsEnabled ? { opacity: 0 } : {}}
+        animate={animationsEnabled ? { opacity: 1 } : {}}
         transition={{
           ease: "easeOut",
           duration: 0.5,

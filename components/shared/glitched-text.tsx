@@ -1,6 +1,8 @@
 import { ReactNode } from "react";
 import styled, { keyframes } from "styled-components";
 
+import { useAnimationsEnabled } from "@/hooks/use-animations-enabled";
+
 interface GlitchedTextProps {
   children: ReactNode;
   animate: boolean;
@@ -395,9 +397,13 @@ const TextContent = styled.span<{ animate: boolean }>`
 `;
 
 export function GlitchedText({ children, animate = false }: GlitchedTextProps) {
+  const animationsEnabled = useAnimationsEnabled();
+
   return (
-    <TextWrapper animate={animate} data-text={children}>
-      <TextContent animate={animate}>{children}</TextContent>
+    <TextWrapper animate={animationsEnabled && animate} data-text={children}>
+      <TextContent animate={animationsEnabled && animate}>
+        {children}
+      </TextContent>
     </TextWrapper>
   );
 }

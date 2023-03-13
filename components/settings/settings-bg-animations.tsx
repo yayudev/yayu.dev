@@ -1,20 +1,26 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
+import { useAnimationsEnabled } from "@/hooks/use-animations-enabled";
+
 interface SettingsBGWrapperProps {
   width: number;
   height: number;
   reversed?: boolean;
 }
 
-const StyledSVG = styled.svg`
+const StyledSVG = styled.svg<{ reversed: boolean }>`
   position: absolute;
   user-select: none;
   transform-origin: center;
   overflow: hidden;
+  //noinspection ALL
   max-height: 100vh;
+  //noinspection ALL
   max-height: 100svh;
   max-width: 100vw;
+
+  transform: scale(${({ reversed }) => (reversed ? -1 : 1)}) !important;
 `;
 
 export function SettingsBGAnimations({
@@ -22,6 +28,7 @@ export function SettingsBGAnimations({
   height,
   reversed = false,
 }: SettingsBGWrapperProps) {
+  const animationsEnabled = useAnimationsEnabled();
   const positionStyles = reversed
     ? { bottom: 0, right: 0 }
     : { top: 0, left: 0 };
@@ -33,16 +40,20 @@ export function SettingsBGAnimations({
       viewBox="0 0 752 716"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      transform={`scale(${reversed ? -1 : 1})`}
+      reversed={reversed}
       style={positionStyles}
       tabIndex={-1}
       focusable={false}
       aria-label="background animation"
     >
       <motion.circle
-        animate={{
-          r: [400, 420],
-        }}
+        animate={
+          animationsEnabled
+            ? {
+                r: [400, 420],
+              }
+            : {}
+        }
         transition={{
           repeat: Infinity,
           repeatType: "reverse",
@@ -57,10 +68,14 @@ export function SettingsBGAnimations({
         strokeWidth="2"
       />
       <motion.circle
-        animate={{
-          cx: [-10, -5, 0, 5, 10, 5, 0, -5, -10],
-          cy: [0, 5, 10, 5, 0, -5, -10, -5, 0],
-        }}
+        animate={
+          animationsEnabled
+            ? {
+                cx: [-10, -5, 0, 5, 10, 5, 0, -5, -10],
+                cy: [0, 5, 10, 5, 0, -5, -10, -5, 0],
+              }
+            : {}
+        }
         transition={{
           repeat: Infinity,
           duration: 5,
@@ -75,10 +90,14 @@ export function SettingsBGAnimations({
         strokeWidth="2"
       />
       <motion.line
-        animate={{
-          x1: [531, 731],
-          y1: [510, 714],
-        }}
+        animate={
+          animationsEnabled
+            ? {
+                x1: [531, 731],
+                y1: [510, 714],
+              }
+            : {}
+        }
         transition={{
           repeat: Infinity,
           repeatType: "reverse",
@@ -94,10 +113,14 @@ export function SettingsBGAnimations({
         strokeWidth="2"
       />
       <motion.line
-        animate={{
-          x1: [520, 670],
-          y1: [555, 705],
-        }}
+        animate={
+          animationsEnabled
+            ? {
+                x1: [520, 670],
+                y1: [555, 705],
+              }
+            : {}
+        }
         transition={{
           repeat: Infinity,
           repeatType: "reverse",
@@ -113,10 +136,14 @@ export function SettingsBGAnimations({
         strokeWidth="2"
       />
       <motion.line
-        animate={{
-          x1: [551, 751],
-          y1: [482, 682],
-        }}
+        animate={
+          animationsEnabled
+            ? {
+                x1: [551, 751],
+                y1: [482, 682],
+              }
+            : {}
+        }
         transition={{
           repeat: Infinity,
           repeatType: "reverse",

@@ -1,18 +1,19 @@
 import { Analytics } from "@vercel/analytics/react";
+import { useAtom } from "jotai";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import { appWithTranslation } from "next-i18next";
 import styled from "styled-components";
 
 import nextI18NextConfig from "../next-i18next.config";
+import { useAnimationsEnabled } from "@/hooks/use-animations-enabled";
 import { trackingAtom } from "@/state/application";
+import { SettingsToggleOptions } from "@/types/settings-menu";
 
 import { HomeMenu } from "@/components/home-menu/home-menu";
 import { Settings } from "@/components/settings/settings";
 
 import "@/styles/globals.css";
-import { useAtom } from "jotai";
-import { SettingsToggleOptions } from "@/types/settings-menu";
 
 const AppContentWrapper = styled.div`
   //noinspection ALL
@@ -25,8 +26,10 @@ const AppContentWrapper = styled.div`
 `;
 
 function AppContent({ Component, pageProps }: AppProps) {
+  const animationsEnabled = useAnimationsEnabled();
+
   return (
-    <AppContentWrapper>
+    <AppContentWrapper className={animationsEnabled ? "" : "no-animations"}>
       <HomeMenu />
 
       <Component {...pageProps} />

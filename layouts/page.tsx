@@ -7,6 +7,7 @@ import { MEDIA_QUERY_PHONE, MEDIA_QUERY_TABLET } from "@/config/media-queries";
 
 import { ErrorMessage } from "@/components/shared/error-message";
 import { Loader } from "@/components/shared/loader";
+import { useAnimationsEnabled } from "@/hooks/use-animations-enabled";
 
 const Container = styled.div`
   width: 100%;
@@ -101,6 +102,7 @@ export function PageLayout({
   children,
 }: PageLayoutProps) {
   const { query, pathname } = useRouter();
+  const animationsEnabled = useAnimationsEnabled();
   const containerElement = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -114,9 +116,9 @@ export function PageLayout({
           <Title
             key="title"
             $isAestheticTitle={isAestheticTitle}
-            initial={{ opacity: 0, scaleX: 0 }}
-            animate={{ opacity: 1, scaleX: 1 }}
-            exit={{ opacity: 0, scaleX: 0 }}
+            initial={animationsEnabled ? { opacity: 0, scaleX: 0 } : {}}
+            animate={animationsEnabled ? { opacity: 1, scaleX: 1 } : {}}
+            exit={animationsEnabled ? { opacity: 0, scaleX: 0 } : {}}
             transition={{
               duration: 0.5,
               ease: "easeOut",
@@ -128,9 +130,9 @@ export function PageLayout({
           {subtitle && (
             <Subtitle
               key="subtitle"
-              initial={{ opacity: 0, scaleX: 0 }}
-              animate={{ opacity: 1, scaleX: 1 }}
-              exit={{ opacity: 0, scaleX: 0 }}
+              initial={animationsEnabled ? { opacity: 0, scaleX: 0 } : {}}
+              animate={animationsEnabled ? { opacity: 1, scaleX: 1 } : {}}
+              exit={animationsEnabled ? { opacity: 0, scaleX: 0 } : {}}
               transition={{
                 delay: 0.5,
                 duration: 0.25,
@@ -157,9 +159,9 @@ export function PageLayout({
         {!isLoading && !hasError && (
           <Content
             key="content-loaded"
-            initial={{ opacity: 0, translateY: 25 }}
-            animate={{ opacity: 1, translateY: 0 }}
-            exit={{ opacity: 0, translateY: -25 }}
+            initial={animationsEnabled ? { opacity: 0, translateY: 25 } : {}}
+            animate={animationsEnabled ? { opacity: 1, translateY: 0 } : {}}
+            exit={animationsEnabled ? { opacity: 0, translateY: -25 } : {}}
             transition={{
               duration: 0.5,
               ease: "easeOut",
