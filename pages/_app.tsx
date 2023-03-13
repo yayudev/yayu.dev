@@ -1,17 +1,22 @@
+import { Analytics } from "@vercel/analytics/react";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import { appWithTranslation } from "next-i18next";
 import styled from "styled-components";
 
 import nextI18NextConfig from "../next-i18next.config";
+import { trackingAtom } from "@/state/application";
 
 import { HomeMenu } from "@/components/home-menu/home-menu";
 import { Settings } from "@/components/settings/settings";
 
 import "@/styles/globals.css";
+import { useAtom } from "jotai";
 
 const AppContentWrapper = styled.div`
+  //noinspection ALL
   height: 100vh;
+  //noinspection ALL
   height: 100svh;
   overflow: hidden;
   width: 100vw;
@@ -30,6 +35,8 @@ function AppContent({ Component, pageProps }: AppProps) {
 }
 
 function MyApp(props: AppProps) {
+  const [tracking] = useAtom(trackingAtom);
+
   return (
     <>
       <Head>
@@ -38,6 +45,13 @@ function MyApp(props: AppProps) {
       </Head>
 
       <AppContent {...props} />
+
+      <Analytics
+        beforeSend={(event) => {
+          // Do no send events if tracking is disabled
+          return tracking === "on" ? event : null;
+        }}
+      />
     </>
   );
 }
