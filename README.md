@@ -65,8 +65,8 @@ Stuff that needs to be done before release:
 - [X] Re-host images in a dedicated s3 bucket
 - [X] Add sharing buttons to blog posts
 - [X] Add Vercel analytics
-- [ ] Disable comments via settings
-- [ ] Disable social share via settings
+- [X] Disable comments via settings
+- [X] Disable social share via settings
 - [X] Disable tracking via settings
 - [ ] Disable Animations via settings
 - [ ] Migrate API from v2 to Next's api routes (or maybe static pre-generated assets?)
