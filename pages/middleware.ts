@@ -1,7 +1,11 @@
 import NextCors from "nextjs-cors";
 import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
 
-export const corsMiddleware: NextApiHandler = async (
+export const config = {
+  matcher: "/api/:path*",
+};
+
+export const middleware: NextApiHandler = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
@@ -17,6 +21,8 @@ export const corsMiddleware: NextApiHandler = async (
   if (!allowedOrigins.includes(requestOrigin)) {
     return res.status(401).json({ message: "Origin not allowed" });
   }
+
+  console.log("requestOrigin", requestOrigin);
 
   await NextCors(req, res, {
     methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],

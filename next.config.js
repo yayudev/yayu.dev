@@ -11,14 +11,14 @@ const CONTENTFUL_ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN;
 const VERCEL_URL = process.env.VERCEL_URL;
 
 let SERVER_URL = process.env.SERVER_URL || "https://yayu.dev";
-let API_ALLOWED_ORIGINS = process.env.API_ALLOWED_ORIGINS || "https://yayu.dev";
+let API_ALLOWED_ORIGINS = process.env.API_ALLOWED_ORIGINS || "yayu.dev";
 
 if (VERCEL_URL) {
   SERVER_URL = `https://${VERCEL_URL}`;
-  API_ALLOWED_ORIGINS = `${API_ALLOWED_ORIGINS},${SERVER_URL}`;
+  API_ALLOWED_ORIGINS = `${API_ALLOWED_ORIGINS},${VERCEL_URL}`;
 } else if (DEV_ENV) {
   SERVER_URL = "http://localhost:3000";
-  API_ALLOWED_ORIGINS = `${API_ALLOWED_ORIGINS},${SERVER_URL}`;
+  API_ALLOWED_ORIGINS = `${API_ALLOWED_ORIGINS},localhost`;
 }
 
 // noinspection JSUnusedGlobalSymbols

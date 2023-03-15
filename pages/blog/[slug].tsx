@@ -165,7 +165,7 @@ const BlogPostPage = ({ postId, mdxSource }: BlogPostProps) => {
 
   return (
     <PageLayout
-      title={""}
+      title={post?.title ?? ""}
       isAestheticTitle={false}
       isLoading={isLoading}
       hasError={isError}
