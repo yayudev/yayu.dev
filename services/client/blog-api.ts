@@ -16,6 +16,10 @@ export class BlogApiService {
     return `${POSTS_ENDPOINT}?skip=${(page - 1) * 10}&limit=10`;
   }
 
+  public getAllPostsSlugsUrl() {
+    return `${POSTS_ENDPOINT}?allSlugs=true`;
+  }
+
   public fetchPostList(page: number = 1): Promise<BlogPostListResult> {
     return this.fetchData<BlogPostListResult>(this.getPostListUrl(page));
   }
@@ -23,6 +27,10 @@ export class BlogApiService {
   public fetchIndividualPost(postId: string): Promise<BlogPost> {
     return this.fetchData<BlogPost>(this.getIndividualPostUrl(postId));
   }
+
+  public fetchAllPostsSlugs = async () => {
+    return this.fetchData<string[]>(this.getAllPostsSlugsUrl());
+  };
 
   public usePostList = (page: number) => {
     const { data, error, isLoading } = useSWR<BlogPostListResult>(

@@ -44,7 +44,7 @@ const Spacing = styled.div`
 `;
 
 export function Settings() {
-  const { t } = useTranslation("settings");
+  const { t } = useTranslation();
 
   const animationsEnabled = useAnimationsEnabled();
   const [_, setShowMenuOnMobile] = useAtom(showMenuOnMobileAtom);
@@ -94,7 +94,7 @@ export function Settings() {
                 duration: 0.5,
               }}
             >
-              {t("title")}
+              {t("settings:title")}
             </SettingsTitle>
 
             <Content>

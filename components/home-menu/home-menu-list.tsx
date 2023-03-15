@@ -17,7 +17,7 @@ const MenuList = styled.ul`
 `;
 
 export function HomeMenuList() {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation();
   const [_, setShowSettings] = useAtom(showSettingsAtom);
 
   function openSettings() {
@@ -28,16 +28,16 @@ export function HomeMenuList() {
     <nav>
       <MenuList>
         <HomeMenuItem key="blog" href="/blog">
-          {t("blog")}
+          {t("common:blog")}
         </HomeMenuItem>
         <HomeMenuItem key="playground" href="/playground">
-          {t("playground")}
+          {t("common:playground")}
         </HomeMenuItem>
         <HomeMenuItem key="settings" onClick={openSettings}>
-          {t("settings")}
+          {t("common:settings")}
         </HomeMenuItem>
         <HomeMenuItem key="about" href="/about">
-          {t("about")}
+          {t("common:about")}
         </HomeMenuItem>
       </MenuList>
     </nav>

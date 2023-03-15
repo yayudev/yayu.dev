@@ -30,7 +30,7 @@ export function SettingsOptionSelect({
   selectedValue,
   onSelect,
 }: SettingsOptionSelectProps) {
-  const { t } = useTranslation("settings");
+  const { t } = useTranslation();
 
   return (
     <Container>

@@ -50,7 +50,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
 }
 
 const Playground: NextPage = () => {
-  const { t } = useTranslation("");
+  const { t } = useTranslation();
   const [filterTag, setFilterTag] = useState<TechnologyTag>(TechnologyTag.ALL);
   const [currentSort, setCurrentSort] = useState<SortType>(
     SortType.BY_MOST_RECENT

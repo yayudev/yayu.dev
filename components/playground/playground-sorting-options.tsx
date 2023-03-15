@@ -38,11 +38,11 @@ export function PlaygroundSortingOptions({
   currentSort,
   onChange,
 }: PlaygroundSortingOptionsProps) {
-  const { t } = useTranslation("playground");
+  const { t } = useTranslation();
 
   return (
     <SortingText>
-      <span>{t("sort-by")}</span>
+      <span>{t("playground:sort-by")}</span>
 
       <Button
         active={currentSort === SortType.BY_MOST_RECENT}
@@ -50,14 +50,14 @@ export function PlaygroundSortingOptions({
       >
         {currentSort === SortType.BY_MOST_RECENT ? (
           <GlitchedText animate={currentSort === SortType.BY_MOST_RECENT}>
-            {t("by-most-recent")}
+            {t("playground:by-most-recent")}
           </GlitchedText>
         ) : (
-          t("by-most-recent")
+          t("playground:by-most-recent")
         )}
       </Button>
 
-      <span>{t("separator")}</span>
+      <span>{t("playground:separator")}</span>
 
       <Button
         active={currentSort === SortType.BY_NAME}
@@ -65,10 +65,10 @@ export function PlaygroundSortingOptions({
       >
         {currentSort === SortType.BY_NAME ? (
           <GlitchedText animate={currentSort === SortType.BY_NAME}>
-            {t("by-name")}
+            {t("playground:by-name")}
           </GlitchedText>
         ) : (
-          t("by-name")
+          t("playground:by-name")
         )}
       </Button>
     </SortingText>

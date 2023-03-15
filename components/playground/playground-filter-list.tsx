@@ -24,14 +24,14 @@ export function PlaygroundFilterList({
   selectedTag,
   onTagChange,
 }: PlaygroundFilterProps) {
-  const { t } = useTranslation("playground");
+  const { t } = useTranslation();
 
   return (
     <Container>
       {TechnologyTagsList.map((tag: TechnologyTag) => (
         <PlaygroundFilterTag
           key={tag}
-          label={t(tag)}
+          label={t(`playground:${tag}`)}
           active={selectedTag === tag}
           onClick={() => onTagChange(tag)}
         />

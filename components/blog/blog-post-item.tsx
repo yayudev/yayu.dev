@@ -100,7 +100,7 @@ interface BlogPostItemProps {
 }
 
 export function BlogPostItem({ post }: BlogPostItemProps) {
-  const { t } = useTranslation("blog");
+  const { t } = useTranslation();
   const coverImage: string | undefined = (post.coverImage as any)?.fields?.file
     ?.url;
   const postImage = coverImage
@@ -115,7 +115,7 @@ export function BlogPostItem({ post }: BlogPostItemProps) {
             src={postImage}
             width={150}
             height={200}
-            alt={t("image-alt-template", { title: post.title })}
+            alt={t("blog:image-alt-template", { title: post.title })}
             style={{
               maxWidth: "100%",
               height: "auto",
@@ -124,7 +124,9 @@ export function BlogPostItem({ post }: BlogPostItemProps) {
 
           <BlogPostInfo>
             <Title>{post.title}</Title>
-            <DateText>{t("image-posted-on", { date: post.date })}</DateText>
+            <DateText>
+              {t("blog:image-posted-on", { date: post.date })}
+            </DateText>
             <Excerpt>{post.excerpt}</Excerpt>
           </BlogPostInfo>
         </BlogPostArticleContent>

@@ -1,7 +1,7 @@
 import { DiscussionEmbed } from "disqus-react";
 import { useAtom } from "jotai";
 import matter from "gray-matter";
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
@@ -22,10 +22,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 
 interface BlogPostProps {
   postId: string;
-  mdxSource?: MDXRemoteSerializeResult<
-    Record<string, unknown>,
-    Record<string, unknown>
-  >;
+  mdxSource?: MDXRemoteSerializeResult;
   frontMatter?: matter.GrayMatterFile<string>;
 }
 
@@ -113,32 +110,38 @@ const CommentsContainer = styled.div`
   padding: 0 2rem;
 `;
 
-export const getServerSideProps: GetServerSideProps = async ({
-  query,
-  locale,
+export const getStaticPaths = async () => {
+  const postsSlugs = await blogApiService.fetchAllPostsSlugs();
+  const paths = postsSlugs.map((slug) => `/blog/${slug}`);
+
+  return {
+    paths,
+    fallback: true,
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({
+  params,
+  locale = "en",
 }) => {
   /**************
    *   Locale   *
    **************/
 
-  let localeProps = {};
-
-  if (locale) {
-    localeProps = await serverSideTranslations(locale, [
-      "common",
-      "settings",
-      "blog",
-    ]);
-  }
+  let localeProps = await serverSideTranslations(locale, [
+    "common",
+    "settings",
+    "blog",
+  ]);
 
   /**************
    * Page data  *
    **************/
 
-  const postId = query.slug as string;
-
+  const postId = params?.slug as string;
   const pageUrl = blogApiService.getIndividualPostUrl(postId);
   const blogPost = await blogApiService.fetchIndividualPost(postId);
+
   const { content, data } = matter(blogPost?.markdown ?? "");
   const mdxSource = await serialize(content, { ...mdxOptions, scope: data });
 

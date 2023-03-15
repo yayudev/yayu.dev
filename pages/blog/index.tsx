@@ -17,7 +17,7 @@ interface BlogIndexProps {
 
 export const getServerSideProps: GetServerSideProps = async ({
   query,
-  locale,
+  locale = "en",
 }) => {
   /**************
    * Pagination *
@@ -38,15 +38,11 @@ export const getServerSideProps: GetServerSideProps = async ({
    *   Locale   *
    **************/
 
-  let localeProps = {};
-
-  if (locale) {
-    localeProps = await serverSideTranslations(locale, [
-      "common",
-      "settings",
-      "blog",
-    ]);
-  }
+  let localeProps = await serverSideTranslations(locale, [
+    "common",
+    "settings",
+    "blog",
+  ]);
 
   return {
     props: {

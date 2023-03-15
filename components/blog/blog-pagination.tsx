@@ -28,13 +28,13 @@ interface BlogPaginationProps {
 }
 
 export function BlogPagination({ prevUrl, nextUrl }: BlogPaginationProps) {
-  const { t } = useTranslation("blog");
+  const { t } = useTranslation();
 
   return (
     <Container>
       {prevUrl && (
         <Link href={prevUrl} passHref>
-          <ButtonLabel>{t("back")}</ButtonLabel>
+          <ButtonLabel>{t("blog:back")}</ButtonLabel>
         </Link>
       )}
 
@@ -42,7 +42,7 @@ export function BlogPagination({ prevUrl, nextUrl }: BlogPaginationProps) {
 
       {nextUrl && (
         <Link href={nextUrl} passHref>
-          <ButtonLabel>{t("next")}</ButtonLabel>
+          <ButtonLabel>{t("blog:next")}</ButtonLabel>
         </Link>
       )}
     </Container>
