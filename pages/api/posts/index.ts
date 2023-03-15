@@ -8,22 +8,32 @@ export default async function getPostsListHandler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  let { skip = 0, limit = 10 } = req.query;
-  const parsedSkip = parseInt(skip as string);
-  const parsedLimit = parseInt(limit as string);
+  let { skip = 0, limit = 10, allSlugs } = req.query;
+  let parsedSkip = parseInt(skip as string);
+  let parsedLimit = parseInt(limit as string);
+
+  if (allSlugs === "true") {
+    parsedLimit = 0;
+    parsedSkip = 0;
+  }
 
   try {
     await cors(req, res);
 
     const postsCollection: BlogPostListResult =
       await contentfulApiService.getPostsCollection({
-        skip: parsedSkip,
-        limit: parsedLimit,
+        skip: allSlugs ? undefined : parsedSkip,
+        limit: allSlugs ? undefined : parsedLimit,
       });
 
     // Post not found
     if (!postsCollection) {
       return res.status(404).json({ message: "Posts not found" });
+    }
+
+    if (allSlugs === "true") {
+      const slugs = postsCollection.posts.map((item) => item.slug);
+      return res.status(200).json(slugs);
     }
 
     res.status(200).json(postsCollection);
