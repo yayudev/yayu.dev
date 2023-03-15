@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 import { contentfulApiService } from "@/services/server/contentful";
 import { BlogPostListResult } from "@/types/blog-api";
+import { cors } from "@/utils/cors";
 
 export default async function getPostsListHandler(
   req: NextApiRequest,
@@ -12,6 +13,8 @@ export default async function getPostsListHandler(
   const parsedLimit = parseInt(limit as string);
 
   try {
+    await cors(req, res);
+
     const postsCollection: BlogPostListResult =
       await contentfulApiService.getPostsCollection({
         skip: parsedSkip,

@@ -1,6 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
+
 import { contentfulApiService } from "@/services/server/contentful";
 import { BlogPost } from "@/types/blog-api";
+import { cors } from "@/utils/cors";
 
 export default async function getPostsBySlugHandler(
   req: NextApiRequest,
@@ -19,6 +21,8 @@ export default async function getPostsBySlugHandler(
   }
 
   try {
+    await cors(req, res);
+
     const entry = await contentfulApiService.getPostBySlug(slug);
 
     const blogPost = {
