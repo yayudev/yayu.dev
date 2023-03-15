@@ -14,6 +14,14 @@ To set up just run:
 
 ```sh
 $ npm install
+$ cp .env.local.example .env.local
+```
+
+Then fill in the required environment variables in `.env.local`:
+
+```sh
+CONTENTFUL_SPACE_ID=<space_id>
+CONTENTFUL_ACCESS_TOKEN=<access_token>
 ```
 
 ## Run
@@ -69,10 +77,10 @@ Stuff that needs to be done before release:
 - [X] Disable social share via settings
 - [X] Disable tracking via settings
 - [X] Disable Animations via settings
-- [X] Migrate API from v2 to Next's api routes (or maybe static pre-generated assets?)
+- [X] Migrate API from v2 to Next's api routes + contentful
 - [ ] Fix blog post title on mobile
-- [ ] Move content to CMS
 - [ ] Configure CORS and security whitelist
+- [ ] Move content to CMS
 - [ ] Redirect v2 to v3
 
 ### Post-release:
@@ -96,7 +104,8 @@ Good to have things that will be added eventually but not 100% required for init
 - [ ] Contributing guidelines
 - [ ] Full screen experiment expansion
 - [ ] Refactor MarqueeScroller into a standalone component package for re-usability
-- [ ] Move to astro?
+- [ ] Use local mdx files(?)
+- [ ] Move to astro(?)
 
 # Contributing
 

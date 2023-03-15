@@ -14,6 +14,7 @@ const withMDX = require("@next/mdx")({
 });
 
 const DEV_ENV = process.env.NODE_ENV === "development";
+const DEV_PREVIEW_URL = process.env.DEV_PREVIEW_URL;
 const PORT = process.env.PORT || 3000;
 const ENABLE_DEV_PROXY = process.env.ENABLE_NETWORK === "on";
 
@@ -21,6 +22,10 @@ const CONTENTFUL_SPACE_ID = process.env.CONTENTFUL_SPACE_ID;
 const CONTENTFUL_ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN;
 
 let SERVER_URL = process.env.SERVER_URL || "https://yayu.dev";
+
+if (DEV_PREVIEW_URL) {
+  SERVER_URL = DEV_PREVIEW_URL;
+}
 
 if (DEV_ENV) {
   SERVER_URL = "http://localhost:3000";
