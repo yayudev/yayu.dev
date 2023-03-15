@@ -21,7 +21,6 @@ export class BlogApiService {
   }
 
   public fetchIndividualPost(postId: string): Promise<BlogPost> {
-    console.log("Fetching individual post", this.getIndividualPostUrl(postId));
     return this.fetchData<BlogPost>(this.getIndividualPostUrl(postId));
   }
 

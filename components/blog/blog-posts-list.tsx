@@ -8,7 +8,6 @@ interface BlogPostsListProps {
 
 export function BlogPostsList({ posts }: BlogPostsListProps) {
   if (!posts.length) return null;
-  console.log(posts);
 
   return (
     <section>

@@ -51,12 +51,10 @@ export class ContentfulApiService {
   }
 
   public async getPostBySlug(slug: string): Promise<BlogPost> {
-    console.log("fetching", { slug });
     const entries = await this.client.getEntries<ContentfulBlogPost>({
       content_type: "blogPost",
       "fields.slug": slug,
     });
-    console.log("entries", entries);
 
     if (!entries?.items?.length) {
       throw new Error(`Blog post not found: ${slug}`);

@@ -66,7 +66,6 @@ const BlogIndex: NextPage<BlogIndexProps> = ({
 }: BlogIndexProps) => {
   const { t } = useTranslation();
   const { postList, isError, isLoading } = blogApiService.usePostList(page);
-  console.log(postList);
 
   return (
     <PageLayout

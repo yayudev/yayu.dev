@@ -103,7 +103,6 @@ export function BlogPostItem({ post }: BlogPostItemProps) {
   const { t } = useTranslation("blog");
   const coverImage: string | undefined = (post.coverImage as any)?.fields?.file
     ?.url;
-  console.log(coverImage);
   const postImage = coverImage
     ? `https:${coverImage}`
     : "https://via.placeholder.com/150x200.jpg";
