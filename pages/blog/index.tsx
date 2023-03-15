@@ -50,12 +50,12 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   return {
     props: {
-      ...localeProps,
       hasNextPage,
       page: pageNumber,
       fallback: {
         [pageUrl]: data,
       },
+      ...localeProps,
     },
   };
 };
