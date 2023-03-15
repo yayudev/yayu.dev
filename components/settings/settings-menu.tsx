@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useAtom } from "jotai";
 
-import { MEDIA_QUERY_TABLET } from "@/config/media-queries";
+import { MEDIA_QUERY_TABLET } from "@/constants/media-queries";
 import { useAnimationsEnabled } from "@/hooks/use-animations-enabled";
 import { useKeyboard } from "@/hooks/use-keyboard";
 import { useMobileLayout } from "@/hooks/user-mobile-layout";

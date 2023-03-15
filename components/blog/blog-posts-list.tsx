@@ -7,10 +7,13 @@ interface BlogPostsListProps {
 }
 
 export function BlogPostsList({ posts }: BlogPostsListProps) {
+  if (!posts.length) return null;
+  console.log(posts);
+
   return (
     <section>
       {posts.map((post) => (
-        <BlogPostItem key={post.id} post={post} />
+        <BlogPostItem key={post?.slug} post={post} />
       ))}
     </section>
   );

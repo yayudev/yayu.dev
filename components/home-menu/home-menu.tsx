@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 
-import { MEDIA_QUERY_TABLET } from "@/config/media-queries";
+import { MEDIA_QUERY_TABLET } from "@/constants/media-queries";
 import { useMobileLayout } from "@/hooks/user-mobile-layout";
 import { showMenuOnMobileAtom } from "@/state/application";
 
@@ -18,7 +18,7 @@ interface MenuButtonProps {
 }
 
 const Container = styled.nav<MenuButtonProps>`
-  background-image: url("/images/background.png");
+  background-image: url("/images/background.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

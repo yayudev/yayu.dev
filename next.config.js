@@ -3,9 +3,22 @@ require("dotenv");
 
 const { i18n } = require("./next-i18next.config");
 
+const withMDX = require("@next/mdx")({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [],
+    // If you use `MDXProvider`, uncomment the following line.
+    // providerImportSource: "@mdx-js/react",
+  },
+});
+
 const DEV_ENV = process.env.NODE_ENV === "development";
 const PORT = process.env.PORT || 3000;
 const ENABLE_DEV_PROXY = process.env.ENABLE_NETWORK === "on";
+
+const CONTENTFUL_SPACE_ID = process.env.CONTENTFUL_SPACE_ID;
+const CONTENTFUL_ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN;
 
 let SERVER_URL = process.env.SERVER_URL || "https://yayu.dev";
 
@@ -29,31 +42,22 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
 
   // i18n
   i18n,
 
   // Images whitelist
   images: {
-    domains: ["via.placeholder.com"],
+    domains: ["via.placeholder.com", "images.ctfassets.net"],
   },
 
   // env vars
   env: {
     SERVER_URL,
-  },
-
-  // Dev API proxy
-  async rewrites() {
-    const devProxy = [
-      {
-        source: "/api/:path*",
-        destination: "https://yayu.dev/api/:path*",
-      },
-    ];
-
-    return DEV_ENV ? devProxy : [];
+    CONTENTFUL_SPACE_ID,
+    CONTENTFUL_ACCESS_TOKEN,
   },
 };
 
-module.exports = nextConfig;
+module.exports = withMDX(nextConfig);

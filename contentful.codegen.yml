@@ -1,0 +1,40 @@
+schema: 'https://graphql.contentful.com/content/v1/spaces/1fnpih0gmmjm?access_token=o3oFVT2tAkeZaRTq6eDi4iLAFFvZLjz4yULjUMQsJIY'
+documents: null
+generates:
+  ./types/cms.d.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+    config:
+      scalars:
+        DateTime: string
+      avoidOptionals: true
+      namingConvention: change-case#pascalCase
+      withHooks: false
+      withHOC: false
+      withComponent: false
+      withMutationFn: false
+      withRefetchFn: false
+      withResultType: false
+      withQueryFn: false
+      useIndexSignature: true
+      generateApolloReactHOC: false
+      generateReactApolloHooks: false
+      generateOperationTypes: true
+      generateSchemaTypes: false
+      generateFragmentTypes: false
+      generateClient: false
+      generateGetStaticProps: false
+      generateGetStaticPaths: false
+      generateGetServerSideProps: false
+      generateSubscriptionHooks: false
+      preResolveTypes: false
+      skipTypeNameForRoot: true
+      indentWith: "space"
+      indentSize: 2
+      singleQuote: true
+      useStaticImports: true
+      noExport: false
+      exportFragmentSpreadSubTypes: false
+      gqlImport: 'graphql-tag'
+      typesPrefix: 'Contentful'

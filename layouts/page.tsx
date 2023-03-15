@@ -3,7 +3,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 
-import { MEDIA_QUERY_PHONE, MEDIA_QUERY_TABLET } from "@/config/media-queries";
+import {
+  MEDIA_QUERY_PHONE,
+  MEDIA_QUERY_TABLET,
+} from "@/constants/media-queries";
 
 import { ErrorMessage } from "@/components/shared/error-message";
 import { Loader } from "@/components/shared/loader";

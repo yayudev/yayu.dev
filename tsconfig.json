@@ -18,10 +18,12 @@
     "paths": {
       "@/components/*": ["components/*"],
       "@/config/*": ["config/*"],
+      "@/constants/*": ["constants/*"],
       "@/hooks/*": ["hooks/*"],
       "@/layouts/*": ["layouts/*"],
       "@/data/*": ["data/*"],
       "@/pages/*": ["pages/*"],
+      "@/router/*": ["router/*"],
       "@/services/*": ["services/*"],
       "@/state/*": ["state/*"],
       "@/styles/*": ["styles/*"],

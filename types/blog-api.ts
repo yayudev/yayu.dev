@@ -1,16 +1,8 @@
-export type BlogPost = {
-  id: number;
-  title: string;
-  date: string;
-  tags: string[];
-  url: string; // Slug
-  image?: string;
-  excerpt: string;
-  html: string;
-};
+import { ContentfulBlogPost } from "@/types/cms";
+
+export type BlogPost = Omit<ContentfulBlogPost, "sys">;
 
 export type BlogPostListResult = {
-  page: number;
   totalPosts: number;
   posts: BlogPost[];
 };

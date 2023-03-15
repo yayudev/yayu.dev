@@ -69,8 +69,9 @@ Stuff that needs to be done before release:
 - [X] Disable social share via settings
 - [X] Disable tracking via settings
 - [X] Disable Animations via settings
-- [ ] Migrate API from v2 to Next's api routes (or maybe static pre-generated assets?)
+- [X] Migrate API from v2 to Next's api routes (or maybe static pre-generated assets?)
 - [ ] Fix blog post title on mobile
+- [ ] Move content to CMS
 - [ ] Configure CORS and security whitelist
 - [ ] Redirect v2 to v3
 

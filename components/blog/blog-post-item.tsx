@@ -4,7 +4,10 @@ import styled from "styled-components";
 import { useTranslation } from "next-i18next";
 
 import { BlogPost } from "@/types/blog-api";
-import { MEDIA_QUERY_PHONE, MEDIA_QUERY_TABLET } from "@/config/media-queries";
+import {
+  MEDIA_QUERY_PHONE,
+  MEDIA_QUERY_TABLET,
+} from "@/constants/media-queries";
 
 const BlogPostArticleContent = styled.div`
   font-family: "Open sans", "Helvetica Neue", "Segoe UI", "arial",
@@ -98,11 +101,16 @@ interface BlogPostItemProps {
 
 export function BlogPostItem({ post }: BlogPostItemProps) {
   const { t } = useTranslation("blog");
-  const postImage = post.image ?? "https://via.placeholder.com/150x200.jpg";
+  const coverImage: string | undefined = (post.coverImage as any)?.fields?.file
+    ?.url;
+  console.log(coverImage);
+  const postImage = coverImage
+    ? `https:${coverImage}`
+    : "https://via.placeholder.com/150x200.jpg";
 
   return (
     <ArticleContainer>
-      <StyledLink href={`/blog/${post.url}`}>
+      <StyledLink href={`/blog/${post.slug}`}>
         <BlogPostArticleContent>
           <StyledImage
             src={postImage}

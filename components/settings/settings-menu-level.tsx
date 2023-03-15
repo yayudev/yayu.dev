@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
 
-import { MEDIA_QUERY_TABLET } from "@/config/media-queries";
+import { MEDIA_QUERY_TABLET } from "@/constants/media-queries";
 
 interface SettingsMenuLevelProps {
   isChildMenu?: boolean;

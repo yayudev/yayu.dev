@@ -1,4 +1,6 @@
 import { DiscussionEmbed } from "disqus-react";
+import { useAtom } from "jotai";
+import matter from "gray-matter";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -7,17 +9,24 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import RenderIfVisible from "react-render-if-visible";
 import styled from "styled-components";
 
-import { PageLayout } from "@/layouts/page";
-import { BlogApiService } from "@/services/blog-api";
-
-import { BlogSocialShareButtons } from "@/components/blog/blog-social-share-buttons";
+import { MEDIA_QUERY_TABLET } from "@/constants/media-queries";
 import { commentsAtom } from "@/state/application";
-import { useAtom } from "jotai";
+import { blogApiService } from "@/services/client/blog-api";
 import { SettingsToggleOptions } from "@/types/settings-menu";
-import { MEDIA_QUERY_TABLET } from "@/config/media-queries";
+
+import { PageLayout } from "@/layouts/page";
+import { BlogSocialShareButtons } from "@/components/blog/blog-social-share-buttons";
+import { mdxOptions } from "@/config/mdx";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 
 interface BlogPostProps {
   postId: string;
+  mdxSource?: MDXRemoteSerializeResult<
+    Record<string, unknown>,
+    Record<string, unknown>
+  >;
+  frontMatter?: matter.GrayMatterFile<string>;
 }
 
 const PostContainer = styled.div`
@@ -109,15 +118,6 @@ export const getServerSideProps: GetServerSideProps = async ({
   locale,
 }) => {
   /**************
-   * Page data  *
-   **************/
-
-  const postId = query.id as string;
-
-  const pageUrl = BlogApiService.getIndividualPostUrl(postId);
-  const data = await BlogApiService.fetchIndividualPost(postId);
-
-  /**************
    *   Locale   *
    **************/
 
@@ -131,10 +131,23 @@ export const getServerSideProps: GetServerSideProps = async ({
     ]);
   }
 
+  /**************
+   * Page data  *
+   **************/
+
+  const postId = query.slug as string;
+
+  const pageUrl = blogApiService.getIndividualPostUrl(postId);
+  const blogPost = await blogApiService.fetchIndividualPost(postId);
+  const { content, data } = matter(blogPost?.markdown ?? "");
+  const mdxSource = await serialize(content, { ...mdxOptions, scope: data });
+
   return {
     props: {
       ...localeProps,
       postId,
+      mdxSource,
+      frontMatter: data,
       fallback: {
         [pageUrl]: data,
       },
@@ -142,36 +155,34 @@ export const getServerSideProps: GetServerSideProps = async ({
   };
 };
 
-const BlogPostPage = ({ postId }: BlogPostProps) => {
+const BlogPostPage = ({ postId, mdxSource }: BlogPostProps) => {
   const router = useRouter();
   const { t } = useTranslation();
   const [commentsEnabled] = useAtom(commentsAtom);
 
-  const { post, isError, isLoading } = BlogApiService.useIndividualPost(postId);
+  const { post, isError, isLoading } = blogApiService.useIndividualPost(postId);
   const pageFullUrl = `${process.env.SERVER_URL}${router.asPath}`;
 
   return (
     <PageLayout
-      title={post?.title ?? ""}
+      title={""}
       isAestheticTitle={false}
       isLoading={isLoading}
       hasError={isError}
     >
       <Head>
         <title>{t("blog:page-individual-title", { title: post?.title })}</title>
-        <meta name="description" content={post?.excerpt} />
-        <meta property="og:title" content={post?.title} />
-        <meta property="og:description" content={post?.excerpt} />
-        <meta property="og:image" content={post?.image} />
+        <meta name="description" content={post?.excerpt ?? ""} />
+        <meta property="og:title" content={post?.title ?? ""} />
+        <meta property="og:description" content={post?.excerpt ?? ""} />
+        <meta property="og:image" content={post?.coverImage?.fileName ?? ""} />
       </Head>
 
       <TitleContainer>
         <BlogSocialShareButtons url={pageFullUrl} />
       </TitleContainer>
 
-      <PostContainer>
-        {post && <div dangerouslySetInnerHTML={{ __html: post?.html }} />}
-      </PostContainer>
+      <PostContainer>{mdxSource && <MDXRemote {...mdxSource} />}</PostContainer>
 
       <BlogSocialShareButtons url={pageFullUrl} />
 
@@ -182,7 +193,7 @@ const BlogPostPage = ({ postId }: BlogPostProps) => {
               shortname="datyayu"
               config={{
                 identifier: postId,
-                title: post?.title,
+                title: post?.title ?? "",
               }}
             />
           </RenderIfVisible>

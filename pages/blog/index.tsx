@@ -3,12 +3,12 @@ import Head from "next/head";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 
-import { DEFAULT_PAGE_SIZE } from "@/config/blog";
-import { BlogApiService } from "@/services/blog-api";
+import { DEFAULT_PAGE_SIZE } from "@/constants/blog";
 
 import { PageLayout } from "@/layouts/page";
 import { BlogPagination } from "@/components/blog/blog-pagination";
 import { BlogPostsList } from "@/components/blog/blog-posts-list";
+import { blogApiService } from "@/services/client/blog-api";
 
 interface BlogIndexProps {
   page: number;
@@ -30,8 +30,8 @@ export const getServerSideProps: GetServerSideProps = async ({
   }
 
   const pageNumber = parseInt(page, 10);
-  const pageUrl = BlogApiService.getPostListUrl(pageNumber);
-  const data = await BlogApiService.fetchPostList(pageNumber);
+  const pageUrl = blogApiService.getPostListUrl(pageNumber);
+  const data = await blogApiService.fetchPostList(pageNumber);
   const hasNextPage = data.totalPosts > DEFAULT_PAGE_SIZE * pageNumber;
 
   /**************
@@ -65,7 +65,8 @@ const BlogIndex: NextPage<BlogIndexProps> = ({
   hasNextPage = false,
 }: BlogIndexProps) => {
   const { t } = useTranslation();
-  const { postList, isError, isLoading } = BlogApiService.usePostList(page);
+  const { postList, isError, isLoading } = blogApiService.usePostList(page);
+  console.log(postList);
 
   return (
     <PageLayout

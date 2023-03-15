@@ -5,7 +5,7 @@ import { atomWithStorage } from "jotai/utils";
 import Router from "next/router";
 import { i18n } from "next-i18next";
 
-import { DEFAULT_LOCALE } from "@/config/locale";
+import { DEFAULT_LOCALE } from "@/constants/locale";
 import { atomWithStorageAndSideEffects } from "@/utils/jotai";
 import { SettingsToggleOptions } from "@/types/settings-menu";
 

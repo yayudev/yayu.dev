@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useTranslation } from "next-i18next";
 
 import { SettingsMenuItemOption } from "@/types/settings-menu";
-import { MEDIA_QUERY_PHONE } from "@/config/media-queries";
+import { MEDIA_QUERY_PHONE } from "@/constants/media-queries";
 
 import { SettingsOptionSelectItem } from "@/components/settings/settings-option-select-item";
 

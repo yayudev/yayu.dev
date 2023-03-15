@@ -5,7 +5,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import styled from "styled-components";
 
-import { MEDIA_QUERY_TABLET } from "@/config/media-queries";
+import { MEDIA_QUERY_TABLET } from "@/constants/media-queries";
 import { experiments } from "@/data/experiments";
 import { PageLayout } from "@/layouts/page";
 import { ExperimentData, SortType, TechnologyTag } from "@/types/experiments";

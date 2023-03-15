@@ -2,7 +2,7 @@ import { useTranslation } from "next-i18next";
 import styled from "styled-components";
 
 import { TechnologyTag } from "@/types/experiments";
-import { TechnologyTagsList } from "@/config/experiments";
+import { TechnologyTagsList } from "@/constants/experiments";
 
 import { PlaygroundFilterTag } from "@/components/playground/playground-filter-tag";
 
