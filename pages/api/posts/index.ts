@@ -9,13 +9,8 @@ export default async function getPostsListHandler(
   res: NextApiResponse
 ) {
   let { skip = 0, limit = 10, allSlugs } = req.query;
-  let parsedSkip = parseInt(skip as string);
-  let parsedLimit = parseInt(limit as string);
-
-  if (allSlugs === "true") {
-    parsedLimit = 0;
-    parsedSkip = 0;
-  }
+  const parsedSkip = parseInt(skip as string);
+  const parsedLimit = parseInt(limit as string);
 
   try {
     await cors(req, res);
