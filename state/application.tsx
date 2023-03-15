@@ -13,25 +13,25 @@ import { SettingsToggleOptions } from "@/types/settings-menu";
  * STATE ATOMS  *
  ****************/
 
-export const showMenuOnMobileAtom = atom(false);
+export const showMenuOnMobileAtom = atom<boolean>(false);
 
 /************************
  * CONFIGURATION ATOMS  *
  ************************/
 
-export const animationsAtom = atomWithStorage(
+export const animationsAtom = atomWithStorage<string>(
   "animations",
   SettingsToggleOptions.ON
 );
-export const commentsAtom = atomWithStorage(
+export const commentsAtom = atomWithStorage<string>(
   "comments",
   SettingsToggleOptions.ON
 );
-export const socialShareAtom = atomWithStorage(
+export const socialShareAtom = atomWithStorage<string>(
   "social-sharing",
   SettingsToggleOptions.ON
 );
-export const trackingAtom = atomWithStorage(
+export const trackingAtom = atomWithStorage<string>(
   "tracking",
   SettingsToggleOptions.ON
 );
