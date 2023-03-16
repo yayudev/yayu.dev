@@ -2,6 +2,9 @@
   "name": "yayu.dev",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=18.14.2"
+  },
   "scripts": {
     "fetch-types": "graphql-codegen --config contentful.codegen.yml",
     "predev": "npm run fetch-types",
