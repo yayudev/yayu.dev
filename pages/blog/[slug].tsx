@@ -114,6 +114,8 @@ export const getStaticPaths = async () => {
   const postsSlugs = await blogApiService.fetchAllPostsSlugs();
   const paths = postsSlugs.map((slug) => `/blog/${slug}`);
 
+  console.log("paths:", paths);
+
   return {
     paths,
     fallback: true,
@@ -140,10 +142,16 @@ export const getStaticProps: GetStaticProps = async ({
 
   const postId = params?.slug as string;
   const pageUrl = blogApiService.getIndividualPostUrl(postId);
+  console.log("pageUrl:", pageUrl);
+
   const blogPost = await blogApiService.fetchIndividualPost(postId);
+  console.log("bp:", blogPost);
 
   const { content, data } = matter(blogPost?.markdown ?? "");
   const mdxSource = await serialize(content, { ...mdxOptions, scope: data });
+  console.log("content:", content);
+  console.log("data:", data);
+  console.log("mdxSource:", mdxSource);
 
   return {
     props: {

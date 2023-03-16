@@ -78,8 +78,9 @@ Stuff that needs to be done before release:
 - [X] Disable tracking via settings
 - [X] Disable Animations via settings
 - [X] Migrate API from v2 to Next's api routes + contentful
+- [X] Configure CORS and security whitelist
+- [X] Fix locale not working on blog page
 - [ ] Fix blog post title on mobile
-- [ ] Configure CORS and security whitelist
 - [ ] Move content to CMS
 - [ ] Redirect v2 to v3
 
