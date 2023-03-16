@@ -129,6 +129,7 @@ export const getStaticProps: GetStaticProps = async ({
   /**************
    *   Locale   *
    **************/
+  console.log("GETTING LOCALE PROPS...  ", locale);
 
   let localeProps = await serverSideTranslations(locale, [
     "common",
@@ -139,19 +140,17 @@ export const getStaticProps: GetStaticProps = async ({
   /**************
    * Page data  *
    **************/
+  console.log("FROM LOCALE:", localeProps);
 
   const postId = params?.slug as string;
   const pageUrl = blogApiService.getIndividualPostUrl(postId);
   console.log("pageUrl:", pageUrl);
 
   const blogPost = await blogApiService.fetchIndividualPost(postId);
-  console.log("bp:", blogPost);
+  console.log("bp:", blogPost?.title);
 
   const { content, data } = matter(blogPost?.markdown ?? "");
   const mdxSource = await serialize(content, { ...mdxOptions, scope: data });
-  console.log("content:", content);
-  console.log("data:", data);
-  console.log("mdxSource:", mdxSource);
 
   return {
     props: {

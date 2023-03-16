@@ -1,4 +1,4 @@
-import { GetServerSideProps, NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
@@ -15,15 +15,15 @@ interface BlogIndexProps {
   hasNextPage: boolean;
 }
 
-export const getServerSideProps: GetServerSideProps = async ({
-  query,
+export const getStaticProps: GetStaticProps = async ({
+  params,
   locale = "en",
 }) => {
   /**************
    * Pagination *
    **************/
 
-  let { page = "1" } = query ?? {};
+  let { page = "1" } = params ?? {};
 
   if (Array.isArray(page)) {
     page = page[0];
