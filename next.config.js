@@ -21,7 +21,7 @@ if (VERCEL_URL) {
   API_ALLOWED_ORIGINS = `${API_ALLOWED_ORIGINS},localhost`;
 }
 
-const API_SERVER = process.env.API_SERVER || SERVER_URL;
+const API_URL = process.env.API_URL || SERVER_URL;
 
 // noinspection JSUnusedGlobalSymbols
 /** @type {import('next').NextConfig} */
@@ -42,7 +42,7 @@ const nextConfig = {
 
   // env vars
   env: {
-    API_SERVER,
+    API_URL,
     SERVER_URL,
     CONTENTFUL_SPACE_ID,
     CONTENTFUL_ACCESS_TOKEN,
