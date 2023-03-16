@@ -80,7 +80,9 @@ Stuff that needs to be done before release:
 - [X] Migrate API from v2 to Next's api routes + contentful
 - [X] Configure CORS and security whitelist
 - [X] Fix locale not working on blog page
-- [ ] Fix blog post title on mobile
+- [X] Fix blog post title on mobile
+- [ ] Fix blog post date on posts list
+- [ ] Add blog post date to blog post
 - [ ] Move content to CMS
 - [ ] Redirect v2 to v3
 

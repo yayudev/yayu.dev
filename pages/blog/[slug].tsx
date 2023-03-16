@@ -19,6 +19,7 @@ import { BlogSocialShareButtons } from "@/components/blog/blog-social-share-butt
 import { mdxOptions } from "@/config/mdx";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import {useMobileLayout} from "@/hooks/user-mobile-layout";
 
 interface BlogPostProps {
   postId: string;
@@ -105,6 +106,15 @@ const PostContainer = styled.div`
 
 const TitleContainer = styled.div``;
 
+const Title = styled.h1`
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--text-color);
+`;
+
 const CommentsContainer = styled.div`
   min-height: 10rem;
   padding: 0 2rem;
@@ -161,6 +171,7 @@ export const getStaticProps: GetStaticProps = async ({
 
 const BlogPostPage = ({ postId, mdxSource }: BlogPostProps) => {
   const router = useRouter();
+  const isMobileLayout = useMobileLayout();
   const { t } = useTranslation();
   const [commentsEnabled] = useAtom(commentsAtom);
 
@@ -169,7 +180,7 @@ const BlogPostPage = ({ postId, mdxSource }: BlogPostProps) => {
 
   return (
     <PageLayout
-      title={post?.title ?? ""}
+      title={!isMobileLayout && post?.title ? post.title : ""}
       isAestheticTitle={false}
       isLoading={isLoading}
       hasError={isError}
@@ -183,6 +194,7 @@ const BlogPostPage = ({ postId, mdxSource }: BlogPostProps) => {
       </Head>
 
       <TitleContainer>
+        {isMobileLayout && <Title>{post?.title}</Title>}
         <BlogSocialShareButtons url={pageFullUrl} />
       </TitleContainer>
 
