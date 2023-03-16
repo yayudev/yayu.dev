@@ -3,11 +3,12 @@ import Image from "next/image";
 import styled from "styled-components";
 import { useTranslation } from "next-i18next";
 
-import { BlogPost } from "@/types/blog-api";
 import {
   MEDIA_QUERY_PHONE,
   MEDIA_QUERY_TABLET,
 } from "@/constants/media-queries";
+import { BlogPost } from "@/types/blog-api";
+import {formatDate} from "@/utils/date";
 
 const BlogPostArticleContent = styled.div`
   font-family: "Open sans", "Helvetica Neue", "Segoe UI", "arial",
@@ -106,6 +107,7 @@ export function BlogPostItem({ post }: BlogPostItemProps) {
   const postImage = coverImage
     ? `https:${coverImage}`
     : "https://via.placeholder.com/150x200.jpg";
+  const date = formatDate(new Date(post.date ?? ""))
 
   return (
     <ArticleContainer>
@@ -125,7 +127,7 @@ export function BlogPostItem({ post }: BlogPostItemProps) {
           <BlogPostInfo>
             <Title>{post.title}</Title>
             <DateText>
-              {t("blog:image-posted-on", { date: post.date })}
+              {t("blog:image-posted-on", { date })}
             </DateText>
             <Excerpt>{post.excerpt}</Excerpt>
           </BlogPostInfo>

@@ -81,8 +81,8 @@ Stuff that needs to be done before release:
 - [X] Configure CORS and security whitelist
 - [X] Fix locale not working on blog page
 - [X] Fix blog post title on mobile
-- [ ] Fix blog post date on posts list
-- [ ] Add blog post date to blog post
+- [X] Fix blog post date on posts list
+- [X] Add blog post date to blog post
 - [ ] Move content to CMS
 - [ ] Redirect v2 to v3
 

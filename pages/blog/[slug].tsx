@@ -20,6 +20,7 @@ import { mdxOptions } from "@/config/mdx";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import {useMobileLayout} from "@/hooks/user-mobile-layout";
+import {formatDate} from "@/utils/date";
 
 interface BlogPostProps {
   postId: string;
@@ -107,12 +108,19 @@ const PostContainer = styled.div`
 const TitleContainer = styled.div``;
 
 const Title = styled.h1`
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-top: 3rem;
-    margin-bottom: 2rem;
-    text-align: center;
-    color: var(--text-color);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--text-color);
+`;
+
+const DateText = styled.p`
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 0 0 1rem 0;
+  color: var(--text-color);
 `;
 
 const CommentsContainer = styled.div`
@@ -177,6 +185,7 @@ const BlogPostPage = ({ postId, mdxSource }: BlogPostProps) => {
 
   const { post, isError, isLoading } = blogApiService.useIndividualPost(postId);
   const pageFullUrl = `${process.env.SERVER_URL}${router.asPath}`;
+  const date = post?.date ? formatDate(new Date(post.date)) : "";
 
   return (
     <PageLayout
@@ -195,6 +204,7 @@ const BlogPostPage = ({ postId, mdxSource }: BlogPostProps) => {
 
       <TitleContainer>
         {isMobileLayout && <Title>{post?.title}</Title>}
+        {date && <DateText>{t("blog:image-posted-on", { date })}</DateText>}
         <BlogSocialShareButtons url={pageFullUrl} />
       </TitleContainer>
 
