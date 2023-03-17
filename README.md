@@ -2,7 +2,7 @@
 
 Current on-development v3 for my personal website ([yayu.dev](https://yayu.dev))
 
-Live version available at [preview.yayu.dev](https://preview.yayu.dev/)
+Live version available at [yayu-dev.vercel.app](https://yayu-dev.vercel.app/)
 
 > Currently using an unstable, local dev version so things like CORS and blog API may or may not work at any given time on the preview site.
 
