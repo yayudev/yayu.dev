@@ -3,6 +3,7 @@ require("dotenv");
 
 const { i18n } = require("./next-i18next.config");
 const nextMDX = require("@next/mdx");
+const prismPlugin = require("@mapbox/rehype-prism");
 
 const DEV_ENV = process.env.NODE_ENV === "development";
 
@@ -53,8 +54,9 @@ const nextConfig = {
 const withMDX = nextMDX({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [],
-    rehypePlugins: [],
+    rehypePlugins: [
+      prismPlugin({})
+    ],
   },
 });
 

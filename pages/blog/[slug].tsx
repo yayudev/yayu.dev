@@ -7,20 +7,21 @@ import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import RenderIfVisible from "react-render-if-visible";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { serialize } from "next-mdx-remote/serialize";
 import styled from "styled-components";
+import Script from "next/script";
 
+import { mdxOptions } from "@/config/mdx";
 import { MEDIA_QUERY_TABLET } from "@/constants/media-queries";
+import { useMobileLayout } from "@/hooks/user-mobile-layout";
 import { commentsAtom } from "@/state/application";
 import { blogApiService } from "@/services/client/blog-api";
 import { SettingsToggleOptions } from "@/types/settings-menu";
+import { formatDate } from "@/utils/date";
 
 import { PageLayout } from "@/layouts/page";
 import { BlogSocialShareButtons } from "@/components/blog/blog-social-share-buttons";
-import { mdxOptions } from "@/config/mdx";
-import { serialize } from "next-mdx-remote/serialize";
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
-import {useMobileLayout} from "@/hooks/user-mobile-layout";
-import {formatDate} from "@/utils/date";
 
 interface BlogPostProps {
   postId: string;
@@ -52,6 +53,7 @@ const PostContainer = styled.div`
   h5 {
     margin-top: 4rem;
     position: sticky;
+    z-index: 2;
     top: 0;
     left: 0;
     background-color: var(--background-for-content);
@@ -74,25 +76,6 @@ const PostContainer = styled.div`
 
     p {
       margin: 0;
-    }
-  }
-
-  code {
-    background-color: var(--inline-code-background);
-    color: var(--inline-code-color);
-    padding: 0.1rem 0.5rem;
-  }
-
-  pre {
-    background-color: var(--code-block-background);
-    padding: 1rem;
-    margin: 2rem 0;
-    overflow-y: auto;
-
-    code {
-      background-color: var(--code-block-background);
-      color: white; /* TODO: add code highlighting */
-      max-width: 100%;
     }
   }
 
@@ -188,44 +171,64 @@ const BlogPostPage = ({ postId, mdxSource }: BlogPostProps) => {
   const date = post?.date ? formatDate(new Date(post.date)) : "";
 
   return (
-    <PageLayout
-      title={!isMobileLayout && post?.title ? post.title : ""}
-      isAestheticTitle={false}
-      isLoading={isLoading}
-      hasError={isError}
-    >
-      <Head>
-        <title>{t("blog:page-individual-title", { title: post?.title })}</title>
-        <meta name="description" content={post?.excerpt ?? ""} />
-        <meta property="og:title" content={post?.title ?? ""} />
-        <meta property="og:description" content={post?.excerpt ?? ""} />
-        <meta property="og:image" content={post?.coverImage?.fileName ?? ""} />
-      </Head>
+    <>
+      <PageLayout
+        title={!isMobileLayout && post?.title ? post.title : ""}
+        isAestheticTitle={false}
+        isLoading={isLoading}
+        hasError={isError}
+      >
+        <Head>
+          <title>
+            {t("blog:page-individual-title", { title: post?.title })}
+          </title>
+          <meta name="description" content={post?.excerpt ?? ""} />
+          <meta property="og:title" content={post?.title ?? ""} />
+          <meta property="og:description" content={post?.excerpt ?? ""} />
+          <meta
+            property="og:image"
+            content={post?.coverImage?.fileName ?? ""}
+          />
 
-      <TitleContainer>
-        {isMobileLayout && <Title>{post?.title}</Title>}
-        {date && <DateText>{t("blog:image-posted-on", { date })}</DateText>}
+          <link
+            rel="stylesheet"
+            href="https://unpkg.com/prism-themes@1.9.0/themes/prism-vsc-dark-plus.css"
+          ></link>
+        </Head>
+
+        <TitleContainer>
+          {isMobileLayout && <Title>{post?.title}</Title>}
+          {date && <DateText>{t("blog:image-posted-on", { date })}</DateText>}
+          <BlogSocialShareButtons url={pageFullUrl} />
+        </TitleContainer>
+
+        <PostContainer>
+          {mdxSource && <MDXRemote {...mdxSource} />}
+        </PostContainer>
+
         <BlogSocialShareButtons url={pageFullUrl} />
-      </TitleContainer>
 
-      <PostContainer>{mdxSource && <MDXRemote {...mdxSource} />}</PostContainer>
+        {commentsEnabled === SettingsToggleOptions.ON && (
+          <CommentsContainer>
+            <RenderIfVisible stayRendered>
+              <DiscussionEmbed
+                shortname="datyayu"
+                config={{
+                  identifier: postId,
+                  title: post?.title ?? "",
+                }}
+              />
+            </RenderIfVisible>
+          </CommentsContainer>
+        )}
+      </PageLayout>
 
-      <BlogSocialShareButtons url={pageFullUrl} />
-
-      {commentsEnabled === SettingsToggleOptions.ON && (
-        <CommentsContainer>
-          <RenderIfVisible stayRendered>
-            <DiscussionEmbed
-              shortname="datyayu"
-              config={{
-                identifier: postId,
-                title: post?.title ?? "",
-              }}
-            />
-          </RenderIfVisible>
-        </CommentsContainer>
-      )}
-    </PageLayout>
+      <Script
+        async
+        defer
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+      />
+    </>
   );
 };
 

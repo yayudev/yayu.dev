@@ -83,6 +83,8 @@ Stuff that needs to be done before release:
 - [X] Fix blog post title on mobile
 - [X] Fix blog post date on posts list
 - [X] Add blog post date to blog post
+- [X] Add code highlighting
+- [ ] Config dev env to consume draft posts
 - [ ] Move content to CMS
 - [ ] Redirect v2 to v3
 
@@ -90,22 +92,22 @@ Stuff that needs to be done before release:
 
 Good to have things that will be added eventually but not 100% required for initial release.
 
-- [ ] Transition to NextJS 13's app directory (waiting for better i18n support)
-- [ ] Loading skeletons / Better loading states
 - [ ] Swipe gestures for mobile
+- [ ] Loading skeletons / Better loading states
+- [ ] Light/dark mode
+- [ ] Skill sheet 
 - [ ] Resume/CV pdf download
 - [ ] Testing
-- [ ] Skill sheet
-- [ ] Light/dark mode
-- [ ] Github actions CI testing/deploy pipeline
-- [ ] lighthouse audit
-- [ ] Test coverage setup
-- [ ] v2 subdomain setup
-- [ ] v2 link to v3
-- [ ] Edge functions
+- [ ] Checkly Web Vitals PR check/block
+- [ ] Test coverage setup w/check
 - [ ] Release log
 - [ ] Contributing guidelines
 - [ ] Full screen experiment expansion
+- [ ] v2 subdomain setup
+- [ ] v2 link to v3
+
+#### Good ideas
+- [ ] Transition to NextJS 13's app directory (waiting for better i18n support)
 - [ ] Refactor MarqueeScroller into a standalone component package for re-usability
 - [ ] Use local mdx files(?)
 - [ ] Move to astro(?)
