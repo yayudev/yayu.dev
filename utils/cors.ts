@@ -20,7 +20,7 @@ const initMiddleware =
 
 export const cors = initMiddleware(
   Cors({
-    methods: ["GET", "POST", "OPTIONS"], // Specify allowed HTTP methods
+    methods: ["GET"], // Specify allowed HTTP methods
     origin: (
       origin: string | undefined,
       callback: (err: Error | null, allow?: boolean) => void
@@ -29,7 +29,7 @@ export const cors = initMiddleware(
         .split(",")
         .map((orig) => orig.trim().toLocaleLowerCase());
 
-      if (!origin || !allowedOrigins.includes(origin)) {
+      if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
         callback(new Error("Not allowed by CORS"));
