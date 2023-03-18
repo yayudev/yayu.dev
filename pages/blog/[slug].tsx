@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { DiscussionEmbed } from "disqus-react";
 import { useAtom } from "jotai";
 import matter from "gray-matter";
@@ -170,6 +171,16 @@ const BlogPostPage = ({ postId, mdxSource }: BlogPostProps) => {
   const pageFullUrl = `${process.env.SERVER_URL}${router.asPath}`;
   const date = post?.date ? formatDate(new Date(post.date)) : "";
 
+  useEffect(() => {
+    requestAnimationFrame(() => {
+      if (typeof window === undefined) return;
+
+      // prism may be initialized before the rendering is done if it loads too fast,
+      // so we need to wait until the markdown rendering is done.
+      (window as any)?.Prism?.highlightAll(document);
+    });
+  }, [post?.markdown]);
+
   return (
     <>
       <PageLayout
@@ -224,8 +235,7 @@ const BlogPostPage = ({ postId, mdxSource }: BlogPostProps) => {
       </PageLayout>
 
       <Script
-        async
-        defer
+        strategy="lazyOnload"
         src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
       />
     </>
