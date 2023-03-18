@@ -13,7 +13,6 @@ export type Scalars = {
   DateTime: string;
   Dimension: any;
   HexColor: any;
-  JSON: any;
   Quality: any;
 };
 
@@ -213,7 +212,6 @@ export enum ContentfulAssetOrder {
 /** Blog post [See type definition](https://app.contentful.com/spaces/1fnpih0gmmjm/content_types/blogPost) */
 export type ContentfulBlogPost = ContentfulEntry & {
   __typename?: 'BlogPost';
-  content: Maybe<ContentfulBlogPostContent>;
   contentfulMetadata: ContentfulContentfulMetadata;
   coverImage: Maybe<ContentfulAsset>;
   date: Maybe<Scalars['DateTime']>;
@@ -223,12 +221,6 @@ export type ContentfulBlogPost = ContentfulEntry & {
   slug: Maybe<Scalars['String']>;
   sys: ContentfulSys;
   title: Maybe<Scalars['String']>;
-};
-
-
-/** Blog post [See type definition](https://app.contentful.com/spaces/1fnpih0gmmjm/content_types/blogPost) */
-export type ContentfulBlogPostContentArgs = {
-  locale: InputMaybe<Scalars['String']>;
 };
 
 
@@ -282,37 +274,9 @@ export type ContentfulBlogPostCollection = {
   total: Scalars['Int'];
 };
 
-export type ContentfulBlogPostContent = {
-  __typename?: 'BlogPostContent';
-  json: Scalars['JSON'];
-  links: ContentfulBlogPostContentLinks;
-};
-
-export type ContentfulBlogPostContentAssets = {
-  __typename?: 'BlogPostContentAssets';
-  block: Array<Maybe<ContentfulAsset>>;
-  hyperlink: Array<Maybe<ContentfulAsset>>;
-};
-
-export type ContentfulBlogPostContentEntries = {
-  __typename?: 'BlogPostContentEntries';
-  block: Array<Maybe<ContentfulEntry>>;
-  hyperlink: Array<Maybe<ContentfulEntry>>;
-  inline: Array<Maybe<ContentfulEntry>>;
-};
-
-export type ContentfulBlogPostContentLinks = {
-  __typename?: 'BlogPostContentLinks';
-  assets: ContentfulBlogPostContentAssets;
-  entries: ContentfulBlogPostContentEntries;
-};
-
 export type ContentfulBlogPostFilter = {
   AND: InputMaybe<Array<InputMaybe<ContentfulBlogPostFilter>>>;
   OR: InputMaybe<Array<InputMaybe<ContentfulBlogPostFilter>>>;
-  content_contains: InputMaybe<Scalars['String']>;
-  content_exists: InputMaybe<Scalars['Boolean']>;
-  content_not_contains: InputMaybe<Scalars['String']>;
   contentfulMetadata: InputMaybe<ContentfulContentfulMetadataFilter>;
   coverImage_exists: InputMaybe<Scalars['Boolean']>;
   date: InputMaybe<Scalars['DateTime']>;
