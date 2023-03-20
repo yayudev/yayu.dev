@@ -9,6 +9,8 @@ const DEV_ENV = process.env.NODE_ENV === "development";
 
 const CONTENTFUL_SPACE_ID = process.env.CONTENTFUL_SPACE_ID;
 const CONTENTFUL_ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN;
+const CONTENTFUL_PREVIEW_ACCESS_TOKEN =
+  process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN;
 const VERCEL_URL = process.env.VERCEL_URL;
 
 let SERVER_URL = process.env.SERVER_URL || "https://yayu.dev";
@@ -46,6 +48,7 @@ const nextConfig = {
     API_URL,
     SERVER_URL,
     CONTENTFUL_SPACE_ID,
+    CONTENTFUL_PREVIEW_ACCESS_TOKEN,
     CONTENTFUL_ACCESS_TOKEN,
     API_ALLOWED_ORIGINS,
   },
@@ -54,9 +57,7 @@ const nextConfig = {
 const withMDX = nextMDX({
   extension: /\.mdx?$/,
   options: {
-    rehypePlugins: [
-      prismPlugin({})
-    ],
+    rehypePlugins: [prismPlugin({})],
   },
 });
 

@@ -24,6 +24,18 @@ CONTENTFUL_SPACE_ID=<space_id>
 CONTENTFUL_ACCESS_TOKEN=<access_token>
 ```
 
+In order for the blog to work, you will need to create a Contentful space and get the space id and access token from there.
+
+A blogPost content type is required for the blog to work with the following fields:
+- title (short text)
+- slug (short text)
+- date (date)
+- coverImage (asset)
+- excerpt (short text)
+- markdown (long text)
+
+Optionally, you can also add a `CONTENTFUL_PREVIEW_ACCESS_TOKEN` to your `.env` file to consume draft posts.
+
 ## Run
 
 Dev mode:
@@ -84,7 +96,7 @@ Stuff that needs to be done before release:
 - [X] Fix blog post date on posts list
 - [X] Add blog post date to blog post
 - [X] Add code highlighting
-- [ ] Config dev env to consume draft posts
+- [X] Config dev env to consume draft posts
 - [ ] Move content to CMS
 - [ ] Redirect v2 to v3
 

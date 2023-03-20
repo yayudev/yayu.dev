@@ -3,6 +3,7 @@ import { createClient, ContentfulClientApi } from "contentful";
 import {
   CONTENTFUL_SPACE_ID,
   CONTENTFUL_ACCESS_TOKEN,
+  IS_PREVIEW_MODE,
 } from "@/constants/contenful";
 import { ContentfulBlogPost } from "@/types/cms";
 import { BlogPost, BlogPostListResult } from "@/types/blog-api";
@@ -11,10 +12,7 @@ export class ContentfulApiService {
   private client: ContentfulClientApi;
 
   constructor() {
-    if (
-      !process.env.CONTENTFUL_SPACE_ID ||
-      !process.env.CONTENTFUL_ACCESS_TOKEN
-    ) {
+    if (!CONTENTFUL_SPACE_ID || !CONTENTFUL_ACCESS_TOKEN) {
       throw new Error(
         "CONTENTFUL_SPACE_ID and CONTENTFUL_ACCESS_TOKEN must be provided."
       );
@@ -23,6 +21,7 @@ export class ContentfulApiService {
     this.client = createClient({
       space: CONTENTFUL_SPACE_ID,
       accessToken: CONTENTFUL_ACCESS_TOKEN,
+      host: IS_PREVIEW_MODE ? "preview.contentful.com" : "contentful.com",
     });
   }
 
