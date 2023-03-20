@@ -21,7 +21,7 @@ export class ContentfulApiService {
     this.client = createClient({
       space: CONTENTFUL_SPACE_ID,
       accessToken: CONTENTFUL_ACCESS_TOKEN,
-      host: IS_PREVIEW_MODE ? "preview.contentful.com" : "contentful.com",
+      host: IS_PREVIEW_MODE ? "preview.contentful.com" : undefined,
     });
   }
 
