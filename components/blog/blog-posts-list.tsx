@@ -1,7 +1,6 @@
 import { BlogPost } from "@/types/blog-api";
 
 import { BlogPostItem } from "@/components/blog/blog-post-item";
-import { useEffect } from "react";
 
 interface BlogPostsListProps {
   posts: BlogPost[];
