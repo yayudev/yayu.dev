@@ -1,16 +1,13 @@
 import { BlogPost } from "@/types/blog-api";
 
 import { BlogPostItem } from "@/components/blog/blog-post-item";
-import { Ref, useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 interface BlogPostsListProps {
-  ref?: Ref<HTMLElement>;
   posts: BlogPost[];
 }
 
 export function BlogPostsList({ posts }: BlogPostsListProps) {
-  const ref = useRef<HTMLElement>(null);
-
   useEffect(() => {
     if (typeof window === undefined) return;
 
@@ -20,7 +17,7 @@ export function BlogPostsList({ posts }: BlogPostsListProps) {
   if (!posts.length) return null;
 
   return (
-    <section ref={ref}>
+    <section>
       {posts.map((post) => (
         <BlogPostItem key={post?.slug} post={post} />
       ))}
