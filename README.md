@@ -100,9 +100,12 @@ Stuff that needs to be done before release:
 - [X] Add blog post date to blog post
 - [X] Add code highlighting
 - [X] Config dev env to consume draft posts
-- [ ] Move content to CMS
-- [ ] Setup develop branch and protect main
-- [ ] Redirect v2 to v3
+- [X] Setup develop branch and protect main
+- [X] Move content to CMS~~~~
+- [ ] Do get total posts on page request to avoid having to query all slugs
+- [ ] Clean content on CMS
+- [ ] Set content as public
+- [ ] Change domain from netlify to vercel
 
 ### Post-release:
 
@@ -111,6 +114,7 @@ Good to have things that will be added eventually but not 100% required for init
 - [ ] Swipe gestures for mobile
 - [ ] Loading skeletons / Better loading states
 - [ ] Add blog post tags
+- [ ] Add blog post search
 - [ ] Light/dark mode
 - [ ] Skill sheet 
 - [ ] Resume/CV pdf download

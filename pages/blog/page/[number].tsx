@@ -1,19 +1,33 @@
-import { GetStaticProps, NextPage } from "next";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
-
-import { DEFAULT_PAGE_SIZE } from "@/constants/blog";
 
 import { PageLayout } from "@/layouts/page";
 import { BlogPagination } from "@/components/blog/blog-pagination";
 import { BlogPostsList } from "@/components/blog/blog-posts-list";
 import { blogApiService } from "@/services/client/blog-api";
+import { DEFAULT_PAGE_SIZE } from "@/constants/blog";
+import { useEffect, useRef } from "react";
 
-interface BlogIndexProps {
+interface BlogPageProps {
   page: number;
   hasNextPage: boolean;
 }
+
+export const getStaticPaths = async () => {
+  const data = await blogApiService.fetchAllPostsSlugs();
+  const pages = Math.ceil(data.length / DEFAULT_PAGE_SIZE);
+
+  const paths = Array.from(Array(pages)).map(
+    (_, page) => `/blog/page/${page + 1}`
+  );
+
+  return {
+    paths,
+    fallback: true,
+  };
+};
 
 export const getStaticProps: GetStaticProps = async ({
   params,
@@ -23,16 +37,13 @@ export const getStaticProps: GetStaticProps = async ({
    * Pagination *
    **************/
 
-  let { page = "1" } = params ?? {};
+  const page = params?.number as string;
+  const parsedPage = parseInt(page, 10);
 
-  if (Array.isArray(page)) {
-    page = page[0];
-  }
-
-  const pageNumber = parseInt(page, 10);
-  const pageUrl = blogApiService.getPostListUrl(pageNumber);
-  const data = await blogApiService.fetchPostList(pageNumber);
-  const hasNextPage = data.totalPosts > DEFAULT_PAGE_SIZE * pageNumber;
+  const totalSlugs = await blogApiService.fetchAllPostsSlugs();
+  const totalPages = Math.ceil(totalSlugs.length / DEFAULT_PAGE_SIZE);
+  const pageUrl = blogApiService.getPostListUrl(parsedPage);
+  const data = await blogApiService.fetchPostList(parsedPage);
 
   /**************
    *   Locale   *
@@ -46,8 +57,8 @@ export const getStaticProps: GetStaticProps = async ({
 
   return {
     props: {
-      hasNextPage,
-      page: pageNumber,
+      hasNextPage: parsedPage < totalPages,
+      page: parsedPage,
       fallback: {
         [pageUrl]: data,
       },
@@ -56,10 +67,11 @@ export const getStaticProps: GetStaticProps = async ({
   };
 };
 
-const BlogIndex: NextPage<BlogIndexProps> = ({
+const BlogPage: NextPage<BlogPageProps> = ({
   page,
   hasNextPage = false,
-}: BlogIndexProps) => {
+}: BlogPageProps) => {
+  const ref = useRef<HTMLDivElement>(null);
   const { t } = useTranslation();
   const { postList, isError, isLoading } = blogApiService.usePostList(page);
 
@@ -94,4 +106,4 @@ const BlogIndex: NextPage<BlogIndexProps> = ({
   );
 };
 
-export default BlogIndex;
+export default BlogPage;

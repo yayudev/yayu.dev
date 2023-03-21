@@ -50,9 +50,9 @@ const Title = styled(motion.h1)<{ $isAestheticTitle: boolean }>`
   transform-origin: left;
   text-align: ${(props) => (props.$isAestheticTitle ? "start" : "center")};
   will-change: transfom, opacity;
-  width: 100%;
 
   ${MEDIA_QUERY_TABLET} {
+    width: 100%;
     font-size: 3rem;
     white-space: nowrap;
     overflow: hidden;
@@ -71,6 +71,7 @@ const Subtitle = styled(motion.h4)`
   letter-spacing: 0.1rem;
   transform-origin: left;
   will-change: transfom, opacity;
+  min-width: fit-content;
 `;
 
 const Content = styled(motion.div)`
@@ -161,6 +162,7 @@ export function PageLayout({
 
         {!isLoading && !hasError && (
           <Content
+            id="page-content"
             key="content-loaded"
             initial={animationsEnabled ? { opacity: 0, translateY: 25 } : {}}
             animate={animationsEnabled ? { opacity: 1, translateY: 0 } : {}}

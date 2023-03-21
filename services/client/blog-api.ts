@@ -1,6 +1,7 @@
 import useSWR from "swr";
 import { POSTS_ENDPOINT } from "@/constants/blog-api";
 import { BlogPost, BlogPostListResult } from "@/types/blog-api";
+import { DEFAULT_PAGE_SIZE } from "@/constants/blog";
 
 export class BlogApiService {
   private async fetchData<T>(url: string): Promise<T> {
@@ -13,7 +14,7 @@ export class BlogApiService {
   }
 
   public getPostListUrl(page: number) {
-    return `${POSTS_ENDPOINT}?skip=${(page - 1) * 10}&limit=10`;
+    return `${POSTS_ENDPOINT}?skip=${(page - 1) * DEFAULT_PAGE_SIZE}&limit=10`;
   }
 
   public getAllPostsSlugsUrl() {
