@@ -1,3 +1,4 @@
+import { useAtom } from "jotai";
 import {
   EmailIcon,
   EmailShareButton,
@@ -11,10 +12,10 @@ import {
   TwitterShareButton,
 } from "react-share";
 import styled from "styled-components";
-import { useAtom } from "jotai";
+
+import { SettingsToggleOptions } from "@/types/settings-menu";
 
 import { socialShareAtom } from "@/state/application";
-import { SettingsToggleOptions } from "@/types/settings-menu";
 
 const BUTTON_SIZE = 32 as const;
 

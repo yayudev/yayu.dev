@@ -1,4 +1,4 @@
-import { TechnologyTag, ExperimentData } from "@/types/experiments";
+import { ExperimentData, TechnologyTag } from "@/types/experiments";
 
 export const experiments: ExperimentData[] = [
   {

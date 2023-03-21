@@ -1,5 +1,5 @@
-import { KeyboardEvent } from "react";
 import { useTranslation } from "next-i18next";
+import { KeyboardEvent } from "react";
 import styled from "styled-components";
 
 import { MEDIA_QUERY_TABLET } from "@/constants/media-queries";

@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import styled from "styled-components";
 
 import { MEDIA_QUERY_TABLET } from "@/constants/media-queries";
+
 import { useMobileLayout } from "@/hooks/user-mobile-layout";
 
 import { SettingsBGAnimations } from "@/components/settings/settings-bg-animations";
@@ -14,7 +15,9 @@ interface SettingsBGWrapperProps {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  //noinspection ALL
   height: 100vh;
+  //noinspection ALL
   height: 100svh;
   width: 100vw;
   overflow: hidden;

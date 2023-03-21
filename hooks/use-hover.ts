@@ -8,25 +8,22 @@ export function useHover(): [MutableRefObject<HTMLElement | null>, boolean] {
   const handleMouseOver = () => setValue(true);
   const handleMouseOut = () => setValue(false);
 
-  useEffect(
-    () => {
-      const node = ref.current;
-      if (!node) return;
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
 
-      node.addEventListener("mouseover", handleMouseOver);
-      node.addEventListener("mouseout", handleMouseOut);
-      node.addEventListener("focus", handleMouseOver);
-      node.addEventListener("blur", handleMouseOut);
+    node.addEventListener("mouseover", handleMouseOver);
+    node.addEventListener("mouseout", handleMouseOut);
+    node.addEventListener("focus", handleMouseOver);
+    node.addEventListener("blur", handleMouseOut);
 
-      return () => {
-        node.removeEventListener("mouseover", handleMouseOver);
-        node.removeEventListener("mouseout", handleMouseOut);
-        node.removeEventListener("focus", handleMouseOver);
-        node.removeEventListener("blur", handleMouseOut);
-      };
-    },
-    []
-  );
+    return () => {
+      node.removeEventListener("mouseover", handleMouseOver);
+      node.removeEventListener("mouseout", handleMouseOut);
+      node.removeEventListener("focus", handleMouseOver);
+      node.removeEventListener("blur", handleMouseOut);
+    };
+  }, []);
 
   return [ref, value];
 }

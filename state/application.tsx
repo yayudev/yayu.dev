@@ -1,13 +1,15 @@
 // Settings context
-import React from "react";
 import { atom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
-import Router from "next/router";
 import { i18n } from "next-i18next";
+import Router from "next/router";
+import React from "react";
+
+import { SettingsToggleOptions } from "@/types/settings-menu";
 
 import { DEFAULT_LOCALE } from "@/constants/locale";
+
 import { atomWithStorageAndSideEffects } from "@/utils/jotai";
-import { SettingsToggleOptions } from "@/types/settings-menu";
 
 /****************
  * STATE ATOMS  *

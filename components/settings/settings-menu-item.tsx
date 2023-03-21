@@ -1,10 +1,12 @@
+import { useAtom } from "jotai";
 import { KeyboardEvent } from "react";
 import styled from "styled-components";
-import { useAtom } from "jotai";
+
+import { SettingsMenuItemOption } from "@/types/settings-menu";
+
+import { activeOptionAtom } from "@/state/settings-menu";
 
 import { useMobileLayout } from "@/hooks/user-mobile-layout";
-import { activeOptionAtom } from "@/state/settings-menu";
-import { SettingsMenuItemOption } from "@/types/settings-menu";
 
 import { SettingsOptionSelect } from "@/components/settings/settings-option-select";
 import { SettingsSubMenu } from "@/components/settings/settings-submenu";

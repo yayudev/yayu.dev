@@ -1,18 +1,19 @@
-import { useMemo, useState } from "react";
 import { NextPage } from "next";
-import Head from "next/head";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Head from "next/head";
+import { useMemo, useState } from "react";
 import styled from "styled-components";
+
+import { ExperimentData, SortType, TechnologyTag } from "@/types/experiments";
 
 import { MEDIA_QUERY_TABLET } from "@/constants/media-queries";
 import { experiments } from "@/data/experiments";
-import { PageLayout } from "@/layouts/page";
-import { ExperimentData, SortType, TechnologyTag } from "@/types/experiments";
 
 import { Experiments } from "@/components/playground/experiments";
 import { PlaygroundFilterList } from "@/components/playground/playground-filter-list";
 import { PlaygroundSortingOptions } from "@/components/playground/playground-sorting-options";
+import { PageLayout } from "@/layouts/page";
 
 const Content = styled.div`
   padding-top: 0;

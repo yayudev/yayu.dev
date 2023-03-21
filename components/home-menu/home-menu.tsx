@@ -1,16 +1,16 @@
-import { useEffect } from "react";
 import { useAtom } from "jotai";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/router";
 import styled from "styled-components";
 
-import { MEDIA_QUERY_TABLET } from "@/constants/media-queries";
-import { useMobileLayout } from "@/hooks/user-mobile-layout";
-import { showMenuOnMobileAtom } from "@/state/application";
+import { useEffect } from "react";
 
 import { HomeMenuList } from "@/components/home-menu/home-menu-list";
 import { CloseMenuIcon } from "@/components/shared/close-menu-icon";
+import { MEDIA_QUERY_TABLET } from "@/constants/media-queries";
+import { useMobileLayout } from "@/hooks/user-mobile-layout";
+import { showMenuOnMobileAtom } from "@/state/application";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 interface MenuButtonProps {
   showOnMobile: boolean;
@@ -24,7 +24,9 @@ const Container = styled.nav<MenuButtonProps>`
   background-repeat: no-repeat;
   width: ${(props) => (props.fullWidth ? "100%" : "300px")};
   min-width: 300px;
+  //noinspection ALL
   height: 100vh;
+  //noinspection ALL
   height: 100svh;
   overflow: hidden;
   box-shadow: 0 0 20px 2px var(--box-shadow-color);

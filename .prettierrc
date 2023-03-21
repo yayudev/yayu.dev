@@ -1,0 +1,14 @@
+{
+  "importOrder": [
+    "!(^(@/))",
+    "^@/types/(.*)",
+    "^@/((config)|(constants)|(data))/(.*)",
+    "^@/((state)|(services))/(.*)",
+    "^@/((hooks)|(utils))/(.*)",
+    "^@/((pages)|(layouts)|(components))/(.*)",
+    "^(\\.|\\.\\.)/.*",
+    "@/styles/(.*)"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}
