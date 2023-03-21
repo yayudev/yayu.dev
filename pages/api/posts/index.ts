@@ -17,8 +17,8 @@ export default async function getPostsListHandler(
 
     const postsCollection: BlogPostListResult =
       await contentfulApiService.getPostsCollection({
-        skip: allSlugs ? undefined : parsedSkip,
-        limit: allSlugs ? undefined : parsedLimit,
+        skip: parsedSkip,
+        limit: allSlugs ? 1000 : parsedLimit,
       });
 
     // Post not found
