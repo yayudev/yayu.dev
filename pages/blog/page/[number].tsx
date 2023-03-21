@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
@@ -8,7 +8,6 @@ import { BlogPagination } from "@/components/blog/blog-pagination";
 import { BlogPostsList } from "@/components/blog/blog-posts-list";
 import { blogApiService } from "@/services/client/blog-api";
 import { DEFAULT_PAGE_SIZE } from "@/constants/blog";
-import { useEffect, useRef } from "react";
 
 interface BlogPageProps {
   page: number;
@@ -71,7 +70,6 @@ const BlogPage: NextPage<BlogPageProps> = ({
   page,
   hasNextPage = false,
 }: BlogPageProps) => {
-  const ref = useRef<HTMLDivElement>(null);
   const { t } = useTranslation();
   const { postList, isError, isLoading } = blogApiService.usePostList(page);
 
