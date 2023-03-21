@@ -1,10 +1,9 @@
 import { BlogPost } from "@/types/blog-api";
 
 import { BlogPostItem } from "@/components/blog/blog-post-item";
-import { Ref, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 interface BlogPostsListProps {
-  ref?: Ref<HTMLElement>;
   posts: BlogPost[];
 }
 
@@ -14,6 +13,7 @@ export function BlogPostsList({ posts }: BlogPostsListProps) {
   useEffect(() => {
     if (typeof window === undefined) return;
 
+    // Not the best approach but it works
     (window as any).document.querySelector("#page-content").scrollTo(0, 0);
   }, [posts]);
 
