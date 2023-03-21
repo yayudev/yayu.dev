@@ -37,4 +37,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
+# Bundle analyzer
+analyze
+
 

@@ -51,6 +51,9 @@ $ npm run build
 $ npm run start
 ```
 
+You can also use bundle analyzer to detect heavy dependencies by adding `ANALYZE_BUNDLE=true` to your `.env` file 
+That will generate an html report in `<root>/analyze` directory.
+
 # Dev progress
 
 This is are the features that I'm planning on adding to the site pre- and post-release.
@@ -98,6 +101,7 @@ Stuff that needs to be done before release:
 - [X] Add code highlighting
 - [X] Config dev env to consume draft posts
 - [ ] Move content to CMS
+- [ ] Setup develop branch and protect main
 - [ ] Redirect v2 to v3
 
 ### Post-release:
@@ -106,6 +110,7 @@ Good to have things that will be added eventually but not 100% required for init
 
 - [ ] Swipe gestures for mobile
 - [ ] Loading skeletons / Better loading states
+- [ ] Add blog post tags
 - [ ] Light/dark mode
 - [ ] Skill sheet 
 - [ ] Resume/CV pdf download
@@ -131,5 +136,5 @@ Currently on pre-release so not looking for help until main features are done bu
 Will be adding proper contributing guidelines after initial release.
 
 # License
-
-MIT stuff. Will appreciate any mention but
+ 
+MIT stuff. Will appreciate any mention but not required.
