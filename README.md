@@ -27,6 +27,7 @@ CONTENTFUL_ACCESS_TOKEN=<access_token>
 In order for the blog to work, you will need to create a Contentful space and get the space id and access token from there.
 
 A blogPost content type is required for the blog to work with the following fields:
+
 - title (short text)
 - slug (short text)
 - date (date)
@@ -51,7 +52,7 @@ $ npm run build
 $ npm run start
 ```
 
-You can also use bundle analyzer to detect heavy dependencies by adding `ANALYZE_BUNDLE=true` to your `.env` file 
+You can also use bundle analyzer to detect heavy dependencies by adding `ANALYZE_BUNDLE=true` to your `.env` file
 That will generate an html report in `<root>/analyze` directory.
 
 # Dev progress
@@ -71,37 +72,37 @@ Stuff that needs to be done before release:
 - [x] About page
 - [x] i18n setup
 - [x] Check i18n for typos
-- [X] Fix settings tooltip growing when too much text
-- [X] Replace links to .xyz to .dev and datyayu to yayudev where required.
-- [X] Blog comments
-- [X] Blog social share / Open graph setup
-- [X] Use jotai instead of context.
-- [X] Mobile design
-  - [X] Home
-  - [X] Side menu
-  - [X] About
-  - [X] Playground
-  - [X] Blog
-  - [X] Blog (post)
-  - [X] Settings
-- [X] Fix scroll on mobile
-- [X] Re-host images in a dedicated s3 bucket
-- [X] Add sharing buttons to blog posts
-- [X] Add Vercel analytics
-- [X] Disable comments via settings
-- [X] Disable social share via settings
-- [X] Disable tracking via settings
-- [X] Disable Animations via settings
-- [X] Migrate API from v2 to Next's api routes + contentful
-- [X] Configure CORS and security whitelist
-- [X] Fix locale not working on blog page
-- [X] Fix blog post title on mobile
-- [X] Fix blog post date on posts list
-- [X] Add blog post date to blog post
-- [X] Add code highlighting
-- [X] Config dev env to consume draft posts
-- [X] Setup develop branch and protect main
-- [X] Move content to CMS~~~~
+- [x] Fix settings tooltip growing when too much text
+- [x] Replace links to .xyz to .dev and datyayu to yayudev where required.
+- [x] Blog comments
+- [x] Blog social share / Open graph setup
+- [x] Use jotai instead of context.
+- [x] Mobile design
+  - [x] Home
+  - [x] Side menu
+  - [x] About
+  - [x] Playground
+  - [x] Blog
+  - [x] Blog (post)
+  - [x] Settings
+- [x] Fix scroll on mobile
+- [x] Re-host images in a dedicated s3 bucket
+- [x] Add sharing buttons to blog posts
+- [x] Add Vercel analytics
+- [x] Disable comments via settings
+- [x] Disable social share via settings
+- [x] Disable tracking via settings
+- [x] Disable Animations via settings
+- [x] Migrate API from v2 to Next's api routes + contentful
+- [x] Configure CORS and security whitelist
+- [x] Fix locale not working on blog page
+- [x] Fix blog post title on mobile
+- [x] Fix blog post date on posts list
+- [x] Add blog post date to blog post
+- [x] Add code highlighting
+- [x] Config dev env to consume draft posts
+- [x] Setup develop branch and protect main
+- [x] Move content to CMS~~~~
 - [ ] Do get total posts on page request to avoid having to query all slugs
 - [ ] Clean content on CMS
 - [ ] Set content as public
@@ -116,7 +117,7 @@ Good to have things that will be added eventually but not 100% required for init
 - [ ] Add blog post tags
 - [ ] Add blog post search
 - [ ] Light/dark mode
-- [ ] Skill sheet 
+- [ ] Skill sheet
 - [ ] Resume/CV pdf download
 - [ ] Testing
 - [ ] Checkly Web Vitals PR check/block
@@ -128,6 +129,7 @@ Good to have things that will be added eventually but not 100% required for init
 - [ ] v2 link to v3
 
 #### Good ideas
+
 - [ ] Transition to NextJS 13's app directory (waiting for better i18n support)
 - [ ] Refactor MarqueeScroller into a standalone component package for re-usability
 - [ ] Use local mdx files(?)
@@ -140,5 +142,5 @@ Currently on pre-release so not looking for help until main features are done bu
 Will be adding proper contributing guidelines after initial release.
 
 # License
- 
+
 MIT stuff. Will appreciate any mention but not required.

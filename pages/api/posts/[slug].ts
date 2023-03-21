@@ -1,7 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
-import { contentfulApiService } from "@/services/server/contentful";
 import { BlogPost } from "@/types/blog-api";
+
+import { contentfulApiService } from "@/services/server/contentful";
+
 import { cors } from "@/utils/cors";
 
 export default async function getPostsBySlugHandler(

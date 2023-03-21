@@ -1,8 +1,8 @@
 import { NextPage } from "next";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
 import Image from "next/image";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useTranslation } from "next-i18next";
 import styled from "styled-components";
 
 import { MEDIA_QUERY_PHONE } from "@/constants/media-queries";

@@ -1,14 +1,15 @@
 import { GetStaticProps, NextPage } from "next";
-import Head from "next/head";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Head from "next/head";
 
 import { DEFAULT_PAGE_SIZE } from "@/constants/blog";
 
-import { PageLayout } from "@/layouts/page";
+import { blogApiService } from "@/services/client/blog-api";
+
 import { BlogPagination } from "@/components/blog/blog-pagination";
 import { BlogPostsList } from "@/components/blog/blog-posts-list";
-import { blogApiService } from "@/services/client/blog-api";
+import { PageLayout } from "@/layouts/page";
 
 interface BlogIndexProps {
   page: number;

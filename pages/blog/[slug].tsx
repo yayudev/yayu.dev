@@ -1,28 +1,31 @@
-import { useEffect } from "react";
 import { DiscussionEmbed } from "disqus-react";
-import { useAtom } from "jotai";
 import matter from "gray-matter";
+import { useAtom } from "jotai";
 import { GetStaticProps } from "next";
-import Head from "next/head";
-import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import RenderIfVisible from "react-render-if-visible";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
-import styled from "styled-components";
+import Head from "next/head";
+import { useRouter } from "next/router";
 import Script from "next/script";
+import { useEffect } from "react";
+import RenderIfVisible from "react-render-if-visible";
+import styled from "styled-components";
+
+import { SettingsToggleOptions } from "@/types/settings-menu";
 
 import { mdxOptions } from "@/config/mdx";
 import { MEDIA_QUERY_TABLET } from "@/constants/media-queries";
-import { useMobileLayout } from "@/hooks/user-mobile-layout";
-import { commentsAtom } from "@/state/application";
+
 import { blogApiService } from "@/services/client/blog-api";
-import { SettingsToggleOptions } from "@/types/settings-menu";
+import { commentsAtom } from "@/state/application";
+
+import { useMobileLayout } from "@/hooks/user-mobile-layout";
 import { formatDate } from "@/utils/date";
 
-import { PageLayout } from "@/layouts/page";
 import { BlogSocialShareButtons } from "@/components/blog/blog-social-share-buttons";
+import { PageLayout } from "@/layouts/page";
 
 interface BlogPostProps {
   postId: string;

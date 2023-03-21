@@ -1,6 +1,6 @@
-import styled from "styled-components";
 import { useAtom } from "jotai";
 import { useTranslation } from "next-i18next";
+import styled from "styled-components";
 
 import { showSettingsAtom } from "@/state/settings-menu";
 

@@ -3,6 +3,7 @@ import { useTranslation } from "next-i18next";
 import styled, { css } from "styled-components";
 
 import { MEDIA_QUERY_TABLET } from "@/constants/media-queries";
+
 import { useAnimationsEnabled } from "@/hooks/use-animations-enabled";
 
 import { MarqueScroller } from "@/components/settings/marque-scroller";

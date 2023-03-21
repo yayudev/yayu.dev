@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
-import { useWindowSize } from "@/hooks/use-window-size";
 import { MAX_WIDTH_TABLET } from "@/constants/media-queries";
+
+import { useWindowSize } from "@/hooks/use-window-size";
 
 export function useMobileLayout(): boolean {
   const [mobileLayout, setMobileLayout] = useState(false);

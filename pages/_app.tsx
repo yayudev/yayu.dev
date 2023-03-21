@@ -1,17 +1,20 @@
 import { Analytics } from "@vercel/analytics/react";
 import { useAtom } from "jotai";
+import { appWithTranslation } from "next-i18next";
 import { AppProps } from "next/app";
 import Head from "next/head";
-import { appWithTranslation } from "next-i18next";
 import styled from "styled-components";
 
-import nextI18NextConfig from "../next-i18next.config";
-import { useAnimationsEnabled } from "@/hooks/use-animations-enabled";
-import { trackingAtom } from "@/state/application";
 import { SettingsToggleOptions } from "@/types/settings-menu";
+
+import { trackingAtom } from "@/state/application";
+
+import { useAnimationsEnabled } from "@/hooks/use-animations-enabled";
 
 import { HomeMenu } from "@/components/home-menu/home-menu";
 import { Settings } from "@/components/settings/settings";
+
+import nextI18NextConfig from "../next-i18next.config";
 
 import "@/styles/globals.css";
 

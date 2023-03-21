@@ -1,15 +1,16 @@
 import { useAtom } from "jotai";
 import { useTranslation } from "next-i18next";
 
+import { MenuCategory } from "@/types/settings-menu";
+
 import {
   activeMenuAtom,
   activeOptionAtom,
   activeSubMenuAtom,
 } from "@/state/settings-menu";
-import { MenuCategory } from "@/types/settings-menu";
 
-import { SettingsMenuLevel } from "@/components/settings/settings-menu-level";
 import { SettingsMenuItem } from "@/components/settings/settings-menu-item";
+import { SettingsMenuLevel } from "@/components/settings/settings-menu-level";
 
 export function SettingsPrimaryMenu() {
   const { t } = useTranslation();

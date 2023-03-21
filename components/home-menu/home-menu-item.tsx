@@ -1,11 +1,11 @@
-import { MutableRefObject, ReactNode } from "react";
 import Link from "next/link";
+import { MutableRefObject, ReactNode } from "react";
 import styled from "styled-components";
 
 import { useHover } from "@/hooks/use-hover";
 
-import { GlitchedText } from "@/components/shared/glitched-text";
 import { HomeMenuItemUnderline } from "@/components/home-menu/home-menu-item-underline";
+import { GlitchedText } from "@/components/shared/glitched-text";
 
 interface HomeMenuItemProps {
   href?: string;

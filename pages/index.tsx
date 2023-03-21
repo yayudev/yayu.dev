@@ -1,7 +1,7 @@
 import { NextPage } from "next";
-import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Head from "next/head";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   if (!locale) return { props: {} };
