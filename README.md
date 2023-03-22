@@ -53,7 +53,7 @@ $ npm run start
 ```
 
 You can also use bundle analyzer to detect heavy dependencies by adding `ANALYZE_BUNDLE=true` to your `.env` file
-That will generate an html report in `<root>/analyze` directory.
+That will generate a html report in `<root>/analyze` directory.
 
 # Dev progress
 
@@ -112,6 +112,7 @@ Stuff that needs to be done before release:
 
 Good to have things that will be added eventually but not 100% required for initial release.
 
+- [ ] Refactor index and \[number] page into a single component to avoid code duplication
 - [ ] Swipe gestures for mobile
 - [ ] Loading skeletons / Better loading states
 - [ ] Add blog post tags

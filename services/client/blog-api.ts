@@ -19,8 +19,12 @@ export class BlogApiService {
     return `${POSTS_ENDPOINT}?skip=${(page - 1) * DEFAULT_PAGE_SIZE}&limit=10`;
   }
 
+  public getPostListSizeUrl() {
+    return `${POSTS_ENDPOINT}?skip=0&limit=0`;
+  }
+
   public getAllPostsSlugsUrl() {
-    return `${POSTS_ENDPOINT}?allSlugs=true`;
+    return `${POSTS_ENDPOINT}/getAllSlugs`;
   }
 
   public fetchPostList(page: number = 1): Promise<BlogPostListResult> {
@@ -32,7 +36,14 @@ export class BlogApiService {
   }
 
   public fetchAllPostsSlugs = async () => {
-    return this.fetchData<string[]>(this.getAllPostsSlugsUrl());
+    return this.fetchData<{
+      slugs: string[];
+      totalPosts: number;
+    }>(this.getAllPostsSlugsUrl());
+  };
+
+  public fetchPostListSize = async () => {
+    return this.fetchData<BlogPostListResult>(this.getPostListSizeUrl());
   };
 
   public usePostList = (page: number) => {

@@ -6,29 +6,22 @@ import { contentfulApiService } from "@/services/server/contentful";
 
 import { cors } from "@/utils/cors";
 
-export default async function getPostsListHandler(
+export default async function getAllSlugsHandler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  let { skip = 0, limit = 10 } = req.query;
-  const parsedSkip = parseInt(skip as string);
-  const parsedLimit = parseInt(limit as string);
-
   try {
     await cors(req, res);
 
     const postsCollection: BlogPostListResult =
-      await contentfulApiService.getPostsCollection({
-        skip: parsedSkip,
-        limit: parsedLimit,
-      });
+      await contentfulApiService.getPostsCollection({ limit: 1000 });
 
-    // Post not found
-    if (!postsCollection) {
-      return res.status(404).json({ message: "Posts not found" });
-    }
+    const slugs = postsCollection.posts.map((item) => item.slug);
 
-    res.status(200).json(postsCollection);
+    return res.status(200).json({
+      slugs,
+      totalPosts: postsCollection.totalPosts,
+    });
   } catch (error: any) {
     console.error(error);
 

@@ -17,8 +17,8 @@ interface BlogPageProps {
 }
 
 export const getStaticPaths = async () => {
-  const data = await blogApiService.fetchAllPostsSlugs();
-  const pages = Math.ceil(data.length / DEFAULT_PAGE_SIZE);
+  const data = await blogApiService.fetchPostListSize();
+  const pages = Math.ceil(data.totalPosts / DEFAULT_PAGE_SIZE);
 
   const paths = Array.from(Array(pages)).map(
     (_, page) => `/blog/page/${page + 1}`
@@ -41,10 +41,9 @@ export const getStaticProps: GetStaticProps = async ({
   const page = params?.number as string;
   const parsedPage = parseInt(page, 10);
 
-  const totalSlugs = await blogApiService.fetchAllPostsSlugs();
-  const totalPages = Math.ceil(totalSlugs.length / DEFAULT_PAGE_SIZE);
   const pageUrl = blogApiService.getPostListUrl(parsedPage);
   const data = await blogApiService.fetchPostList(parsedPage);
+  const totalPages = Math.ceil(data.totalPosts / DEFAULT_PAGE_SIZE);
 
   /**************
    *   Locale   *
