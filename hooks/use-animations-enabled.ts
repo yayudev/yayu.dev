@@ -1,7 +1,8 @@
 import { useAtom } from "jotai";
 
-import { animationsAtom } from "@/state/application";
 import { SettingsToggleOptions } from "@/types/settings-menu";
+
+import { animationsAtom } from "@/state/application";
 
 export function useAnimationsEnabled(): boolean {
   const [animations] = useAtom(animationsAtom);

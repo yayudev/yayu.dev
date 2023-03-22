@@ -1,12 +1,13 @@
-import { createClient, ContentfulClientApi } from "contentful";
+import { ContentfulClientApi, createClient } from "contentful";
+
+import { BlogPost, BlogPostListResult } from "@/types/blog-api";
+import { ContentfulBlogPost } from "@/types/cms";
 
 import {
-  CONTENTFUL_SPACE_ID,
   CONTENTFUL_ACCESS_TOKEN,
+  CONTENTFUL_SPACE_ID,
   IS_PREVIEW_MODE,
 } from "@/constants/contenful";
-import { ContentfulBlogPost } from "@/types/cms";
-import { BlogPost, BlogPostListResult } from "@/types/blog-api";
 
 export class ContentfulApiService {
   private client: ContentfulClientApi;

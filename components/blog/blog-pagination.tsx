@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import Link from "next/link";
 import { useTranslation } from "next-i18next";
+import Link from "next/link";
+import styled from "styled-components";
 
 const Container = styled.footer`
   display: flex;

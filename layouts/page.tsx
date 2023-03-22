@@ -1,6 +1,6 @@
-import { ReactNode, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
+import { ReactNode, useEffect, useRef } from "react";
 import styled from "styled-components";
 
 import {
@@ -8,9 +8,10 @@ import {
   MEDIA_QUERY_TABLET,
 } from "@/constants/media-queries";
 
+import { useAnimationsEnabled } from "@/hooks/use-animations-enabled";
+
 import { ErrorMessage } from "@/components/shared/error-message";
 import { Loader } from "@/components/shared/loader";
-import { useAnimationsEnabled } from "@/hooks/use-animations-enabled";
 
 const Container = styled.div`
   width: 100%;

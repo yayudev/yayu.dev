@@ -14,6 +14,9 @@
     "prestart": "npm run fetch-types",
     "start": "next start",
     "lint": "next lint",
+    "format": "prettier --write . --ignore-path=.next,.vercel,.vscode,.gitignore,.prettierignore,node_modules,dist",
+    "format:check": "prettier --check .",
+    "format-and-lint": "npm run format && npm run lint",
     "postinstall": "npm run fetch-types"
   },
   "dependencies": {
@@ -46,6 +49,7 @@
     "@graphql-codegen/typescript": "^3.0.2",
     "@graphql-codegen/typescript-operations": "^3.0.2",
     "@next/bundle-analyzer": "^13.2.4",
+    "@trivago/prettier-plugin-sort-imports": "^4.1.1",
     "@types/cors": "^2.8.13",
     "@types/lodash": "^4.14.182",
     "@types/node": "^18.14.6",

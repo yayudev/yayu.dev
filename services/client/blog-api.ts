@@ -1,7 +1,9 @@
 import useSWR from "swr";
-import { POSTS_ENDPOINT } from "@/constants/blog-api";
+
 import { BlogPost, BlogPostListResult } from "@/types/blog-api";
+
 import { DEFAULT_PAGE_SIZE } from "@/constants/blog";
+import { POSTS_ENDPOINT } from "@/constants/blog-api";
 
 export class BlogApiService {
   private async fetchData<T>(url: string): Promise<T> {

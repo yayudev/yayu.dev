@@ -1,5 +1,5 @@
-import { useTranslation } from "next-i18next";
 import { useAtom } from "jotai";
+import { useTranslation } from "next-i18next";
 
 import {
   MenuCategory,
@@ -7,6 +7,7 @@ import {
   SettingsLanguageOptions,
   SettingsToggleOptions,
 } from "@/types/settings-menu";
+
 import {
   animationsAtom,
   commentsAtom,
@@ -16,8 +17,8 @@ import {
 } from "@/state/application";
 import { activeMenuAtom, activeOptionAtom } from "@/state/settings-menu";
 
-import { SettingsMenuLevel } from "@/components/settings/settings-menu-level";
 import { SettingsMenuItem } from "@/components/settings/settings-menu-item";
+import { SettingsMenuLevel } from "@/components/settings/settings-menu-level";
 
 export function SettingsSubMenu() {
   const { t } = useTranslation();

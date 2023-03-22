@@ -1,20 +1,22 @@
-import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useAtom } from "jotai";
+import styled from "styled-components";
 
 import { MEDIA_QUERY_TABLET } from "@/constants/media-queries";
-import { useAnimationsEnabled } from "@/hooks/use-animations-enabled";
-import { useKeyboard } from "@/hooks/use-keyboard";
-import { useMobileLayout } from "@/hooks/user-mobile-layout";
+
 import {
   activeMenuAtom,
   activeOptionAtom,
-  showSettingsAtom,
   activeSubMenuAtom,
+  showSettingsAtom,
 } from "@/state/settings-menu";
 
-import { SettingsSubMenu } from "@/components/settings/settings-submenu";
+import { useAnimationsEnabled } from "@/hooks/use-animations-enabled";
+import { useKeyboard } from "@/hooks/use-keyboard";
+import { useMobileLayout } from "@/hooks/user-mobile-layout";
+
 import { SettingsPrimaryMenu } from "@/components/settings/settings-primary-menu";
+import { SettingsSubMenu } from "@/components/settings/settings-submenu";
 
 const MenuWrapper = styled(motion.div)`
   display: flex;
