@@ -1,15 +1,11 @@
 import { GetStaticProps, NextPage } from "next";
-import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Head from "next/head";
 
 import { DEFAULT_PAGE_SIZE } from "@/constants/blog";
 
 import { blogApiService } from "@/services/client/blog-api";
 
-import { BlogPagination } from "@/components/blog/blog-pagination";
-import { BlogPostsList } from "@/components/blog/blog-posts-list";
-import { PageLayout } from "@/layouts/page";
+import { BlogPageContent } from "@/components/blog/blog-page-content";
 
 interface BlogPageProps {
   page: number;
@@ -71,38 +67,7 @@ const BlogPage: NextPage<BlogPageProps> = ({
   page,
   hasNextPage = false,
 }: BlogPageProps) => {
-  const { t } = useTranslation();
-  const { postList, isError, isLoading } = blogApiService.usePostList(page);
-
-  return (
-    <PageLayout
-      title={t("blog:title") ?? ""}
-      isLoading={isLoading}
-      hasError={isError}
-      subtitle={page !== 1 ? t("blog:page-number", { n: page }) ?? "" : ""}
-    >
-      <Head>
-        <title>{t("blog:page-title")}</title>
-        <meta name="description" content={t("blog:page-description") ?? ""} />
-        <meta property="og:title" content={t("blog:page-title") ?? ""} />
-        <meta
-          property="og:description"
-          content={t("blog:page-description") ?? ""}
-        />
-        <link rel="icon" href="/public/favicon.ico" />
-      </Head>
-
-      {postList && (
-        <>
-          <BlogPostsList posts={postList} />
-          <BlogPagination
-            prevUrl={page > 1 ? `/blog/page/${page - 1}` : undefined}
-            nextUrl={hasNextPage ? `/blog/page/${page + 1}` : undefined}
-          />
-        </>
-      )}
-    </PageLayout>
-  );
+  return <BlogPageContent page={page} hasNextPage={hasNextPage} />;
 };
 
 export default BlogPage;
