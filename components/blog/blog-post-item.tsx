@@ -106,25 +106,25 @@ export function BlogPostItem({ post }: BlogPostItemProps) {
   const { t } = useTranslation();
   const coverImage: string | undefined = (post.coverImage as any)?.fields?.file
     ?.url;
-  const postImage = coverImage
-    ? `https:${coverImage}`
-    : "https://via.placeholder.com/150x200.jpg";
+  const postImage = coverImage ? `https:${coverImage}` : "";
   const date = formatDate(new Date(post.date ?? ""));
 
   return (
     <ArticleContainer>
       <StyledLink href={`/blog/${post.slug}`}>
         <BlogPostArticleContent>
-          <StyledImage
-            src={postImage}
-            width={150}
-            height={200}
-            alt={t("blog:image-alt-template", { title: post.title })}
-            style={{
-              maxWidth: "100%",
-              height: "auto",
-            }}
-          />
+          {postImage && (
+            <StyledImage
+              src={postImage}
+              width={150}
+              height={200}
+              alt={t("blog:image-alt-template", { title: post.title })}
+              style={{
+                maxWidth: "100%",
+                height: "auto",
+              }}
+            />
+          )}
 
           <BlogPostInfo>
             <Title>{post.title}</Title>

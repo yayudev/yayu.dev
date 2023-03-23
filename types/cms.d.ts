@@ -216,6 +216,7 @@ export type ContentfulBlogPost = ContentfulEntry & {
   coverImage: Maybe<ContentfulAsset>;
   date: Maybe<Scalars['DateTime']>;
   excerpt: Maybe<Scalars['String']>;
+  featured: Maybe<Scalars['Boolean']>;
   linkedFrom: Maybe<ContentfulBlogPostLinkingCollections>;
   markdown: Maybe<Scalars['String']>;
   slug: Maybe<Scalars['String']>;
@@ -239,6 +240,12 @@ export type ContentfulBlogPostDateArgs = {
 
 /** Blog post [See type definition](https://app.contentful.com/spaces/1fnpih0gmmjm/content_types/blogPost) */
 export type ContentfulBlogPostExcerptArgs = {
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+/** Blog post [See type definition](https://app.contentful.com/spaces/1fnpih0gmmjm/content_types/blogPost) */
+export type ContentfulBlogPostFeaturedArgs = {
   locale: InputMaybe<Scalars['String']>;
 };
 
@@ -295,6 +302,9 @@ export type ContentfulBlogPostFilter = {
   excerpt_not: InputMaybe<Scalars['String']>;
   excerpt_not_contains: InputMaybe<Scalars['String']>;
   excerpt_not_in: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  featured: InputMaybe<Scalars['Boolean']>;
+  featured_exists: InputMaybe<Scalars['Boolean']>;
+  featured_not: InputMaybe<Scalars['Boolean']>;
   markdown: InputMaybe<Scalars['String']>;
   markdown_contains: InputMaybe<Scalars['String']>;
   markdown_exists: InputMaybe<Scalars['Boolean']>;
@@ -335,6 +345,8 @@ export type ContentfulBlogPostLinkingCollectionsEntryCollectionArgs = {
 export enum ContentfulBlogPostOrder {
   DateAsc = 'date_ASC',
   DateDesc = 'date_DESC',
+  FeaturedAsc = 'featured_ASC',
+  FeaturedDesc = 'featured_DESC',
   SlugAsc = 'slug_ASC',
   SlugDesc = 'slug_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',

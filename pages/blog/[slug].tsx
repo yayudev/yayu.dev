@@ -114,6 +114,10 @@ const CommentsContainer = styled.div`
   padding: 0 2rem;
 `;
 
+const MDX_AVAILABLE_COMPONENTS = {
+  Script,
+};
+
 export const getStaticPaths = async () => {
   const postsSlugs = await blogApiService.fetchAllPostsSlugs();
   const paths = postsSlugs.slugs.map((slug) => `/blog/${slug}`);
@@ -147,7 +151,9 @@ export const getStaticProps: GetStaticProps = async ({
   const blogPost = await blogApiService.fetchIndividualPost(postId);
 
   const { content, data } = matter(blogPost?.markdown ?? "");
-  const mdxSource = await serialize(content, { scope: data });
+  const mdxSource = await serialize(content, {
+    scope: data,
+  });
 
   return {
     props: {
@@ -215,7 +221,9 @@ const BlogPostPage = ({ postId, mdxSource }: BlogPostProps) => {
         </TitleContainer>
 
         <PostContainer>
-          {mdxSource && <MDXRemote {...mdxSource} />}
+          {mdxSource && (
+            <MDXRemote {...mdxSource} components={MDX_AVAILABLE_COMPONENTS} />
+          )}
         </PostContainer>
 
         <BlogSocialShareButtons url={pageFullUrl} />

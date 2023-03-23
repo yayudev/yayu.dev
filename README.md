@@ -106,8 +106,9 @@ Stuff that needs to be done before release:
 - [X] Do get total posts on page request to avoid having to query all slugs
 - [X] Refactor index and \[number] page into a single component to avoid code duplication
 - [ ] Clean content on CMS
-- [ ] Checkly Web Vitals PR check/block
 - [ ] Set content as public
+- [ ] 404 page
+- [ ] Fix error page
 - [ ] Change domain from netlify to vercel
 
 ### Post-release:
@@ -121,6 +122,7 @@ Good to have things that will be added eventually but not 100% required for init
 - [ ] Loading skeletons / Better loading states
 - [ ] Swipe gestures for mobile
 - [ ] Light/dark mode
+- [ ] Checkly Web Vitals PR check/block
 - [ ] Add blog post tags
 - [ ] Add blog post search (FULL FEATURE)
 - [ ] Store experiment data on CMS
