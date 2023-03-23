@@ -8,6 +8,9 @@ import { POSTS_ENDPOINT } from "@/constants/blog-api";
 export class BlogApiService {
   private async fetchData<T>(url: string): Promise<T> {
     const result = await fetch(url);
+    if (!result.ok) {
+      throw new Error(result.statusText);
+    }
     return (await result.json()) as T;
   }
 
@@ -35,15 +38,30 @@ export class BlogApiService {
     return this.fetchData<BlogPost>(this.getIndividualPostUrl(postId));
   }
 
-  public fetchAllPostsSlugs = async () => {
-    return this.fetchData<{
-      slugs: string[];
-      totalPosts: number;
-    }>(this.getAllPostsSlugsUrl());
+  public fetchAllPostsSlugs = async (): Promise<{
+    slugs: string[];
+    totalPosts: number;
+  }> => {
+    try {
+      return await this.fetchData<{
+        slugs: string[];
+        totalPosts: number;
+      }>(this.getAllPostsSlugsUrl());
+    } catch (error) {
+      console.log("error", error);
+      return { slugs: [], totalPosts: 0 };
+    }
   };
 
-  public fetchPostListSize = async () => {
-    return this.fetchData<BlogPostListResult>(this.getPostListSizeUrl());
+  public fetchPostListSize = async (): Promise<BlogPostListResult> => {
+    try {
+      return await this.fetchData<BlogPostListResult>(
+        this.getPostListSizeUrl()
+      );
+    } catch (error) {
+      console.log(error);
+      return { posts: [], totalPosts: 0 };
+    }
   };
 
   public usePostList = (page: number) => {
