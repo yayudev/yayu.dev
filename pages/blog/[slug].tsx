@@ -15,7 +15,6 @@ import styled from "styled-components";
 
 import { SettingsToggleOptions } from "@/types/settings-menu";
 
-import { mdxOptions } from "@/config/mdx";
 import { MEDIA_QUERY_TABLET } from "@/constants/media-queries";
 
 import { blogApiService } from "@/services/client/blog-api";
@@ -117,7 +116,7 @@ const CommentsContainer = styled.div`
 
 export const getStaticPaths = async () => {
   const postsSlugs = await blogApiService.fetchAllPostsSlugs();
-  const paths = postsSlugs.map((slug) => `/blog/${slug}`);
+  const paths = postsSlugs.slugs.map((slug) => `/blog/${slug}`);
 
   return {
     paths,
@@ -145,11 +144,10 @@ export const getStaticProps: GetStaticProps = async ({
 
   const postId = params?.slug as string;
   const pageUrl = blogApiService.getIndividualPostUrl(postId);
-
   const blogPost = await blogApiService.fetchIndividualPost(postId);
 
   const { content, data } = matter(blogPost?.markdown ?? "");
-  const mdxSource = await serialize(content, { ...mdxOptions, scope: data });
+  const mdxSource = await serialize(content, { scope: data });
 
   return {
     props: {

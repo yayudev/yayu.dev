@@ -53,7 +53,7 @@ $ npm run start
 ```
 
 You can also use bundle analyzer to detect heavy dependencies by adding `ANALYZE_BUNDLE=true` to your `.env` file
-That will generate an html report in `<root>/analyze` directory.
+That will generate a html report in `<root>/analyze` directory.
 
 # Dev progress
 
@@ -103,8 +103,10 @@ Stuff that needs to be done before release:
 - [x] Config dev env to consume draft posts
 - [x] Setup develop branch and protect main
 - [x] Move content to CMS~~~~
-- [ ] Do get total posts on page request to avoid having to query all slugs
+- [X] Do get total posts on page request to avoid having to query all slugs
+- [X] Refactor index and \[number] page into a single component to avoid code duplication
 - [ ] Clean content on CMS
+- [ ] Checkly Web Vitals PR check/block
 - [ ] Set content as public
 - [ ] Change domain from netlify to vercel
 
@@ -112,21 +114,23 @@ Stuff that needs to be done before release:
 
 Good to have things that will be added eventually but not 100% required for initial release.
 
-- [ ] Swipe gestures for mobile
-- [ ] Loading skeletons / Better loading states
-- [ ] Add blog post tags
-- [ ] Add blog post search
-- [ ] Light/dark mode
-- [ ] Skill sheet
-- [ ] Resume/CV pdf download
-- [ ] Testing
-- [ ] Checkly Web Vitals PR check/block
-- [ ] Test coverage setup w/check
 - [ ] Release log
 - [ ] Contributing guidelines
-- [ ] Full screen experiment expansion
+- [ ] Testing
+- [ ] Test coverage setup w/check
+- [ ] Loading skeletons / Better loading states
+- [ ] Swipe gestures for mobile
+- [ ] Light/dark mode
+- [ ] Add blog post tags
+- [ ] Add blog post search (FULL FEATURE)
+- [ ] Store experiment data on CMS
+- [ ] Store skill data on CMS
+- [ ] Store resume/CV data on CMS
+- [ ] Skill sheet data visualization (FULL FEATURE)
+- [ ] Resume/CV pdf download
+- [ ] Secondary theme (FULL FEATURE)
 - [ ] v2 subdomain setup
-- [ ] v2 link to v3
+- [ ] v2 link to v3 (FULL FEATURE / LEGACY SUPPORT)
 
 #### Good ideas
 
