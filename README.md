@@ -1,8 +1,10 @@
-# yayu.dev v3
+# yayu.dev (v3)
 
-Current on-development v3 for my personal website ([yayu.dev](https://yayu.dev))
+My personal porfolio website.
 
-Live version available at [yayu-dev.vercel.app](https://yayu-dev.vercel.app/)
+Live version available at ([yayu.dev](https://yayu.dev))
+
+There's also an inestable preview version available at ([preview.yayu.dev](https://preview.yayu.dev))
 
 > Currently using an unstable, local dev version so things like CORS and blog API may or may not work at any given time on the preview site.
 
@@ -55,69 +57,14 @@ $ npm run start
 You can also use bundle analyzer to detect heavy dependencies by adding `ANALYZE_BUNDLE=true` to your `.env` file
 That will generate a html report in `<root>/analyze` directory.
 
-# Dev progress
+### TODO / Ideas
 
-This is are the features that I'm planning on adding to the site pre- and post-release.
-
-### Pre-release:
-
-Stuff that needs to be done before release:
-
-- [x] Netlify setup
-- [x] Landing
-- [x] Settings page
-- [x] Projects feature
-- [x] Blog feature
-- [x] Projects feature
-- [x] About page
-- [x] i18n setup
-- [x] Check i18n for typos
-- [x] Fix settings tooltip growing when too much text
-- [x] Replace links to .xyz to .dev and datyayu to yayudev where required.
-- [x] Blog comments
-- [x] Blog social share / Open graph setup
-- [x] Use jotai instead of context.
-- [x] Mobile design
-  - [x] Home
-  - [x] Side menu
-  - [x] About
-  - [x] Playground
-  - [x] Blog
-  - [x] Blog (post)
-  - [x] Settings
-- [x] Fix scroll on mobile
-- [x] Re-host images in a dedicated s3 bucket
-- [x] Add sharing buttons to blog posts
-- [x] Add Vercel analytics
-- [x] Disable comments via settings
-- [x] Disable social share via settings
-- [x] Disable tracking via settings
-- [x] Disable Animations via settings
-- [x] Migrate API from v2 to Next's api routes + contentful
-- [x] Configure CORS and security whitelist
-- [x] Fix locale not working on blog page
-- [x] Fix blog post title on mobile
-- [x] Fix blog post date on posts list
-- [x] Add blog post date to blog post
-- [x] Add code highlighting
-- [x] Config dev env to consume draft posts
-- [x] Setup develop branch and protect main
-- [x] Move content to CMS~~~~
-- [X] Do get total posts on page request to avoid having to query all slugs
-- [X] Refactor index and \[number] page into a single component to avoid code duplication
-- [X] Clean content on CMS
-- [X] Set content as public
-- [X] 404 page
-- [X] Fix error page
-- [X] Change domain from netlify to vercel
-
-### Post-release:
+#### TODO
 
 Good to have things that will be added eventually but not 100% required for initial release.
 
 - [X] Add AVIF support
-- [ ] Release log
-- [ ] Contributing guidelines
+- [X] Release log
 - [ ] Testing
 - [ ] Test coverage setup w/check
 - [ ] Loading skeletons / Better loading states
@@ -144,9 +91,7 @@ Good to have things that will be added eventually but not 100% required for init
 
 # Contributing
 
-Currently on pre-release so not looking for help until main features are done but feel free to reach out if you find something wrong, or you think something could be improved.
-
-Will be adding proper contributing guidelines after initial release.
+PRs are welcome, but please open an issue first to discuss the changes you want to make.
 
 # License
 
