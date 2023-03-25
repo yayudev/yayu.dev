@@ -109,12 +109,13 @@ Stuff that needs to be done before release:
 - [X] Set content as public
 - [X] 404 page
 - [X] Fix error page
-- [ ] Change domain from netlify to vercel
+- [X] Change domain from netlify to vercel
 
 ### Post-release:
 
 Good to have things that will be added eventually but not 100% required for initial release.
 
+- [X] Add AVIF support
 - [ ] Release log
 - [ ] Contributing guidelines
 - [ ] Testing

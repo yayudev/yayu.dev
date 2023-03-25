@@ -44,7 +44,8 @@ const nextConfig = {
 
   // Images whitelist
   images: {
-    domains: ["via.placeholder.com", "images.ctfassets.net"],
+    formats: ["image/avif", "image/webp"],
+    domains: ["images.ctfassets.net"],
   },
 
   // env vars
