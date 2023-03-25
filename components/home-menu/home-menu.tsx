@@ -1,27 +1,43 @@
 import { useAtom } from "jotai";
-import styled from "styled-components";
-
-import { useEffect } from "react";
-
-import { HomeMenuList } from "@/components/home-menu/home-menu-list";
-import { CloseMenuIcon } from "@/components/shared/close-menu-icon";
-import { MEDIA_QUERY_TABLET } from "@/constants/media-queries";
-import { useMobileLayout } from "@/hooks/user-mobile-layout";
-import { showMenuOnMobileAtom } from "@/state/application";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
+import styled, { css, keyframes } from "styled-components";
+
+import { MEDIA_QUERY_TABLET } from "@/constants/media-queries";
+
+import { showMenuOnMobileAtom } from "@/state/application";
+
+import { useMobileLayout } from "@/hooks/user-mobile-layout";
+
+import { HomeMenuList } from "@/components/home-menu/home-menu-list";
+import { CloseMenuIcon } from "@/components/shared/close-menu-icon";
 
 interface MenuButtonProps {
   showOnMobile: boolean;
   fullWidth: boolean;
 }
 
+const blurOutAnimation = keyframes`
+  0% {
+    filter: brightness(.8) blur(0px);    
+  }
+  100% {
+    filter: brightness(0.6) blur(5px);
+  }
+`;
+
+const lightUpAnimation = keyframes`
+  0% {
+    filter: brightness(0.3)    
+  }
+  100% {
+    filter: brightness(1);
+  }
+`;
+
 const Container = styled.nav<MenuButtonProps>`
-  background-image: url("/images/background.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   width: ${(props) => (props.fullWidth ? "100%" : "300px")};
   min-width: 300px;
   //noinspection ALL
@@ -34,6 +50,13 @@ const Container = styled.nav<MenuButtonProps>`
     transform 250ms ease-in-out;
   z-index: 2;
 
+  ${(props) =>
+    props.fullWidth
+      ? css`
+          animation: ${lightUpAnimation} 1s ease-in-out forwards;
+        `
+      : ""}
+
   ${MEDIA_QUERY_TABLET} {
     position: absolute;
     min-width: auto;
@@ -41,9 +64,33 @@ const Container = styled.nav<MenuButtonProps>`
     top: 0;
     left: 0;
     box-shadow: none;
-    margin-left: -100%;
+    margin-left: -120%; // Make sure drop shadow is not visible
     ${({ showOnMobile }) =>
-      showOnMobile ? "transform: translateX(100%);" : ""}
+      showOnMobile ? "transform: translateX(120%);" : ""}
+  }
+`;
+
+export const BackgroundImage = styled(Container)<MenuButtonProps>`
+  background-image: url("/images/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.6) blur(5px);
+
+  ${(props) =>
+    props.fullWidth
+      ? css`
+          animation: ${blurOutAnimation} 0.5s ease-in-out forwards;
+        `
+      : ""}
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: none;
+
+  ${MEDIA_QUERY_TABLET} {
+    box-shadow: none;
   }
 `;
 
@@ -55,6 +102,8 @@ const Content = styled.div`
   justify-content: center;
   height: 100%;
   width: 100%;
+  z-index: 1;
+
   overflow: hidden;
 `;
 
@@ -97,27 +146,33 @@ export function HomeMenu() {
   }
 
   return (
-    <Container showOnMobile={isHome || showOnMobile} fullWidth={isHome}>
-      {!isHome && (
-        <CloseMenuIcon
-          showCloseIcon={showOnMobile}
-          onClick={toggleMobileMenu}
-        />
-      )}
-
-      <Content>
-        <LogoImageLink href="/" passHref>
-          <LogoImage
-            src="/images/logo.svg"
-            alt="logo"
-            width={300}
-            height={300}
-            priority
+    <>
+      <BackgroundImage
+        showOnMobile={isHome || showOnMobile}
+        fullWidth={isHome}
+      />
+      <Container showOnMobile={isHome || showOnMobile} fullWidth={isHome}>
+        {!isHome && (
+          <CloseMenuIcon
+            showCloseIcon={showOnMobile}
+            onClick={toggleMobileMenu}
           />
-        </LogoImageLink>
+        )}
 
-        <HomeMenuList />
-      </Content>
-    </Container>
+        <Content>
+          <LogoImageLink href="/" passHref>
+            <LogoImage
+              src="/images/logo.svg"
+              alt="logo"
+              width={300}
+              height={300}
+              priority
+            />
+          </LogoImageLink>
+
+          <HomeMenuList />
+        </Content>
+      </Container>
+    </>
   );
 }
