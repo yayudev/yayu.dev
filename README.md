@@ -105,10 +105,10 @@ Stuff that needs to be done before release:
 - [x] Move content to CMS~~~~
 - [X] Do get total posts on page request to avoid having to query all slugs
 - [X] Refactor index and \[number] page into a single component to avoid code duplication
-- [ ] Clean content on CMS
-- [ ] Set content as public
-- [ ] 404 page
-- [ ] Fix error page
+- [X] Clean content on CMS
+- [X] Set content as public
+- [X] 404 page
+- [X] Fix error page
 - [ ] Change domain from netlify to vercel
 
 ### Post-release:

@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
+import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import { ReactNode, useEffect, useRef } from "react";
 import styled from "styled-components";
@@ -107,6 +108,7 @@ export function PageLayout({
   children,
 }: PageLayoutProps) {
   const { query, pathname } = useRouter();
+  const { t } = useTranslation();
   const animationsEnabled = useAnimationsEnabled();
   const containerElement = useRef<HTMLDivElement>(null);
 
@@ -157,7 +159,10 @@ export function PageLayout({
 
         {!isLoading && hasError && (
           <Content key="content-error">
-            <ErrorMessage />
+            <ErrorMessage
+              title={t("common:errors.500.title")}
+              message={t("common:errors.500.description")}
+            />
           </Content>
         )}
 
