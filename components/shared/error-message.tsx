@@ -1,16 +1,24 @@
-import { useTranslation } from "next-i18next";
 import styled from "styled-components";
 
+import { MEDIA_QUERY_TABLET } from "@/constants/media-queries";
+
 const Container = styled.div`
-  display: grid;
+  display: flex;
+  flex-direction: column;
   place-items: center;
-  text-align: center;
+  place-content: center;
   height: 100%;
   width: 100%;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--error-color);
 `;
 
 const TextContainer = styled.div`
-  padding-bottom: 10rem;
+  ${MEDIA_QUERY_TABLET} {
+    padding-bottom: 10rem;
+  }
 `;
 
 const Text = styled.p`
@@ -18,14 +26,17 @@ const Text = styled.p`
   color: var(--error-color);
 `;
 
-export function ErrorMessage() {
-  const { t } = useTranslation();
+export interface ErrorMessageProps {
+  title: string;
+  message: string;
+}
 
+export function ErrorMessage({ title, message }: ErrorMessageProps) {
   return (
     <Container>
       <TextContainer>
-        <Text>{t("common:errors.error-loading-page")}</Text>
-        <Text>{t("common:errors.error-try-again")}</Text>
+        <h2>{title}</h2>
+        <Text key={message}>{message}</Text>
       </TextContainer>
     </Container>
   );

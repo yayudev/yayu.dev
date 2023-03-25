@@ -2,8 +2,14 @@
   "about": "About",
   "blog": "Blog",
   "errors": {
-    "error-loading-page": "There was an issue loading the page.",
-    "error-try-again": "Please try again."
+    "404": {
+        "description": "The page you are looking for does not exist.",
+        "title": "404 - Page not found"
+    },
+    "500": {
+        "description": "An error occurred on the server. Please try again later.",
+        "title": "Oops! Something went wrong"
+    }
   },
   "loading": "Loading",
   "page-description": "Hi, I'm Arturo Coronel. This is my personal site :)",

@@ -2,8 +2,14 @@
   "about": "Acerca de mí",
   "blog": "Blog",
   "errors": {
-    "error-loading-page": "Hubo un error al cargar la pagina.",
-    "error-try-again": "Por favor, intenta de nuevo."
+    "404": {
+      "description": "La página que estás buscando no existe.",
+      "title": "404 - Página no encontrada"
+    },
+    "500": {
+      "description": "Hubo un error en el servidor. Por favor, inténtalo de nuevo más tarde.",
+      "title": "Oops! Algo salió mal"
+    }
   },
   "loading": "Cargando",
   "page-description": "Hola, soy Arturo Coronel. Este es mi sitio personal :)",
