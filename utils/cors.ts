@@ -1,14 +1,10 @@
 import Cors from "cors";
 import { NextApiRequest, NextApiResponse } from "next";
 
-type Middleware = (
-  req: NextApiRequest,
-  res: NextApiResponse,
-  callback: (result: unknown) => void
-) => void;
+import { NextMiddleware } from "@/types/next";
 
-const initMiddleware =
-  (middleware: Middleware) => (req: NextApiRequest, res: NextApiResponse) =>
+const promisifyMiddleware =
+  (middleware: NextMiddleware) => (req: NextApiRequest, res: NextApiResponse) =>
     new Promise((resolve, reject) => {
       middleware(req, res, (result: unknown) => {
         if (result instanceof Error) {
@@ -18,7 +14,7 @@ const initMiddleware =
       });
     });
 
-export const cors = initMiddleware(
+export const cors = promisifyMiddleware(
   Cors({
     methods: ["GET"], // Specify allowed HTTP methods
     origin: (
