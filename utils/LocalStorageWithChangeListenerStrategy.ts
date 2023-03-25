@@ -22,6 +22,11 @@ export class CustomLocalStorageWithListenerStrategy
   public setItem(key: string, nextValue: string) {
     const previousValue = this.getItem(key);
 
+    // Skip if the value is the same
+    if (previousValue === nextValue) {
+      return;
+    }
+
     localStorage.setItem(key, nextValue);
 
     if (this.onSet) {

@@ -65,7 +65,7 @@ Current changes in progress (only available on preview site):
 
 - [ ] Testing
     - [ ] Unit test
-        - [ ] Utils
+        - [X] Utils
         - [ ] Components
         - [ ] Services
         - [ ] Pages
