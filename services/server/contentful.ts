@@ -12,35 +12,27 @@ import type { ContentfulBlogPost } from "@/types/cms";
  * side services such as `BlogApiService`.
  */
 export class ContentfulApiService {
-  /* Contentful access token. */
-  private readonly CONTENTFUL_ACCESS_TOKEN: string =
-    process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN ??
-    process.env.CONTENTFUL_ACCESS_TOKEN ??
-    "";
-
-  /* Contentful space id. */
-  private readonly CONTENTFUL_SPACE_ID: string =
-    process.env.CONTENTFUL_SPACE_ID ?? "";
-
-  /* Whether to use the preview API to get draft content or not. */
-  private readonly IS_PREVIEW_MODE: boolean = Boolean(
-    process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
-  );
-
   /* Contentful client instance. */
   private readonly client: ContentfulClientApi;
 
   constructor() {
-    if (!this.CONTENTFUL_SPACE_ID || !this.CONTENTFUL_ACCESS_TOKEN) {
+    const spaceId = process.env.CONTENTFUL_SPACE_ID || "";
+    const accessToken =
+      process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN ||
+      process.env.CONTENTFUL_ACCESS_TOKEN ||
+      "";
+    const previewMode = Boolean(process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN);
+
+    if (!spaceId || !accessToken) {
       throw new Error(
         "CONTENTFUL_SPACE_ID and CONTENTFUL_ACCESS_TOKEN must be provided."
       );
     }
 
     this.client = createClient({
-      space: this.CONTENTFUL_SPACE_ID,
-      accessToken: this.CONTENTFUL_ACCESS_TOKEN,
-      host: this.IS_PREVIEW_MODE ? "preview.contentful.com" : undefined,
+      space: spaceId,
+      accessToken: accessToken,
+      host: previewMode ? "preview.contentful.com" : undefined,
     });
   }
 

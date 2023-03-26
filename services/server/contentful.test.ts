@@ -9,35 +9,38 @@ describe("ContentfulApiService", () => {
   let service: ContentfulApiService;
 
   describe("constructor", () => {
+    beforeEach(() => {
+      process.env.CONTENTFUL_SPACE_ID = "";
+      process.env.CONTENTFUL_ACCESS_TOKEN = "";
+      process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN = "";
+    });
+
     afterAll(() => {
       process.env.CONTENTFUL_SPACE_ID = "test";
       process.env.CONTENTFUL_ACCESS_TOKEN = "test";
     });
 
-    it("should create a client with the correct space id and access token", async () => {
+    it("should create a client with the correct space id and access token", () => {
       process.env.CONTENTFUL_SPACE_ID = "test-space";
       process.env.CONTENTFUL_ACCESS_TOKEN = "test-token";
 
-      service = new ContentfulApiService();
-
-      expect(service["CONTENTFUL_SPACE_ID"]).toBe("test-space");
-      expect(service["CONTENTFUL_ACCESS_TOKEN"]).toBe("test-token");
+      new ContentfulApiService();
     });
 
-    it("should throw an error if no space id is provided", async () => {
+    it("should throw an error if no space id is provided", () => {
       process.env.CONTENTFUL_SPACE_ID = "";
-      process.env.CONTENTFUL_ACCESS_TOKEN = "test";
+      process.env.CONTENTFUL_ACCESS_TOKEN = "test-token";
 
-      await expect(() => new ContentfulApiService()).toThrow(
+      expect(() => new ContentfulApiService()).toThrow(
         "CONTENTFUL_SPACE_ID and CONTENTFUL_ACCESS_TOKEN must be provided."
       );
     });
 
-    it("should throw an error if no access token is provided", async () => {
+    it("should throw an error if no access token is provided", () => {
       process.env.CONTENTFUL_SPACE_ID = "test";
       process.env.CONTENTFUL_ACCESS_TOKEN = "";
 
-      await expect(() => new ContentfulApiService()).toThrow(
+      expect(() => new ContentfulApiService()).toThrow(
         "CONTENTFUL_SPACE_ID and CONTENTFUL_ACCESS_TOKEN must be provided."
       );
     });

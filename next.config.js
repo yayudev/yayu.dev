@@ -1,10 +1,9 @@
-import prismPlugin from "@mapbox/rehype-prism";
-import bundleAnalyzer from "@next/bundle-analyzer";
-import nextMDX from "@next/mdx";
-import "dotenv/config";
-import withPlugins from "next-compose-plugins";
+require("dotenv/config");
 
-import { i18n } from "./next-i18next.config";
+const prismPlugin = require("@mapbox/rehype-prism");
+const bundleAnalyzer = require("@next/bundle-analyzer");
+const nextMDX = require("@next/mdx");
+const i18nConfig = require("./next-i18next.config");
 
 const DEV_ENV = process.env.NODE_ENV === "development";
 
@@ -31,7 +30,7 @@ const API_URL = process.env.API_URL || SERVER_URL;
 // noinspection JSUnusedGlobalSymbols
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  i18n,
+  i18n: i18nConfig.i18n,
 
   // Compile options
   reactStrictMode: true,
@@ -42,6 +41,9 @@ const nextConfig = {
 
   // Images whitelist
   images: {
+    // Needed to cast because apparently for typescript
+    // ["image/avif", "image/webp"] isn't of type ImageFormat[],
+    // which has the type "image/avif" | "image/webp" .
     formats: ["image/avif", "image/webp"],
     domains: ["images.ctfassets.net"],
   },
@@ -69,4 +71,6 @@ const withBundleAnalyzer = bundleAnalyzer({
   openAnalyzer: false,
 });
 
-module.exports = withPlugins([withMDX, withBundleAnalyzer], nextConfig);
+const configWithPlugins = withMDX(withBundleAnalyzer(nextConfig));
+
+module.exports = configWithPlugins;
