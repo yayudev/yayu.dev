@@ -1,31 +1,56 @@
 import { ContentfulClientApi, createClient } from "contentful";
 
-import { BlogPost, BlogPostListResult } from "@/types/blog-api";
-import { ContentfulBlogPost } from "@/types/cms";
+import type { BlogPost, BlogPostListResult } from "@/types/blog-api";
+import type { ContentfulBlogPost } from "@/types/cms";
 
-import {
-  CONTENTFUL_ACCESS_TOKEN,
-  CONTENTFUL_SPACE_ID,
-  IS_PREVIEW_MODE,
-} from "@/constants/contenful";
-
+/**
+ * Service for interacting with Contentful API.
+ * This service should be used on the server side only to avoid bundling
+ * the Contentful SDK in the client bundle.
+ *
+ * For client side interactions with the Contentful API, use other client
+ * side services such as `BlogApiService`.
+ */
 export class ContentfulApiService {
-  private client: ContentfulClientApi;
+  /* Contentful access token. */
+  private readonly CONTENTFUL_ACCESS_TOKEN: string =
+    process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN ??
+    process.env.CONTENTFUL_ACCESS_TOKEN ??
+    "";
+
+  /* Contentful space id. */
+  private readonly CONTENTFUL_SPACE_ID: string =
+    process.env.CONTENTFUL_SPACE_ID ?? "";
+
+  /* Whether to use the preview API to get draft content or not. */
+  private readonly IS_PREVIEW_MODE: boolean = Boolean(
+    process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
+  );
+
+  /* Contentful client instance. */
+  private readonly client: ContentfulClientApi;
 
   constructor() {
-    if (!CONTENTFUL_SPACE_ID || !CONTENTFUL_ACCESS_TOKEN) {
+    if (!this.CONTENTFUL_SPACE_ID || !this.CONTENTFUL_ACCESS_TOKEN) {
       throw new Error(
         "CONTENTFUL_SPACE_ID and CONTENTFUL_ACCESS_TOKEN must be provided."
       );
     }
 
     this.client = createClient({
-      space: CONTENTFUL_SPACE_ID,
-      accessToken: CONTENTFUL_ACCESS_TOKEN,
-      host: IS_PREVIEW_MODE ? "preview.contentful.com" : undefined,
+      space: this.CONTENTFUL_SPACE_ID,
+      accessToken: this.CONTENTFUL_ACCESS_TOKEN,
+      host: this.IS_PREVIEW_MODE ? "preview.contentful.com" : undefined,
     });
   }
 
+  /**
+   * Get a list of posts from Contentful with pagination.
+   *
+   * @param skip - Number of posts to skip.
+   * @param limit - Number of posts to return.
+   * @returns List of posts and total number of posts.
+   */
   public async getPostsCollection({
     skip = 0,
     limit = 10,
@@ -50,6 +75,12 @@ export class ContentfulApiService {
     };
   }
 
+  /**
+   * Get a single post by slug from Contentful.
+   *
+   * @param slug - Slug of the post to get.
+   * @returns Post.
+   */
   public async getPostBySlug(slug: string): Promise<BlogPost> {
     const entries = await this.client.getEntries<ContentfulBlogPost>({
       content_type: "blogPost",
@@ -66,9 +97,13 @@ export class ContentfulApiService {
   }
 
   /**
-   * Remove sys data from an entry.
+   * Remove sys data from an entry in order to be able to serialize it without
+   * including contentful specific data.
+   *
+   * @param entry - Entry to clean.
+   * @returns Cleaned entry.
    */
-  private cleanEntry(entry: ContentfulBlogPost): BlogPost {
+  public cleanEntry(entry: ContentfulBlogPost): BlogPost {
     return {
       ...entry,
       sys: undefined,
@@ -80,4 +115,8 @@ export class ContentfulApiService {
   }
 }
 
+/**
+ * Singleton instance of ContentfulApiService.
+ * Prefer using this instance instead of creating a new one.
+ */
 export const contentfulApiService = new ContentfulApiService();
