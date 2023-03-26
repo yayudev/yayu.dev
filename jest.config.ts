@@ -1,19 +1,22 @@
 import type { Config } from "jest";
+import nextJest from "next/jest";
 import { pathsToModuleNameMapper } from "ts-jest";
 
 import { compilerOptions } from "./tsconfig.json";
 
+const createJestConfig = nextJest({
+  dir: "./",
+});
+
 const config: Config = {
-  rootDir: ".",
+  moduleFileExtensions: ["js", "jsx", "ts", "tsx"],
+  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
   preset: "ts-jest",
-  testEnvironment: "node",
-  verbose: true,
   resetMocks: false,
-  setupFiles: ["jest-localstorage-mock", "./jest.setup.ts"],
-  moduleNameMapper: pathsToModuleNameMapper(
-    compilerOptions.paths
-    /*, { prefix: '<rootDir>/' } */
-  ),
+  rootDir: ".",
+  setupFiles: ["jest-localstorage-mock"],
+  testEnvironment: "jest-environment-jsdom",
+  verbose: true,
 };
 
-export default config;
+export default createJestConfig(config);

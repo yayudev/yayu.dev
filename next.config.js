@@ -1,21 +1,19 @@
-// @ts-check
-require("dotenv");
+import prismPlugin from "@mapbox/rehype-prism";
+import bundleAnalyzer from "@next/bundle-analyzer";
+import nextMDX from "@next/mdx";
+import "dotenv/config";
+import withPlugins from "next-compose-plugins";
 
-const withPlugins = require("next-compose-plugins");
-const prismPlugin = require("@mapbox/rehype-prism");
-const bundleAnalyzer = require("@next/bundle-analyzer");
-
-const nextMDX = require("@next/mdx");
-const { i18n } = require("./next-i18next.config");
+import { i18n } from "./next-i18next.config";
 
 const DEV_ENV = process.env.NODE_ENV === "development";
 
-const CONTENTFUL_SPACE_ID = process.env.CONTENTFUL_SPACE_ID;
-const CONTENTFUL_ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN;
+const CONTENTFUL_SPACE_ID = process.env.CONTENTFUL_SPACE_ID ?? "";
+const CONTENTFUL_ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN ?? "";
 const CONTENTFUL_PREVIEW_ACCESS_TOKEN =
-  process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN;
-const VERCEL_URL = process.env.VERCEL_URL;
-const ANALYZE_BUNDLE = process.env.ANALYZE_BUNDLE;
+  process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN ?? "";
+const VERCEL_URL = process.env.VERCEL_URL ?? "";
+const ANALYZE_BUNDLE = process.env.ANALYZE_BUNDLE ?? "";
 
 let SERVER_URL = process.env.SERVER_URL || "https://yayu.dev";
 let API_ALLOWED_ORIGINS = process.env.API_ALLOWED_ORIGINS || "yayu.dev";
