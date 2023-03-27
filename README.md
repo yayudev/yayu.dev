@@ -59,28 +59,31 @@ That will generate a html report in `<root>/analyze` directory.
 
 ### TODO / Ideas
 
-#### Current
+#### Current: Testing
 
 Current changes in progress (only available on preview site):
 
-- [ ] Testing
-    - [ ] Unit test
-        - [X] Utils
-        - [ ] Components
-        - [ ] Services
-        - [ ] Pages
-        - [ ] API
-        - [ ] Hooks
-        - [ ] State
-    - [ ] E2E test
-        - [ ] Home
-        - [ ] Blog
-        - [ ] Blog Post
-        - [ ] Playground
-        - [ ] About
-        - [ ] 404
-        - [ ] 500
-        - [ ] Settings
+- [ ] Unit tests
+    - [X] Utils
+    - [ ] Services
+    - [ ] Hooks
+    - [ ] API
+    - [ ] Components
+      - [ ] blog
+      - [ ] home-menu
+      - [ ] playground
+      - [ ] settings
+      - [ ] shared
+    - [ ] Pages
+- [ ] E2E tests
+    - [ ] Home
+    - [ ] Blog
+    - [ ] Blog Post
+    - [ ] Playground
+    - [ ] About
+    - [ ] 404
+    - [ ] 500
+    - [ ] Settings
 
 #### TODO.
 
