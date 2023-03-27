@@ -99,4 +99,7 @@ export const contentfulApiMockService = {
         };
       }
     ),
+  getPostBySlug: jest.fn().mockImplementation(async (slug: string) => {
+    return blogPostListResult.posts.find((post) => post.slug === slug);
+  }),
 };
