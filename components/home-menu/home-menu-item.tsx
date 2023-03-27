@@ -32,16 +32,13 @@ const MenuLinkAnchor = styled.a`
 `;
 
 export function HomeMenuItem({ href, children, onClick }: HomeMenuItemProps) {
-  const [hoverRef, isHovered] = useHover();
+  const [hoverRef, isHovered] = useHover<HTMLAnchorElement>();
 
   let link;
 
   if (href) {
     link = (
-      <MenuLink
-        href={href}
-        ref={hoverRef as MutableRefObject<HTMLAnchorElement | null>}
-      >
+      <MenuLink href={href} ref={hoverRef}>
         <GlitchedText animate={isHovered}>{children}</GlitchedText>
       </MenuLink>
     );
