@@ -61,7 +61,7 @@ export const blogPostListResult: BlogPostListResult = {
   totalPosts: 5,
 };
 
-export const mockContenfulClient = {
+export const mockContentfulClient = {
   getEntries: jest
     .fn()
     .mockImplementation(
