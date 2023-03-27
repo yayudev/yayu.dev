@@ -1,21 +1,18 @@
-// @ts-check
-require("dotenv");
+require("dotenv/config");
 
-const withPlugins = require("next-compose-plugins");
 const prismPlugin = require("@mapbox/rehype-prism");
 const bundleAnalyzer = require("@next/bundle-analyzer");
-
 const nextMDX = require("@next/mdx");
-const { i18n } = require("./next-i18next.config");
+const i18nConfig = require("./next-i18next.config");
 
 const DEV_ENV = process.env.NODE_ENV === "development";
 
-const CONTENTFUL_SPACE_ID = process.env.CONTENTFUL_SPACE_ID;
-const CONTENTFUL_ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN;
+const CONTENTFUL_SPACE_ID = process.env.CONTENTFUL_SPACE_ID ?? "";
+const CONTENTFUL_ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN ?? "";
 const CONTENTFUL_PREVIEW_ACCESS_TOKEN =
-  process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN;
-const VERCEL_URL = process.env.VERCEL_URL;
-const ANALYZE_BUNDLE = process.env.ANALYZE_BUNDLE;
+  process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN ?? "";
+const VERCEL_URL = process.env.VERCEL_URL ?? "";
+const ANALYZE_BUNDLE = process.env.ANALYZE_BUNDLE ?? "";
 
 let SERVER_URL = process.env.SERVER_URL || "https://yayu.dev";
 let API_ALLOWED_ORIGINS = process.env.API_ALLOWED_ORIGINS || "yayu.dev";
@@ -33,7 +30,7 @@ const API_URL = process.env.API_URL || SERVER_URL;
 // noinspection JSUnusedGlobalSymbols
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  i18n,
+  i18n: i18nConfig.i18n,
 
   // Compile options
   reactStrictMode: true,
@@ -44,6 +41,9 @@ const nextConfig = {
 
   // Images whitelist
   images: {
+    // Needed to cast because apparently for typescript
+    // ["image/avif", "image/webp"] isn't of type ImageFormat[],
+    // which has the type "image/avif" | "image/webp" .
     formats: ["image/avif", "image/webp"],
     domains: ["images.ctfassets.net"],
   },
@@ -71,4 +71,6 @@ const withBundleAnalyzer = bundleAnalyzer({
   openAnalyzer: false,
 });
 
-module.exports = withPlugins([withMDX, withBundleAnalyzer], nextConfig);
+const configWithPlugins = withMDX(withBundleAnalyzer(nextConfig));
+
+module.exports = configWithPlugins;

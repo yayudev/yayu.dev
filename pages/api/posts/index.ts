@@ -23,15 +23,8 @@ export default async function getPostsListHandler(
         limit: parsedLimit,
       });
 
-    // Post not found
-    if (!postsCollection) {
-      return res.status(404).json({ message: "Posts not found" });
-    }
-
     res.status(200).json(postsCollection);
   } catch (error: any) {
-    console.error(error);
-
     if (error?.sys?.id === "NotFound") {
       return res.status(404).json({ message: "Post not found" });
     }

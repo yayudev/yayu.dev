@@ -6,7 +6,7 @@ import { SettingsMenuItemOption } from "@/types/settings-menu";
 
 import { activeOptionAtom } from "@/state/settings-menu";
 
-import { useMobileLayout } from "@/hooks/user-mobile-layout";
+import { useMobileLayout } from "@/hooks/use-mobile-layout";
 
 import { SettingsOptionSelect } from "@/components/settings/settings-option-select";
 import { SettingsSubMenu } from "@/components/settings/settings-submenu";

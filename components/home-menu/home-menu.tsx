@@ -9,7 +9,7 @@ import { MEDIA_QUERY_TABLET } from "@/constants/media-queries";
 
 import { showMenuOnMobileAtom } from "@/state/application";
 
-import { useMobileLayout } from "@/hooks/user-mobile-layout";
+import { useMobileLayout } from "@/hooks/use-mobile-layout";
 
 import { HomeMenuList } from "@/components/home-menu/home-menu-list";
 import { CloseMenuIcon } from "@/components/shared/close-menu-icon";

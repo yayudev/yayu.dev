@@ -57,15 +57,37 @@ $ npm run start
 You can also use bundle analyzer to detect heavy dependencies by adding `ANALYZE_BUNDLE=true` to your `.env` file
 That will generate a html report in `<root>/analyze` directory.
 
-### TODO / Ideas
+### Roadmap
 
-#### TODO
+#### Currently working on: Testing
 
-Good to have things that will be added eventually but not 100% required for initial release.
+Current changes in progress (only available on preview site):
 
-- [X] Add AVIF support
-- [X] Release log
-- [ ] Testing
+- [ ] Unit tests
+    - [X] Utils
+    - [X] API
+    - [X] Services
+    - [X] Hooks
+    - [ ] Components
+      - [ ] blog
+      - [ ] home-menu
+      - [ ] playground
+      - [ ] settings
+      - [ ] shared
+- [ ] E2E tests
+    - [ ] Home
+    - [ ] Blog
+    - [ ] Blog Post
+    - [ ] Playground
+    - [ ] About
+    - [ ] 404
+    - [ ] 500
+    - [ ] Settings
+
+#### TODO.
+
+These are the things I want to add to the site in the future:
+
 - [ ] Test coverage setup w/check
 - [ ] Loading skeletons / Better loading states
 - [ ] Swipe gestures for mobile
@@ -83,6 +105,8 @@ Good to have things that will be added eventually but not 100% required for init
 - [ ] v2 link to v3 (FULL FEATURE / LEGACY SUPPORT)
 
 #### Good ideas
+
+These are some ideas I have for the site that I might or might not implement in the future:
 
 - [ ] Transition to NextJS 13's app directory (waiting for better i18n support)
 - [ ] Refactor MarqueeScroller into a standalone component package for re-usability

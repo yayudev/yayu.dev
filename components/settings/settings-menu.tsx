@@ -13,7 +13,7 @@ import {
 
 import { useAnimationsEnabled } from "@/hooks/use-animations-enabled";
 import { useKeyboard } from "@/hooks/use-keyboard";
-import { useMobileLayout } from "@/hooks/user-mobile-layout";
+import { useMobileLayout } from "@/hooks/use-mobile-layout";
 
 import { SettingsPrimaryMenu } from "@/components/settings/settings-primary-menu";
 import { SettingsSubMenu } from "@/components/settings/settings-submenu";

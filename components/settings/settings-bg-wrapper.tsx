@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { MEDIA_QUERY_TABLET } from "@/constants/media-queries";
 
-import { useMobileLayout } from "@/hooks/user-mobile-layout";
+import { useMobileLayout } from "@/hooks/use-mobile-layout";
 
 import { SettingsBGAnimations } from "@/components/settings/settings-bg-animations";
 import { SettingsBorder } from "@/components/settings/settings-border";

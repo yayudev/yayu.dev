@@ -27,6 +27,10 @@ export default async function getPostsBySlugHandler(
 
     const entry = await contentfulApiService.getPostBySlug(slug);
 
+    if (!entry) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+
     const blogPost = {
       ...entry,
       sys: undefined,

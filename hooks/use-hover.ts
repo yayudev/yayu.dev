@@ -1,15 +1,18 @@
 import { MutableRefObject, useEffect, useRef, useState } from "react";
 
-export function useHover(): [MutableRefObject<HTMLElement | null>, boolean] {
+export function useHover<T extends HTMLElement>(): [
+  MutableRefObject<T | null>,
+  boolean
+] {
   const [value, setValue] = useState<boolean>(false);
 
-  const ref = useRef<HTMLElement | null>(null);
+  const ref = useRef<T | null>(null);
 
   const handleMouseOver = () => setValue(true);
   const handleMouseOut = () => setValue(false);
 
   useEffect(() => {
-    const node = ref.current;
+    const node: T = ref.current as T;
     if (!node) return;
 
     node.addEventListener("mouseover", handleMouseOver);
