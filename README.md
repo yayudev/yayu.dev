@@ -65,9 +65,9 @@ Current changes in progress (only available on preview site):
 
 - [ ] Unit tests
     - [X] Utils
-    - [ ] Services
+    - [X] API
+    - [X] Services
     - [ ] Hooks
-    - [ ] API
     - [ ] Components
       - [ ] blog
       - [ ] home-menu
