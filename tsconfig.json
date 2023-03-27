@@ -19,6 +19,9 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
+      "@/__mock__/*": [
+        "__mock__/*"
+      ],
       "@/components/*": [
         "components/*"
       ],

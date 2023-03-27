@@ -81,6 +81,22 @@ export const mockContentfulClient = {
 };
 
 export const contentfulApiMockService = {
-  getPostsCollection: jest.fn().mockResolvedValue(blogPostListResult),
-  getPostBySlug: jest.fn().mockResolvedValue(blogPostListResult.posts[0]),
+  getPostsCollection: jest
+    .fn()
+    .mockImplementation(
+      async ({
+        skip = 0,
+        limit = 10,
+        "fields.slug": slug = "",
+      }): Promise<BlogPostListResult> => {
+        let posts = blogPostListResult.posts
+          .slice(skip, skip + limit)
+          .filter((post) => post.slug?.includes(slug));
+
+        return {
+          posts,
+          totalPosts: blogPostListResult.totalPosts,
+        };
+      }
+    ),
 };
