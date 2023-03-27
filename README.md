@@ -67,14 +67,13 @@ Current changes in progress (only available on preview site):
     - [X] Utils
     - [X] API
     - [X] Services
-    - [ ] Hooks
+    - [X] Hooks
     - [ ] Components
       - [ ] blog
       - [ ] home-menu
       - [ ] playground
       - [ ] settings
       - [ ] shared
-    - [ ] Pages
 - [ ] E2E tests
     - [ ] Home
     - [ ] Blog
