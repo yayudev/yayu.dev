@@ -41,11 +41,7 @@ test("should return posts with skip and limit", async () => {
 });
 
 test("should return a 500 error if something goes wrong", async () => {
-  contentfulApiMockService.getPostsCollection = jest.fn().mockRejectedValue({
-    sys: {
-      id: "ServerError",
-    },
-  });
+  contentfulApiMockService.getPostsCollection = jest.fn().mockRejectedValue({});
 
   const { req, res } = createMocks({});
 
