@@ -20,7 +20,7 @@ import { MEDIA_QUERY_TABLET } from "@/constants/media-queries";
 import { blogApiService } from "@/services/client/blog-api";
 import { commentsAtom } from "@/state/application";
 
-import { useMobileLayout } from "@/hooks/user-mobile-layout";
+import { useMobileLayout } from "@/hooks/use-mobile-layout";
 import { formatDate } from "@/utils/date";
 
 import { BlogSocialShareButtons } from "@/components/blog/blog-social-share-buttons";

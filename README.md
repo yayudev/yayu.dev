@@ -57,9 +57,9 @@ $ npm run start
 You can also use bundle analyzer to detect heavy dependencies by adding `ANALYZE_BUNDLE=true` to your `.env` file
 That will generate a html report in `<root>/analyze` directory.
 
-### TODO / Ideas
+### Roadmap
 
-#### Current: Testing
+#### Currently working on: Testing
 
 Current changes in progress (only available on preview site):
 
