@@ -4,9 +4,7 @@ My personal porfolio website.
 
 Live version available at ([yayu.dev](https://yayu.dev))
 
-There's also an inestable preview version available at ([preview.yayu.dev](https://preview.yayu.dev))
-
-> Currently using an unstable, local dev version so things like CORS and blog API may or may not work at any given time on the preview site.
+There's also a preview version with latest develop changes available at ([preview.yayu.dev](https://preview.yayu.dev))
 
 # Setup
 
@@ -59,30 +57,30 @@ That will generate a html report in `<root>/analyze` directory.
 
 ### Roadmap
 
-#### Currently working on: Testing
+#### Currently working on: Unit Testing
 
 Current changes in progress (only available on preview site):
 
-- [ ] Unit tests
-    - [X] Utils
-    - [X] API
-    - [X] Services
-    - [X] Hooks
-    - [ ] Components
-      - [ ] blog
-      - [ ] home-menu
-      - [ ] playground
-      - [ ] settings
-      - [ ] shared
-- [ ] E2E tests
-    - [ ] Home
-    - [ ] Blog
-    - [ ] Blog Post
-    - [ ] Playground
-    - [ ] About
-    - [ ] 404
-    - [ ] 500
-    - [ ] Settings
+- [X] Utils
+- [X] API
+- [X] Services
+- [X] Hooks
+- [ ] Components
+  - [ ] blog
+  - [ ] home-menu
+  - [ ] playground
+  - [ ] settings
+  - [ ] shared
+
+##### Next:  E2E tests
+- [ ] Home
+- [ ] Blog
+- [ ] Blog Post
+- [ ] Playground
+- [ ] About
+- [ ] 404
+- [ ] 500
+- [ ] Settings
 
 #### TODO.
 

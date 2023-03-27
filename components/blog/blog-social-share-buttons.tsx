@@ -38,19 +38,19 @@ export function BlogSocialShareButtons({ url }: BlogSocialShareButtonsProps) {
 
   return (
     <Container>
-      <FacebookShareButton url={url}>
+      <FacebookShareButton data-testid="facebook-button" url={url}>
         <FacebookIcon size={BUTTON_SIZE} round />
       </FacebookShareButton>
-      <TwitterShareButton url={url} via="datyayu">
+      <TwitterShareButton data-testid="twitter-button" url={url} via="datyayu">
         <TwitterIcon size={BUTTON_SIZE} round />
       </TwitterShareButton>
-      <LinkedinShareButton url={url}>
+      <LinkedinShareButton data-testid="linkedin-button" url={url}>
         <LinkedinIcon size={BUTTON_SIZE} round />
       </LinkedinShareButton>
-      <RedditShareButton url={url}>
+      <RedditShareButton data-testid="reddit-button" url={url}>
         <RedditIcon size={BUTTON_SIZE} round />
       </RedditShareButton>
-      <EmailShareButton url={url}>
+      <EmailShareButton data-testid="email-button" url={url}>
         <EmailIcon size={BUTTON_SIZE} round />
       </EmailShareButton>
     </Container>
