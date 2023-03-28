@@ -1,5 +1,6 @@
-import { mockExperiments } from "@/__mock__/experiments";
 import { fireEvent, render, screen } from "@testing-library/react";
+
+import { mockExperiments } from "@/utils/mocks/experiments";
 
 import { ExperimentItem } from "./experiment-item";
 

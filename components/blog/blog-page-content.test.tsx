@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 
-import { blogPostListResult } from "../../__mock__/contentful";
+import { blogPostListResult } from "@/utils/mocks/contentful";
+
 import { BlogPageContent } from "./blog-page-content";
 
 jest.mock("../../services/client/blog-api", () => ({

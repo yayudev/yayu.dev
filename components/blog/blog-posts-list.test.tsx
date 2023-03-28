@@ -1,5 +1,6 @@
-import { blogPostListResult } from "@/__mock__/contentful";
 import { render, screen } from "@testing-library/react";
+
+import { blogPostListResult } from "@/utils/mocks/contentful";
 
 import { BlogPostsList } from "./blog-posts-list";
 
