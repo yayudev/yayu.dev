@@ -76,6 +76,7 @@ export function PlaygroundFrame({ experiment, onClose }: PlaygroundFrameProps) {
     <AnimatePresence>
       {experiment && (
         <FrameContainer
+          data-testid="playground-frame"
           initial={animationsEnabled ? { opacity: 0 } : {}}
           animate={animationsEnabled ? { opacity: 1 } : {}}
           exit={animationsEnabled ? { opacity: 0 } : {}}
@@ -83,6 +84,7 @@ export function PlaygroundFrame({ experiment, onClose }: PlaygroundFrameProps) {
           onClick={onClose}
         >
           <Frame
+            data-testid="playground-frame__iframe"
             initial={animationsEnabled ? { opacity: 0, translateY: 100 } : {}}
             animate={animationsEnabled ? { opacity: 1, translateY: 0 } : {}}
             exit={animationsEnabled ? { opacity: 0, translateY: 100 } : {}}
@@ -98,8 +100,14 @@ export function PlaygroundFrame({ experiment, onClose }: PlaygroundFrameProps) {
             onClick={(e) => e.stopPropagation()}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            <Title>{experiment.title}</Title>
-            <ViewLink target="_blank" href={experiment.url}>
+            <Title data-testid="playground-frame__title">
+              {experiment.title}
+            </Title>
+            <ViewLink
+              target="_blank"
+              href={experiment.url}
+              data-testid="playground-frame__link"
+            >
               {experiment.url}
             </ViewLink>
           </Details>
