@@ -151,7 +151,11 @@ export function HomeMenu() {
         showOnMobile={isHome || showOnMobile}
         fullWidth={isHome}
       />
-      <Container showOnMobile={isHome || showOnMobile} fullWidth={isHome}>
+      <Container
+        data-testid="home-menu"
+        showOnMobile={isHome || showOnMobile}
+        fullWidth={isHome}
+      >
         {!isHome && (
           <CloseMenuIcon
             showCloseIcon={showOnMobile}

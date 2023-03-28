@@ -56,7 +56,7 @@ export function CloseMenuIcon({
   onClick,
 }: HomeMenuIconProps) {
   return (
-    <Container onClick={onClick}>
+    <Container data-testid="close-menu-icon" onClick={onClick}>
       <TopBar active={showCloseIcon} />
       <MiddleBar active={showCloseIcon} />
       <BottomBar active={showCloseIcon} />
