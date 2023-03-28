@@ -68,9 +68,9 @@ Current changes in progress (only available on preview site):
 - [ ] Components
   - [X] blog
   - [X] home-menu
+  - [X] shared
   - [ ] playground
   - [ ] settings
-  - [ ] shared
 
 ##### Next:  E2E tests
 - [ ] Home
