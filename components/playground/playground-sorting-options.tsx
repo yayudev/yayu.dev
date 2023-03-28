@@ -41,10 +41,11 @@ export function PlaygroundSortingOptions({
   const { t } = useTranslation();
 
   return (
-    <SortingText>
+    <SortingText data-testid="playground-sorting-options">
       <span>{t("playground:sort-by")}</span>
 
       <Button
+        data-testid="playground-sorting-options__most-recent"
         active={currentSort === SortType.BY_MOST_RECENT}
         onClick={() => onChange(SortType.BY_MOST_RECENT)}
       >
@@ -60,6 +61,7 @@ export function PlaygroundSortingOptions({
       <span>{t("playground:separator")}</span>
 
       <Button
+        data-testid="playground-sorting-options__name"
         active={currentSort === SortType.BY_NAME}
         onClick={() => onChange(SortType.BY_NAME)}
       >
