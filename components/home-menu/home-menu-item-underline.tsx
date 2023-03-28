@@ -59,8 +59,10 @@ export function HomeMenuItemUnderline({
   active = false,
 }: HomeMenuItemUnderlineProps) {
   if (active) {
-    return <Underline />;
+    return <Underline data-testid="home-menu-item-underline__active" />;
   }
 
-  return <InvisibleUnderline />;
+  return (
+    <InvisibleUnderline data-testid="home-menu-item-underline__inactive" />
+  );
 }

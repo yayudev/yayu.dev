@@ -66,7 +66,7 @@ Current changes in progress (only available on preview site):
 - [X] Services
 - [X] Hooks
 - [ ] Components
-  - [ ] blog
+  - [X] blog
   - [ ] home-menu
   - [ ] playground
   - [ ] settings

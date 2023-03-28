@@ -7,7 +7,7 @@ jest.mock("../../services/client/blog-api", () => ({
   blogApiService: {
     usePostList: jest.fn().mockReturnValue({
       postList: blogPostListResult.posts,
-      totalPosts: blogPostListResult.total,
+      totalPosts: blogPostListResult.totalPosts,
       isError: false,
       isLoading: false,
     }),
