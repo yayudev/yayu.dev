@@ -110,7 +110,7 @@ export function BlogPostItem({ post }: BlogPostItemProps) {
   const date = formatDate(new Date(post.date ?? ""));
 
   return (
-    <ArticleContainer>
+    <ArticleContainer data-testid="blog-post-item">
       <StyledLink href={`/blog/${post.slug}`}>
         <BlogPostArticleContent>
           {postImage && (
