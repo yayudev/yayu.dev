@@ -1,8 +1,9 @@
+import { createMocks } from "node-mocks-http";
+
 import {
   blogPostListResult,
   contentfulApiMockService,
-} from "@/__mock__/contentful";
-import { createMocks } from "node-mocks-http";
+} from "@/utils/mocks/contentful";
 
 import getPostsListHandler from "./index";
 

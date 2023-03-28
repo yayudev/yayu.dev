@@ -26,7 +26,7 @@ export function HomeMenuList() {
 
   return (
     <nav>
-      <MenuList>
+      <MenuList data-testid="home-menu-list">
         <HomeMenuItem key="blog" href="/blog">
           {t("common:blog")}
         </HomeMenuItem>

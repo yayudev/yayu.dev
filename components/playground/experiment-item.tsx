@@ -45,6 +45,7 @@ interface ExperimentItemProps {
 export function ExperimentItem({ experiment, onClick }: ExperimentItemProps) {
   return (
     <Item
+      data-testid="experiment-item"
       bg={experiment.img}
       transition={{ duration: 0.5 }}
       layout="position"
@@ -52,7 +53,7 @@ export function ExperimentItem({ experiment, onClick }: ExperimentItemProps) {
       whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
       onClick={onClick}
     >
-      <Label>{experiment.title}</Label>
+      <Label data-testid="experiment-item__label">{experiment.title}</Label>
     </Item>
   );
 }

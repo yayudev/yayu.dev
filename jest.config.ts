@@ -14,7 +14,8 @@ const config: Config = {
   preset: "ts-jest",
   resetMocks: false,
   rootDir: ".",
-  setupFiles: ["<rootDir>/jest.setup.ts", "jest-localstorage-mock"],
+  setupFiles: ["jest-localstorage-mock"],
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   testEnvironment: "jest-environment-jsdom",
   verbose: true,
 };

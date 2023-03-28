@@ -9,7 +9,7 @@ import { PageLayout } from "@/layouts/page";
 
 interface BlogPageContentProps {
   page: number;
-  hasNextPage: boolean;
+  hasNextPage?: boolean;
 }
 
 export function BlogPageContent({

@@ -1,4 +1,5 @@
-import { mockContentfulClient } from "../../__mock__/contentful";
+import { mockContentfulClient } from "@/utils/mocks/contentful";
+
 import { ContentfulApiService } from "./contentful";
 
 jest.mock("contentful", () => ({

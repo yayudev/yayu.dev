@@ -38,7 +38,7 @@ export function Loader() {
   const { t } = useTranslation();
 
   return (
-    <Container>
+    <Container data-testid="loader">
       <Text>{t("loading")}</Text>
     </Container>
   );

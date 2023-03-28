@@ -9,7 +9,13 @@ export const blogPostListResult: BlogPostListResult = {
       featured: false,
       excerpt: "test",
       markdown: "test",
-      coverImage: {} as any,
+      coverImage: {
+        fields: {
+          file: {
+            url: "https://placekitten.com/200/300",
+          },
+        },
+      },
       contentfulMetadata: {} as any,
       linkedFrom: {} as any,
     },

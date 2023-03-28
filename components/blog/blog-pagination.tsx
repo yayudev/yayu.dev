@@ -31,17 +31,19 @@ export function BlogPagination({ prevUrl, nextUrl }: BlogPaginationProps) {
   const { t } = useTranslation();
 
   return (
-    <Container>
+    <Container data-testid="blog-pagination">
       {prevUrl && (
-        <Link href={prevUrl} passHref>
+        <Link href={prevUrl} passHref data-testid="blog-pagination__prev-link">
           <ButtonLabel>{t("blog:back")}</ButtonLabel>
         </Link>
       )}
 
-      {prevUrl && nextUrl && <span>|</span>}
+      {prevUrl && nextUrl && (
+        <span data-testid="blog-pagination__separator">|</span>
+      )}
 
       {nextUrl && (
-        <Link href={nextUrl} passHref>
+        <Link href={nextUrl} passHref data-testid="blog-pagination__next-link">
           <ButtonLabel>{t("blog:next")}</ButtonLabel>
         </Link>
       )}

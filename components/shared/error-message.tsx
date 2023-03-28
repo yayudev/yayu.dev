@@ -33,10 +33,12 @@ export interface ErrorMessageProps {
 
 export function ErrorMessage({ title, message }: ErrorMessageProps) {
   return (
-    <Container>
+    <Container data-testid="error-message">
       <TextContainer>
-        <h2>{title}</h2>
-        <Text key={message}>{message}</Text>
+        <h2 data-testid="error-message__title">{title}</h2>
+        <Text key={message} data-testid="error-message__text">
+          {message}
+        </Text>
       </TextContainer>
     </Container>
   );

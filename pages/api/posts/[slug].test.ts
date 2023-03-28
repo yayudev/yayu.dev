@@ -1,5 +1,6 @@
-import { contentfulApiMockService } from "@/__mock__/contentful";
 import { createMocks } from "node-mocks-http";
+
+import { contentfulApiMockService } from "@/utils/mocks/contentful";
 
 import getPostsBySlugHandler from "@/pages/api/posts/[slug]";
 

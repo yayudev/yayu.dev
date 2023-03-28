@@ -29,7 +29,7 @@ export function Experiments({ experiments }: ExperimentsProps) {
   }
 
   return (
-    <Container>
+    <Container data-testid="experiments">
       <PlaygroundFrame experiment={activeExperiment} onClose={closeFrame} />
 
       <LayoutGroup>
