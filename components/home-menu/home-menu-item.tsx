@@ -38,7 +38,11 @@ export function HomeMenuItem({ href, children, onClick }: HomeMenuItemProps) {
 
   if (href) {
     link = (
-      <MenuLink href={href} ref={hoverRef}>
+      <MenuLink
+        href={href}
+        ref={hoverRef}
+        data-testid="home-menu-item__href-link"
+      >
         <GlitchedText animate={isHovered}>{children}</GlitchedText>
       </MenuLink>
     );
@@ -49,6 +53,7 @@ export function HomeMenuItem({ href, children, onClick }: HomeMenuItemProps) {
       <MenuLinkAnchor
         ref={hoverRef as MutableRefObject<HTMLAnchorElement | null>}
         onClick={onClick}
+        data-testid="home-menu-item__click-link"
       >
         <GlitchedText animate={isHovered}>{children}</GlitchedText>
       </MenuLinkAnchor>
