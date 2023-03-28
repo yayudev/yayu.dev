@@ -111,10 +111,14 @@ export function BlogPostItem({ post }: BlogPostItemProps) {
 
   return (
     <ArticleContainer data-testid="blog-post-item">
-      <StyledLink href={`/blog/${post.slug}`}>
+      <StyledLink
+        data-testid="blog-post-item__link"
+        href={`/blog/${post.slug}`}
+      >
         <BlogPostArticleContent>
           {postImage && (
             <StyledImage
+              data-testid="blog-post-item__image"
               src={postImage}
               width={150}
               height={200}
@@ -127,9 +131,13 @@ export function BlogPostItem({ post }: BlogPostItemProps) {
           )}
 
           <BlogPostInfo>
-            <Title>{post.title}</Title>
-            <DateText>{t("blog:image-posted-on", { date })}</DateText>
-            <Excerpt>{post.excerpt}</Excerpt>
+            <Title data-testid="blog-post-item__title">{post.title}</Title>
+            <DateText data-testid="blog-post-item__date">
+              {t("blog:image-posted-on", { date })}
+            </DateText>
+            <Excerpt data-testid="blog-post-item__excerpt">
+              {post.excerpt}
+            </Excerpt>
           </BlogPostInfo>
         </BlogPostArticleContent>
       </StyledLink>
