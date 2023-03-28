@@ -30,7 +30,7 @@ export function PlaygroundFilterTag({
   onClick,
 }: PlaygroundFilterTagProps) {
   return (
-    <Tag active={active} onClick={onClick}>
+    <Tag data-testid="playground-filter-tag" active={active} onClick={onClick}>
       {label}
     </Tag>
   );
