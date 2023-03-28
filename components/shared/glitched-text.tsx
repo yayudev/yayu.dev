@@ -400,7 +400,11 @@ export function GlitchedText({ children, animate = false }: GlitchedTextProps) {
   const animationsEnabled = useAnimationsEnabled();
 
   return (
-    <TextWrapper animate={animationsEnabled && animate} data-text={children}>
+    <TextWrapper
+      data-testid="glitched-text"
+      animate={animationsEnabled && animate}
+      data-text={children}
+    >
       <TextContent animate={animationsEnabled && animate}>
         {children}
       </TextContent>
