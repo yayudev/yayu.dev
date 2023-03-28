@@ -69,7 +69,7 @@ Current changes in progress (only available on preview site):
   - [X] blog
   - [X] home-menu
   - [X] shared
-  - [ ] playground
+  - [X] playground
   - [ ] settings
 
 ##### Next:  E2E tests
