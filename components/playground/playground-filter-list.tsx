@@ -28,7 +28,7 @@ export function PlaygroundFilterList({
   const { t } = useTranslation();
 
   return (
-    <Container>
+    <Container data-testid="playground-filter-list">
       {TechnologyTagsList.map((tag: TechnologyTag) => (
         <PlaygroundFilterTag
           key={tag}
