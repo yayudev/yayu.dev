@@ -55,7 +55,7 @@ export function SettingsMenuLevel({
   isChildMenu = false,
 }: SettingsMenuLevelProps) {
   return (
-    <Container isChildMenu={isChildMenu}>
+    <Container data-testid="settings-menu-level" isChildMenu={isChildMenu}>
       <LeftBlock />
 
       <ListContainer isChildMenu={isChildMenu}>{children}</ListContainer>

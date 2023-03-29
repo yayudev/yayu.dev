@@ -34,7 +34,7 @@ export function SettingsOptionSelect({
   const { t } = useTranslation();
 
   return (
-    <Container>
+    <Container data-testid="settings-option-select">
       {options.map((option) => {
         return (
           <SettingsOptionSelectItem

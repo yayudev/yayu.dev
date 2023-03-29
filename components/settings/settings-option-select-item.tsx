@@ -72,6 +72,7 @@ export function SettingsOptionSelectItem({
 
   return (
     <Item
+      data-testid="settings-option-select-item"
       isSelected={isSelected}
       aria-label={t(label) ?? ""}
       tabIndex={0}
