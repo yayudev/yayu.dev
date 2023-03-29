@@ -158,6 +158,7 @@ export function SettingsMenuItem({
   return (
     <>
       <ListItem
+        data-testid="settings-menu-item"
         isSelected={isSelected}
         isChildOption={isChildOption}
         tabIndex={0}
@@ -168,7 +169,7 @@ export function SettingsMenuItem({
       >
         <ListItemBackground />
         <ListItemSquare isSelected={isSelected} />
-        <ListItemContent>
+        <ListItemContent data-testid="settings-menu-item__content">
           <span> {label} </span>
           <span> {selectedItemOption?.text} </span>
         </ListItemContent>
