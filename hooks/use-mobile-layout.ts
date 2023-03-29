@@ -7,7 +7,6 @@ import { useWindowSize } from "@/hooks/use-window-size";
 export function useMobileLayout(): boolean {
   const [mobileLayout, setMobileLayout] = useState(false);
   const windowSize = useWindowSize();
-  console.log("windowSize", windowSize);
 
   useEffect(() => {
     const isMobileResolution = windowSize.width < MAX_WIDTH_TABLET;
