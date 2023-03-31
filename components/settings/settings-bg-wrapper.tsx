@@ -49,8 +49,9 @@ export function SettingsBGWrapper({ children }: SettingsBGWrapperProps) {
     <Container tabIndex={-1}>
       <SettingsBGAnimations width={1000} height={1000} />
       {!isMobileLayout && <SettingsBorder aria-label="decoration border" />}
-
-      <Content aria-label="Settings">{children}</Content>
+      <Content data-testid="settings-bg-wrapper__content" aria-label="Settings">
+        {children}
+      </Content>
 
       <SettingsBGAnimations width={1000} height={1000} reversed />
       {!isMobileLayout && <SettingsBorder aria-label="decoration border" />}

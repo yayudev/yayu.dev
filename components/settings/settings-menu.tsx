@@ -60,6 +60,7 @@ export function SettingsMenu() {
 
   return (
     <MenuWrapper
+      data-testid="settings-menu"
       initial={animationsEnabled ? { opacity: 0, scaleX: 0 } : {}}
       animate={animationsEnabled ? { opacity: 1, scaleX: 1 } : {}}
       transition={{

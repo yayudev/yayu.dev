@@ -6,7 +6,7 @@ import { MEDIA_QUERY_TABLET } from "@/constants/media-queries";
 
 import { useAnimationsEnabled } from "@/hooks/use-animations-enabled";
 
-import { MarqueScroller } from "@/components/settings/marque-scroller";
+import { MarqueeScroller } from "@/components/settings/marquee-scroller";
 
 interface SettingsTooltipBarProps {
   textKey: string;
@@ -103,19 +103,19 @@ export function SettingsTooltipBar({
   const text = t(textKey) ?? "";
 
   const backControl = Boolean(showBack) && (
-    <ButtonIconContainer onClick={onBack}>
+    <ButtonIconContainer data-testid="back-button" onClick={onBack}>
       <ButtonIconText> {t("settings:keys.ESC")} </ButtonIconText>
       <ButtonText>{t("settings:tooltip.close")}</ButtonText>
     </ButtonIconContainer>
   );
   const confirmControl = Boolean(showConfirm) && (
-    <ButtonIconContainer>
+    <ButtonIconContainer data-testid="confirm-button">
       <ButtonIconText> {t("settings:keys.ENTER")} </ButtonIconText>
       <ButtonText>{t("settings:tooltip.confirm")}</ButtonText>
     </ButtonIconContainer>
   );
   const arrowControl = Boolean(showArrows) && (
-    <ButtonIconContainer>
+    <ButtonIconContainer data-testid="arrow-button">
       <ButtonIconText> {t("settings:keys.ShiftTab")} </ButtonIconText>
       {t("settings:keys.separator")}
       <ButtonIconText> {t("settings:keys.Tab")} </ButtonIconText>
@@ -124,10 +124,10 @@ export function SettingsTooltipBar({
   );
 
   return (
-    <Container>
+    <Container data-testid="settings-tooltip-bar">
       <LeftBlock />
 
-      <MarqueScroller
+      <MarqueeScroller
         ariaLabel={t("settings:tooltip.ariaLabel", { description: text }) ?? ""}
         text={text}
       />

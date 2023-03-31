@@ -76,6 +76,7 @@ export function Settings() {
     <AnimatePresence>
       {showSettings && (
         <Container
+          data-testid="settings"
           aria-label="Settings"
           initial={animationsEnabled ? { opacity: 0 } : {}}
           animate={animationsEnabled ? { opacity: 1 } : {}}

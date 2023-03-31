@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SettingsBorder = styled.div`
+const SettingsBorderElement = styled.div`
   display: block;
   margin: 1.5rem 0;
   height: 2rem;
@@ -11,3 +11,7 @@ export const SettingsBorder = styled.div`
   background-repeat: no-repeat;
   z-index: 1;
 `;
+
+export function SettingsBorder() {
+  return <SettingsBorderElement data-testid="settings-border" />;
+}

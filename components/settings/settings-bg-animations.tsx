@@ -45,6 +45,7 @@ export function SettingsBGAnimations({
       tabIndex={-1}
       focusable={false}
       aria-label="background animation"
+      data-testid="settings-background-animation"
     >
       <motion.circle
         animate={
