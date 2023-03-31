@@ -39,7 +39,7 @@ const Text = styled.p`
   white-space: nowrap;
 `;
 
-export function MarqueScroller({
+export function MarqueeScroller({
   text,
   ariaLabel = "",
   duration = 10000,

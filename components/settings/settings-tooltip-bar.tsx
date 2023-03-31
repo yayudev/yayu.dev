@@ -6,7 +6,7 @@ import { MEDIA_QUERY_TABLET } from "@/constants/media-queries";
 
 import { useAnimationsEnabled } from "@/hooks/use-animations-enabled";
 
-import { MarqueScroller } from "@/components/settings/marque-scroller";
+import { MarqueeScroller } from "@/components/settings/marquee-scroller";
 
 interface SettingsTooltipBarProps {
   textKey: string;
@@ -127,7 +127,7 @@ export function SettingsTooltipBar({
     <Container data-testid="settings-tooltip-bar">
       <LeftBlock />
 
-      <MarqueScroller
+      <MarqueeScroller
         ariaLabel={t("settings:tooltip.ariaLabel", { description: text }) ?? ""}
         text={text}
       />
