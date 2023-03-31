@@ -1,4 +1,7 @@
-import { atomWithStorage } from "jotai/utils";
+import { Provider, SetStateAction } from "jotai";
+import { atomWithStorage, useHydrateAtoms } from "jotai/utils";
+import { WritableAtom } from "jotai/vanilla/atom";
+import { ReactNode } from "react";
 
 import {
   CustomLocalStorageWithListenerStrategy,
@@ -24,5 +27,26 @@ export function atomWithStorageAndSideEffects(
     key,
     initialValue,
     new CustomLocalStorageWithListenerStrategy(onSet)
+  );
+}
+
+interface HydrateAtomsProps<T> {
+  initialValues: [WritableAtom<T, [SetStateAction<T>], any>, T][];
+  children?: ReactNode;
+}
+
+function HydrateAtoms<T>({ initialValues, children }: HydrateAtomsProps<T>) {
+  useHydrateAtoms(initialValues);
+  return <>{children}</>;
+}
+
+export function TestProvider<T>({
+  initialValues,
+  children,
+}: HydrateAtomsProps<T>) {
+  return (
+    <Provider>
+      <HydrateAtoms initialValues={initialValues}>{children}</HydrateAtoms>
+    </Provider>
   );
 }
