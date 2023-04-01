@@ -1,9 +1,11 @@
-name: Playwright Tests
+name: E2E Tests
+
 on:
   push:
-    branches: [ main, master ]
+    branches: [ "main", "develop" ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ "develop" ]
+
 jobs:
   test:
     timeout-minutes: 60
