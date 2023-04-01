@@ -40,5 +40,6 @@ yarn-error.log*
 
 # Bundle analyzer
 analyze
-
-
+/test-results/
+/playwright-report/
+/playwright/.cache/
