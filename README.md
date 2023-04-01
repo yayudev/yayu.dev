@@ -57,21 +57,6 @@ That will generate a html report in `<root>/analyze` directory.
 
 ### Roadmap
 
-#### Currently working on: Unit Testing
-
-Current changes in progress (only available on preview site):
-
-- [X] Utils
-- [X] API
-- [X] Services
-- [X] Hooks
-- [ ] Components
-  - [X] blog
-  - [X] home-menu
-  - [X] shared
-  - [X] playground
-  - [ ] settings
-
 ##### Next:  E2E tests
 - [ ] Home
 - [ ] Blog
