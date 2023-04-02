@@ -44,5 +44,5 @@ test("should navigate to the blog post page", async ({ page }) => {
   await page.waitForSelector("[data-testid=page-title]");
   const text = await page.getByTestId("page-content").textContent();
 
-  expect(text).toBeTruthy();
+  expect(text).toContain("Posted on");
 });

@@ -1,14 +1,16 @@
 import { expect, test } from "@playwright/test";
 
-test("should render the items", async ({ page }) => {
+test.beforeEach(async ({ page }) => {
   await page.goto("https://yayu.dev/playground");
+});
+
+test("should render the items", async ({ page }) => {
   const items = await page.getByTestId("experiment-item").all();
 
   expect(items.length).toBeGreaterThan(0);
 });
 
 test("should filter the items", async ({ page }) => {
-  await page.goto("https://yayu.dev/playground");
   const itemsBeforeFiltering = await page.getByTestId("experiment-item").all();
 
   const buttonsContainer = await page.getByTestId("playground-filter-list");
@@ -22,7 +24,6 @@ test("should filter the items", async ({ page }) => {
 });
 
 test("should restore the items after removing the filter", async ({ page }) => {
-  await page.goto("https://yayu.dev/playground");
   const itemsBeforeFiltering = await page.getByTestId("experiment-item").all();
 
   const buttonsContainer = await page.getByTestId("playground-filter-list");
@@ -38,8 +39,6 @@ test("should restore the items after removing the filter", async ({ page }) => {
 });
 
 test("should sort the items by name", async ({ page }) => {
-  await page.goto("https://yayu.dev/playground");
-
   const buttonsContainer = await page.getByTestId("playground-sorting-options");
   const nameButton = await buttonsContainer.getByText("Name");
   await nameButton.click();
@@ -54,7 +53,6 @@ test("should sort the items by name", async ({ page }) => {
 });
 
 test("should open the modal preview", async ({ page }) => {
-  await page.goto("https://yayu.dev/playground");
   const item = await page.getByTestId("experiment-item").first();
   await item.click();
 
@@ -63,13 +61,12 @@ test("should open the modal preview", async ({ page }) => {
   const modalTitle = await page.getByTestId("playground-frame__title");
   const modalLink = await page.getByTestId("playground-frame__link");
 
-  expect(modal).toBeTruthy();
-  expect(modalTitle).toBeTruthy();
-  expect(modalLink).toBeTruthy();
+  await expect(modal).toBeVisible();
+  await expect(modalTitle).toBeVisible();
+  await expect(modalLink).toBeVisible();
 });
 
 test("should close the modal preview", async ({ page }) => {
-  await page.goto("https://yayu.dev/playground");
   const item = await page.getByTestId("experiment-item").first();
   await item.click();
 
@@ -80,7 +77,7 @@ test("should close the modal preview", async ({ page }) => {
   await page.waitForSelector("[data-testid=playground-frame__iframe]", {
     state: "detached",
   });
-  const modal = await page.$("[data-test=playground-frame__iframe]");
+  const modal = await page.getByTestId("playground-frame__iframe");
 
-  expect(modal).toBeFalsy();
+  await expect(modal).toBeHidden();
 });
