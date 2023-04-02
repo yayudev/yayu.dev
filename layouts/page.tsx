@@ -121,6 +121,7 @@ export function PageLayout({
       <AnimatePresence>
         <TitleContainer>
           <Title
+            data-testid="page-title"
             key="title"
             $isAestheticTitle={isAestheticTitle}
             initial={animationsEnabled ? { opacity: 0, scaleX: 0 } : {}}
@@ -136,6 +137,7 @@ export function PageLayout({
 
           {subtitle && (
             <Subtitle
+              data-testid="page-subtitle"
               key="subtitle"
               initial={animationsEnabled ? { opacity: 0, scaleX: 0 } : {}}
               animate={animationsEnabled ? { opacity: 1, scaleX: 1 } : {}}
@@ -152,13 +154,13 @@ export function PageLayout({
         </TitleContainer>
 
         {isLoading && (
-          <Content key="content-loading">
+          <Content key="content-loading" data-testid="page-content">
             <Loader />
           </Content>
         )}
 
         {!isLoading && hasError && (
-          <Content key="content-error">
+          <Content key="content-error" data-testid="page-content">
             <ErrorMessage
               title={t("common:errors.500.title")}
               message={t("common:errors.500.description")}
@@ -169,6 +171,7 @@ export function PageLayout({
         {!isLoading && !hasError && (
           <Content
             id="page-content"
+            data-testid="page-content"
             key="content-loaded"
             initial={animationsEnabled ? { opacity: 0, translateY: 25 } : {}}
             animate={animationsEnabled ? { opacity: 1, translateY: 0 } : {}}
