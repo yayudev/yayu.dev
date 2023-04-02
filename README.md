@@ -58,20 +58,19 @@ That will generate a html report in `<root>/analyze` directory.
 ### Roadmap
 
 ##### Next:  E2E tests
-- [ ] Home
-- [ ] Blog
-- [ ] Blog Post
-- [ ] Playground
-- [ ] About
+- [X] Home
+- [X] Blog
+- [X] Blog Post
+- [X] Playground
+- [X] About
+- [X] Settings
 - [ ] 404
 - [ ] 500
-- [ ] Settings
 
 #### TODO.
 
 These are the things I want to add to the site in the future:
 
-- [ ] Test coverage setup w/check
 - [ ] Loading skeletons / Better loading states
 - [ ] Swipe gestures for mobile
 - [ ] Light/dark mode
