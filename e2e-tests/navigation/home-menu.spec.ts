@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-test("home menu changes width", async ({ page }) => {
+test("should change home menu's width", async ({ page }) => {
   await page.goto("https://yayu.dev/");
   const menuContainer = await page.getByTestId("home-menu");
 
@@ -17,7 +17,7 @@ test("home menu changes width", async ({ page }) => {
   expect(elementWidth).toBeLessThan(500);
 });
 
-test("home menu changes width back", async ({ page }) => {
+test("should change home menu's width back", async ({ page }) => {
   await page.goto("https://yayu.dev/");
   const menuContainer = await page.getByTestId("home-menu");
 

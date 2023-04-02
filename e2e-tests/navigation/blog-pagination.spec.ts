@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-test("navigates to blog's second page", async ({ page }) => {
+test("should navigate to blog's second page", async ({ page }) => {
   await page.goto("https://yayu.dev/blog");
   const nextPageLink = await page.getByTestId("blog-pagination__next-link");
   await nextPageLink.click();
@@ -9,7 +9,7 @@ test("navigates to blog's second page", async ({ page }) => {
   expect(page.url()).toBe("https://yayu.dev/blog/page/2");
 });
 
-test("navigates to blog's third page", async ({ page }) => {
+test("should navigate to blog's third page", async ({ page }) => {
   await page.goto("https://yayu.dev/blog");
   const nextPageLink = await page.getByTestId("blog-pagination__next-link");
   await nextPageLink.click();
@@ -19,7 +19,7 @@ test("navigates to blog's third page", async ({ page }) => {
   expect(page.url()).toBe("https://yayu.dev/blog/page/3");
 });
 
-test("navigates to blog's first page", async ({ page }) => {
+test("should navigate to blog's first page", async ({ page }) => {
   await page.goto("https://yayu.dev/blog/page/2");
   const previousPageLink = await page.getByTestId("blog-pagination__prev-link");
   await previousPageLink.click();
@@ -28,7 +28,7 @@ test("navigates to blog's first page", async ({ page }) => {
   expect(page.url()).toBe("https://yayu.dev/blog/page/1");
 });
 
-test("it renders the blog posts on page 2+", async ({ page }) => {
+test("should render the blog posts on page 2+", async ({ page }) => {
   await page.goto("https://yayu.dev/blog/page/2");
   await page.waitForSelector("[data-testid=blog-post-item]");
   const posts = await page.getByTestId("blog-post-item").all();
@@ -36,7 +36,7 @@ test("it renders the blog posts on page 2+", async ({ page }) => {
   expect(posts.length).toEqual(10);
 });
 
-test("it navigates to the blog post page", async ({ page }) => {
+test("should navigate to the blog post page", async ({ page }) => {
   await page.goto("https://yayu.dev/blog");
   const post = await page.getByTestId("blog-post-item").first();
   await post.click();

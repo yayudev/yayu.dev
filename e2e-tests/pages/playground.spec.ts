@@ -52,3 +52,35 @@ test("should sort the items by name", async ({ page }) => {
 
   expect(itemLabels).toEqual(sortedItemLabels);
 });
+
+test("should open the modal preview", async ({ page }) => {
+  await page.goto("https://yayu.dev/playground");
+  const item = await page.getByTestId("experiment-item").first();
+  await item.click();
+
+  await page.waitForSelector("[data-testid=playground-frame__iframe]");
+  const modal = await page.getByTestId("playground-frame__iframe");
+  const modalTitle = await page.getByTestId("playground-frame__title");
+  const modalLink = await page.getByTestId("playground-frame__link");
+
+  expect(modal).toBeTruthy();
+  expect(modalTitle).toBeTruthy();
+  expect(modalLink).toBeTruthy();
+});
+
+test("should close the modal preview", async ({ page }) => {
+  await page.goto("https://yayu.dev/playground");
+  const item = await page.getByTestId("experiment-item").first();
+  await item.click();
+
+  await page.waitForSelector("[data-testid=playground-frame]");
+  const overlayContainer = await page.getByTestId("playground-frame");
+  await overlayContainer.click({ position: { x: 0, y: 0 } });
+
+  await page.waitForSelector("[data-testid=playground-frame__iframe]", {
+    state: "detached",
+  });
+  const modal = await page.$("[data-test=playground-frame__iframe]");
+
+  expect(modal).toBeFalsy();
+});
