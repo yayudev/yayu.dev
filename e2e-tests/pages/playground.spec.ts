@@ -1,7 +1,5 @@
 import { expect, test } from "@playwright/test";
 
-import { ExperimentData } from "@/types/experiments";
-
 test("should render the items", async ({ page }) => {
   await page.goto("https://yayu.dev/playground");
   const items = await page.$$("[data-testid=experiment-item]");
