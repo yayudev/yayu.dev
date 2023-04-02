@@ -20,7 +20,7 @@ test("should show loading state", async ({ page }) => {
 test("should display 10 items", async ({ page }) => {
   await page.goto("https://yayu.dev/blog");
   await page.waitForSelector("[data-testid=blog-post-item]");
-  const items = await page.$$("[data-testid=blog-post-item]");
+  const items = await page.getByTestId("blog-post-item").all();
 
   expect(items.length).toBe(10);
 });
