@@ -3,8 +3,6 @@ name: E2E Tests
 on:
   push:
     branches: [ "main", "develop" ]
-  pull_request:
-    branches: [ "develop" ]
 
 jobs:
   test:
@@ -19,6 +17,14 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+    - name: Set environment variables
+      if: startsWith(github.ref, 'refs/heads/')
+      run: |
+        if [ ${{ github.ref }} = 'refs/heads/development' ]; then
+          echo "CUSTOM_URL=https://preview.yayu.dev" >> $GITHUB_ENV
+        elif [ ${{ github.ref }} = 'refs/heads/main' ]; then
+          echo "CUSTOM_URL=https://yayu.dev" >> $GITHUB_ENV
+        fi
     - name: Run Playwright tests
       run: npx playwright test
     - uses: actions/upload-artifact@v3

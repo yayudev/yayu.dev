@@ -1,14 +1,17 @@
 # yayu.dev (v3)
-
 My personal porfolio website.
 
 Live version available at ([yayu.dev](https://yayu.dev))
 
 There's also a preview version with latest develop changes available at ([preview.yayu.dev](https://preview.yayu.dev))
 
-# Setup
+### Status
 
-## Install
+![](https://api.checklyhq.com/v1/badges/groups/410373?style=for-the-badge&theme=default)
+
+## Setup
+
+### Install
 
 To set up just run:
 
@@ -37,7 +40,7 @@ A blogPost content type is required for the blog to work with the following fiel
 
 Optionally, you can also add a `CONTENTFUL_PREVIEW_ACCESS_TOKEN` to your `.env` file to consume draft posts.
 
-## Run
+### Run
 
 Dev mode:
 
@@ -47,7 +50,7 @@ $ npm run dev
 
 Build / Prod serve:
 
-```
+```sh
 $ npm run build
 $ npm run start
 ```
@@ -55,23 +58,68 @@ $ npm run start
 You can also use bundle analyzer to detect heavy dependencies by adding `ANALYZE_BUNDLE=true` to your `.env` file
 That will generate a html report in `<root>/analyze` directory.
 
+### Testing
+
+#### Unit tests
+
+Unit tests are written using jest. You can run them with:
+
+```sh
+$ npm run test:unit
+#or
+$ npm run test:unit:watch
+```
+
+#### E2E tests
+
+E2E tests are written using playwright. You can run them with:
+
+```sh
+$ npm run test:e2e
+# or
+$ npm run test:e2e:watch
+```
+
+By default, the tests will run against the preview version of the site (`https://preview.yayu.dev`). 
+You can change this by setting the `E2E_BASE_URL` environment variable manually to 
+`http://localhost:3000` or `https://yayu.dev` (or any other url you want to test against).
+
+--- 
+Additionally, you can also run both unit and e2e tests with:
+
+
+
+### Other useful commands
+
+#### Run e2e tests against local dev server
+
+```sh
+$ npm run test:e2e:dev
+```
+
+#### Run both unit and e2e tests
+
+```sh
+$ npm run test
+```
+
+#### Linting
+
+```sh
+$ npm run lint
+```
+
+#### Format
+
+```sh
+$ npm run format
+```
+
+
 ### Roadmap
-
-##### Next:  E2E tests
-- [ ] Home
-- [ ] Blog
-- [ ] Blog Post
-- [ ] Playground
-- [ ] About
-- [ ] 404
-- [ ] 500
-- [ ] Settings
-
-#### TODO.
 
 These are the things I want to add to the site in the future:
 
-- [ ] Test coverage setup w/check
 - [ ] Loading skeletons / Better loading states
 - [ ] Swipe gestures for mobile
 - [ ] Light/dark mode
