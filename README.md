@@ -1,10 +1,13 @@
 # yayu.dev (v3)
-
 My personal porfolio website.
 
 Live version available at ([yayu.dev](https://yayu.dev))
 
 There's also a preview version with latest develop changes available at ([preview.yayu.dev](https://preview.yayu.dev))
+
+### Status
+
+![](https://api.checklyhq.com/v1/badges/groups/410373?style=for-the-badge&theme=default)
 
 ## Setup
 
