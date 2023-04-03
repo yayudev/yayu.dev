@@ -1,7 +1,10 @@
 import { expect, test } from "@playwright/test";
 
+test.beforeEach(async ({ page }) => {
+  await page.goto("/");
+});
+
 test("should change home menu's width", async ({ page }) => {
-  await page.goto("https://yayu.dev/");
   const menuContainer = await page.getByTestId("home-menu");
 
   // Change route
@@ -18,7 +21,6 @@ test("should change home menu's width", async ({ page }) => {
 });
 
 test("should change home menu's width back", async ({ page }) => {
-  await page.goto("https://yayu.dev/");
   const menuContainer = await page.getByTestId("home-menu");
 
   // Change route

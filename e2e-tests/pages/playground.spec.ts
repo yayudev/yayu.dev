@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 test.beforeEach(async ({ page }) => {
-  await page.goto("https://yayu.dev/playground");
+  await page.goto("/playground");
 });
 
 test("should render the items", async ({ page }) => {

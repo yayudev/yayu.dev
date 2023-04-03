@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 test.beforeEach(async ({ page }) => {
-  await page.goto("https://yayu.dev");
+  await page.goto("/");
 
   // Open the menu
   const settingsButton = await page

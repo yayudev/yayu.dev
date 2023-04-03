@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 test.beforeEach(async ({ page }) => {
-  await page.goto("https://yayu.dev/blog");
+  await page.goto("/blog");
 });
 
 test("should display correct title", async ({ page }) => {
@@ -14,13 +14,13 @@ test("should display correct title", async ({ page }) => {
 });
 
 test("should show loading state", async ({ page }) => {
-  await page.goto("https://yayu.dev");
+  await page.goto("/");
 
   const menuLink = await page.getByText("Blog");
   await menuLink.click();
+  await page.waitForURL("**/blog");
 
   const loader = await page.getByTestId("loader");
-
   await expect(loader).toBeVisible();
 });
 

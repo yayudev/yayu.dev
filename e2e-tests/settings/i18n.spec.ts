@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 test.beforeEach(async ({ page }) => {
-  await page.goto("https://yayu.dev");
+  await page.goto("/");
 
   // Open the menu
   const settingsButton = await page
@@ -37,7 +37,7 @@ test("should change language to english", async ({ page }) => {
 });
 
 test("should load the proper language on first load", async ({ page }) => {
-  await page.goto("https://yayu.dev/es");
+  await page.goto("/es");
 
   const menuOption = await page.getByText("Experimentos").first();
   await expect(menuOption).toBeVisible();

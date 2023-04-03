@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 test("should disable the sharing buttons", async ({ page }) => {
-  await page.goto("https://yayu.dev/blog");
+  await page.goto("/blog");
   // Navigate to the first post
   await page.waitForSelector("[data-testid=blog-post-item]");
   const firstPost = await page.getByTestId("blog-post-item").first();
