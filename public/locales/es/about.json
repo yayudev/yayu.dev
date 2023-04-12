@@ -14,7 +14,7 @@
     "title": "Pasatiempos"
   },
   "main-stack": {
-    "content": "React, Next, Jest, Cypress, Nest, postgres, netlify, AWS",
+    "content": "React, Next, Jest, Playwright, Nest, Prisma, Postgres, Vercel",
     "title": "Stack actual"
   },
   "me": {
