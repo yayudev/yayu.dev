@@ -3,6 +3,7 @@ import { BlogPostListResult } from "@/types/blog-api";
 export const blogPostListResult: BlogPostListResult = {
   posts: [
     {
+      _id: "1",
       title: "Test",
       slug: "test",
       date: "2021-01-01",
@@ -20,6 +21,7 @@ export const blogPostListResult: BlogPostListResult = {
       linkedFrom: {} as any,
     },
     {
+      _id: "2",
       title: "Test 2",
       slug: "test-2",
       date: "2021-01-01",
@@ -31,6 +33,7 @@ export const blogPostListResult: BlogPostListResult = {
       linkedFrom: {} as any,
     },
     {
+      _id: "3",
       title: "Test 3",
       slug: "test-3",
       date: "2021-01-01",
@@ -42,6 +45,7 @@ export const blogPostListResult: BlogPostListResult = {
       linkedFrom: {} as any,
     },
     {
+      _id: "4",
       title: "Test 4",
       slug: "test-4",
       date: "2021-01-01",
@@ -53,6 +57,7 @@ export const blogPostListResult: BlogPostListResult = {
       linkedFrom: {} as any,
     },
     {
+      _id: "5",
       title: "Test 5",
       slug: "test-5",
       date: "2021-01-01",
