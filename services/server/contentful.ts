@@ -51,6 +51,7 @@ export class ContentfulApiService {
       content_type: "blogPost",
       skip,
       limit,
+      order: "-sys.createdAt",
     });
 
     if (!collection.items) {

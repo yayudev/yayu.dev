@@ -28,6 +28,7 @@ export default async function getPostsListHandler(
     if (error?.sys?.id === "NotFound") {
       return res.status(404).json({ message: "Post not found" });
     }
+    console.log("error", error);
 
     return res.status(500).json({ message: "Server Error" });
   }

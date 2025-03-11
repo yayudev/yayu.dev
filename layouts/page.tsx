@@ -16,7 +16,7 @@ import { Loader } from "@/components/shared/loader";
 
 const Container = styled.div`
   width: 100%;
-  padding: 1rem 0 2rem 0;
+  padding: 1rem 0 0rem 0;
   position: relative;
   overflow-x: hidden;
   background: var(--background-for-content);
@@ -26,6 +26,12 @@ const Container = styled.div`
   ${MEDIA_QUERY_TABLET} {
     padding: 0;
   }
+`;
+
+export const ContentContainer = styled.div`
+  max-width: 70rem;
+  width: 100%;
+  margin: 0 auto;
 `;
 
 const TitleContainer = styled.div`
@@ -118,73 +124,75 @@ export function PageLayout({
 
   return (
     <Container ref={containerElement} id="app-container">
-      <AnimatePresence>
-        <TitleContainer>
-          <Title
-            data-testid="page-title"
-            key="title"
-            $isAestheticTitle={isAestheticTitle}
-            initial={animationsEnabled ? { opacity: 0, scaleX: 0 } : {}}
-            animate={animationsEnabled ? { opacity: 1, scaleX: 1 } : {}}
-            exit={animationsEnabled ? { opacity: 0, scaleX: 0 } : {}}
-            transition={{
-              duration: 0.5,
-              ease: "easeOut",
-            }}
-          >
-            {title}
-          </Title>
-
-          {subtitle && (
-            <Subtitle
-              data-testid="page-subtitle"
-              key="subtitle"
+      <ContentContainer>
+        <AnimatePresence>
+          <TitleContainer>
+            <Title
+              data-testid="page-title"
+              key="title"
+              $isAestheticTitle={isAestheticTitle}
               initial={animationsEnabled ? { opacity: 0, scaleX: 0 } : {}}
               animate={animationsEnabled ? { opacity: 1, scaleX: 1 } : {}}
               exit={animationsEnabled ? { opacity: 0, scaleX: 0 } : {}}
               transition={{
-                delay: 0.5,
-                duration: 0.25,
+                duration: 0.5,
                 ease: "easeOut",
               }}
             >
-              {subtitle}
-            </Subtitle>
+              {title}
+            </Title>
+
+            {subtitle && (
+              <Subtitle
+                data-testid="page-subtitle"
+                key="subtitle"
+                initial={animationsEnabled ? { opacity: 0, scaleX: 0 } : {}}
+                animate={animationsEnabled ? { opacity: 1, scaleX: 1 } : {}}
+                exit={animationsEnabled ? { opacity: 0, scaleX: 0 } : {}}
+                transition={{
+                  delay: 0.5,
+                  duration: 0.25,
+                  ease: "easeOut",
+                }}
+              >
+                {subtitle}
+              </Subtitle>
+            )}
+          </TitleContainer>
+
+          {isLoading && (
+            <Content key="content-loading" data-testid="page-content">
+              <Loader />
+            </Content>
           )}
-        </TitleContainer>
 
-        {isLoading && (
-          <Content key="content-loading" data-testid="page-content">
-            <Loader />
-          </Content>
-        )}
+          {!isLoading && hasError && (
+            <Content key="content-error" data-testid="page-content">
+              <ErrorMessage
+                title={t("common:errors.500.title")}
+                message={t("common:errors.500.description")}
+              />
+            </Content>
+          )}
 
-        {!isLoading && hasError && (
-          <Content key="content-error" data-testid="page-content">
-            <ErrorMessage
-              title={t("common:errors.500.title")}
-              message={t("common:errors.500.description")}
-            />
-          </Content>
-        )}
-
-        {!isLoading && !hasError && (
-          <Content
-            id="page-content"
-            data-testid="page-content"
-            key="content-loaded"
-            initial={animationsEnabled ? { opacity: 0, translateY: 25 } : {}}
-            animate={animationsEnabled ? { opacity: 1, translateY: 0 } : {}}
-            exit={animationsEnabled ? { opacity: 0, translateY: -25 } : {}}
-            transition={{
-              duration: 0.5,
-              ease: "easeOut",
-            }}
-          >
-            {children}
-          </Content>
-        )}
-      </AnimatePresence>
+          {!isLoading && !hasError && (
+            <Content
+              id="page-content"
+              data-testid="page-content"
+              key="content-loaded"
+              initial={animationsEnabled ? { opacity: 0, translateY: 25 } : {}}
+              animate={animationsEnabled ? { opacity: 1, translateY: 0 } : {}}
+              exit={animationsEnabled ? { opacity: 0, translateY: -25 } : {}}
+              transition={{
+                duration: 0.5,
+                ease: "easeOut",
+              }}
+            >
+              {children}
+            </Content>
+          )}
+        </AnimatePresence>
+      </ContentContainer>
     </Container>
   );
 }

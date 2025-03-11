@@ -210,8 +210,9 @@ export enum ContentfulAssetOrder {
 }
 
 /** Blog post [See type definition](https://app.contentful.com/spaces/1fnpih0gmmjm/content_types/blogPost) */
-export type ContentfulBlogPost = ContentfulEntry & {
+export type ContentfulBlogPost = ContentfulEntry & Contentful_Node & {
   __typename?: 'BlogPost';
+  _id: Scalars['ID'];
   contentfulMetadata: ContentfulContentfulMetadata;
   coverImage: Maybe<ContentfulAsset>;
   date: Maybe<Scalars['DateTime']>;
@@ -363,10 +364,26 @@ export enum ContentfulBlogPostOrder {
 
 export type ContentfulContentfulMetadata = {
   __typename?: 'ContentfulMetadata';
+  concepts: Array<Maybe<ContentfulTaxonomyConcept>>;
   tags: Array<Maybe<ContentfulContentfulTag>>;
 };
 
+export type ContentfulContentfulMetadataConceptsDescendantsFilter = {
+  id_contains_all: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  id_contains_none: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  id_contains_some: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type ContentfulContentfulMetadataConceptsFilter = {
+  descendants: InputMaybe<ContentfulContentfulMetadataConceptsDescendantsFilter>;
+  id_contains_all: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  id_contains_none: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  id_contains_some: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
 export type ContentfulContentfulMetadataFilter = {
+  concepts: InputMaybe<ContentfulContentfulMetadataConceptsFilter>;
+  concepts_exists: InputMaybe<Scalars['Boolean']>;
   tags: InputMaybe<ContentfulContentfulMetadataTagsFilter>;
   tags_exists: InputMaybe<Scalars['Boolean']>;
 };
@@ -379,7 +396,7 @@ export type ContentfulContentfulMetadataTagsFilter = {
 
 /**
  * Represents a tag entity for finding and organizing content easily.
- *     Find out more here: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/content-tags
+ *       Find out more here: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/content-tags
  */
 export type ContentfulContentfulTag = {
   __typename?: 'ContentfulTag';
@@ -515,11 +532,19 @@ export type ContentfulImageTransformOptions = {
 
 export type ContentfulQuery = {
   __typename?: 'Query';
+  _node: Maybe<Contentful_Node>;
   asset: Maybe<ContentfulAsset>;
   assetCollection: Maybe<ContentfulAssetCollection>;
   blogPost: Maybe<ContentfulBlogPost>;
   blogPostCollection: Maybe<ContentfulBlogPostCollection>;
   entryCollection: Maybe<ContentfulEntryCollection>;
+};
+
+
+export type ContentfulQuery_NodeArgs = {
+  id: Scalars['ID'];
+  locale: InputMaybe<Scalars['String']>;
+  preview: InputMaybe<Scalars['Boolean']>;
 };
 
 
@@ -571,6 +596,8 @@ export type ContentfulSys = {
   environmentId: Scalars['String'];
   firstPublishedAt: Maybe<Scalars['DateTime']>;
   id: Scalars['String'];
+  /** The locale that was requested. */
+  locale: Maybe<Scalars['String']>;
   publishedAt: Maybe<Scalars['DateTime']>;
   publishedVersion: Maybe<Scalars['Int']>;
   spaceId: Scalars['String'];
@@ -611,4 +638,17 @@ export type ContentfulSysFilter = {
   publishedVersion_lte: InputMaybe<Scalars['Float']>;
   publishedVersion_not: InputMaybe<Scalars['Float']>;
   publishedVersion_not_in: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
+};
+
+/**
+ * Represents a taxonomy concept entity for finding and organizing content easily.
+ *         Find out more here: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/content-concepts
+ */
+export type ContentfulTaxonomyConcept = {
+  __typename?: 'TaxonomyConcept';
+  id: Maybe<Scalars['String']>;
+};
+
+export type Contentful_Node = {
+  _id: Scalars['ID'];
 };
